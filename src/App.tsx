@@ -20,6 +20,8 @@ import CreatorMarketplace from "./pages/CreatorMarketplace";
 import CreatorLinks from "./pages/CreatorLinks";
 import CreatorEarnings from "./pages/CreatorEarnings";
 import Landing from "./pages/Landing";
+import Apps from "./pages/Apps";
+import UtmTracking from "./pages/UtmTracking";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +45,8 @@ const App = () => (
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/content" element={<Content />} />
           <Route path="/payouts" element={<Payouts />} />
+          <Route path="/apps" element={<Apps />} />
+          <Route path="/utm-tracking" element={<UtmTracking />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/creator/dashboard" element={<CreatorDashboard />} />
           <Route path="/creator/marketplace" element={<CreatorMarketplace />} />
