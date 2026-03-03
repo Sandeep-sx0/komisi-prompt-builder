@@ -16,29 +16,29 @@ type NavGroup = { section: string; items: NavItem[] };
 const devNav: NavGroup[] = [
   { section: "OVERVIEW", items: [
     { icon: Home, label: "Dashboard", href: "/dashboard" },
-    { icon: BarChart3, label: "Analytics" },
+    { icon: BarChart3, label: "Analytics", href: "/analytics" },
   ]},
   { section: "MANAGE", items: [
     { icon: Smartphone, label: "Apps" },
     { icon: Target, label: "Campaigns", href: "/campaigns" },
-    { icon: Users, label: "Affiliates", badge: "3" },
-    { icon: FileText, label: "Content" },
+    { icon: Users, label: "Affiliates", badge: "3", href: "/affiliates" },
+    { icon: FileText, label: "Content", href: "/content" },
   ]},
   { section: "REVENUE", items: [
-    { icon: Wallet, label: "Payouts", badge: "2" },
+    { icon: Wallet, label: "Payouts", badge: "2", href: "/payouts" },
     { icon: Link2, label: "UTM Tracking" },
   ]},
 ];
 
 const creatorNav: NavGroup[] = [
   { section: "OVERVIEW", items: [
-    { icon: Home, label: "Dashboard", href: "/dashboard" },
-    { icon: BarChart3, label: "My Earnings" },
+    { icon: Home, label: "Dashboard", href: "/creator/dashboard" },
+    { icon: BarChart3, label: "My Earnings", href: "/creator/earnings" },
   ]},
   { section: "PROMOTE", items: [
-    { icon: Store, label: "Marketplace" },
+    { icon: Store, label: "Marketplace", href: "/creator/marketplace" },
     { icon: Smartphone, label: "My Programs", badge: "4" },
-    { icon: Link2, label: "My Links" },
+    { icon: Link2, label: "My Links", href: "/creator/links" },
   ]},
   { section: "CONTENT", items: [
     { icon: FileText, label: "Content Tracker" },
@@ -46,7 +46,7 @@ const creatorNav: NavGroup[] = [
 ];
 
 const bottomItems: NavItem[] = [
-  { icon: Settings, label: "Settings" },
+  { icon: Settings, label: "Settings", href: "/settings" },
   { icon: BookOpen, label: "Docs", external: true },
   { icon: MessageCircle, label: "Support" },
 ];
@@ -76,7 +76,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
 
   return (
     <aside className={cn(
-      "h-screen bg-background-subtle border-r border-border flex flex-col shrink-0 transition-all duration-200",
+      "h-screen bg-background-subtle border-r border-border flex flex-col shrink-0 transition-all duration-200 sticky top-0",
       collapsed ? "w-16" : "w-64"
     )}>
       {/* Logo + App Switcher */}
@@ -162,15 +162,21 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
 
       {/* Bottom */}
       <div className="border-t border-border px-2 py-2">
-        {bottomItems.slice(0, userType === "creator" ? 2 : 3).map((item) => (
-          <button key={item.label} className={cn(
-            "w-full h-9 rounded-md text-sm font-medium flex items-center text-text-secondary hover:bg-muted hover:text-foreground transition-all",
-            collapsed ? "justify-center px-0" : "px-3 gap-2"
-          )}>
-            <item.icon size={18} />
-            {!collapsed && <span>{item.label}</span>}
-          </button>
-        ))}
+        {bottomItems.slice(0, userType === "creator" ? 2 : 3).map((item) => {
+          const Wrapper = item.href ? Link : "button" as any;
+          const wrapperProps = item.href ? { to: item.href } : {};
+          const active = isActive(item);
+          return (
+            <Wrapper key={item.label} {...wrapperProps} className={cn(
+              "w-full h-9 rounded-md text-sm font-medium flex items-center transition-all",
+              collapsed ? "justify-center px-0" : "px-3 gap-2",
+              active ? "bg-card text-foreground shadow-sm border border-border/50" : "text-text-secondary hover:bg-muted hover:text-foreground"
+            )}>
+              <item.icon size={18} />
+              {!collapsed && <span>{item.label}</span>}
+            </Wrapper>
+          );
+        })}
       </div>
 
       {/* User */}
@@ -182,10 +188,10 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-semibold text-foreground shrink-0">SC</div>
             <div className="flex-1 min-w-0">
               <div className="text-sm font-medium text-foreground truncate">
-                {userType === "developer" ? "Sarah Chen" : "Sarah Creates"}
+                {userType === "developer" ? "Sandeep Kumar" : "Sarah Creates"}
               </div>
               <div className="text-xs text-text-tertiary truncate">
-                {userType === "developer" ? "sarah@mindful.app" : "@sarahcreates"}
+                {userType === "developer" ? "sandeep@upturn.ae" : "@sarahcreates"}
               </div>
             </div>
             {userType === "developer" ? (
