@@ -1,8 +1,23 @@
 import React, { useState } from "react";
 import { DashboardLayout } from "@/components/komisi/DashboardLayout";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { ChipSelector } from "@/components/komisi/ChipSelector";
+import {
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription,
+} from "@/components/ui/dialog";
+import {
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from "@/components/ui/select";
+import {
+  Popover, PopoverContent, PopoverTrigger,
+} from "@/components/ui/popover";
+import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
 import {
   Plus, ExternalLink, Copy, X, Eye, Download, DollarSign, TrendingUp,
+  Sparkles, CalendarIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +35,16 @@ const Content = () => {
   const [utmFields, setUtmFields] = useState({ source: "tiktok", medium: "affiliate", campaign: "morning-routine", content: "video-5apps", term: "" });
   const [copied, setCopied] = useState(false);
 
+  // Add Content modal
+  const [addOpen, setAddOpen] = useState(false);
+  const [contentUrl, setContentUrl] = useState("");
+  const [contentPlatform, setContentPlatform] = useState("");
+  const [contentTitle, setContentTitle] = useState("");
+  const [contentAffiliate, setContentAffiliate] = useState("");
+  const [contentCampaign, setContentCampaign] = useState("");
+  const [contentDate, setContentDate] = useState<Date | undefined>(undefined);
+  const [fetching, setFetching] = useState(false);
+
   const filtered = filter === "all" ? contentItems : contentItems.filter(c => c.type === filter);
 
   const utmLink = `https://komisi.io/go/mindfulapp?utm_source=${utmFields.source}&utm_medium=${utmFields.medium}&utm_campaign=${utmFields.campaign}${utmFields.content ? `&utm_content=${utmFields.content}` : ""}${utmFields.term ? `&utm_term=${utmFields.term}` : ""}`;
@@ -30,14 +55,26 @@ const Content = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handleAutoFetch = () => {
+    setFetching(true);
+    setTimeout(() => {
+      setContentTitle("5 Apps That Changed My Morning Routine");
+      if (contentUrl.includes("tiktok")) setContentPlatform("tiktok");
+      else if (contentUrl.includes("youtube")) setContentPlatform("youtube");
+      else if (contentUrl.includes("instagram")) setContentPlatform("instagram");
+      else setContentPlatform("blog");
+      setFetching(false);
+    }, 1500);
+  };
+
   return (
     <DashboardLayout activeItem="Content">
       <div className="px-8 py-6 max-w-[1200px]">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold tracking-tighter text-foreground">Content Tracking</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">Content Tracking</h1>
           <div className="flex gap-2">
             <Button variant="secondary" onClick={() => setUtmOpen(true)}>UTM Builder</Button>
-            <Button><Plus size={14} /> Add Content</Button>
+            <Button onClick={() => setAddOpen(true)}><Plus size={14} /> Add Content</Button>
           </div>
         </div>
 
@@ -99,14 +136,12 @@ const Content = () => {
             </div>
             <div className="px-6 py-6 space-y-4">
               <p className="text-sm text-text-secondary">Build a tracked link for your affiliates.</p>
-
               <div><label className="block text-sm font-medium text-foreground mb-1.5">Base URL</label><input disabled value="https://komisi.io/go/mindfulapp" className="w-full h-10 px-3 text-sm bg-background-subtle border border-border rounded-lg text-text-secondary" /></div>
               <div><label className="block text-sm font-medium text-foreground mb-1.5">Source *</label><input value={utmFields.source} onChange={e => setUtmFields({...utmFields, source: e.target.value})} placeholder="e.g., tiktok, youtube" className="w-full h-10 px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" /></div>
               <div><label className="block text-sm font-medium text-foreground mb-1.5">Medium *</label><input value={utmFields.medium} onChange={e => setUtmFields({...utmFields, medium: e.target.value})} className="w-full h-10 px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" /></div>
               <div><label className="block text-sm font-medium text-foreground mb-1.5">Campaign *</label><input value={utmFields.campaign} onChange={e => setUtmFields({...utmFields, campaign: e.target.value})} placeholder="e.g., spring-push" className="w-full h-10 px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" /></div>
               <div><label className="block text-sm font-medium text-foreground mb-1.5">Content (optional)</label><input value={utmFields.content} onChange={e => setUtmFields({...utmFields, content: e.target.value})} placeholder="e.g., banner-v2" className="w-full h-10 px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" /></div>
               <div><label className="block text-sm font-medium text-foreground mb-1.5">Term (optional)</label><input value={utmFields.term} onChange={e => setUtmFields({...utmFields, term: e.target.value})} placeholder="e.g., meditation" className="w-full h-10 px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" /></div>
-
               <div className="border-t border-border pt-4">
                 <label className="block text-sm font-medium text-foreground mb-2">Generated Link:</label>
                 <div className="bg-background-subtle rounded-lg p-4">
@@ -123,6 +158,88 @@ const Content = () => {
           </div>
         </>
       )}
+
+      {/* Add Content Modal */}
+      <Dialog open={addOpen} onOpenChange={setAddOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Add Content Piece</DialogTitle>
+            <DialogDescription>Track a new piece of affiliate content for attribution.</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-2">
+            <div className="space-y-1.5">
+              <Label>Content URL *</Label>
+              <div className="flex gap-2">
+                <Input className="flex-1" placeholder="https://tiktok.com/@creator/video/123..." value={contentUrl} onChange={(e) => setContentUrl(e.target.value)} />
+                <Button variant="ai" size="sm" onClick={handleAutoFetch} disabled={!contentUrl || fetching}>
+                  <Sparkles size={14} /> {fetching ? "Fetching..." : "Auto-Fetch ✦"}
+                </Button>
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <Label>Platform *</Label>
+              <ChipSelector
+                options={[
+                  { label: "TikTok", value: "tiktok" },
+                  { label: "YouTube", value: "youtube" },
+                  { label: "Instagram", value: "instagram" },
+                  { label: "Blog", value: "blog" },
+                  { label: "Other", value: "other" },
+                ]}
+                value={contentPlatform}
+                onChange={setContentPlatform}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label>Title</Label>
+              <Input placeholder="Content title (auto-detected from URL)" value={contentTitle} onChange={(e) => setContentTitle(e.target.value)} />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <Label>Affiliate *</Label>
+                <Select value={contentAffiliate} onValueChange={setContentAffiliate}>
+                  <SelectTrigger><SelectValue placeholder="Select affiliate" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="sarahcreates">@sarahcreates</SelectItem>
+                    <SelectItem value="techreviewer">@techreviewer</SelectItem>
+                    <SelectItem value="appjunkie">@appjunkie</SelectItem>
+                    <SelectItem value="fitnesstech">@fitnesstech</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-1.5">
+                <Label>Campaign <span className="text-text-tertiary">(optional)</span></Label>
+                <Select value={contentCampaign} onValueChange={setContentCampaign}>
+                  <SelectTrigger><SelectValue placeholder="Select campaign" /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="tiktok-q1">TikTok Q1 Push</SelectItem>
+                    <SelectItem value="youtube-review">YouTube Review Program</SelectItem>
+                    <SelectItem value="ig-sprint">Instagram Stories Sprint</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="space-y-1.5">
+              <Label>Posted Date</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className={cn("w-full justify-start text-left font-normal", !contentDate && "text-muted-foreground")}>
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {contentDate ? format(contentDate, "PPP") : "Pick a date"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar mode="single" selected={contentDate} onSelect={setContentDate} initialFocus className="p-3 pointer-events-auto" />
+                </PopoverContent>
+              </Popover>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setAddOpen(false)}>Cancel</Button>
+            <Button onClick={() => setAddOpen(false)}>Add Content →</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </DashboardLayout>
   );
 };

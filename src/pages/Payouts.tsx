@@ -2,7 +2,17 @@ import React, { useState } from "react";
 import { DashboardLayout } from "@/components/komisi/DashboardLayout";
 import { MetricCard } from "@/components/komisi/Cards";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 import { BadgeStatus } from "@/components/komisi/BadgeStatus";
+import { ChipSelector } from "@/components/komisi/ChipSelector";
+import {
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription,
+} from "@/components/ui/dialog";
+import {
+  Select, SelectContent, SelectItem, SelectTrigger, SelectValue,
+} from "@/components/ui/select";
 import { DollarSign, Users, Download, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -24,14 +34,20 @@ const recentTx = [
 const Payouts = () => {
   const [tab, setTab] = useState("overview");
   const [confirmOpen, setConfirmOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [payoutSchedule, setPayoutSchedule] = useState("monthly");
+  const [minThreshold, setMinThreshold] = useState("25.00");
+  const [autoProcess, setAutoProcess] = useState(false);
+  const [payoutMethod, setPayoutMethod] = useState("stripe");
+  const [holdPeriod, setHoldPeriod] = useState("none");
 
   return (
     <DashboardLayout activeItem="Payouts">
       <div className="px-8 py-6 max-w-[1200px]">
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold tracking-tighter text-foreground">Payouts</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">Payouts</h1>
           <div className="flex gap-2">
-            <Button variant="secondary" size="sm">⚙ Payout Settings</Button>
+            <Button variant="secondary" size="sm" onClick={() => setSettingsOpen(true)}>⚙ Payout Settings</Button>
             <Button variant="secondary" size="sm"><Download size={14} /> Export</Button>
           </div>
         </div>
@@ -112,7 +128,7 @@ const Payouts = () => {
         </div>
       </div>
 
-      {/* Confirm Modal */}
+      {/* Process Confirm Modal */}
       {confirmOpen && (
         <>
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" onClick={() => setConfirmOpen(false)} />
@@ -133,6 +149,73 @@ const Payouts = () => {
           </div>
         </>
       )}
+
+      {/* Payout Settings Modal */}
+      <Dialog open={settingsOpen} onOpenChange={setSettingsOpen}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Payout Settings</DialogTitle>
+            <DialogDescription>Configure how and when affiliate payouts are processed.</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-5 py-2">
+            <div className="space-y-1.5">
+              <Label>Payout Schedule</Label>
+              <ChipSelector
+                options={[
+                  { label: "Monthly (15th)", value: "monthly" },
+                  { label: "Bi-weekly", value: "biweekly" },
+                  { label: "Weekly", value: "weekly" },
+                ]}
+                value={payoutSchedule}
+                onChange={setPayoutSchedule}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label>Minimum Payout Threshold</Label>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary text-sm">$</span>
+                <Input className="pl-7" value={minThreshold} onChange={(e) => setMinThreshold(e.target.value)} />
+              </div>
+            </div>
+            <div className="flex items-center justify-between">
+              <div>
+                <Label>Auto-Process Payouts</Label>
+                <p className="text-xs text-text-tertiary mt-0.5">Automatically process payouts on schedule without manual approval</p>
+              </div>
+              <Switch checked={autoProcess} onCheckedChange={setAutoProcess} />
+            </div>
+            <div className="space-y-1.5">
+              <Label>Default Payout Method</Label>
+              <ChipSelector
+                options={[
+                  { label: "Stripe Connect", value: "stripe" },
+                  { label: "PayPal", value: "paypal" },
+                  { label: "Wise", value: "wise" },
+                ]}
+                value={payoutMethod}
+                onChange={setPayoutMethod}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label>Hold Period</Label>
+              <Select value={holdPeriod} onValueChange={setHoldPeriod}>
+                <SelectTrigger><SelectValue /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="none">None</SelectItem>
+                  <SelectItem value="24h">24 hours</SelectItem>
+                  <SelectItem value="48h">48 hours</SelectItem>
+                  <SelectItem value="7d">7 days</SelectItem>
+                </SelectContent>
+              </Select>
+              <p className="text-xs text-text-tertiary">Hold payouts for review before processing</p>
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setSettingsOpen(false)}>Cancel</Button>
+            <Button onClick={() => setSettingsOpen(false)}>Save Settings →</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </DashboardLayout>
   );
 };

@@ -5,9 +5,12 @@ import { KomisiLogo } from "@/components/komisi/KomisiLogo";
 import { Button } from "@/components/ui/button";
 import { BadgeStatus } from "@/components/komisi/BadgeStatus";
 import {
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription,
+} from "@/components/ui/dialog";
+import {
   Home, BarChart3, Smartphone, Target, Users, FileText,
   Wallet, Link2, Settings, BookOpen, MessageCircle, Plus,
-  ChevronsLeft, Store, Sparkles, ChevronDown, Check
+  ChevronsLeft, Store, Sparkles, ChevronDown, Check, LogOut
 } from "lucide-react";
 import { useLocation, Link } from "react-router-dom";
 
@@ -69,6 +72,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
   const navigate = useNavigate();
   const nav = userType === "developer" ? devNav : creatorNav;
   const [appSwitcherOpen, setAppSwitcherOpen] = React.useState(false);
+  const [logoutOpen, setLogoutOpen] = React.useState(false);
 
   const isActive = (item: NavItem) => {
     if (activeItem) return item.label === activeItem;
@@ -184,7 +188,12 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
       {/* User */}
       <div className="border-t border-border p-3">
         {collapsed ? (
-          <div className="w-8 h-8 mx-auto rounded-full bg-muted flex items-center justify-center text-xs font-semibold text-foreground">SC</div>
+          <div className="flex flex-col items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-semibold text-foreground">SC</div>
+            <button onClick={() => setLogoutOpen(true)} className="text-text-tertiary hover:text-destructive transition-colors">
+              <LogOut size={16} />
+            </button>
+          </div>
         ) : (
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-semibold text-foreground shrink-0">SC</div>
@@ -199,11 +208,28 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             {userType === "developer" ? (
               <BadgeStatus variant="neutral">Free</BadgeStatus>
             ) : (
-              <span className="text-xs text-success font-medium whitespace-nowrap">$890</span>
+              <span className="text-xs text-[hsl(var(--success))] font-medium whitespace-nowrap">$890</span>
             )}
+            <button onClick={() => setLogoutOpen(true)} className="text-text-tertiary hover:text-destructive transition-colors shrink-0 ml-1">
+              <LogOut size={16} />
+            </button>
           </div>
         )}
       </div>
+
+      {/* Logout Confirmation */}
+      <Dialog open={logoutOpen} onOpenChange={setLogoutOpen}>
+        <DialogContent className="sm:max-w-sm">
+          <DialogHeader>
+            <DialogTitle>Log out of Komisi?</DialogTitle>
+            <DialogDescription>You'll need to sign in again to access your account.</DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="ghost" onClick={() => setLogoutOpen(false)}>Cancel</Button>
+            <Button variant="destructive" onClick={() => { setLogoutOpen(false); navigate("/login"); }}>Log Out</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
 
       {/* Collapse Toggle */}
       {onToggleCollapse && (
