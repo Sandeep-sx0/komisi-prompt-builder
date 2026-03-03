@@ -84,7 +84,8 @@ const Login = () => {
           </div>
 
           <div className="mt-12 pt-8 border-t border-border">
-            <p className="text-sm text-text-secondary"><span className="font-bold gradient-ai-text">200+</span> app developers are using Komisi to grow with creators</p>
+            <p className="text-sm text-text-secondary leading-relaxed">Whether you're a developer growing your app or a creator earning from recommendations — Komisi connects both sides.</p>
+            <p className="text-sm text-text-secondary mt-4"><span className="font-bold gradient-ai-text">200+</span> app developers are using Komisi to grow with creators</p>
             <div className="flex items-center justify-center gap-6 mt-4 opacity-30">
               {["App1", "App2", "App3", "App4", "App5"].map((l) => (
                 <div key={l} className="w-16 h-6 bg-foreground/20 rounded" />
