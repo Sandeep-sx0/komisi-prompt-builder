@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import { AppSidebar } from "@/components/komisi/AppSidebar";
+import { DemoModeSwitcher } from "@/components/komisi/DemoModeSwitcher";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -21,6 +22,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, acti
       <main className="flex-1 overflow-y-auto">
         {children}
       </main>
+      <DemoModeSwitcher />
     </div>
   );
 };

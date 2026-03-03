@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import { KomisiLogo } from "@/components/komisi/KomisiLogo";
 import { Button } from "@/components/ui/button";
-import { ChipSelector } from "@/components/komisi/ChipSelector";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Smartphone, Sparkles, Check } from "lucide-react";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [role, setRole] = useState("");
   const [password, setPassword] = useState("");
 
   const strength = password.length === 0 ? 0 : password.length < 4 ? 1 : password.length < 8 ? 2 : password.length < 12 ? 3 : 4;
+
+  const handleSignUp = () => {
+    if (role === "developer") {
+      navigate("/onboarding");
+    } else if (role === "creator") {
+      navigate("/creator/onboarding");
+    }
+  };
 
   return (
     <div className="min-h-screen flex">
@@ -74,7 +82,7 @@ const SignUp = () => {
               </div>
             </div>
 
-            <Button className="w-full h-11">Create Account <ArrowRight size={16} /></Button>
+            <Button className="w-full h-11" onClick={handleSignUp} disabled={!role}>Create Account <ArrowRight size={16} /></Button>
             <p className="text-xs text-text-tertiary text-center">By creating an account, you agree to our <a className="underline" href="#">Terms of Service</a> and <a className="underline" href="#">Privacy Policy</a>.</p>
           </div>
 
