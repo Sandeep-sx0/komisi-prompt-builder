@@ -19,14 +19,14 @@ const devNav: NavGroup[] = [
     { icon: BarChart3, label: "Analytics", href: "/analytics" },
   ]},
   { section: "MANAGE", items: [
-    { icon: Smartphone, label: "Apps" },
+    { icon: Smartphone, label: "Apps", href: "/apps" },
     { icon: Target, label: "Campaigns", href: "/campaigns" },
     { icon: Users, label: "Affiliates", badge: "3", href: "/affiliates" },
     { icon: FileText, label: "Content", href: "/content" },
   ]},
   { section: "REVENUE", items: [
     { icon: Wallet, label: "Payouts", badge: "2", href: "/payouts" },
-    { icon: Link2, label: "UTM Tracking" },
+    { icon: Link2, label: "UTM Tracking", href: "/utm-tracking" },
   ]},
 ];
 
