@@ -10,6 +10,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import Campaigns from "./pages/Campaigns";
+import CampaignCreate from "./pages/CampaignCreate";
 import Affiliates from "./pages/Affiliates";
 import Analytics from "./pages/Analytics";
 import Content from "./pages/Content";
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/campaigns" element={<Campaigns />} />
+          <Route path="/campaigns/create" element={<CampaignCreate />} />
           <Route path="/affiliates" element={<Affiliates />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/content" element={<Content />} />
