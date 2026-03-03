@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { KomisiLogo } from "@/components/komisi/KomisiLogo";
 import { Button } from "@/components/ui/button";
@@ -65,6 +66,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
   activeItem,
 }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const nav = userType === "developer" ? devNav : creatorNav;
   const [appSwitcherOpen, setAppSwitcherOpen] = React.useState(false);
 
@@ -114,7 +116,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
       {/* CTA */}
       {!collapsed && (
         <div className="px-3 pt-3">
-          <Button variant="secondary" size="sm" className="w-full">
+          <Button variant="secondary" size="sm" className="w-full" onClick={() => navigate(userType === "developer" ? "/campaigns/create" : "/creator/links")}>
             <Plus size={14} /> {userType === "developer" ? "Create Campaign" : "Get New Link"}
           </Button>
         </div>
