@@ -2,95 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
+    /* Base */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
+    --background-subtle: 210 20% 98%;
+    --surface: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --border: 220 13% 91%;
+    --border-hover: 216 12% 84%;
+    --input: 220 13% 91%;
+    --ring: 222 47% 11%;
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Text semantic */
+    --text-primary: 222 47% 11%;
+    --text-secondary: 215 16% 47%;
+    --text-tertiary: 215 16% 60%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Primary / Buttons */
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+    --btn-primary-hover: 222 47% 18%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    /* Secondary */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    /* Muted */
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --sidebar-accent: 240 4.8% 95.9%;
+    /* Accent */
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
 
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    /* Card */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --sidebar-border: 220 13% 91%;
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
+    /* Destructive */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Status */
+    --success: 160 84% 39%;
+    --success-light: 152 81% 96%;
+    --warning: 38 92% 50%;
+    --warning-light: 48 96% 89%;
+    --error: 0 84% 60%;
+    --error-light: 0 86% 97%;
+    --info: 217 91% 60%;
+    --info-light: 214 95% 93%;
+
+    /* Chart palette */
+    --chart-purple: 258 90% 66%;
+    --chart-pink: 330 81% 60%;
+    --chart-blue: 217 91% 60%;
+    --chart-green: 160 84% 39%;
+    --chart-amber: 38 92% 50%;
+
+    /* Sidebar */
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 215 16% 47%;
+    --sidebar-primary: 222 47% 11%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 222 47% 11%;
   }
 }
 
@@ -98,8 +82,78 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Instrument Sans', system-ui, sans-serif;
   }
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Watercolor gradient utilities */
+.watercolor-blue {
+  background: radial-gradient(ellipse at 30% 50%, #BFDBFE 0%, #E0F2FE 40%, #F0F9FF 100%);
+}
+.watercolor-pink {
+  background: radial-gradient(ellipse at 70% 30%, #FBCFE8 0%, #FCE7F3 40%, #FDF2F8 100%);
+}
+.watercolor-green {
+  background: radial-gradient(ellipse at 40% 60%, #A7F3D0 0%, #D1FAE5 40%, #ECFDF5 100%);
+}
+.watercolor-yellow {
+  background: radial-gradient(ellipse at 60% 40%, #FDE68A 0%, #FEF3C7 40%, #FFFBEB 100%);
+}
+.watercolor-purple {
+  background: radial-gradient(ellipse at 50% 50%, #C4B5FD 0%, #DDD6FE 40%, #EDE9FE 100%);
+}
+.watercolor-mixed {
+  background: radial-gradient(ellipse at 20% 30%, #BFDBFE 0%, #FBCFE8 30%, #DDD6FE 60%, #FDE68A 100%);
+}
+
+/* AI Gradient */
+.gradient-ai {
+  background: linear-gradient(135deg, #A78BFA, #EC4899, #F59E0B);
+}
+.gradient-ai-subtle {
+  background: linear-gradient(135deg, #EDE9FE, #FCE7F3, #FEF3C7);
+}
+.gradient-ai-text {
+  background: linear-gradient(135deg, #A78BFA, #EC4899, #F59E0B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* AI spinner animation */
+@keyframes ai-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.ai-spin {
+  animation: ai-spin 1.5s linear infinite;
+}
+
+/* Stagger fade in */
+@keyframes stagger-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.stagger-fade {
+  animation: stagger-fade 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+/* Press effect */
+.press-effect:active {
+  transform: scale(0.98);
+}
+
+/* Code block */
+.code-block {
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
 }
