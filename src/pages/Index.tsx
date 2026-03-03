@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { KomisiLogo } from "@/components/komisi/KomisiLogo";
 import { ButtonsSection } from "./sections/ButtonsSection";
 import { InputsSection } from "./sections/InputsSection";
@@ -13,6 +13,8 @@ import { AILoadingSection } from "./sections/AILoadingSection";
 import { EmptyStatesSection } from "./sections/EmptyStatesSection";
 import { ChartsSection } from "./sections/ChartsSection";
 import { cn } from "@/lib/utils";
+import { Moon, Sun } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const sections = [
   { id: "logo", label: "Logo" },
@@ -32,6 +34,11 @@ const sections = [
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState("logo");
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+  }, [dark]);
 
   const scrollTo = (id: string) => {
     setActiveSection(id);
@@ -42,9 +49,14 @@ const Index = () => {
     <div className="flex min-h-screen">
       {/* Sidebar */}
       <aside className="w-60 border-r border-border bg-background-subtle fixed top-0 left-0 h-screen overflow-y-auto">
-        <div className="p-5 border-b border-border">
-          <KomisiLogo size="md" />
-          <p className="text-xs text-text-tertiary mt-1">Design System</p>
+        <div className="p-5 border-b border-border flex items-center justify-between">
+          <div>
+            <KomisiLogo size="md" />
+            <p className="text-xs text-text-tertiary mt-1">Design System</p>
+          </div>
+          <button onClick={() => setDark(!dark)} className="p-2 rounded-lg hover:bg-muted text-text-secondary hover:text-foreground transition-colors">
+            {dark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
         </div>
         <nav className="p-3 space-y-0.5">
           {sections.map((s) => (
@@ -62,6 +74,22 @@ const Index = () => {
             </button>
           ))}
         </nav>
+        {/* Screen links */}
+        <div className="p-3 border-t border-border mt-2">
+          <p className="text-[11px] uppercase tracking-[0.08em] font-semibold text-text-tertiary px-3 pb-2">Screens</p>
+          {[
+            { label: "Login", href: "/login" },
+            { label: "Sign Up", href: "/signup" },
+            { label: "Verify Email", href: "/verify-email" },
+            { label: "Onboarding", href: "/onboarding" },
+            { label: "Dashboard", href: "/dashboard" },
+            { label: "Campaigns", href: "/campaigns" },
+          ].map((s) => (
+            <Link key={s.href} to={s.href} className="block w-full text-left px-3 h-8 rounded-md text-sm font-medium text-text-secondary hover:bg-muted hover:text-foreground transition-all leading-8">
+              {s.label}
+            </Link>
+          ))}
+        </div>
       </aside>
 
       {/* Main */}
