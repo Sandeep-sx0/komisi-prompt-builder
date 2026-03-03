@@ -41,11 +41,11 @@ const creatorNav: NavGroup[] = [
   ]},
   { section: "PROMOTE", items: [
     { icon: Store, label: "Marketplace", href: "/creator/marketplace" },
-    { icon: Smartphone, label: "My Programs", badge: "4" },
+    { icon: Smartphone, label: "My Programs", badge: "4", href: "/creator/programs" },
     { icon: Link2, label: "My Links", href: "/creator/links" },
   ]},
   { section: "CONTENT", items: [
-    { icon: FileText, label: "Content Tracker" },
+    { icon: FileText, label: "Content Tracker", href: "/creator/content" },
   ]},
 ];
 
@@ -169,9 +169,10 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
       {/* Bottom */}
       <div className="border-t border-border px-2 py-2">
         {bottomItems.slice(0, userType === "creator" ? 2 : 3).map((item) => {
-          const Wrapper = item.href ? Link : "button" as any;
-          const wrapperProps = item.href ? { to: item.href } : {};
-          const active = isActive(item);
+          const href = item.href === "/settings" && userType === "creator" ? "/creator/settings" : item.href;
+          const Wrapper = href ? Link : "button" as any;
+          const wrapperProps = href ? { to: href } : {};
+          const active = href ? location.pathname === href : (activeItem === item.label);
           return (
             <Wrapper key={item.label} {...wrapperProps} className={cn(
               "w-full h-9 rounded-md text-sm font-medium flex items-center transition-all",
