@@ -4,15 +4,16 @@ import { AppSidebar } from "@/components/komisi/AppSidebar";
 interface DashboardLayoutProps {
   children: ReactNode;
   activeItem?: string;
+  userType?: "developer" | "creator";
 }
 
-export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, activeItem }) => {
+export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, activeItem, userType = "developer" }) => {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
     <div className="flex min-h-screen w-full">
       <AppSidebar
-        userType="developer"
+        userType={userType}
         collapsed={collapsed}
         onToggleCollapse={() => setCollapsed(!collapsed)}
         activeItem={activeItem}
