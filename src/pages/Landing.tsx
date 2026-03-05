@@ -160,9 +160,9 @@ const Landing = () => {
         <div className="absolute inset-0 z-0">
           <FlickeringGrid
             squareSize={4}
-            gridGap={6}
-            flickerChance={0.1}
-            maxOpacity={0.15}
+            gridGap={12}
+            flickerChance={0.05}
+            maxOpacity={0.05}
             color="#000000"
             className="w-full h-full"
           />
