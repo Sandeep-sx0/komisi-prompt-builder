@@ -41,7 +41,18 @@ const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode;
 );
 
 /* ── Data ── */
-const logoNames = ["MindfulApp", "FocusTimer", "DailyYoga", "SleepWell", "CodeSnap", "LangMaster", "AlphaApp", "ZenHabit"];
+const logoFiles = [
+  "/logos/calibre.svg",
+  "/logos/atomicojs.svg",
+  "/logos/hootsuite.svg",
+  "/logos/nvidia.svg",
+  "/logos/broadcom.svg",
+  "/logos/architect.svg",
+  "/logos/descript.svg",
+  "/logos/storyblocks.svg",
+  "/logos/builder-io.svg",
+  "/logos/launchdarkly.svg",
+];
 
 const pricingPlans = [
   {
@@ -271,9 +282,9 @@ const Landing = () => {
         </Reveal>
         <div className="marquee-container">
           <div className="marquee-track hover:[animation-play-state:paused]">
-            {[...logoNames, ...logoNames].map((l, i) => (
-              <div key={i} className="w-[140px] h-10 bg-muted flex items-center justify-center shrink-0">
-                <span className="text-xs text-text-tertiary tracking-wider">{l}</span>
+            {[...logoFiles, ...logoFiles].map((src, i) => (
+              <div key={i} className="opacity-50 flex items-center shrink-0 [&_svg_*]:!fill-black">
+                <img src={src} alt="" height={28} className="h-7 w-auto brightness-0" />
               </div>
             ))}
           </div>
