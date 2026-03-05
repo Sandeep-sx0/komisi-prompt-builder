@@ -132,6 +132,12 @@
   *, *::before, *::after {
     border-radius: 0 !important;
   }
+  * {
+    font-weight: inherit;
+  }
+  .font-bold, .font-semibold, .font-extrabold, .font-black, strong, b {
+    font-weight: 400 !important;
+  }
 }
 
 .watercolor-blue {
