@@ -12,7 +12,7 @@
     --border-hover: 216 12% 84%;
     --input: 220 13% 91%;
     --ring: 222 47% 11%;
-    --radius: 0.5rem;
+    --radius: 0px;
 
     --text-primary: 222 47% 11%;
     --text-secondary: 215 16% 47%;
@@ -119,10 +119,18 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Instrument Sans', system-ui, sans-serif;
+    font-weight: 300;
     transition: background-color 200ms ease, color 200ms ease;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    font-weight: 400;
   }
   code, pre, .font-mono {
     font-family: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after {
+    border-radius: 0 !important;
   }
 }
 
