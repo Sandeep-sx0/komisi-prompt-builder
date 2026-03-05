@@ -106,7 +106,7 @@ const Landing = () => {
       </nav>
 
       {/* ── HERO ── */}
-      <section ref={heroReveal.ref} className="pt-32 pb-24 px-6">
+      <section ref={heroReveal.ref} className="pt-32 pb-24 px-6 noise-texture">
         <div className={cn("max-w-3xl mx-auto text-center transition-all duration-700", heroReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
           <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-8">
             <span className="text-chart-blue">◆</span>
@@ -138,7 +138,7 @@ const Landing = () => {
       </section>
 
       {/* ── LOGO BAR (Marquee) ── */}
-      <section className="py-12 bg-background-subtle border-y border-border overflow-hidden">
+      <section className="py-12 bg-background-subtle border-y border-border overflow-hidden noise-texture">
         <p className="text-sm text-text-tertiary text-center mb-6">Trusted by indie developers and scaling apps</p>
         <div className="marquee-container">
           <div className="marquee-track">
@@ -152,7 +152,7 @@ const Landing = () => {
       </section>
 
       {/* ── WHAT KOMISI DOES (Dark) ── */}
-      <section ref={featuresReveal.ref} className="bg-[hsl(222,47%,7%)] text-white py-20 px-6" id="product">
+      <section ref={featuresReveal.ref} className="bg-[hsl(222,47%,7%)] text-white py-20 px-6 noise-texture" id="product">
         <div className="max-w-6xl mx-auto">
           <div className={cn("text-center mb-12 transition-all duration-700", featuresReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
             <div className="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 mb-6">
@@ -185,7 +185,7 @@ const Landing = () => {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section ref={howReveal.ref} className="py-20 px-6">
+      <section ref={howReveal.ref} className="py-20 px-6 noise-texture">
         <div className="max-w-5xl mx-auto">
           <div className={cn("text-center mb-12 transition-all duration-700", howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
             <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-6">
@@ -231,7 +231,7 @@ const Landing = () => {
       </section>
 
       {/* ── AI FEATURES (Dark) ── */}
-      <section className="bg-[hsl(222,47%,7%)] text-white py-20 px-6">
+      <section className="bg-[hsl(222,47%,7%)] text-white py-20 px-6 noise-texture">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -249,7 +249,7 @@ const Landing = () => {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section ref={testimonialsReveal.ref} className="py-20 px-6">
+      <section ref={testimonialsReveal.ref} className="py-20 px-6 noise-texture">
         <div className="max-w-6xl mx-auto">
           <div className={cn("text-center mb-12 transition-all duration-700", testimonialsReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Wall of Love</h2>
@@ -276,7 +276,7 @@ const Landing = () => {
       </section>
 
       {/* ── PRICING ── */}
-      <section ref={pricingReveal.ref} className="py-20 px-6" id="pricing">
+      <section ref={pricingReveal.ref} className="py-20 px-6 noise-texture" id="pricing">
         <div className="max-w-5xl mx-auto">
           <div className={cn("text-center mb-8 transition-all duration-700", pricingReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
             <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-6">
@@ -330,7 +330,7 @@ const Landing = () => {
       </section>
 
       {/* ── CTA + FOOTER (Dark) ── */}
-      <section className="bg-[hsl(222,47%,7%)] text-white py-16 px-6">
+      <section className="bg-[hsl(222,47%,7%)] text-white py-16 px-6 noise-texture">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to grow your app with <span className="shimmer-text">creator-powered</span> marketing?
