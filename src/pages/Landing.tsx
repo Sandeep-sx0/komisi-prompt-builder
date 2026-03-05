@@ -15,6 +15,7 @@ import { SlidingNumber } from "@/components/animate-ui/primitives/texts/sliding-
 import { Shine } from "@/components/animate-ui/primitives/effects/shine";
 import { Magnetic } from "@/components/animate-ui/primitives/effects/magnetic";
 import { Tilt } from "@/components/animate-ui/primitives/effects/tilt";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 
 /* ── Pill label component ── */
 const PillLabel = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
@@ -154,8 +155,22 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
-      <section className="pt-36 pb-24 px-6 relative">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="pt-36 pb-24 px-6 relative overflow-hidden">
+        {/* Flickering grid background */}
+        <div className="absolute inset-0 z-0">
+          <FlickeringGrid
+            squareSize={4}
+            gridGap={6}
+            flickerChance={0.1}
+            maxOpacity={0.15}
+            color="#000000"
+            className="w-full h-full"
+          />
+        </div>
+        {/* Bottom fade to blend into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
+
+        <div className="relative z-20 max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0 }}>
             <PillLabel><ShimmeringText duration={3}>BUILT FOR MOBILE APPS</ShimmeringText></PillLabel>
           </motion.div>
@@ -223,7 +238,7 @@ const Landing = () => {
             x: { duration: 0.7, delay: 0.6 },
             y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
           }}
-          className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/4 max-w-[260px] border border-border bg-background p-5 shadow-lg"
+          className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/4 max-w-[260px] border border-border bg-background p-5 shadow-lg z-20"
         >
           <p className="text-sm text-text-secondary mb-3">"Our CAC dropped 60% in three months."</p>
           <p className="text-xs text-foreground font-normal">Sarah Chen</p>
@@ -237,7 +252,7 @@ const Landing = () => {
             x: { duration: 0.7, delay: 0.7 },
             y: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.7 },
           }}
-          className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/3 max-w-[260px] border border-border bg-background p-5 shadow-lg"
+          className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/3 max-w-[260px] border border-border bg-background p-5 shadow-lg z-20"
         >
           <p className="text-sm text-text-secondary mb-3">"RevenueCat setup took under 5 minutes."</p>
           <p className="text-xs text-foreground font-normal">David Park</p>
