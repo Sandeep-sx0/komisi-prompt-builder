@@ -127,7 +127,7 @@
     font-weight: 400;
   }
   code, pre, .font-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Instrument Sans', system-ui, sans-serif;
   }
   *, *::before, *::after {
     border-radius: 0 !important;
@@ -248,7 +248,7 @@
 .code-block {
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Instrument Sans', system-ui, sans-serif;
   font-size: 13px;
   line-height: 1.6;
 }
