@@ -8,6 +8,13 @@ import {
   Smartphone, Shield, Zap, Box, Check, X as XIcon,
   ExternalLink,
 } from "lucide-react";
+import { ShimmeringText } from "@/components/animate-ui/primitives/texts/shimmering-text";
+import { SplittingText } from "@/components/animate-ui/primitives/texts/splitting-text";
+import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
+import { SlidingNumber } from "@/components/animate-ui/primitives/texts/sliding-number";
+import { Shine } from "@/components/animate-ui/primitives/effects/shine";
+import { Magnetic } from "@/components/animate-ui/primitives/effects/magnetic";
+import { Tilt } from "@/components/animate-ui/primitives/effects/tilt";
 
 /* ── Pill label component ── */
 const PillLabel = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
@@ -62,6 +69,26 @@ const caseStudies = [
   { headline: "How DailyYoga detected $2K in fake installs before first payout", tags: ["DAILYYOGA", "HEALTH"], stat1: "$2,000", stat1Label: "fraud blocked", stat2: "0", stat2Label: "false payouts sent", name: "Priya Patel", role: "Co-founder" },
   { headline: "How AlphaApp went from 0 to 30% revenue from creator referrals", tags: ["ALPHAAPP", "FINANCE"], stat1: "30%", stat1Label: "revenue share", stat2: "8 weeks", stat2Label: "from zero to running", name: "Alex Rivera", role: "Founder" },
 ];
+
+/* ── Helper to render animated stat numbers ── */
+const AnimatedStat = ({ value }: { value: string }) => {
+  // Extract numeric part for counting animation
+  const match = value.match(/^(\$?)([\d,]+)(%?)(.*)$/);
+  if (!match) return <>{value}</>;
+  const [, prefix, numStr, suffix, rest] = match;
+  const num = parseInt(numStr.replace(/,/g, ''));
+  if (isNaN(num)) return <>{value}</>;
+  return (
+    <CountingNumber
+      number={num}
+      prefix={prefix}
+      suffix={suffix + rest}
+      inView
+      inViewOnce
+      transition={{ stiffness: 60, damping: 30 }}
+    />
+  );
+};
 
 const Landing = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -130,7 +157,7 @@ const Landing = () => {
       <section className="pt-36 pb-24 px-6 relative">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0 }}>
-            <PillLabel>BUILT FOR MOBILE APPS</PillLabel>
+            <PillLabel><ShimmeringText duration={3}>BUILT FOR MOBILE APPS</ShimmeringText></PillLabel>
           </motion.div>
 
           <motion.h1
@@ -139,8 +166,12 @@ const Landing = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-[3.5rem] font-normal tracking-tighter text-foreground leading-[1.1] mb-6"
           >
-            The infrastructure between<br />
-            mobile apps and the creator economy.
+            <SplittingText
+              text="The infrastructure between mobile apps and the creator economy."
+              type="words"
+              delay={0.2}
+              stagger={0.04}
+            />
           </motion.h1>
 
           <motion.p
@@ -160,9 +191,13 @@ const Landing = () => {
             className="flex items-center justify-center gap-4 mb-6"
           >
             <Link to="/signup">
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
-                <Button size="lg" className="h-12 px-8">Try Komisi <ArrowRight size={16} /></Button>
-              </motion.div>
+              <Magnetic strength={0.2}>
+                <Shine>
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
+                    <Button size="lg" className="h-12 px-8">Try Komisi <ArrowRight size={16} /></Button>
+                  </motion.div>
+                </Shine>
+              </Magnetic>
             </Link>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
               <Button variant="outline" size="lg" className="h-12 px-8">Book a Demo</Button>
@@ -246,7 +281,7 @@ const Landing = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Card 1 — Install SDK */}
             <Reveal delay={0}>
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }} className="border border-border bg-card overflow-hidden h-full">
+              <Tilt maxTilt={6}><motion.div className="border border-border bg-card overflow-hidden h-full">
                 <div className="bg-foreground p-6">
                   <pre className="text-primary-foreground font-mono text-sm leading-relaxed">
 {`KomisiSDK.configure(
@@ -264,12 +299,12 @@ KomisiSDK.resolve()`}
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </motion.div></Tilt>
             </Reveal>
 
             {/* Card 2 — Connect Revenue */}
             <Reveal delay={0.08}>
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }} className="border border-border bg-card overflow-hidden h-full">
+              <Tilt maxTilt={6}><motion.div className="border border-border bg-card overflow-hidden h-full">
                 <div className="bg-muted p-6 flex items-center justify-center gap-6 h-[160px]">
                   <div className="w-16 h-16 bg-background border border-border flex items-center justify-center">
                     <span className="text-[10px] text-text-tertiary text-center leading-tight">Revenue<br/>Cat</span>
@@ -292,12 +327,12 @@ KomisiSDK.resolve()`}
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </motion.div></Tilt>
             </Reveal>
 
             {/* Card 3 — Invite Creators */}
             <Reveal delay={0.16}>
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }} className="border border-border bg-card overflow-hidden h-full">
+              <Tilt maxTilt={6}><motion.div className="border border-border bg-card overflow-hidden h-full">
                 <div className="bg-muted p-6 flex items-center justify-center h-[160px]">
                   <div className="w-full max-w-[200px] border border-border bg-background p-4">
                     <div className="flex items-center gap-3 mb-3">
@@ -319,7 +354,7 @@ KomisiSDK.resolve()`}
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </motion.div></Tilt>
             </Reveal>
           </div>
         </div>
@@ -414,7 +449,7 @@ KomisiSDK.resolve()`}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Feature 1 */}
             <Reveal delay={0}>
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }} className="border border-border bg-card overflow-hidden">
+              <Tilt maxTilt={6}><div className="border border-border bg-card overflow-hidden">
                 <div className="bg-muted p-8 flex items-center justify-center gap-12">
                   <div className="text-center">
                     <Smartphone size={32} className="text-text-secondary mx-auto mb-2" />
@@ -431,12 +466,12 @@ KomisiSDK.resolve()`}
                   <h3 className="text-lg font-normal text-foreground mb-2">Dual platform attribution</h3>
                   <p className="text-sm text-text-secondary">Android uses Google Play Install Referrer — deterministic, 100% accurate. iOS uses server-side fingerprint matching with Apple-permitted signals only. No IDFA. No ATT prompt triggered. Ever.</p>
                 </div>
-              </motion.div>
+              </div></Tilt>
             </Reveal>
 
             {/* Feature 2 */}
             <Reveal delay={0.08}>
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }} className="border border-border bg-card overflow-hidden">
+              <Tilt maxTilt={6}><div className="border border-border bg-card overflow-hidden">
                 <div className="bg-muted p-8 flex items-center justify-center">
                   <div className="grid grid-cols-3 gap-4">
                     {["RevenueCat", "Adapty", "Stripe", "Apple", "Google Play", "Paddle"].map(n => (
@@ -450,12 +485,12 @@ KomisiSDK.resolve()`}
                   <h3 className="text-lg font-normal text-foreground mb-2">Native webhook integrations</h3>
                   <p className="text-sm text-text-secondary">RevenueCat and Adapty webhooks supported natively. Stripe Connect for automated payouts. Apple receipt verification and Google Play API as direct fallbacks. Paddle and Stripe Billing coming soon.</p>
                 </div>
-              </motion.div>
+              </div></Tilt>
             </Reveal>
 
             {/* Feature 3 */}
             <Reveal delay={0.16}>
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }} className="border border-border bg-card overflow-hidden">
+              <Tilt maxTilt={6}><div className="border border-border bg-card overflow-hidden">
                 <div className="bg-muted p-8 flex items-center justify-center">
                   <div className="w-full max-w-[280px]">
                     <div className="flex items-center justify-between text-xs text-text-tertiary mb-2">
@@ -476,12 +511,12 @@ KomisiSDK.resolve()`}
                   <h3 className="text-lg font-normal text-foreground mb-2">AI fraud detection built in</h3>
                   <p className="text-sm text-text-secondary">Velocity checks, IP clustering, device repetition, geo mismatch, and self-referral detection run on every install. Fraud score 0.0–1.0. Auto-hold at 0.7. Auto-block at 0.9. No manual review needed.</p>
                 </div>
-              </motion.div>
+              </div></Tilt>
             </Reveal>
 
             {/* Feature 4 */}
             <Reveal delay={0.24}>
-              <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }} className="border border-border bg-card overflow-hidden">
+              <Tilt maxTilt={6}><div className="border border-border bg-card overflow-hidden">
                 <div className="bg-muted p-8 flex items-center justify-center">
                   <div className="space-y-3 w-full max-w-[240px]">
                     <div>
@@ -503,7 +538,7 @@ KomisiSDK.resolve()`}
                   <h3 className="text-lg font-normal text-foreground mb-2">Lightweight. Invisible. Production-safe.</h3>
                   <p className="text-sm text-text-secondary">SDK size under 80KB on iOS, 100KB on Android. Cold start impact under 30ms. All network calls async on background threads. Fails silently if server is unreachable. Zero impact on your app experience.</p>
                 </div>
-              </motion.div>
+              </div></Tilt>
             </Reveal>
           </div>
         </div>
@@ -602,11 +637,11 @@ KomisiSDK.resolve()`}
                   </div>
                   <div className="flex gap-12 mb-6">
                     <div>
-                      <p className="text-2xl text-foreground font-normal">{cs.stat1}</p>
+                      <p className="text-2xl text-foreground font-normal"><AnimatedStat value={cs.stat1} /></p>
                       <p className="text-xs text-text-tertiary">{cs.stat1Label}</p>
                     </div>
                     <div>
-                      <p className="text-2xl text-foreground font-normal">{cs.stat2}</p>
+                      <p className="text-2xl text-foreground font-normal"><AnimatedStat value={cs.stat2} /></p>
                       <p className="text-xs text-text-tertiary">{cs.stat2Label}</p>
                     </div>
                   </div>
@@ -660,7 +695,14 @@ KomisiSDK.resolve()`}
                   )}
                   <h3 className="text-xl font-normal text-foreground">{plan.name}</h3>
                   <div className="mt-3 mb-6">
-                    <span className="text-3xl text-foreground font-normal">{billing === "monthly" ? plan.price : plan.yearly}</span>
+                    <span className="text-3xl text-foreground font-normal">
+                      <SlidingNumber 
+                        number={billing === "monthly" 
+                          ? parseInt(plan.price.replace(/[^0-9]/g, '')) 
+                          : parseInt(plan.yearly.replace(/[^0-9]/g, ''))} 
+                        prefix={plan.price.startsWith('$') ? '$' : ''} 
+                      />
+                    </span>
                     <span className="text-text-secondary"> / month</span>
                   </div>
                   <ul className="space-y-2.5 mb-8">
@@ -701,9 +743,13 @@ KomisiSDK.resolve()`}
           </p>
           <div className="flex items-center justify-center gap-4">
             <Link to="/signup">
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
-                <Button size="lg" className="h-12 px-8 bg-primary-foreground text-foreground hover:bg-white/90">Try Komisi <ArrowRight size={16} /></Button>
-              </motion.div>
+              <Magnetic strength={0.2}>
+                <Shine>
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
+                    <Button size="lg" className="h-12 px-8 bg-primary-foreground text-foreground hover:bg-white/90">Try Komisi <ArrowRight size={16} /></Button>
+                  </motion.div>
+                </Shine>
+              </Magnetic>
             </Link>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
               <Button variant="outline" size="lg" className="h-12 px-8 border-white/20 text-primary-foreground hover:bg-white/10 bg-transparent">Book a Demo</Button>
