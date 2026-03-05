@@ -190,16 +190,16 @@ const Landing = () => {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex items-center justify-center gap-4 mb-6"
           >
-            <Link to="/signup">
-              <Magnetic strength={0.2}>
-                <Shine>
-                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
-                    <Button size="lg" className="h-12 px-8">Try Komisi <ArrowRight size={16} /></Button>
+            <Link to="/signup" className="inline-flex">
+              <Magnetic strength={0.2} className="inline-flex items-center">
+                <Shine className="inline-flex items-center">
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }} className="inline-flex">
+                    <Button size="lg" className="h-12 px-8 border border-transparent">Try Komisi <ArrowRight size={16} /></Button>
                   </motion.div>
                 </Shine>
               </Magnetic>
             </Link>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }} className="inline-flex">
               <Button variant="outline" size="lg" className="h-12 px-8">Book a Demo</Button>
             </motion.div>
           </motion.div>
@@ -742,16 +742,16 @@ KomisiSDK.resolve()`}
             Join 200+ developers already running creator affiliate programs on Komisi.
           </p>
           <div className="flex items-center justify-center gap-4">
-            <Link to="/signup">
-              <Magnetic strength={0.2}>
-                <Shine>
-                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
-                    <Button size="lg" className="h-12 px-8 bg-primary-foreground text-foreground hover:bg-white/90">Try Komisi <ArrowRight size={16} /></Button>
+            <Link to="/signup" className="inline-flex">
+              <Magnetic strength={0.2} className="inline-flex items-center">
+                <Shine className="inline-flex items-center">
+                  <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }} className="inline-flex">
+                    <Button size="lg" className="h-12 px-8 bg-primary-foreground text-foreground hover:bg-white/90 border border-transparent">Try Komisi <ArrowRight size={16} /></Button>
                   </motion.div>
                 </Shine>
               </Magnetic>
             </Link>
-            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
+            <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }} className="inline-flex">
               <Button variant="outline" size="lg" className="h-12 px-8 border-white/20 text-primary-foreground hover:bg-white/10 bg-transparent">Book a Demo</Button>
             </motion.div>
           </div>
