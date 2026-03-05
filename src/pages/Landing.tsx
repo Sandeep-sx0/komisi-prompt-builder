@@ -78,11 +78,11 @@ const Landing = () => {
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-1.5">
               <span className="gradient-ai-text text-lg">✦</span>
-              <span className="text-lg font-bold text-foreground tracking-tight">komisi</span>
+              <span className="text-lg font-normal text-foreground tracking-tight">komisi</span>
             </Link>
             <div className="hidden md:flex items-center gap-6">
               {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-                <a key={l} href={l === "Pricing" ? "#pricing" : l === "Product" ? "#product" : "#"} className="text-sm font-medium text-text-secondary hover:text-foreground transition-colors">{l}</a>
+                <a key={l} href={l === "Pricing" ? "#pricing" : l === "Product" ? "#product" : "#"} className="text-sm font-normal text-text-secondary hover:text-foreground transition-colors">{l}</a>
               ))}
             </div>
           </div>
@@ -110,10 +110,10 @@ const Landing = () => {
         <div className={cn("max-w-3xl mx-auto text-center transition-all duration-700", heroReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
           <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-8">
             <span className="text-chart-blue">◆</span>
-            <span className="text-xs uppercase tracking-[0.1em] font-semibold text-text-secondary">Built for Mobile Apps</span>
+            <span className="text-xs uppercase tracking-[0.1em] font-normal text-text-secondary">Built for Mobile Apps</span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground leading-[1.1] mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tighter text-foreground leading-[1.1] mb-6">
             Turn <span className="shimmer-text">Creators</span> into Your<br className="hidden sm:block" /> App's Growth Engine.
           </h1>
 
@@ -129,10 +129,10 @@ const Landing = () => {
           <div className="flex items-center justify-center gap-3 mt-6">
             <div className="flex -space-x-2">
               {["SC", "AK", "JL"].map((initials, i) => (
-                <div key={i} className={`w-7 h-7 rounded-full border-2 border-background flex items-center justify-center text-[10px] font-semibold text-foreground ${["watercolor-pink", "watercolor-blue", "watercolor-green"][i]}`}>{initials}</div>
+                <div key={i} className={`w-7 h-7 rounded-full border-2 border-background flex items-center justify-center text-[10px] font-normal text-foreground ${["watercolor-pink", "watercolor-blue", "watercolor-green"][i]}`}>{initials}</div>
               ))}
             </div>
-            <span className="text-sm text-text-secondary">Join <strong className="gradient-ai-text">200+</strong> app developers growing with creators</span>
+            <span className="text-sm text-text-secondary">Join <span className="gradient-ai-text font-normal">200+</span> app developers growing with creators</span>
           </div>
         </div>
       </section>
@@ -144,7 +144,7 @@ const Landing = () => {
           <div className="marquee-track">
             {[...logoNames, ...logoNames].map((l, i) => (
               <div key={i} className="w-[120px] h-8 rounded bg-foreground/10 flex items-center justify-center shrink-0">
-                <span className="text-xs font-semibold text-text-tertiary">{l}</span>
+                <span className="text-xs font-normal text-text-tertiary">{l}</span>
               </div>
             ))}
           </div>
@@ -157,9 +157,9 @@ const Landing = () => {
           <div className={cn("text-center mb-12 transition-all duration-700", featuresReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
             <div className="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 mb-6">
               <span className="text-amber-400">◆</span>
-              <span className="text-xs uppercase tracking-[0.1em] font-semibold text-white/40">Built for the App Store</span>
+              <span className="text-xs uppercase tracking-[0.1em] font-normal text-white/40">Built for the App Store</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Komisi Does</h2>
+            <h2 className="text-3xl md:text-4xl font-normal mb-4">What Komisi Does</h2>
             <p className="text-lg text-white/50 max-w-[600px] mx-auto">Komisi connects your app with creators who drive real installs and paying subscribers — not just clicks.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
@@ -175,7 +175,7 @@ const Landing = () => {
               >
                 <card.icon size={28} className="text-white/80" />
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">{card.title}</h3>
+                  <h3 className="text-lg font-normal text-white mb-1">{card.title}</h3>
                   <p className="text-sm text-white/50">{card.desc}</p>
                 </div>
               </div>
@@ -190,9 +190,9 @@ const Landing = () => {
           <div className={cn("text-center mb-12 transition-all duration-700", howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
             <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-6">
               <span className="text-chart-blue">◆</span>
-              <span className="text-xs uppercase tracking-[0.1em] font-semibold text-text-secondary">Three Steps</span>
+              <span className="text-xs uppercase tracking-[0.1em] font-normal text-text-secondary">Three Steps</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">How It Works</h2>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground">How It Works</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -208,8 +208,8 @@ const Landing = () => {
                 )}
                 style={{ transitionDelay: howReveal.visible ? `${i * 100}ms` : "0ms" }}
               >
-                <span className="absolute top-4 right-4 text-7xl font-bold text-muted/40 select-none leading-none">{step.num}</span>
-                <h3 className="text-lg font-semibold text-foreground mb-2 mt-10">{step.title}</h3>
+                <span className="absolute top-4 right-4 text-7xl font-normal text-muted/40 select-none leading-none">{step.num}</span>
+                <h3 className="text-lg font-normal text-foreground mb-2 mt-10">{step.title}</h3>
                 <p className="text-sm text-text-secondary mb-4">{step.desc}</p>
                 {step.code && (
                   <div className="bg-[hsl(222,47%,7%)] text-[hsl(210,40%,98%)] rounded-lg p-3 font-mono text-xs">{step.code}</div>
@@ -234,7 +234,7 @@ const Landing = () => {
       <section className="bg-[hsl(222,47%,7%)] text-white py-20 px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-normal mb-4">
               Powered by the Komisi <span className="shimmer-text">AI Engine</span> ✦
             </h2>
             <p className="text-base text-white/50 max-w-[440px] mb-6">
@@ -252,7 +252,7 @@ const Landing = () => {
       <section ref={testimonialsReveal.ref} className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className={cn("text-center mb-12 transition-all duration-700", testimonialsReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground">Wall of Love</h2>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground">Wall of Love</h2>
           </div>
           <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
             {testimonials.map((t, i) => (
@@ -264,9 +264,9 @@ const Landing = () => {
                 )}
                 style={{ transitionDelay: testimonialsReveal.visible ? `${i * 80}ms` : "0ms" }}
               >
-                <p className="text-base font-medium text-foreground mb-4">"{t.quote}"</p>
+                <p className="text-base font-normal text-foreground mb-4">"{t.quote}"</p>
                 <div>
-                  <div className="text-sm font-semibold text-foreground">{t.name}</div>
+                  <div className="text-sm font-normal text-foreground">{t.name}</div>
                   <div className="text-xs text-text-secondary">{t.title}</div>
                 </div>
               </div>
@@ -281,15 +281,15 @@ const Landing = () => {
           <div className={cn("text-center mb-8 transition-all duration-700", pricingReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
             <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-6">
               <span className="text-chart-blue">◆</span>
-              <span className="text-xs uppercase tracking-[0.1em] font-semibold text-text-secondary">Simple Pricing</span>
+              <span className="text-xs uppercase tracking-[0.1em] font-normal text-text-secondary">Simple Pricing</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Start Free. Scale as You Grow.</h2>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-3">Start Free. Scale as You Grow.</h2>
             <p className="text-lg text-text-secondary">Only pay more when you're earning more.</p>
           </div>
           <div className="flex justify-center mb-8">
             <div className="flex gap-1 bg-background-subtle rounded-full p-1">
-              <button onClick={() => setBilling("monthly")} className={cn("h-9 px-4 rounded-full text-sm font-medium transition-all", billing === "monthly" ? "bg-primary text-primary-foreground" : "text-text-secondary")}>Monthly</button>
-              <button onClick={() => setBilling("yearly")} className={cn("h-9 px-4 rounded-full text-sm font-medium transition-all", billing === "yearly" ? "bg-primary text-primary-foreground" : "text-text-secondary")}>Yearly — Save 20%</button>
+              <button onClick={() => setBilling("monthly")} className={cn("h-9 px-4 rounded-full text-sm font-normal transition-all", billing === "monthly" ? "bg-primary text-primary-foreground" : "text-text-secondary")}>Monthly</button>
+              <button onClick={() => setBilling("yearly")} className={cn("h-9 px-4 rounded-full text-sm font-normal transition-all", billing === "yearly" ? "bg-primary text-primary-foreground" : "text-text-secondary")}>Yearly — Save 20%</button>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -304,18 +304,18 @@ const Landing = () => {
                 style={{ transitionDelay: pricingReveal.visible ? `${i * 100}ms` : "0ms" }}
               >
                 {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-ai text-white text-xs font-semibold px-3 py-1 rounded-full">Popular</span>
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-ai text-white text-xs font-normal px-3 py-1 rounded-full">Popular</span>
                 )}
-                <h3 className="text-xl font-semibold text-foreground">{plan.name}</h3>
+                <h3 className="text-xl font-normal text-foreground">{plan.name}</h3>
                 <div className="mt-3 mb-6">
-                  <span className="text-3xl font-bold text-foreground">{billing === "monthly" ? plan.price : plan.yearly}</span>
+                  <span className="text-3xl font-normal text-foreground">{billing === "monthly" ? plan.price : plan.yearly}</span>
                   <span className="text-text-secondary">/mo</span>
                 </div>
                 <ul className="space-y-2.5 mb-8">
                   {plan.features.map(f => (
                     <li key={f} className="flex items-center gap-2 text-sm text-text-secondary">
                       <Check size={14} className="text-success shrink-0" />
-                      {f.includes("0% platform") ? <strong className="text-foreground">{f}</strong> : f}
+                      {f.includes("0% platform") ? <span className="text-foreground">{f}</span> : f}
                     </li>
                   ))}
                 </ul>
@@ -332,11 +332,11 @@ const Landing = () => {
       {/* ── CTA + FOOTER (Dark) ── */}
       <section className="bg-[hsl(222,47%,7%)] text-white py-16 px-6">
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-normal mb-6">
             Ready to grow your app with <span className="shimmer-text">creator-powered</span> marketing?
           </h2>
           <Link to="/signup">
-            <Button variant="secondary" size="lg" className="bg-white text-[hsl(222,47%,11%)] hover:bg-white/90 h-12 px-8 text-base font-semibold">
+            <Button variant="secondary" size="lg" className="bg-white text-[hsl(222,47%,11%)] hover:bg-white/90 h-12 px-8 text-base font-normal">
               Get Started — It's Free <ArrowRight size={16} />
             </Button>
           </Link>
@@ -347,7 +347,7 @@ const Landing = () => {
             <div className="col-span-2 md:col-span-1">
               <div className="flex items-center gap-1.5 mb-3">
                 <span className="gradient-ai-text text-lg">✦</span>
-                <span className="text-lg font-bold text-white tracking-tight">komisi</span>
+                <span className="text-lg font-normal text-white tracking-tight">komisi</span>
               </div>
               <p className="text-xs text-white/40">The AI-native affiliate platform for mobile apps.</p>
             </div>
@@ -358,7 +358,7 @@ const Landing = () => {
               { title: "Legal", links: ["Privacy Policy", "Terms of Service"] },
             ].map(col => (
               <div key={col.title}>
-                <h4 className="text-sm font-semibold text-white mb-3">{col.title}</h4>
+                <h4 className="text-sm font-normal text-white mb-3">{col.title}</h4>
                 <ul className="space-y-2">
                   {col.links.map(l => (
                     <li key={l}><a href="#" className="text-sm text-white/40 hover:text-white transition-colors">{l}</a></li>
