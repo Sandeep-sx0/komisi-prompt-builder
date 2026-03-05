@@ -52,6 +52,13 @@ const logoFiles = [
   "/logos/storyblocks.svg",
   "/logos/builder-io.svg",
   "/logos/launchdarkly.svg",
+  "/logos/notion.svg",
+  "/logos/posthog.svg",
+  "/logos/snaplet.svg",
+  "/logos/linear.svg",
+  "/logos/biomejs.svg",
+  "/logos/perplexity.svg",
+  "/logos/importio.svg",
 ];
 
 const pricingPlans = [
@@ -284,7 +291,7 @@ const Landing = () => {
           <div className="marquee-track hover:[animation-play-state:paused]">
             {[...logoFiles, ...logoFiles].map((src, i) => (
               <div key={i} className="opacity-50 flex items-center shrink-0 [&_svg_*]:!fill-black">
-                <img src={src} alt="" height={28} className="h-7 w-auto brightness-0" />
+                <img src={src} alt="" height={20} className="h-5 w-auto brightness-0" />
               </div>
             ))}
           </div>

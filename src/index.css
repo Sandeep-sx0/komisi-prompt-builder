@@ -226,7 +226,7 @@ html {
 }
 .marquee-track {
   display: flex;
-  gap: 2rem;
+  gap: 3.5rem;
   width: max-content;
   animation: marquee 30s linear infinite;
 }
