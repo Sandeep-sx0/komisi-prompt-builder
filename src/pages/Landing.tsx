@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { KomisiLogo } from "@/components/komisi/KomisiLogo";
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import {
-  Download, DollarSign, Shield, TrendingUp, Check,
   ArrowRight, Menu, X, Twitter, Github, Linkedin,
+  Smartphone, Shield, Zap, Box, Check, X as XIcon,
+  ExternalLink,
 } from "lucide-react";
 
 /* ── Scroll-reveal hook ── */
-const useReveal = (threshold = 0.15) => {
+const useReveal = (threshold = 0.12) => {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -25,30 +25,51 @@ const useReveal = (threshold = 0.15) => {
   return { ref, visible };
 };
 
+/* ── Pill label component ── */
+const PillLabel = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
+  <div className={cn(
+    "inline-flex items-center px-4 py-1.5 mb-8 border font-mono text-xs uppercase tracking-[0.15em]",
+    dark ? "border-white/20 text-white/50" : "border-border text-text-secondary"
+  )}>
+    {children}
+  </div>
+);
+
+/* ── Stagger delay helper ── */
+const stagger = (i: number, visible: boolean) => ({
+  transitionDelay: visible ? `${i * 80}ms` : "0ms",
+});
+
 /* ── Data ── */
-const bentoCards = [
-  { title: "Track Installs", desc: "Attribute every install to the creator who drove it. iOS + Android. No IDFA needed.", icon: Download, gradient: "from-[hsl(217,91%,20%)] to-[hsl(217,91%,12%)]" },
-  { title: "Reward Creators", desc: "Automated commissions on subscriptions and IAP. Paid via Stripe Connect.", icon: DollarSign, gradient: "from-[hsl(330,60%,22%)] to-[hsl(330,60%,14%)]" },
-  { title: "Detect Fraud", desc: "AI catches fake installs and attribution hijacking before you pay.", icon: Shield, gradient: "from-[hsl(258,50%,22%)] to-[hsl(258,50%,14%)]" },
-  { title: "Grow Revenue", desc: "AI matches your app with the right creators and optimizes commission rates.", icon: TrendingUp, gradient: "from-[hsl(38,50%,20%)] to-[hsl(160,50%,14%)]" },
-];
+const logoNames = ["MindfulApp", "FocusTimer", "DailyYoga", "SleepWell", "CodeSnap", "LangMaster", "AlphaApp", "ZenHabit"];
 
 const pricingPlans = [
-  { name: "Free", price: "$0", yearly: "$0", features: ["5 affiliates", "1 app", "20% platform commission", "Basic dashboard", "Community support"], cta: "Get Started — Free →", primary: false },
-  { name: "Growth", price: "$49", yearly: "$39", features: ["25 affiliates, 3 apps", "10% platform commission", "AI fraud detection", "RevenueCat + Adapty", "Stripe Connect payouts", "Email support"], cta: "Start Growth Plan →", primary: true, popular: true },
-  { name: "Scale", price: "$149", yearly: "$119", features: ["Unlimited affiliates & apps", "0% platform commission", "Full API access", "Content tracking", "Priority support", "Custom webhooks"], cta: "Start Scale Plan →", primary: false },
+  {
+    name: "Free", price: "$0", yearly: "$0",
+    included: ["5 affiliates", "Basic attribution", "RevenueCat integration", "Community support"],
+    excluded: ["Fraud detection", "Adapty integration", "Marketplace access"],
+    cta: "Get Started →", primary: false,
+  },
+  {
+    name: "Growth", price: "$49", yearly: "$39", popular: true,
+    included: ["25 affiliates", "Full attribution (iOS + Android)", "0% platform commission", "RevenueCat + Adapty", "AI fraud detection", "Stripe Connect payouts", "Marketplace access", "Priority support"],
+    excluded: [],
+    cta: "Start Growth Plan →", primary: true,
+  },
+  {
+    name: "Scale", price: "$149", yearly: "$119",
+    included: ["Unlimited affiliates", "0% platform commission", "All integrations", "Custom commission tiers", "White label options", "API access", "Custom addons", "Dedicated support"],
+    excluded: [],
+    cta: "Start Scale Plan →", primary: false,
+  },
 ];
 
-const testimonials = [
-  { quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.", name: "Sarah Chen", title: "Head of Growth, MindfulApp", wc: "watercolor-pink" },
-  { quote: "Komisi found us 15 affiliates in our first week. Revenue from creator referrals is now 30% of our MRR.", name: "Alex Rivera", title: "Founder, FocusTimer", wc: "watercolor-blue" },
-  { quote: "The AI fraud detection alone saved us $2,000 in fake installs last month.", name: "Priya Patel", title: "CTO, DailyYoga", wc: "watercolor-green" },
-  { quote: "Setting up took 5 minutes. The RevenueCat integration worked out of the box.", name: "David Park", title: "Indie Developer, SleepWell", wc: "watercolor-purple" },
-  { quote: "Our best performing channel is now creator referrals, thanks to Komisi.", name: "Maria Santos", title: "Growth Lead, LangMaster", wc: "watercolor-yellow" },
-  { quote: "Komisi's dashboard gives us real-time visibility into which creators drive revenue.", name: "Jake Wilson", title: "Co-founder, CodeSnap", wc: "watercolor-mixed" },
+const caseStudies = [
+  { headline: "How MindfulApp cut CAC by 60% using creator affiliates", tags: ["MINDFULAPP", "WELLNESS"], stat1: "60%", stat1Label: "CAC reduction", stat2: "$3,000/mo", stat2Label: "paid ads replaced", name: "Sarah Chen", role: "Head of Growth" },
+  { headline: "How FocusTimer onboarded 40 creators in under 2 weeks", tags: ["FOCUSTIMER", "PRODUCTIVITY"], stat1: "40", stat1Label: "creators live", stat2: "5 min", stat2Label: "RevenueCat setup", name: "David Park", role: "Founder & CTO" },
+  { headline: "How DailyYoga detected $2K in fake installs before first payout", tags: ["DAILYYOGA", "HEALTH"], stat1: "$2,000", stat1Label: "fraud blocked", stat2: "0", stat2Label: "false payouts sent", name: "Priya Patel", role: "Co-founder" },
+  { headline: "How AlphaApp went from 0 to 30% revenue from creator referrals", tags: ["ALPHAAPP", "FINANCE"], stat1: "30%", stat1Label: "revenue share", stat2: "8 weeks", stat2Label: "from zero to running", name: "Alex Rivera", role: "Founder" },
 ];
-
-const logoNames = ["MindfulApp", "FocusTimer", "DailyYoga", "SleepWell", "CodeSnap", "LangMaster"];
 
 const Landing = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -56,10 +77,15 @@ const Landing = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
 
   const heroReveal = useReveal(0.1);
-  const featuresReveal = useReveal();
+  const logoReveal = useReveal(0.1);
   const howReveal = useReveal();
-  const testimonialsReveal = useReveal();
+  const attrReveal = useReveal();
+  const featReveal = useReveal();
+  const quoteReveal = useReveal(0.2);
+  const marketReveal = useReveal();
+  const caseReveal = useReveal();
   const pricingReveal = useReveal();
+  const ctaReveal = useReveal(0.2);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -69,22 +95,27 @@ const Landing = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* ── NAV ── */}
+
+      {/* ═══════════════════════════════════════════
+          SECTION 1 — NAVBAR
+      ═══════════════════════════════════════════ */}
       <nav className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "bg-card/95 backdrop-blur-md border-b border-border shadow-sm" : "bg-transparent"
+        scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
       )}>
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-1.5">
-              <span className="gradient-ai-text text-lg">✦</span>
-              <span className="text-lg font-normal text-foreground tracking-tight">komisi</span>
-            </Link>
-            <div className="hidden md:flex items-center gap-6">
-              {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-                <a key={l} href={l === "Pricing" ? "#pricing" : l === "Product" ? "#product" : "#"} className="text-sm font-normal text-text-secondary hover:text-foreground transition-colors">{l}</a>
-              ))}
-            </div>
+          <Link to="/" className="flex items-center gap-1.5">
+            <span className="text-lg text-foreground tracking-tight font-normal">komisi</span>
+          </Link>
+          <div className="hidden md:flex items-center gap-8">
+            {[
+              { label: "Product", href: "#product" },
+              { label: "Pricing", href: "#pricing" },
+              { label: "Docs", href: "#" },
+              { label: "Marketplace", href: "#marketplace" },
+            ].map(l => (
+              <a key={l.label} href={l.href} className="text-sm text-text-secondary hover:text-foreground transition-colors">{l.label}</a>
+            ))}
           </div>
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login"><Button variant="ghost" size="sm">Login</Button></Link>
@@ -95,7 +126,7 @@ const Landing = () => {
           </button>
         </div>
         {mobileMenu && (
-          <div className="md:hidden bg-card border-b border-border p-4 space-y-2 animate-fade-in">
+          <div className="md:hidden bg-background border-b border-border p-4 space-y-2 animate-fade-in">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
               <a key={l} href="#" className="block text-sm py-2 text-text-secondary">{l}</a>
             ))}
@@ -105,169 +136,439 @@ const Landing = () => {
         )}
       </nav>
 
-      {/* ── HERO ── */}
-      <section ref={heroReveal.ref} className="pt-32 pb-24 px-6">
-        <div className={cn("max-w-3xl mx-auto text-center transition-all duration-700", heroReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
-          <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-8">
-            <span className="text-chart-blue">◆</span>
-            <span className="text-xs uppercase tracking-[0.1em] font-normal text-text-secondary">Built for Mobile Apps</span>
+      {/* ═══════════════════════════════════════════
+          SECTION 2 — HERO
+      ═══════════════════════════════════════════ */}
+      <section ref={heroReveal.ref} className="pt-36 pb-24 px-6 relative">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className={cn("transition-all duration-500", heroReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")} style={stagger(0, heroReveal.visible)}>
+            <PillLabel>BUILT FOR MOBILE APPS</PillLabel>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tighter text-foreground leading-[1.1] mb-6">
-            Turn <span className="shimmer-text">Creators</span> into Your<br className="hidden sm:block" /> App's Growth Engine.
+          <h1 className={cn("text-4xl md:text-5xl lg:text-[3.5rem] font-normal tracking-tighter text-foreground leading-[1.1] mb-6 transition-all duration-600", heroReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")} style={stagger(1, heroReveal.visible)}>
+            The infrastructure between<br />
+            mobile apps and the creator economy.
           </h1>
 
-          <p className="text-lg text-text-secondary max-w-[560px] mx-auto mb-8">
-            The AI-native affiliate platform for mobile apps. Track in-app purchases. Reward creators. Grow on autopilot.
+          <p className={cn("text-lg text-text-secondary max-w-[600px] mx-auto mb-10 transition-all duration-600", heroReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")} style={stagger(2, heroReveal.visible)}>
+            Attribute every install. Automate every payout.<br className="hidden sm:block" />
+            Launch your creator affiliate program in days.
           </p>
 
-          <div className="inline-flex items-center bg-card border border-border rounded-xl p-1.5 shadow-lg max-w-[480px] w-full">
-            <input placeholder="Enter your email" className="flex-1 h-10 px-4 text-sm bg-transparent outline-none placeholder:text-text-tertiary text-foreground" />
-            <Link to="/signup"><Button className="shrink-0">Get Started <ArrowRight size={14} /></Button></Link>
+          <div className={cn("flex items-center justify-center gap-4 mb-6 transition-all duration-600", heroReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")} style={stagger(3, heroReveal.visible)}>
+            <Link to="/signup"><Button size="lg" className="h-12 px-8">Try Komisi <ArrowRight size={16} /></Button></Link>
+            <Button variant="outline" size="lg" className="h-12 px-8">Book a Demo</Button>
           </div>
 
-          <div className="flex items-center justify-center gap-3 mt-6">
-            <div className="flex -space-x-2">
-              {["SC", "AK", "JL"].map((initials, i) => (
-                <div key={i} className={`w-7 h-7 rounded-full border-2 border-background flex items-center justify-center text-[10px] font-normal text-foreground ${["watercolor-pink", "watercolor-blue", "watercolor-green"][i]}`}>{initials}</div>
+          <p className={cn("text-sm text-text-tertiary transition-all duration-600", heroReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4")} style={stagger(4, heroReveal.visible)}>
+            Trusted by 200+ indie app developers · No credit card required
+          </p>
+        </div>
+
+        {/* Floating testimonial cards */}
+        <div className={cn("hidden lg:block absolute left-8 top-1/2 -translate-y-1/4 max-w-[260px] border border-border bg-background p-5 shadow-lg transition-all duration-700", heroReveal.visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8")} style={stagger(6, heroReveal.visible)}>
+          <p className="text-sm text-text-secondary mb-3">"Our CAC dropped 60% in three months."</p>
+          <p className="text-xs text-foreground font-normal">Sarah Chen</p>
+          <p className="text-xs text-text-tertiary">Head of Growth, MindfulApp</p>
+        </div>
+        <div className={cn("hidden lg:block absolute right-8 top-1/2 -translate-y-1/3 max-w-[260px] border border-border bg-background p-5 shadow-lg transition-all duration-700", heroReveal.visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8")} style={stagger(7, heroReveal.visible)}>
+          <p className="text-sm text-text-secondary mb-3">"RevenueCat setup took under 5 minutes."</p>
+          <p className="text-xs text-foreground font-normal">David Park</p>
+          <p className="text-xs text-text-tertiary">Founder, FocusTimer</p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 3 — LOGO BAR
+      ═══════════════════════════════════════════ */}
+      <section ref={logoReveal.ref} className="py-10 border-y border-border overflow-hidden">
+        <p className={cn("text-xs text-text-tertiary text-center mb-6 uppercase tracking-[0.1em] transition-all duration-500", logoReveal.visible ? "opacity-100" : "opacity-0")}>
+          Developers building on Komisi
+        </p>
+        <div className="marquee-container">
+          <div className="marquee-track hover:[animation-play-state:paused]">
+            {[...logoNames, ...logoNames].map((l, i) => (
+              <div key={i} className="w-[140px] h-10 bg-muted flex items-center justify-center shrink-0">
+                <span className="text-xs text-text-tertiary tracking-wider">{l}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 4 — HOW IT WORKS
+      ═══════════════════════════════════════════ */}
+      <section ref={howReveal.ref} className="py-24 px-6" id="product">
+        <div className="max-w-6xl mx-auto">
+          <div className={cn("text-center mb-16 transition-all duration-700", howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
+            <PillLabel>THREE STEPS</PillLabel>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
+              Under 10 lines of code.<br />
+              A full affiliate program running in days.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Card 1 — Install SDK */}
+            <div className={cn("border border-border bg-card overflow-hidden transition-all duration-700", howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")} style={stagger(0, howReveal.visible)}>
+              <div className="bg-foreground p-6">
+                <pre className="text-primary-foreground font-mono text-sm leading-relaxed">
+{`KomisiSDK.configure(
+  apiKey: "your_key"
+)
+KomisiSDK.resolve()`}
+                </pre>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-normal text-foreground mb-2">Install the SDK</h3>
+                <p className="text-sm text-text-secondary mb-4">One method call. Works on iOS, Android, Flutter, and React Native. Initializes in under 100ms. Zero impact on app performance.</p>
+                <div className="flex flex-wrap gap-2">
+                  {["iOS", "Android", "Flutter", "React Native"].map(t => (
+                    <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 — Connect Revenue */}
+            <div className={cn("border border-border bg-card overflow-hidden transition-all duration-700", howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")} style={stagger(1, howReveal.visible)}>
+              <div className="bg-muted p-6 flex items-center justify-center gap-6 h-[160px]">
+                <div className="w-16 h-16 bg-background border border-border flex items-center justify-center">
+                  <span className="text-[10px] text-text-tertiary text-center leading-tight">Revenue<br/>Cat</span>
+                </div>
+                <div className="w-8 border-t border-dashed border-text-tertiary" />
+                <div className="w-16 h-16 bg-background border border-border flex items-center justify-center">
+                  <span className="text-[10px] text-text-tertiary">Komisi</span>
+                </div>
+                <div className="w-8 border-t border-dashed border-text-tertiary" />
+                <div className="w-16 h-16 bg-background border border-border flex items-center justify-center">
+                  <span className="text-[10px] text-text-tertiary">Adapty</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-normal text-foreground mb-2">Connect RevenueCat or Adapty</h3>
+                <p className="text-sm text-text-secondary mb-4">Point your existing webhook to Komisi. The SDK sets $komisiAffiliateId on every attributed user automatically. No additional code.</p>
+                <div className="flex flex-wrap gap-2">
+                  {["RevenueCat", "Adapty", "Stripe Connect"].map(t => (
+                    <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 — Invite Creators */}
+            <div className={cn("border border-border bg-card overflow-hidden transition-all duration-700", howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")} style={stagger(2, howReveal.visible)}>
+              <div className="bg-muted p-6 flex items-center justify-center h-[160px]">
+                <div className="w-full max-w-[200px] border border-border bg-background p-4">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 bg-muted flex items-center justify-center text-xs text-text-tertiary">AV</div>
+                    <div>
+                      <div className="text-sm text-foreground">@creator</div>
+                      <div className="text-[10px] text-text-tertiary">12.4K followers</div>
+                    </div>
+                  </div>
+                  <div className="bg-foreground text-primary-foreground text-xs text-center py-1.5">Apply</div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-normal text-foreground mb-2">Invite creators or find them in the marketplace</h3>
+                <p className="text-sm text-text-secondary mb-4">Share your program link or browse the Komisi marketplace. Creators apply, you approve. Tracking links generated instantly.</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Tracking Links", "Referral Codes", "Marketplace"].map(t => (
+                    <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 5 — ATTRIBUTION ENGINE
+      ═══════════════════════════════════════════ */}
+      <section ref={attrReveal.ref} className="py-24 px-6 border-t border-border">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Left — Copy */}
+          <div className={cn("transition-all duration-700", attrReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
+            <PillLabel>HOW ATTRIBUTION WORKS</PillLabel>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-10">
+              Every install attributed.<br />
+              No IDFA. No ATT prompt.<br />
+              No guesswork.
+            </h2>
+
+            <div className="space-y-0">
+              {[
+                { step: "STEP 1", text: "Creator shares their unique Komisi link" },
+                { step: "STEP 2", text: "User clicks and lands in App Store or Google Play" },
+                { step: "STEP 3", text: "App installs" },
+                { step: "STEP 4", text: "SDK resolves attribution on first launch", detail: "Android — deterministic via Google Play Install Referrer API. 100% accurate.\n\niOS — server-side fingerprint matching using IP, locale, timezone, device model, screen resolution. Confidence scoring 0.60–0.95. Referral code fallback if below threshold." },
+                { step: "STEP 5", text: "RevenueCat or Adapty webhook fires on subscription event" },
+                { step: "STEP 6", text: "Commission calculated against net revenue after store fees. Payout queued." },
+              ].map((s, i) => (
+                <div key={i} className="border-t border-border py-4">
+                  <div className="flex gap-4">
+                    <span className="text-xs font-mono text-text-tertiary tracking-wider whitespace-nowrap pt-0.5">{s.step}</span>
+                    <div>
+                      <p className="text-sm text-foreground">{s.text}</p>
+                      {s.detail && <p className="text-xs text-text-secondary mt-2 whitespace-pre-line leading-relaxed">{s.detail}</p>}
+                    </div>
+                  </div>
+                </div>
+              ))}
+              <div className="border-t border-border" />
+            </div>
+
+            <div className="flex flex-wrap gap-2 mt-8">
+              {["No IDFA", "No ATT prompt", "No cookies", "App Store privacy label: zero impact"].map(t => (
+                <span key={t} className="text-xs bg-muted text-text-secondary px-3 py-1.5">{t}</span>
               ))}
             </div>
-            <span className="text-sm text-text-secondary">Join <span className="gradient-ai-text font-normal">200+</span> app developers growing with creators</span>
           </div>
-        </div>
-      </section>
 
-      {/* ── LOGO BAR (Marquee) ── */}
-      <section className="py-12 bg-background-subtle border-y border-border overflow-hidden">
-        <p className="text-sm text-text-tertiary text-center mb-6">Trusted by indie developers and scaling apps</p>
-        <div className="marquee-container">
-          <div className="marquee-track">
-            {[...logoNames, ...logoNames].map((l, i) => (
-              <div key={i} className="w-[120px] h-8 rounded bg-foreground/10 flex items-center justify-center shrink-0">
-                <span className="text-xs font-normal text-text-tertiary">{l}</span>
+          {/* Right — Flow diagram */}
+          <div className={cn("transition-all duration-700 flex items-center", attrReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")} style={stagger(2, attrReveal.visible)}>
+            <div className="w-full bg-foreground p-8 lg:p-10">
+              <div className="space-y-4">
+                {[
+                  { label: "Creator Link", sub: "" },
+                  { label: "App Store / Play Store", sub: "" },
+                  { label: "App Install", sub: "" },
+                  { label: "SDK First Launch", sub: "Android: Play Install Referrer | iOS: Fingerprint Match" },
+                  { label: "RevenueCat Webhook", sub: "" },
+                  { label: "Commission Queued", sub: "" },
+                ].map((node, i) => (
+                  <React.Fragment key={i}>
+                    <div className="border border-white/20 px-5 py-3">
+                      <p className="text-sm text-primary-foreground">{node.label}</p>
+                      {node.sub && <p className="text-[10px] text-white/40 mt-1">{node.sub}</p>}
+                    </div>
+                    {i < 5 && (
+                      <div className="flex justify-center">
+                        <div className="w-px h-4 bg-white/20" />
+                      </div>
+                    )}
+                  </React.Fragment>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── WHAT KOMISI DOES (Dark) ── */}
-      <section ref={featuresReveal.ref} className="bg-[hsl(222,47%,7%)] text-white py-20 px-6" id="product">
+      {/* ═══════════════════════════════════════════
+          SECTION 6 — FEATURE CARDS
+      ═══════════════════════════════════════════ */}
+      <section ref={featReveal.ref} className="py-24 px-6 border-t border-border">
         <div className="max-w-6xl mx-auto">
-          <div className={cn("text-center mb-12 transition-all duration-700", featuresReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
-            <div className="inline-flex items-center gap-2 border border-white/10 rounded-full px-4 py-1.5 mb-6">
-              <span className="text-amber-400">◆</span>
-              <span className="text-xs uppercase tracking-[0.1em] font-normal text-white/40">Built for the App Store</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-normal mb-4">What Komisi Does</h2>
-            <p className="text-lg text-white/50 max-w-[600px] mx-auto">Komisi connects your app with creators who drive real installs and paying subscribers — not just clicks.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
-            {bentoCards.map((card, i) => (
-              <div
-                key={card.title}
-                className={cn(
-                  "rounded-2xl p-6 relative overflow-hidden aspect-[3/4] flex flex-col justify-between border border-white/10 hover:scale-[1.02] hover:border-white/20 transition-all duration-300 cursor-default bg-gradient-to-b",
-                  card.gradient,
-                  featuresReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}
-                style={{ transitionDelay: featuresReveal.visible ? `${i * 100}ms` : "0ms" }}
-              >
-                <card.icon size={28} className="text-white/80" />
-                <div>
-                  <h3 className="text-lg font-normal text-white mb-1">{card.title}</h3>
-                  <p className="text-sm text-white/50">{card.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── HOW IT WORKS ── */}
-      <section ref={howReveal.ref} className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className={cn("text-center mb-12 transition-all duration-700", howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
-            <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-6">
-              <span className="text-chart-blue">◆</span>
-              <span className="text-xs uppercase tracking-[0.1em] font-normal text-text-secondary">Three Steps</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-normal text-foreground">How It Works</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { num: "01", title: "Install the SDK", desc: "One line of code. Works with Swift, Kotlin, Flutter, React Native.", code: 'Komisi.configure(apiKey: "km_live_...")' },
-              { num: "02", title: "Connect RevenueCat", desc: "Plug into your subscription infrastructure. Adapty and Stripe too.", integrations: ["RevenueCat", "Adapty", "Stripe"] },
-              { num: "03", title: "Launch & Grow", desc: "Invite creators, set commissions, let Komisi handle tracking and payouts.", hasGradient: true },
-            ].map((step, i) => (
-              <div
-                key={step.num}
-                className={cn(
-                  "bg-card border border-border rounded-2xl p-6 relative overflow-hidden transition-all duration-700",
-                  howReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}
-                style={{ transitionDelay: howReveal.visible ? `${i * 100}ms` : "0ms" }}
-              >
-                <span className="absolute top-4 right-4 text-7xl font-normal text-muted/40 select-none leading-none">{step.num}</span>
-                <h3 className="text-lg font-normal text-foreground mb-2 mt-10">{step.title}</h3>
-                <p className="text-sm text-text-secondary mb-4">{step.desc}</p>
-                {step.code && (
-                  <div className="bg-[hsl(222,47%,7%)] text-[hsl(210,40%,98%)] rounded-lg p-3 font-mono text-xs">{step.code}</div>
-                )}
-                {step.integrations && (
-                  <div className="flex gap-2 mt-1">
-                    {step.integrations.map(int => (
-                      <span key={int} className="text-xs bg-background-subtle text-text-secondary rounded-full px-2.5 py-1">{int}</span>
-                    ))}
-                  </div>
-                )}
-                {step.hasGradient && (
-                  <div className="w-full h-2 rounded-full gradient-ai mt-2 opacity-60" />
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── AI FEATURES (Dark) ── */}
-      <section className="bg-[hsl(222,47%,7%)] text-white py-20 px-6">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1">
-            <h2 className="text-3xl md:text-4xl font-normal mb-4">
-              Powered by the Komisi <span className="shimmer-text">AI Engine</span> ✦
+          <div className={cn("text-center mb-16 transition-all duration-700", featReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
+            <PillLabel>BUILT FOR PRODUCTION</PillLabel>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
+              Everything the infrastructure needs.<br />
+              Nothing it doesn't.
             </h2>
-            <p className="text-base text-white/50 max-w-[440px] mb-6">
-              Most platforms just track clicks. Komisi predicts which creators will drive the most revenue, detects fraud in real-time, and optimizes your commission structure automatically.
-            </p>
-            <Button variant="secondary" className="border-white/20 text-white hover:bg-white/10 bg-transparent">Book a demo →</Button>
           </div>
-          <div className="w-64 h-64 rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 to-transparent flex items-center justify-center" style={{ transform: "perspective(600px) rotateY(-5deg) rotateX(3deg)" }}>
-            <span className="text-5xl shimmer-text">✦</span>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Feature 1 */}
+            <div className={cn("border border-border bg-card overflow-hidden transition-all duration-700", featReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")} style={stagger(0, featReveal.visible)}>
+              <div className="bg-muted p-8 flex items-center justify-center gap-12">
+                <div className="text-center">
+                  <Smartphone size={32} className="text-text-secondary mx-auto mb-2" />
+                  <span className="text-xs text-text-tertiary block">Android</span>
+                  <span className="text-[10px] text-text-tertiary">Install Referrer</span>
+                </div>
+                <div className="text-center">
+                  <Smartphone size={32} className="text-text-secondary mx-auto mb-2" />
+                  <span className="text-xs text-text-tertiary block">iOS</span>
+                  <span className="text-[10px] text-text-tertiary">Fingerprint</span>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-normal text-foreground mb-2">Dual platform attribution</h3>
+                <p className="text-sm text-text-secondary">Android uses Google Play Install Referrer — deterministic, 100% accurate. iOS uses server-side fingerprint matching with Apple-permitted signals only. No IDFA. No ATT prompt triggered. Ever.</p>
+              </div>
+            </div>
+
+            {/* Feature 2 */}
+            <div className={cn("border border-border bg-card overflow-hidden transition-all duration-700", featReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")} style={stagger(1, featReveal.visible)}>
+              <div className="bg-muted p-8 flex items-center justify-center">
+                <div className="grid grid-cols-3 gap-4">
+                  {["RevenueCat", "Adapty", "Stripe", "Apple", "Google Play", "Paddle"].map(n => (
+                    <div key={n} className="w-20 h-12 bg-background border border-border flex items-center justify-center">
+                      <span className="text-[10px] text-text-tertiary text-center">{n}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-normal text-foreground mb-2">Native webhook integrations</h3>
+                <p className="text-sm text-text-secondary">RevenueCat and Adapty webhooks supported natively. Stripe Connect for automated payouts. Apple receipt verification and Google Play API as direct fallbacks. Paddle and Stripe Billing coming soon.</p>
+              </div>
+            </div>
+
+            {/* Feature 3 */}
+            <div className={cn("border border-border bg-card overflow-hidden transition-all duration-700", featReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")} style={stagger(2, featReveal.visible)}>
+              <div className="bg-muted p-8 flex items-center justify-center">
+                <div className="w-full max-w-[280px]">
+                  <div className="flex items-center justify-between text-xs text-text-tertiary mb-2">
+                    <span>0.0</span>
+                    <span>Fraud Score</span>
+                    <span>1.0</span>
+                  </div>
+                  <div className="w-full h-3 bg-background border border-border relative">
+                    <div className="absolute left-0 top-0 h-full w-[70%] bg-foreground/20" />
+                    <div className="absolute left-[70%] top-0 h-full w-[20%] bg-warning/40" />
+                    <div className="absolute left-[90%] top-0 h-full w-[10%] bg-destructive/40" />
+                    <div className="absolute left-[70%] -top-5 text-[9px] text-warning">auto-hold</div>
+                    <div className="absolute left-[90%] -top-5 text-[9px] text-destructive">auto-block</div>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-normal text-foreground mb-2">AI fraud detection built in</h3>
+                <p className="text-sm text-text-secondary">Velocity checks, IP clustering, device repetition, geo mismatch, and self-referral detection run on every install. Fraud score 0.0–1.0. Auto-hold at 0.7. Auto-block at 0.9. No manual review needed.</p>
+              </div>
+            </div>
+
+            {/* Feature 4 */}
+            <div className={cn("border border-border bg-card overflow-hidden transition-all duration-700", featReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")} style={stagger(3, featReveal.visible)}>
+              <div className="bg-muted p-8 flex items-center justify-center">
+                <div className="space-y-3 w-full max-w-[240px]">
+                  <div>
+                    <div className="flex items-center justify-between text-xs text-text-secondary mb-1">
+                      <span>iOS</span><span>&lt;80KB</span>
+                    </div>
+                    <div className="w-full h-2 bg-background border border-border"><div className="h-full w-[35%] bg-foreground" /></div>
+                  </div>
+                  <div>
+                    <div className="flex items-center justify-between text-xs text-text-secondary mb-1">
+                      <span>Android</span><span>&lt;100KB</span>
+                    </div>
+                    <div className="w-full h-2 bg-background border border-border"><div className="h-full w-[42%] bg-foreground" /></div>
+                  </div>
+                  <p className="text-[10px] text-text-tertiary text-center mt-2">&lt;30ms cold start</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-normal text-foreground mb-2">Lightweight. Invisible. Production-safe.</h3>
+                <p className="text-sm text-text-secondary">SDK size under 80KB on iOS, 100KB on Android. Cold start impact under 30ms. All network calls async on background threads. Fails silently if server is unreachable. Zero impact on your app experience.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
-      <section ref={testimonialsReveal.ref} className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className={cn("text-center mb-12 transition-all duration-700", testimonialsReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
-            <h2 className="text-3xl md:text-4xl font-normal text-foreground">Wall of Love</h2>
+      {/* ═══════════════════════════════════════════
+          SECTION 7 — FULL-BLEED QUOTE
+      ═══════════════════════════════════════════ */}
+      <section ref={quoteReveal.ref} className="min-h-[80vh] flex items-center justify-center px-6 bg-foreground">
+        <div className={cn("max-w-3xl text-center transition-all duration-1000", quoteReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")}>
+          <p className="text-2xl md:text-3xl lg:text-4xl text-primary-foreground leading-snug mb-10">
+            "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months."
+          </p>
+          <div>
+            <p className="text-xs text-white/60 uppercase tracking-[0.2em] mb-1">SARAH CHEN</p>
+            <p className="text-xs text-white/40 uppercase tracking-[0.15em]">HEAD OF GROWTH, MINDFULAPP</p>
           </div>
-          <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
-            {testimonials.map((t, i) => (
-              <div
-                key={t.name}
-                className={cn(
-                  `${t.wc} rounded-xl p-6 mb-4 break-inside-avoid transition-all duration-700`,
-                  testimonialsReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}
-                style={{ transitionDelay: testimonialsReveal.visible ? `${i * 80}ms` : "0ms" }}
-              >
-                <p className="text-base font-normal text-foreground mb-4">"{t.quote}"</p>
-                <div>
-                  <div className="text-sm font-normal text-foreground">{t.name}</div>
-                  <div className="text-xs text-text-secondary">{t.title}</div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 8 — CREATOR MARKETPLACE
+      ═══════════════════════════════════════════ */}
+      <section ref={marketReveal.ref} className="py-24 px-6" id="marketplace">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Left */}
+          <div className={cn("transition-all duration-700", marketReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
+            <PillLabel>CREATOR MARKETPLACE</PillLabel>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-6">
+              No creators yet?<br />
+              Find them here.
+            </h2>
+            <p className="text-base text-text-secondary mb-8 max-w-[480px]">
+              Browse creators by niche, platform, and audience size directly inside Komisi. Creators apply to your program. You approve. A unique tracking link and referral code are generated instantly. Every install and subscription attributed from day one — no manual setup on their end.
+            </p>
+            <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors inline-flex items-center gap-1">
+              Are you a creator? See how Komisi works for you. <ArrowRight size={14} />
+            </a>
+          </div>
+
+          {/* Right — Marketplace preview */}
+          <div className={cn("transition-all duration-700", marketReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")} style={stagger(2, marketReveal.visible)}>
+            <div className="bg-muted p-6 lg:p-8 space-y-4">
+              {[
+                { name: "Emma Davis", niche: "Productivity", followers: "45.2K", platforms: ["TikTok", "YouTube"] },
+                { name: "James Lee", niche: "Wellness", followers: "28.7K", platforms: ["Instagram", "YouTube"] },
+                { name: "Sofia Martinez", niche: "Finance", followers: "91.3K", platforms: ["TikTok", "Instagram"] },
+              ].map(c => (
+                <div key={c.name} className="bg-background border border-border p-4 flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-10 h-10 bg-muted flex items-center justify-center text-xs text-text-tertiary">
+                      {c.name.split(" ").map(n => n[0]).join("")}
+                    </div>
+                    <div>
+                      <div className="text-sm text-foreground">{c.name}</div>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        {c.platforms.map(p => (
+                          <span key={p} className="text-[10px] text-text-tertiary">{p}</span>
+                        ))}
+                        <span className="text-[10px] text-text-tertiary">·</span>
+                        <span className="text-[10px] text-text-tertiary">{c.followers}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-[10px] bg-muted text-text-tertiary px-2 py-0.5">{c.niche}</span>
+                    <Button size="sm" variant="outline" className="text-xs h-7">Apply</Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 9 — CASE STUDY CARDS
+      ═══════════════════════════════════════════ */}
+      <section ref={caseReveal.ref} className="py-24 px-6 border-t border-border">
+        <div className="max-w-6xl mx-auto">
+          <div className={cn("text-center mb-16 transition-all duration-700", caseReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
+              Developers replacing paid UA<br />with Komisi.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {caseStudies.map((cs, i) => (
+              <div key={i} className={cn("border border-border bg-card p-8 transition-all duration-700 hover:border-foreground/30", caseReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8")} style={stagger(i, caseReveal.visible)}>
+                <h3 className="text-lg font-normal text-foreground mb-4 leading-snug">{cs.headline}</h3>
+                <div className="flex gap-2 mb-6">
+                  {cs.tags.map(t => (
+                    <span key={t} className="text-[10px] bg-muted text-text-tertiary px-2 py-1 uppercase tracking-wider">{t}</span>
+                  ))}
+                </div>
+                <div className="flex gap-12 mb-6">
+                  <div>
+                    <p className="text-2xl text-foreground font-normal">{cs.stat1}</p>
+                    <p className="text-xs text-text-tertiary">{cs.stat1Label}</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl text-foreground font-normal">{cs.stat2}</p>
+                    <p className="text-xs text-text-tertiary">{cs.stat2Label}</p>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between border-t border-border pt-4">
+                  <div>
+                    <p className="text-sm text-foreground">{cs.name}</p>
+                    <p className="text-xs text-text-tertiary">{cs.role}</p>
+                  </div>
+                  <div className="w-10 h-10 bg-muted flex items-center justify-center text-[10px] text-text-tertiary">
+                    {cs.tags[0]?.slice(0, 2)}
+                  </div>
                 </div>
               </div>
             ))}
@@ -275,90 +576,97 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* ── PRICING ── */}
-      <section ref={pricingReveal.ref} className="py-20 px-6" id="pricing">
+      {/* ═══════════════════════════════════════════
+          SECTION 10 — PRICING
+      ═══════════════════════════════════════════ */}
+      <section ref={pricingReveal.ref} className="py-24 px-6 border-t border-border" id="pricing">
         <div className="max-w-5xl mx-auto">
-          <div className={cn("text-center mb-8 transition-all duration-700", pricingReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
-            <div className="inline-flex items-center gap-2 border border-border rounded-full px-4 py-1.5 mb-6">
-              <span className="text-chart-blue">◆</span>
-              <span className="text-xs uppercase tracking-[0.1em] font-normal text-text-secondary">Simple Pricing</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-3">Start Free. Scale as You Grow.</h2>
-            <p className="text-lg text-text-secondary">Only pay more when you're earning more.</p>
+          <div className={cn("text-center mb-12 transition-all duration-700", pricingReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
+            <PillLabel>SIMPLE PRICING</PillLabel>
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight mb-3">Start free. Scale as you grow.</h2>
+            <p className="text-base text-text-secondary">Only pay when you're earning more.</p>
           </div>
-          <div className="flex justify-center mb-8">
-            <div className="flex gap-1 bg-background-subtle rounded-full p-1">
-              <button onClick={() => setBilling("monthly")} className={cn("h-9 px-4 rounded-full text-sm font-normal transition-all", billing === "monthly" ? "bg-primary text-primary-foreground" : "text-text-secondary")}>Monthly</button>
-              <button onClick={() => setBilling("yearly")} className={cn("h-9 px-4 rounded-full text-sm font-normal transition-all", billing === "yearly" ? "bg-primary text-primary-foreground" : "text-text-secondary")}>Yearly — Save 20%</button>
+
+          <div className="flex justify-center mb-10">
+            <div className="flex gap-0 border border-border">
+              <button onClick={() => setBilling("monthly")} className={cn("h-10 px-5 text-sm transition-all", billing === "monthly" ? "bg-foreground text-primary-foreground" : "bg-background text-text-secondary")}>Monthly</button>
+              <button onClick={() => setBilling("yearly")} className={cn("h-10 px-5 text-sm transition-all", billing === "yearly" ? "bg-foreground text-primary-foreground" : "bg-background text-text-secondary")}>Yearly · Save 20%</button>
             </div>
           </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {pricingPlans.map((plan, i) => (
-              <div
-                key={plan.name}
-                className={cn(
-                  "bg-card border rounded-2xl p-8 relative hover:-translate-y-1 transition-all duration-300",
-                  plan.popular ? "border-foreground shadow-xl" : "border-border",
-                  pricingReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                )}
-                style={{ transitionDelay: pricingReveal.visible ? `${i * 100}ms` : "0ms" }}
-              >
+              <div key={plan.name} className={cn(
+                "border bg-card p-8 relative transition-all duration-700",
+                plan.popular ? "border-foreground" : "border-border",
+                pricingReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              )} style={stagger(i, pricingReveal.visible)}>
                 {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-ai text-white text-xs font-normal px-3 py-1 rounded-full">Popular</span>
+                  <span className="absolute -top-3 left-6 bg-foreground text-primary-foreground text-xs px-3 py-1">MOST POPULAR</span>
                 )}
                 <h3 className="text-xl font-normal text-foreground">{plan.name}</h3>
                 <div className="mt-3 mb-6">
-                  <span className="text-3xl font-normal text-foreground">{billing === "monthly" ? plan.price : plan.yearly}</span>
-                  <span className="text-text-secondary">/mo</span>
+                  <span className="text-3xl text-foreground font-normal">{billing === "monthly" ? plan.price : plan.yearly}</span>
+                  <span className="text-text-secondary"> / month</span>
                 </div>
                 <ul className="space-y-2.5 mb-8">
-                  {plan.features.map(f => (
+                  {plan.included.map(f => (
                     <li key={f} className="flex items-center gap-2 text-sm text-text-secondary">
-                      <Check size={14} className="text-success shrink-0" />
-                      {f.includes("0% platform") ? <span className="text-foreground">{f}</span> : f}
+                      <Check size={14} className="text-foreground shrink-0" /> {f}
+                    </li>
+                  ))}
+                  {plan.excluded.map(f => (
+                    <li key={f} className="flex items-center gap-2 text-sm text-text-tertiary">
+                      <XIcon size={14} className="text-text-tertiary shrink-0" /> {f}
                     </li>
                   ))}
                 </ul>
                 <Link to="/signup">
-                  <Button variant={plan.primary ? "default" : "secondary"} className="w-full">{plan.cta}</Button>
+                  <Button variant={plan.primary ? "default" : "outline"} className="w-full">{plan.cta}</Button>
                 </Link>
               </div>
             ))}
           </div>
-          <p className="text-center text-sm text-text-secondary mt-6">Need custom? <a href="#" className="underline hover:text-foreground transition-colors">Talk to Sales →</a></p>
+          <p className="text-center text-sm text-text-secondary mt-8">Need more? <a href="#" className="underline hover:text-foreground transition-colors">Talk to us →</a></p>
         </div>
       </section>
 
-      {/* ── CTA + FOOTER (Dark) ── */}
-      <section className="bg-[hsl(222,47%,7%)] text-white py-16 px-6">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-normal mb-6">
-            Ready to grow your app with <span className="shimmer-text">creator-powered</span> marketing?
+      {/* ═══════════════════════════════════════════
+          SECTION 11 — FINAL CTA
+      ═══════════════════════════════════════════ */}
+      <section ref={ctaReveal.ref} className="py-24 px-6 bg-foreground">
+        <div className={cn("max-w-3xl mx-auto text-center transition-all duration-700", ctaReveal.visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6")}>
+          <h2 className="text-3xl md:text-4xl font-normal text-primary-foreground tracking-tight mb-4">
+            Ready to attribute every install?
           </h2>
-          <Link to="/signup">
-            <Button variant="secondary" size="lg" className="bg-white text-[hsl(222,47%,11%)] hover:bg-white/90 h-12 px-8 text-base font-normal">
-              Get Started — It's Free <ArrowRight size={16} />
-            </Button>
-          </Link>
+          <p className="text-base text-white/50 mb-10">
+            Join 200+ developers already running creator affiliate programs on Komisi.
+          </p>
+          <div className="flex items-center justify-center gap-4">
+            <Link to="/signup"><Button size="lg" className="h-12 px-8 bg-primary-foreground text-foreground hover:bg-white/90">Try Komisi <ArrowRight size={16} /></Button></Link>
+            <Button variant="outline" size="lg" className="h-12 px-8 border-white/20 text-primary-foreground hover:bg-white/10 bg-transparent">Book a Demo</Button>
+          </div>
         </div>
+      </section>
 
-        <footer className="max-w-6xl mx-auto border-t border-white/10 pt-12">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+      {/* ═══════════════════════════════════════════
+          SECTION 12 — FOOTER
+      ═══════════════════════════════════════════ */}
+      <footer className="bg-foreground text-primary-foreground px-6 pt-16 pb-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
             <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-1.5 mb-3">
-                <span className="gradient-ai-text text-lg">✦</span>
-                <span className="text-lg font-normal text-white tracking-tight">komisi</span>
-              </div>
-              <p className="text-xs text-white/40">The AI-native affiliate platform for mobile apps.</p>
+              <span className="text-lg font-normal tracking-tight block mb-2">komisi</span>
+              <p className="text-xs text-white/40">The infrastructure between mobile apps and the creator economy.</p>
             </div>
             {[
               { title: "Product", links: ["Features", "Pricing", "Changelog", "Marketplace"] },
-              { title: "Resources", links: ["Documentation", "Blog", "Support", "Status"] },
-              { title: "Company", links: ["About", "Careers", "Contact"] },
-              { title: "Legal", links: ["Privacy Policy", "Terms of Service"] },
+              { title: "Resources", links: ["Docs", "API Reference", "SDK Guides", "Support"] },
+              { title: "Company", links: ["About", "Blog", "Careers", "Contact"] },
+              { title: "Legal", links: ["Privacy Policy", "Terms of Service", "Cookie Policy"] },
             ].map(col => (
               <div key={col.title}>
-                <h4 className="text-sm font-normal text-white mb-3">{col.title}</h4>
+                <h4 className="text-sm font-normal mb-3">{col.title}</h4>
                 <ul className="space-y-2">
                   {col.links.map(l => (
                     <li key={l}><a href="#" className="text-sm text-white/40 hover:text-white transition-colors">{l}</a></li>
@@ -368,15 +676,15 @@ const Landing = () => {
             ))}
           </div>
           <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-white/30">© 2026 Komisi. All rights reserved.</p>
+            <p className="text-xs text-white/30">© 2026 Komisi · All rights reserved</p>
             <div className="flex items-center gap-4">
               {[Twitter, Github, Linkedin].map((Icon, i) => (
                 <a key={i} href="#" className="text-white/30 hover:text-white transition-colors"><Icon size={16} /></a>
               ))}
             </div>
           </div>
-        </footer>
-      </section>
+        </div>
+      </footer>
     </div>
   );
 };
