@@ -322,7 +322,7 @@ const Landing = () => {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {[
               {
                 delay: 0,
@@ -358,24 +358,18 @@ const Landing = () => {
                 tags: ["Tracking Links", "Referral Codes", "Marketplace"],
               },
             ].map((card, i) => (
-              <Reveal key={i} delay={card.delay}>
-                <Tilt maxTilt={6} className="w-full">
-                  <motion.div className="border border-border bg-card overflow-hidden w-full">
-                    {/* Zone 1 — Illustration: fixed 240px */}
-                    <div className="h-[240px] bg-muted overflow-hidden">{card.illustration}</div>
-                    {/* Zone 2 — Heading: fixed 64px */}
-                    <div className="h-16 px-6 pt-6 flex items-start">
-                      <h3 className="text-lg font-normal text-foreground leading-snug line-clamp-2">{card.heading}</h3>
-                    </div>
-                    {/* Zone 3 — Body: fixed 80px */}
-                    <div className="h-20 px-6 pt-2 overflow-hidden">
-                      <p className="text-sm text-text-secondary line-clamp-3">{card.body}</p>
-                    </div>
-                    {/* Zone 4 — Tags: fixed 48px */}
-                    <div className="h-12 px-6 pb-6 flex flex-wrap items-start gap-2">
-                      {card.tags.map(t => (
-                        <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
-                      ))}
+              <Reveal key={i} delay={card.delay} className="h-full">
+                <Tilt maxTilt={6} className="w-full h-full">
+                  <motion.div className="border border-border bg-card overflow-hidden w-full h-full flex flex-col">
+                    <div className="h-[240px] bg-muted overflow-hidden shrink-0">{card.illustration}</div>
+                    <div className="p-6 flex-1 flex flex-col">
+                      <h3 className="text-lg font-normal text-foreground leading-snug mb-2">{card.heading}</h3>
+                      <p className="text-sm text-text-secondary mb-4">{card.body}</p>
+                      <div className="flex flex-wrap gap-2 mt-auto">
+                        {card.tags.map(t => (
+                          <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
+                        ))}
+                      </div>
                     </div>
                   </motion.div>
                 </Tilt>
