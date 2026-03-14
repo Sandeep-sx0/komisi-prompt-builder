@@ -82,6 +82,32 @@ function drawDollarIcon(ctx: CanvasRenderingContext2D, size: number, color: stri
 
 const iconDrawers = [drawLinkIcon, drawDownloadIcon, drawFingerprintIcon, drawDollarIcon];
 
+/* ── Glow sprite texture ── */
+function createGlowTexture(): THREE.CanvasTexture {
+  const size = 128;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d")!;
+  const cx = size / 2, cy = size / 2;
+  const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, size / 2);
+  gradient.addColorStop(0, "rgba(255,255,255,1)");
+  gradient.addColorStop(0.15, "rgba(255,255,255,0.6)");
+  gradient.addColorStop(0.4, "rgba(255,255,255,0.15)");
+  gradient.addColorStop(1, "rgba(255,255,255,0)");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, size, size);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.needsUpdate = true;
+  return tex;
+}
+
+let _glowTex: THREE.CanvasTexture | null = null;
+function getGlowTexture() {
+  if (!_glowTex) _glowTex = createGlowTexture();
+  return _glowTex;
+}
+
 function createIconTexture(index: number, active: boolean): THREE.CanvasTexture {
   const size = 256;
   const canvas = document.createElement("canvas");
