@@ -196,7 +196,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
     if (edgesRef.current) {
       const eMat = edgesRef.current.material as THREE.LineBasicMaterial;
       if (isActive) {
-        eMat.color.lerp(new THREE.Color("#8B8BBA"), delta * 4);
+        eMat.color.lerp(new THREE.Color("#C0C0C0"), delta * 4);
         eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 1, delta * 4);
       } else {
         eMat.color.lerp(new THREE.Color("#2A5570"), delta * 4);
