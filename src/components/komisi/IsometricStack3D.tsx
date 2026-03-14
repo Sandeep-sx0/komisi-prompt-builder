@@ -251,30 +251,35 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
         />
       ))}
 
-      {/* Flame-like glowing exhaust at all 4 top-surface corners */}
+      {/* Smooth gradient flame glow at all 4 top-surface corners */}
       {screwPositions.map((pos, i) => (
-        <group key={`glow-orb-${i}`} position={[pos[0], pos[1] + 0.05, pos[2]]}>
-          {/* Bright core - small and intense */}
+        <group key={`glow-orb-${i}`} position={[pos[0], pos[1] + 0.02, pos[2]]}>
+          {/* Bright white-purple core */}
           <mesh>
-            <sphereGeometry args={[0.04, 12, 12]} />
-            <meshBasicMaterial color="#E0CBFF" transparent opacity={isActive ? 0.95 : 0} />
+            <sphereGeometry args={[0.03, 24, 24]} />
+            <meshBasicMaterial color="#F0E6FF" transparent opacity={isActive ? 0.9 : 0} depthWrite={false} />
           </mesh>
-          {/* Inner flame - elongated upward */}
-          <mesh position={[0, 0.06, 0]} scale={[1, 2.2, 1]}>
-            <sphereGeometry args={[0.06, 12, 12]} />
-            <meshBasicMaterial color="#A78BFA" transparent opacity={isActive ? 0.5 : 0} />
+          {/* Layer 1 */}
+          <mesh position={[0, 0.03, 0]} scale={[1, 1.8, 1]}>
+            <sphereGeometry args={[0.055, 24, 24]} />
+            <meshBasicMaterial color="#C4B5FD" transparent opacity={isActive ? 0.45 : 0} depthWrite={false} />
           </mesh>
-          {/* Mid glow - softer, wider */}
-          <mesh position={[0, 0.1, 0]} scale={[1, 2.5, 1]}>
-            <sphereGeometry args={[0.1, 12, 12]} />
-            <meshBasicMaterial color="#7C3AED" transparent opacity={isActive ? 0.2 : 0} />
+          {/* Layer 2 */}
+          <mesh position={[0, 0.05, 0]} scale={[1, 2.0, 1]}>
+            <sphereGeometry args={[0.09, 24, 24]} />
+            <meshBasicMaterial color="#8B5CF6" transparent opacity={isActive ? 0.22 : 0} depthWrite={false} />
           </mesh>
-          {/* Outer haze - very soft ambient */}
-          <mesh position={[0, 0.12, 0]} scale={[1, 2, 1]}>
-            <sphereGeometry args={[0.18, 12, 12]} />
-            <meshBasicMaterial color="#6D28D9" transparent opacity={isActive ? 0.08 : 0} />
+          {/* Layer 3 */}
+          <mesh position={[0, 0.07, 0]} scale={[1, 2.2, 1]}>
+            <sphereGeometry args={[0.14, 24, 24]} />
+            <meshBasicMaterial color="#6D28D9" transparent opacity={isActive ? 0.1 : 0} depthWrite={false} />
           </mesh>
-          <pointLight color="#A78BFA" intensity={isActive ? 1.0 : 0} distance={2.5} />
+          {/* Layer 4 - outermost haze */}
+          <mesh position={[0, 0.08, 0]} scale={[1, 2.0, 1]}>
+            <sphereGeometry args={[0.22, 24, 24]} />
+            <meshBasicMaterial color="#5B21B6" transparent opacity={isActive ? 0.04 : 0} depthWrite={false} />
+          </mesh>
+          <pointLight color="#8B5CF6" intensity={isActive ? 0.8 : 0} distance={2} />
         </group>
       ))}
 
