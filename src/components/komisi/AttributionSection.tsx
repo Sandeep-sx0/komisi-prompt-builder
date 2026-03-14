@@ -131,7 +131,7 @@ export const AttributionSection: React.FC = () => {
   const headlineRef = useRef<HTMLDivElement>(null);
   const diagramRef = useRef<HTMLDivElement>(null);
   const [activeLayer, setActiveLayer] = useState(-1);
-  const [bgProgress, setBgProgress] = useState(0);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -141,10 +141,6 @@ export const AttributionSection: React.FC = () => {
 
       const vh = window.innerHeight;
 
-      // Background: use the headline section's entry for the fade
-      const headlineRect = headlineEl.getBoundingClientRect();
-      const enterProgress = Math.max(0, Math.min(1, (vh - headlineRect.top) / (vh * 0.6)));
-      setBgProgress(enterProgress);
 
       // Diagram section: step activation
       const diagramRect = diagramEl.getBoundingClientRect();
@@ -164,11 +160,6 @@ export const AttributionSection: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lerp white → near-black
-  const r = Math.round(255 - bgProgress * (255 - 10));
-  const g = Math.round(255 - bgProgress * (255 - 10));
-  const b = Math.round(255 - bgProgress * (255 - 15));
-  const bgColor = `rgb(${r},${g},${b})`;
 
   const leftSteps = steps.filter((s) => s.side === "left");
   const rightSteps = steps.filter((s) => s.side === "right");
@@ -179,10 +170,7 @@ export const AttributionSection: React.FC = () => {
       <section
         ref={headlineRef}
         className="relative px-4 md:px-6 pt-8 pb-6 lg:pt-[16px] lg:pb-[8px]"
-        style={{
-          backgroundColor: bgColor,
-          transition: "background-color 0.05s linear"
-        }}>
+        style={{ backgroundColor: "#0C162A" }}>
         
         <motion.div
           className="text-center mb-4 lg:mb-6"
@@ -223,7 +211,7 @@ export const AttributionSection: React.FC = () => {
         ref={diagramRef}
         className="relative"
         style={{
-          backgroundColor: `rgb(10,10,15)`,
+          backgroundColor: "#0C162A",
           height: "580vh" /* 480vh steps + 100vh for the pinned viewport */
         }}>
         
