@@ -143,17 +143,17 @@ export const AttributionSection: React.FC = () => {
       const enterProgress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.6)));
       setBgProgress(enterProgress);
 
-      // Total scroll travel = sectionHeight - vh
-      const totalTravel = rect.height - vh;
       // scrolled = how far past the top of the section
       const scrolled = -rect.top;
 
-      // Pre-activation buffer: 10% of total travel (diagram centers on screen)
-      // Steps zone: 80% of total travel (4 equal zones)
-      // Post-release buffer: 10% of total travel
-      const bufferFraction = 0.1;
-      const preBuffer = totalTravel * bufferFraction;
-      const stepsZone = totalTravel * 0.8;
+      // Pre-activation buffer: the diagram must be fully centered on screen
+      // before Step 1 activates. The sticky container pins at top:0, so the
+      // diagram is centered once we've scrolled ~1vh into the section.
+      // With 600vh section height, totalTravel = 500vh.
+      // We want ~100vh of dead scroll before activation starts.
+      const preBuffer = vh * 1.0;
+      // 4 steps, each gets ~100vh of scroll travel
+      const stepsZone = vh * 4.0;
 
       const stepsScrolled = scrolled - preBuffer;
 
