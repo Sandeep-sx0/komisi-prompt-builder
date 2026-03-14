@@ -178,7 +178,7 @@ export const AttributionSection: React.FC = () => {
       {/* Section A — Headline block (normal scroll) */}
       <section
         ref={headlineRef}
-        className="relative px-4 md:px-6 py-16 lg:py-24"
+        className="relative px-4 md:px-6 pt-16 lg:pt-24 pb-6 lg:pb-8"
         style={{
           backgroundColor: bgColor,
           transition: "background-color 0.05s linear",
