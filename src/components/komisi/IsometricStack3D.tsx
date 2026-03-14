@@ -288,7 +288,7 @@ const ConnectorLine = ({ start, end, bright }: { start: THREE.Vector3; end: THRE
 /* ── Dashed connector lines between layers ── */
 const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
   const w = 3.5, d = 3.5, h = 0.6;
-  const gap = 1.4;
+  const gap = 2.8;
 
   const corners: [number, number][] = [
     [w / 2 - 0.15, d / 2 - 0.15],
