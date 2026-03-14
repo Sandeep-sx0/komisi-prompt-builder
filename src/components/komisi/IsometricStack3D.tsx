@@ -89,7 +89,7 @@ function createIconTexture(index: number, active: boolean): THREE.CanvasTexture 
   canvas.height = size;
   const ctx = canvas.getContext("2d")!;
   ctx.clearRect(0, 0, size, size);
-  const color = active ? "#FFFFFF" : "#3A3A6A";
+  const color = active ? "#FFFFFF" : "#1E3A4A";
   iconDrawers[index](ctx, size, color);
   const tex = new THREE.CanvasTexture(canvas);
   tex.needsUpdate = true;
