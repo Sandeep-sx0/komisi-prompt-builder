@@ -133,10 +133,18 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
     envMapIntensity: 2.0,
   }), []);
 
-  const edgeMat = useMemo(() => new THREE.LineBasicMaterial({
-    color: new THREE.Color("#2A2A4A"),
+  const edgeMatInactive = useMemo(() => new THREE.LineDashedMaterial({
+    color: new THREE.Color("#1E3A4A"),
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.8,
+    dashSize: 0.08,
+    gapSize: 0.06,
+  }), []);
+
+  const edgeMatActive = useMemo(() => new THREE.LineBasicMaterial({
+    color: new THREE.Color("#FFFFFF"),
+    transparent: true,
+    opacity: 1.0,
   }), []);
 
   const boxGeo = useMemo(() => new THREE.BoxGeometry(w, h, d), []);
