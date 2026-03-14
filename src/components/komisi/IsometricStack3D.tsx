@@ -158,7 +158,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
   // Corner screws
   const screwGeo = useMemo(() => new THREE.CylinderGeometry(0.06, 0.06, 0.08, 8), []);
-  const screwMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#3A3A5A", metalness: 0.9, roughness: 0.3 }), []);
+  const screwMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#1E3A4A", metalness: 0.9, roughness: 0.3 }), []);
   const screwPositions = useMemo(() => [
     [w / 2 - 0.15, h / 2 + 0.04, d / 2 - 0.15],
     [-w / 2 + 0.15, h / 2 + 0.04, d / 2 - 0.15],
