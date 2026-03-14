@@ -141,10 +141,6 @@ export const AttributionSection: React.FC = () => {
 
       const vh = window.innerHeight;
 
-      // Background: use the headline section's entry for the fade
-      const headlineRect = headlineEl.getBoundingClientRect();
-      const enterProgress = Math.max(0, Math.min(1, (vh - headlineRect.top) / (vh * 0.6)));
-      setBgProgress(enterProgress);
 
       // Diagram section: step activation
       const diagramRect = diagramEl.getBoundingClientRect();
