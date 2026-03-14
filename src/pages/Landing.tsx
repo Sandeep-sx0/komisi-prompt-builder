@@ -16,6 +16,9 @@ import { Shine } from "@/components/animate-ui/primitives/effects/shine";
 import { Magnetic } from "@/components/animate-ui/primitives/effects/magnetic";
 import { Tilt } from "@/components/animate-ui/primitives/effects/tilt";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
+import { TerminalAnimation } from "@/components/komisi/TerminalAnimation";
+import { DataFlowAnimation } from "@/components/komisi/DataFlowAnimation";
+import { CreatorFlipCard } from "@/components/komisi/CreatorFlipCard";
 
 /* ── Pill label component ── */
 const PillLabel = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
