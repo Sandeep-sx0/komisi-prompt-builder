@@ -131,25 +131,16 @@ export const AttributionSection: React.FC = () => {
   const headlineRef = useRef<HTMLDivElement>(null);
   const diagramRef = useRef<HTMLDivElement>(null);
   const [activeLayer, setActiveLayer] = useState(-1);
-  const [bgProgress, setBgProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const headlineEl = headlineRef.current;
       const diagramEl = diagramRef.current;
-      if (!headlineEl || !diagramEl) return;
+      if (!diagramEl) return;
 
       const vh = window.innerHeight;
-
-      // Background: use the headline section's entry for the fade
-      const headlineRect = headlineEl.getBoundingClientRect();
-      const enterProgress = Math.max(0, Math.min(1, (vh - headlineRect.top) / (vh * 0.6)));
-      setBgProgress(enterProgress);
-
-      // Diagram section: step activation
       const diagramRect = diagramEl.getBoundingClientRect();
       const scrolled = -diagramRect.top;
-      const stepsZone = vh * 4.8; // 480vh total, 120vh per step
+      const stepsZone = vh * 4.8;
 
       if (scrolled <= 0) {
         setActiveLayer(-1);
@@ -163,12 +154,6 @@ export const AttributionSection: React.FC = () => {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  // Lerp white → near-black
-  const r = Math.round(255 - bgProgress * (255 - 10));
-  const g = Math.round(255 - bgProgress * (255 - 10));
-  const b = Math.round(255 - bgProgress * (255 - 15));
-  const bgColor = `rgb(${r},${g},${b})`;
 
   const leftSteps = steps.filter((s) => s.side === "left");
   const rightSteps = steps.filter((s) => s.side === "right");
