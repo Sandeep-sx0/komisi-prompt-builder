@@ -15,7 +15,7 @@ import { SlidingNumber } from "@/components/animate-ui/primitives/texts/sliding-
 import { Shine } from "@/components/animate-ui/primitives/effects/shine";
 import { Magnetic } from "@/components/animate-ui/primitives/effects/magnetic";
 import { Tilt } from "@/components/animate-ui/primitives/effects/tilt";
-import PrismaticBurst from "@/components/Backgrounds/PrismaticBurst";
+import { FlickeringGrid } from "@/components/ui/flickering-grid";
 
 /* ── Pill label component ── */
 const PillLabel = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
@@ -121,21 +121,7 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-background">
-      {/* PrismaticBurst full-page background */}
-      <div className="fixed inset-0 z-0">
-        <PrismaticBurst
-          intensity={1.2}
-          speed={0.4}
-          animationType="rotate3d"
-          colors={["#111827", "#6B7280", "#1f2937"]}
-          distort={1}
-          mixBlendMode="lighten"
-        />
-      </div>
-
-      {/* All content sits above */}
-      <div className="relative z-10">
+    <div className="min-h-screen bg-background">
 
       {/* ═══════════════════════════════════════════
           SECTION 1 — NAVBAR
@@ -188,6 +174,17 @@ const Landing = () => {
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
       <section className="pt-36 pb-24 px-6 relative overflow-hidden">
+        {/* Flickering grid background */}
+        <div className="absolute inset-0 z-0">
+          <FlickeringGrid
+            squareSize={4}
+            gridGap={12}
+            flickerChance={0.05}
+            maxOpacity={0.05}
+            color="#000000"
+            className="w-full h-full"
+          />
+        </div>
         {/* Bottom fade to blend into next section */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
 
@@ -830,7 +827,6 @@ KomisiSDK.resolve()`}
           </div>
         </div>
       </footer>
-      </div>{/* end z-10 content wrapper */}
     </div>
   );
 };
