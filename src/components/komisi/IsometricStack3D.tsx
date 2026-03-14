@@ -278,7 +278,7 @@ const ConnectorLine = ({ start, end, bright }: { start: THREE.Vector3; end: THRE
   return (
     <line_ ref={ref} geometry={geo}>
       <lineDashedMaterial
-        color={bright ? "#8B8BBA" : "#3A3A6A"}
+        color={bright ? "#FFFFFF" : "#1E3A4A"}
         dashSize={0.1}
         gapSize={0.1}
         transparent
