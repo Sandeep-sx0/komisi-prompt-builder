@@ -19,7 +19,7 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { TerminalAnimation } from "@/components/komisi/TerminalAnimation";
 import { DataFlowAnimation } from "@/components/komisi/DataFlowAnimation";
 import { CreatorFlipCard } from "@/components/komisi/CreatorFlipCard";
-import { IsometricStack } from "@/components/komisi/IsometricStack";
+import { AttributionSection } from "@/components/komisi/AttributionSection";
 
 /* ── Pill label component ── */
 const PillLabel = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
@@ -383,78 +383,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 5 — ATTRIBUTION ENGINE (Isometric)
       ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden">
-        {/* Gradient fade from light to dark */}
-        <div className="h-32 bg-gradient-to-b from-background to-[#0A0A0F]" />
-
-        <div className="bg-[#0A0A0F] pb-24 px-6">
-          {/* Header */}
-          <Reveal className="text-center mb-6">
-            <div className="inline-flex items-center px-4 py-1.5 mb-8 border border-white/15 font-mono text-xs uppercase tracking-[0.15em] text-white/40">
-              HOW ATTRIBUTION WORKS
-            </div>
-            <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight">
-              Every install attributed.<br />
-              No IDFA. No ATT prompt.<br />
-              No guesswork.
-            </h2>
-          </Reveal>
-
-          {/* Chips */}
-          <Reveal delay={0.1} className="flex flex-wrap justify-center gap-2 mb-20">
-            {["No IDFA", "No ATT prompt", "No cookies", "App Store privacy label: zero impact"].map(t => (
-              <span key={t} className="text-xs border border-white/10 text-white/50 px-3 py-1.5">{t}</span>
-            ))}
-          </Reveal>
-
-          {/* 3-column layout: left text — stack — right text */}
-          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-4 items-center">
-            {/* Left text blocks — Steps 1 & 3 */}
-            <div className="flex flex-col justify-between gap-24 lg:gap-40">
-              <Reveal>
-                <div className="lg:text-right">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">STEP 1</span>
-                  <h4 className="text-base font-normal text-white mb-2">Creator shares their link</h4>
-                  <p className="text-sm text-[#9CA3AF] leading-relaxed">Every creator gets a unique Komisi link. One tap takes the user directly to the App Store or Google Play.</p>
-                </div>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <div className="lg:text-right">
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">STEP 3</span>
-                  <h4 className="text-base font-normal text-white mb-2">SDK resolves attribution</h4>
-                  <p className="text-sm text-[#9CA3AF] leading-relaxed">On first launch, the SDK matches the install to the creator. No IDFA. No ATT prompt. No cookies.</p>
-                </div>
-              </Reveal>
-            </div>
-
-            {/* Center — Isometric stack */}
-            <Reveal delay={0.15} className="flex justify-center">
-              <IsometricStack />
-            </Reveal>
-
-            {/* Right text blocks — Steps 2 & 4 */}
-            <div className="flex flex-col justify-between gap-24 lg:gap-40">
-              <Reveal delay={0.1}>
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">STEP 2</span>
-                  <h4 className="text-base font-normal text-white mb-2">User clicks and installs</h4>
-                  <p className="text-sm text-[#9CA3AF] leading-relaxed">The user lands in the App Store, installs, and opens the app. The full journey is captured.</p>
-                </div>
-              </Reveal>
-              <Reveal delay={0.25}>
-                <div>
-                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">STEP 4</span>
-                  <h4 className="text-base font-normal text-white mb-2">Commission queued automatically</h4>
-                  <p className="text-sm text-[#9CA3AF] leading-relaxed">RevenueCat or Adapty fires a webhook. Commission is calculated against net revenue and queued for payout.</p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-
-        {/* Gradient fade from dark back to light */}
-        <div className="h-32 bg-gradient-to-b from-[#0A0A0F] to-background" />
-      </section>
+      <AttributionSection />
 
       {/* ═══════════════════════════════════════════
           SECTION 6 — FEATURE CARDS
