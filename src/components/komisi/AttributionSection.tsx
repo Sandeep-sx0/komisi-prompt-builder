@@ -160,11 +160,6 @@ export const AttributionSection: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lerp white → near-black
-  const r = Math.round(255 - bgProgress * (255 - 10));
-  const g = Math.round(255 - bgProgress * (255 - 10));
-  const b = Math.round(255 - bgProgress * (255 - 15));
-  const bgColor = `rgb(${r},${g},${b})`;
 
   const leftSteps = steps.filter((s) => s.side === "left");
   const rightSteps = steps.filter((s) => s.side === "right");
