@@ -211,7 +211,7 @@ export const AttributionSection: React.FC = () => {
         ref={diagramRef}
         className="relative"
         style={{
-          backgroundColor: `rgb(10,10,15)`,
+          backgroundColor: "#0C162A",
           height: "580vh" /* 480vh steps + 100vh for the pinned viewport */
         }}>
         
