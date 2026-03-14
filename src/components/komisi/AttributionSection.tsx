@@ -170,7 +170,7 @@ export const AttributionSection: React.FC = () => {
       <section
         ref={headlineRef}
         className="relative px-4 md:px-6 pt-8 pb-6 lg:pt-[16px] lg:pb-[8px]"
-        style={{ backgroundColor: "#0C162A" }}>
+        style={{ backgroundColor: "#0B1118" }}>
         
         <motion.div
           className="text-center mb-4 lg:mb-6"
