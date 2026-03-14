@@ -361,7 +361,7 @@ const Landing = () => {
               <Reveal key={i} delay={card.delay} className="h-full">
                 <Tilt maxTilt={6} className="w-full h-full">
                   <motion.div className="border border-border bg-card overflow-hidden w-full h-full flex flex-col">
-                    <div className="min-h-[240px] flex-1 bg-muted overflow-hidden">{card.illustration}</div>
+                    <div className="h-[240px] bg-muted overflow-hidden shrink-0">{card.illustration}</div>
                     <div className="p-6 flex-1 flex flex-col">
                       <h3 className="text-lg font-normal text-foreground leading-snug mb-2">{card.heading}</h3>
                       <p className="text-sm text-text-secondary mb-4">{card.body}</p>
