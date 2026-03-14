@@ -52,7 +52,6 @@ const StepBlock = ({
       className={`flex ${align === "left" ? "lg:flex-row-reverse lg:text-right" : "lg:flex-row"} items-start gap-4`}
       style={{
         transition: "all 0.6s cubic-bezier(0.16,1,0.3,1)",
-        opacity: active ? 1 : 0.4,
         transform: active ? "translateY(-6px)" : "translateY(0)",
       }}
     >
@@ -64,15 +63,16 @@ const StepBlock = ({
         <div
           className="w-[6px] h-[6px] rounded-full shrink-0"
           style={{
-            background: active ? "#FFFFFF" : "#1A2A35",
-            transition: "all 0.3s ease",
+            background: active ? "#FFFFFF" : "#4A4A7A",
+            boxShadow: active ? "0 0 8px rgba(167,139,250,0.6)" : "none",
+            transition: "all 0.6s ease",
           }}
         />
         <div
           className="flex-1 h-px"
           style={{
-            backgroundImage: `repeating-linear-gradient(to ${align === "left" ? "left" : "right"}, ${active ? "#0C1C28" : "#1A2A35"} 0px, ${active ? "#0C1C28" : "#1A2A35"} 4px, transparent 4px, transparent 8px)`,
-            transition: "all 0.3s ease",
+            backgroundImage: `repeating-linear-gradient(to ${align === "left" ? "left" : "right"}, ${active ? "rgba(255,255,255,0.4)" : "rgba(74,74,122,0.3)"} 0px, ${active ? "rgba(255,255,255,0.4)" : "rgba(74,74,122,0.3)"} 4px, transparent 4px, transparent 8px)`,
+            transition: "all 0.6s ease",
           }}
         />
       </div>
@@ -82,14 +82,14 @@ const StepBlock = ({
         <div
           className="w-8 h-8 rounded-lg flex items-center justify-center mb-3"
           style={{
-            background: active ? "rgba(12,28,40,0.3)" : "rgba(255,255,255,0.03)",
+            background: active ? "rgba(167,139,250,0.15)" : "rgba(255,255,255,0.03)",
             transition: "background 0.6s ease",
           }}
         >
           <Icon
             size={16}
             style={{
-              color: active ? "#FFFFFF" : "#4B5563",
+              color: active ? "#A78BFA" : "#4B5563",
               transition: "color 0.6s ease",
             }}
           />
@@ -130,6 +130,7 @@ const StepBlock = ({
 export const AttributionSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeLayer, setActiveLayer] = useState(-1);
+  const [bgProgress, setBgProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -138,27 +139,20 @@ export const AttributionSection: React.FC = () => {
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
 
-      // How far we've scrolled into the section (0 = top just hit viewport top, to sectionHeight - vh)
-      const scrolled = -rect.top;
-      const maxScroll = rect.height - vh;
+      // Background: fade from white to dark as section enters
+      const enterProgress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.6)));
+      setBgProgress(enterProgress);
 
-      if (scrolled < 0 || scrolled > maxScroll) {
-        if (scrolled < 0) setActiveLayer(-1);
-        return;
-      }
+      // Layer activation: 4 zones across the scrollable portion
+      const sectionProgress = Math.max(0, Math.min(1, -rect.top / (rect.height - vh)));
 
-      // Convert to vh units relative to section
-      const scrolledVh = (scrolled / vh);
-
-      // 0-0.2vh buffer: nothing active
-      // 0.2-1.4: step 1, 1.4-2.6: step 2, 2.6-3.8: step 3, 3.8-5.0: step 4
-      if (scrolledVh < 0.2) {
+      if (sectionProgress <= 0 || enterProgress < 0.5) {
         setActiveLayer(-1);
-      } else if (scrolledVh < 1.4) {
+      } else if (sectionProgress < 0.25) {
         setActiveLayer(0);
-      } else if (scrolledVh < 2.6) {
+      } else if (sectionProgress < 0.5) {
         setActiveLayer(1);
-      } else if (scrolledVh < 3.8) {
+      } else if (sectionProgress < 0.75) {
         setActiveLayer(2);
       } else {
         setActiveLayer(3);
@@ -170,6 +164,12 @@ export const AttributionSection: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lerp white → near-black
+  const r = Math.round(255 - bgProgress * (255 - 10));
+  const g = Math.round(255 - bgProgress * (255 - 10));
+  const b = Math.round(255 - bgProgress * (255 - 15));
+  const bgColor = `rgb(${r},${g},${b})`;
+
   const leftSteps = steps.filter((s) => s.side === "left");
   const rightSteps = steps.filter((s) => s.side === "right");
 
@@ -178,12 +178,13 @@ export const AttributionSection: React.FC = () => {
       ref={sectionRef}
       className="relative"
       style={{
-        backgroundColor: "#0A0A0F",
-        height: "500vh",
+        backgroundColor: bgColor,
+        transition: "background-color 0.05s linear",
+        minHeight: "250vh",
       }}
     >
       {/* Sticky viewport */}
-      <div className="sticky top-0 h-screen flex flex-col justify-center px-4 md:px-6 py-16 lg:py-24 overflow-hidden">
+      <div className="sticky top-0 min-h-screen flex flex-col justify-center px-4 md:px-6 py-16 lg:py-24 overflow-hidden">
         {/* Header */}
         <motion.div
           className="text-center mb-4 lg:mb-6"
@@ -220,7 +221,7 @@ export const AttributionSection: React.FC = () => {
         </motion.div>
 
         {/* Three-column layout */}
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(400px,500px)_1fr] gap-6 lg:gap-4 items-start">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(400px,500px)_1fr] gap-6 lg:gap-4 items-center">
           {/* Left — Steps 1 & 3 */}
           <div className="flex flex-col justify-between gap-12 lg:gap-24 order-2 lg:order-1">
             {leftSteps.map((s) => {
