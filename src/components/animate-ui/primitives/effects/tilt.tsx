@@ -44,7 +44,7 @@ const Tilt = React.forwardRef<HTMLDivElement, TiltProps>(
         whileHover={{ scale }}
         {...(props as any)}
       >
-        <motion.div style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}>
+        <motion.div className="h-full" style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}>
           {children}
         </motion.div>
       </motion.div>
