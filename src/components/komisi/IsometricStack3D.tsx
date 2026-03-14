@@ -251,6 +251,21 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
         />
       ))}
 
+      {/* Purple glowing orbs at all 4 top-surface corners */}
+      {screwPositions.map((pos, i) => (
+        <group key={`glow-orb-${i}`} position={[pos[0], -h / 2 - 0.05, pos[2]]}>
+          <mesh>
+            <sphereGeometry args={[0.08, 16, 16]} />
+            <meshBasicMaterial color="#A78BFA" transparent opacity={isActive ? 1 : 0} />
+          </mesh>
+          <mesh>
+            <sphereGeometry args={[0.2, 16, 16]} />
+            <meshBasicMaterial color="#7C3AED" transparent opacity={isActive ? 0.3 : 0} />
+          </mesh>
+          <pointLight color="#A78BFA" intensity={isActive ? 1.5 : 0} distance={3} />
+        </group>
+      ))}
+
       {/* Point light for active glow */}
       <pointLight ref={pointLightRef} position={[0, 1.5, 0]} color="#A78BFA" intensity={0} distance={5} />
     </group>
