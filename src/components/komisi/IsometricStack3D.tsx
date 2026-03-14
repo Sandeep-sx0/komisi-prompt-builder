@@ -251,18 +251,30 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
         />
       ))}
 
-      {/* Purple glowing orbs at all 4 top-surface corners (at screw positions) */}
+      {/* Flame-like glowing exhaust at all 4 top-surface corners */}
       {screwPositions.map((pos, i) => (
-        <group key={`glow-orb-${i}`} position={pos}>
+        <group key={`glow-orb-${i}`} position={[pos[0], pos[1] + 0.05, pos[2]]}>
+          {/* Bright core - small and intense */}
           <mesh>
-            <sphereGeometry args={[0.08, 16, 16]} />
-            <meshBasicMaterial color="#A78BFA" transparent opacity={isActive ? 1 : 0} />
+            <sphereGeometry args={[0.04, 12, 12]} />
+            <meshBasicMaterial color="#E0CBFF" transparent opacity={isActive ? 0.95 : 0} />
           </mesh>
-          <mesh>
-            <sphereGeometry args={[0.2, 16, 16]} />
-            <meshBasicMaterial color="#7C3AED" transparent opacity={isActive ? 0.3 : 0} />
+          {/* Inner flame - elongated upward */}
+          <mesh position={[0, 0.06, 0]} scale={[1, 2.2, 1]}>
+            <sphereGeometry args={[0.06, 12, 12]} />
+            <meshBasicMaterial color="#A78BFA" transparent opacity={isActive ? 0.5 : 0} />
           </mesh>
-          <pointLight color="#A78BFA" intensity={isActive ? 1.5 : 0} distance={3} />
+          {/* Mid glow - softer, wider */}
+          <mesh position={[0, 0.1, 0]} scale={[1, 2.5, 1]}>
+            <sphereGeometry args={[0.1, 12, 12]} />
+            <meshBasicMaterial color="#7C3AED" transparent opacity={isActive ? 0.2 : 0} />
+          </mesh>
+          {/* Outer haze - very soft ambient */}
+          <mesh position={[0, 0.12, 0]} scale={[1, 2, 1]}>
+            <sphereGeometry args={[0.18, 12, 12]} />
+            <meshBasicMaterial color="#6D28D9" transparent opacity={isActive ? 0.08 : 0} />
+          </mesh>
+          <pointLight color="#A78BFA" intensity={isActive ? 1.0 : 0} distance={2.5} />
         </group>
       ))}
 
