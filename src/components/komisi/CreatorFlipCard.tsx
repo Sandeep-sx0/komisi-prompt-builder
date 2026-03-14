@@ -1,74 +1,135 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Check, Copy } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
+
+type CardState = "default" | "reviewing" | "approved";
+
+const LINK_TEXT = "komisi.io/r/abc123";
 
 export const CreatorFlipCard: React.FC = () => {
-  const [flipped, setFlipped] = useState(false);
+  const [state, setState] = useState<CardState>("default");
+  const [typedChars, setTypedChars] = useState(0);
+  const [showTracking, setShowTracking] = useState(false);
+  const mountedRef = useRef(true);
 
-  const flip = useCallback(() => setFlipped(true), []);
-
-  // Auto-play loop
   useEffect(() => {
-    if (flipped) {
-      const t = setTimeout(() => setFlipped(false), 2500);
-      return () => clearTimeout(t);
-    } else {
-      const t = setTimeout(() => setFlipped(true), 3500);
+    mountedRef.current = true;
+    return () => { mountedRef.current = false; };
+  }, []);
+
+  // State machine
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (state === "default") {
+      setTypedChars(0);
+      setShowTracking(false);
+      timer = setTimeout(() => mountedRef.current && setState("reviewing"), 2000);
+    } else if (state === "reviewing") {
+      timer = setTimeout(() => mountedRef.current && setState("approved"), 1500);
+    } else if (state === "approved") {
+      // Reset after showing approved state
+      timer = setTimeout(() => mountedRef.current && setState("default"), 4000);
+    }
+
+    return () => clearTimeout(timer);
+  }, [state]);
+
+  // Typewriter effect for approved state
+  useEffect(() => {
+    if (state !== "approved") return;
+    if (typedChars >= LINK_TEXT.length) {
+      const t = setTimeout(() => mountedRef.current && setShowTracking(true), 400);
       return () => clearTimeout(t);
     }
-  }, [flipped]);
+    const t = setTimeout(() => {
+      mountedRef.current && setTypedChars((p) => p + 1);
+    }, 45);
+    return () => clearTimeout(t);
+  }, [state, typedChars]);
 
   return (
     <div className="w-full h-full flex items-center justify-center">
-      <div className="w-full max-w-[220px] relative" style={{ perspective: "600px" }}>
-        <AnimatePresence mode="wait">
-          {!flipped ? (
-            <motion.div
-              key="front"
-              initial={{ rotateY: 90, opacity: 0 }}
-              animate={{ rotateY: 0, opacity: 1 }}
-              exit={{ rotateY: -90, opacity: 0 }}
-              transition={{ duration: 0.35 }}
-              className="border border-border bg-background rounded-lg p-4"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-xs font-medium text-text-secondary">
-                  JL
-                </div>
-                <div>
-                  <div className="text-sm font-medium text-foreground">@creator</div>
-                  <div className="text-[10px] text-text-tertiary">12.4K followers</div>
-                </div>
-              </div>
-              <button
-                onClick={flip}
-                className="w-full bg-foreground text-primary-foreground text-xs font-medium text-center py-2 rounded-md hover:opacity-90 transition-opacity cursor-pointer"
-              >
-                Apply
-              </button>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="back"
-              initial={{ rotateY: 90, opacity: 0 }}
-              animate={{ rotateY: 0, opacity: 1 }}
-              exit={{ rotateY: -90, opacity: 0 }}
-              transition={{ duration: 0.35 }}
-              className="border border-border bg-background rounded-lg p-4"
-            >
-              <div className="flex items-center gap-1.5 mb-3">
-                <Check size={14} className="text-emerald-500" />
-                <span className="text-xs font-medium text-emerald-500">Approved</span>
-              </div>
-              <div className="text-[10px] text-text-tertiary mb-1">Link Generated</div>
-              <div className="flex items-center gap-2 bg-muted rounded px-2 py-1.5 mb-3">
-                <span className="text-xs font-mono text-foreground truncate flex-1">komisi.io/r/abc123</span>
-                <Copy size={12} className="text-text-tertiary shrink-0" />
-              </div>
-              <div className="text-[10px] text-text-tertiary text-center">Tracking active</div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <div className="w-full max-w-[220px]">
+        <div className="border border-border bg-background rounded-lg p-4">
+          {/* Profile — always visible */}
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-xs font-medium text-text-secondary">
+              JL
+            </div>
+            <div>
+              <div className="text-sm font-medium text-foreground">@creator</div>
+              <div className="text-[10px] text-text-tertiary">12.4K followers</div>
+            </div>
+          </div>
+
+          {/* Bottom area — animated states */}
+          <div className="min-h-[72px]">
+            <AnimatePresence mode="wait">
+              {state === "default" && (
+                <motion.div
+                  key="apply"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <button
+                    onClick={() => setState("reviewing")}
+                    className="w-full bg-foreground text-primary-foreground text-xs font-medium text-center py-2 rounded-md cursor-pointer"
+                  >
+                    Apply
+                  </button>
+                </motion.div>
+              )}
+
+              {state === "reviewing" && (
+                <motion.div
+                  key="reviewing"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <div className="w-full bg-muted text-text-secondary text-xs font-medium text-center py-2 rounded-md flex items-center justify-center gap-2">
+                    <Loader2 size={12} className="animate-spin" />
+                    Reviewing…
+                  </div>
+                </motion.div>
+              )}
+
+              {state === "approved" && (
+                <motion.div
+                  key="approved"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.25 }}
+                  className="space-y-2"
+                >
+                  <div className="flex items-center gap-1.5">
+                    <Check size={14} className="text-emerald-500" />
+                    <span className="text-xs font-medium text-emerald-500">Approved</span>
+                  </div>
+                  <div className="bg-muted rounded px-2 py-1.5">
+                    <span className="text-xs font-mono text-foreground">
+                      {LINK_TEXT.slice(0, typedChars)}
+                    </span>
+                    <span className="inline-block w-[5px] h-3 bg-foreground/40 align-middle animate-pulse ml-px" />
+                  </div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: showTracking ? 1 : 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-[10px] text-text-tertiary text-center"
+                  >
+                    Tracking active
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
     </div>
   );
