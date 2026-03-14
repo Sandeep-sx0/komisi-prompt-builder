@@ -203,8 +203,8 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
         eMat.color.lerp(new THREE.Color("#8B8BBA"), delta * 4);
         eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 1, delta * 4);
       } else {
-        eMat.color.lerp(new THREE.Color("#2A2A4A"), delta * 4);
-        eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 0.6, delta * 4);
+        eMat.color.lerp(new THREE.Color("#2A5570"), delta * 4);
+        eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 0.5, delta * 4);
       }
     }
 
