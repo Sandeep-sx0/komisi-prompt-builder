@@ -127,7 +127,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   }), []);
 
   const activeMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1A1A2E"),
+    color: new THREE.Color("#0C1C28"),
     metalness: 1.0,
     roughness: 0.1,
     envMapIntensity: 2.0,
