@@ -324,41 +324,12 @@ const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
       {segments.map((seg, i) => (
         <ConnectorLine key={i} start={seg.start} end={seg.end} bright={activeLayer === seg.pairIndex} />
       ))}
-      {dots.map((dot, i) => {
-        const isTopCorner = dot.pos[1] === (1.5 - dot.layerIdx) * gap + h / 2;
-        const isActiveDot = activeLayer === dot.layerIdx;
-        return (
-          <group key={`dot-${i}`} position={dot.pos}>
-            {/* Base dot */}
-            <mesh>
-              <sphereGeometry args={[0.05, 8, 8]} />
-              <meshBasicMaterial color={isActiveDot ? "#FFFFFF" : "#2A5570"} transparent opacity={isActiveDot ? 1 : 0.4} />
-            </mesh>
-            {/* Glowing orb on top corners of active layer */}
-            {isActiveDot && isTopCorner && (
-              <>
-                {/* Inner bright core */}
-                <mesh>
-                  <sphereGeometry args={[0.08, 16, 16]} />
-                  <meshBasicMaterial color="#C4B5FD" transparent opacity={0.9} />
-                </mesh>
-                {/* Mid glow */}
-                <mesh>
-                  <sphereGeometry args={[0.18, 16, 16]} />
-                  <meshBasicMaterial color="#7C3AED" transparent opacity={0.35} />
-                </mesh>
-                {/* Outer bloom halo */}
-                <mesh>
-                  <sphereGeometry args={[0.35, 16, 16]} />
-                  <meshBasicMaterial color="#6D28D9" transparent opacity={0.12} />
-                </mesh>
-                {/* Point light for local illumination */}
-                <pointLight color="#A78BFA" intensity={1.5} distance={3} />
-              </>
-            )}
-          </group>
-        );
-      })}
+      {dots.map((dot, i) => (
+        <mesh key={`dot-${i}`} position={dot.pos}>
+          <sphereGeometry args={[0.05, 8, 8]} />
+          <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#2A5570"} transparent opacity={activeLayer === dot.layerIdx ? 1 : 0.4} />
+        </mesh>
+      ))}
     </group>
   );
 };
