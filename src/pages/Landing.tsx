@@ -174,8 +174,16 @@ const Landing = () => {
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
       <section className="pt-36 pb-24 px-6 relative overflow-hidden">
-        {/* Flickering grid background */}
+        {/* Sky background image — furthest back */}
         <div className="absolute inset-0 z-0">
+          <img
+            src="/images/Komisi_BG.webp"
+            alt=""
+            className="w-full h-full object-cover"
+          />
+        </div>
+        {/* Flickering grid background — on top of sky */}
+        <div className="absolute inset-0 z-[1]">
           <FlickeringGrid
             squareSize={4}
             gridGap={12}
