@@ -227,7 +227,7 @@ export const AttributionSection: React.FC = () => {
         </motion.div>
 
         {/* Three-column layout */}
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(400px,500px)_1fr] gap-6 lg:gap-4 items-center">
+        <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(400px,520px)_1fr] gap-6 lg:gap-0 items-center">
           {/* Left — Steps 1 & 3 */}
           <div className="flex flex-col justify-between gap-12 lg:gap-24 order-2 lg:order-1">
             {leftSteps.map((s) => {
