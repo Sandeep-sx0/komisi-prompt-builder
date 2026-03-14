@@ -1,6 +1,15 @@
 import React, { useRef, useMemo, useEffect } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
 import * as THREE from "three";
+
+// Extend R3F to recognize <line_> as THREE.Line
+extend({ Line_: THREE.Line });
+
+declare module "@react-three/fiber" {
+  interface ThreeElements {
+    line_: any;
+  }
+}
 
 /* ── Icon drawing helpers ── */
 function drawLinkIcon(ctx: CanvasRenderingContext2D, size: number, color: string) {
