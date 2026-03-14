@@ -128,39 +128,33 @@ const StepBlock = ({
 };
 
 export const AttributionSection: React.FC = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
+  const diagramRef = useRef<HTMLDivElement>(null);
   const [activeLayer, setActiveLayer] = useState(-1);
   const [bgProgress, setBgProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const el = sectionRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
+      const headlineEl = headlineRef.current;
+      const diagramEl = diagramRef.current;
+      if (!headlineEl || !diagramEl) return;
+
       const vh = window.innerHeight;
 
-      // Background: fade from white to dark as section enters
-      const enterProgress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.6)));
+      // Background: use the headline section's entry for the fade
+      const headlineRect = headlineEl.getBoundingClientRect();
+      const enterProgress = Math.max(0, Math.min(1, (vh - headlineRect.top) / (vh * 0.6)));
       setBgProgress(enterProgress);
 
-      // scrolled = how far past the top of the section
-      const scrolled = -rect.top;
+      // Diagram section: step activation
+      const diagramRect = diagramEl.getBoundingClientRect();
+      const scrolled = -diagramRect.top;
+      const stepsZone = vh * 4.8; // 480vh total, 120vh per step
 
-      // Pre-activation buffer: the diagram must be fully centered on screen
-      // before Step 1 activates. The sticky container pins at top:0, so the
-      // diagram is centered once we've scrolled ~1vh into the section.
-      // With 600vh section height, totalTravel = 500vh.
-      // We want ~100vh of dead scroll before activation starts.
-      const preBuffer = vh * 1.0;
-      // 4 steps, each gets ~100vh of scroll travel
-      const stepsZone = vh * 4.0;
-
-      const stepsScrolled = scrolled - preBuffer;
-
-      if (stepsScrolled <= 0 || enterProgress < 0.5) {
+      if (scrolled <= 0) {
         setActiveLayer(-1);
       } else {
-        const stepProgress = Math.min(stepsScrolled / stepsZone, 0.9999);
+        const stepProgress = Math.min(scrolled / stepsZone, 0.9999);
         setActiveLayer(Math.floor(stepProgress * 4));
       }
     };
@@ -180,18 +174,16 @@ export const AttributionSection: React.FC = () => {
   const rightSteps = steps.filter((s) => s.side === "right");
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative"
-      style={{
-        backgroundColor: bgColor,
-        transition: "background-color 0.05s linear",
-        minHeight: "600vh",
-      }}
-    >
-      {/* Sticky viewport */}
-      <div className="sticky top-0 min-h-screen flex flex-col justify-center px-4 md:px-6 py-16 lg:py-24 overflow-hidden">
-        {/* Header */}
+    <>
+      {/* Section A — Headline block (normal scroll) */}
+      <section
+        ref={headlineRef}
+        className="relative px-4 md:px-6 py-16 lg:py-24"
+        style={{
+          backgroundColor: bgColor,
+          transition: "background-color 0.05s linear",
+        }}
+      >
         <motion.div
           className="text-center mb-4 lg:mb-6"
           initial={{ opacity: 0, y: 30 }}
@@ -211,9 +203,8 @@ export const AttributionSection: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* Chips */}
         <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-8 lg:mb-12"
+          className="flex flex-wrap justify-center gap-2"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -225,39 +216,50 @@ export const AttributionSection: React.FC = () => {
             </span>
           ))}
         </motion.div>
+      </section>
 
-        {/* Three-column layout */}
-        <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(400px,520px)_1fr] gap-6 lg:gap-0 items-center">
-          {/* Left — Steps 1 & 3 */}
-          <div className="flex flex-col justify-between gap-12 lg:gap-24 order-2 lg:order-1">
-            {leftSteps.map((s) => {
-              const idx = steps.indexOf(s);
-              return <StepBlock key={s.step} step={s} active={activeLayer === idx} align="left" />;
-            })}
-          </div>
+      {/* Section B — Diagram block (sticky scroll, 480vh) */}
+      <section
+        ref={diagramRef}
+        className="relative"
+        style={{
+          backgroundColor: `rgb(10,10,15)`,
+          height: "580vh", /* 480vh steps + 100vh for the pinned viewport */
+        }}
+      >
+        <div className="sticky top-0 h-screen flex items-center justify-center px-4 md:px-6 overflow-hidden">
+          <div className="max-w-5xl mx-auto w-full grid grid-cols-1 lg:grid-cols-[1fr_minmax(400px,520px)_1fr] gap-6 lg:gap-0 items-center">
+            {/* Left — Steps 1 & 3 */}
+            <div className="flex flex-col justify-between gap-12 lg:gap-24 order-2 lg:order-1">
+              {leftSteps.map((s) => {
+                const idx = steps.indexOf(s);
+                return <StepBlock key={s.step} step={s} active={activeLayer === idx} align="left" />;
+              })}
+            </div>
 
-          {/* Center — Three.js Canvas */}
-          <div className="flex justify-center order-1 lg:order-2 h-[400px] md:h-[500px] lg:h-[600px]">
-            <Suspense
-              fallback={
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="w-8 h-8 border-2 border-white/20 border-t-white/60 rounded-full animate-spin" />
-                </div>
-              }
-            >
-              <IsometricStack3D activeLayer={activeLayer} />
-            </Suspense>
-          </div>
+            {/* Center — Three.js Canvas */}
+            <div className="flex justify-center order-1 lg:order-2 h-[400px] md:h-[500px] lg:h-[600px]">
+              <Suspense
+                fallback={
+                  <div className="w-full h-full flex items-center justify-center">
+                    <div className="w-8 h-8 border-2 border-white/20 border-t-white/60 rounded-full animate-spin" />
+                  </div>
+                }
+              >
+                <IsometricStack3D activeLayer={activeLayer} />
+              </Suspense>
+            </div>
 
-          {/* Right — Steps 2 & 4 */}
-          <div className="flex flex-col justify-between gap-12 lg:gap-24 order-3">
-            {rightSteps.map((s) => {
-              const idx = steps.indexOf(s);
-              return <StepBlock key={s.step} step={s} active={activeLayer === idx} align="right" />;
-            })}
+            {/* Right — Steps 2 & 4 */}
+            <div className="flex flex-col justify-between gap-12 lg:gap-24 order-3">
+              {rightSteps.map((s) => {
+                const idx = steps.indexOf(s);
+                return <StepBlock key={s.step} step={s} active={activeLayer === idx} align="right" />;
+              })}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
