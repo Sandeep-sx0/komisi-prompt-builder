@@ -366,8 +366,8 @@ export const IsometricStack3D = ({ activeLayer }: { activeLayer: number }) => {
       <Canvas
         orthographic
         camera={{
-          zoom: 55,
-          position: [8, 6, 8],
+        zoom: 38,
+        position: [10, 8, 10],
           near: 0.1,
           far: 100,
         }}
