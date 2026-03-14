@@ -131,7 +131,7 @@ export const AttributionSection: React.FC = () => {
   const headlineRef = useRef<HTMLDivElement>(null);
   const diagramRef = useRef<HTMLDivElement>(null);
   const [activeLayer, setActiveLayer] = useState(-1);
-  const [bgProgress, setBgProgress] = useState(0);
+  
 
   useEffect(() => {
     const handleScroll = () => {
