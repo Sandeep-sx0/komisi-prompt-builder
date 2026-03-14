@@ -134,9 +134,9 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   }), []);
 
   const edgeMat = useMemo(() => new THREE.LineBasicMaterial({
-    color: new THREE.Color("#2A2A4A"),
+    color: new THREE.Color("#2A5570"),
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.5,
   }), []);
 
   const boxGeo = useMemo(() => new THREE.BoxGeometry(w, h, d), []);
