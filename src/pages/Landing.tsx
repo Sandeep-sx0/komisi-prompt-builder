@@ -841,6 +841,7 @@ KomisiSDK.resolve()`}
           </div>
         </div>
       </footer>
+      </div>{/* end z-10 content wrapper */}
     </div>
   );
 };
