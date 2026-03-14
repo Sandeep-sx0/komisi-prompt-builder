@@ -73,8 +73,7 @@ export const TerminalAnimation: React.FC = () => {
       {/* Scrollable content */}
       <div
         ref={scrollRef}
-        className="flex-1 px-4 py-3 font-mono text-xs leading-[1.7] overflow-y-auto scrollbar-none"
-        style={{ scrollBehavior: "smooth" }}
+        className="flex-1 px-4 py-3 font-mono text-xs leading-[1.7] overflow-hidden"
       >
         {lines.slice(0, visibleLines).map((line, i) => (
           <div key={i} className={colorMap[line.color]}>
