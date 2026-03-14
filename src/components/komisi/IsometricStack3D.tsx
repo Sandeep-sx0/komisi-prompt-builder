@@ -248,66 +248,73 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   );
 };
 
+/* ── Connector line segment ── */
+const ConnectorLine = ({ start, end, bright }: { start: THREE.Vector3; end: THREE.Vector3; bright: boolean }) => {
+  const ref = useRef<THREE.Line>(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.computeLineDistances();
+    }
+  }, [start, end]);
+
+  const geo = useMemo(() => {
+    const g = new THREE.BufferGeometry().setFromPoints([start, end]);
+    return g;
+  }, [start, end]);
+
+  return (
+    <line_ ref={ref} geometry={geo}>
+      <lineDashedMaterial
+        color={bright ? "#8B8BBA" : "#3A3A6A"}
+        dashSize={0.1}
+        gapSize={0.1}
+        transparent
+        opacity={bright ? 0.8 : 0.4}
+      />
+    </line_>
+  );
+};
+
 /* ── Dashed connector lines between layers ── */
 const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
   const w = 3.5, d = 3.5, h = 0.6;
   const gap = 1.4;
 
-  const corners = useMemo(() => [
+  const corners: [number, number][] = [
     [w / 2 - 0.15, d / 2 - 0.15],
     [-w / 2 + 0.15, d / 2 - 0.15],
     [w / 2 - 0.15, -d / 2 + 0.15],
     [-w / 2 + 0.15, -d / 2 + 0.15],
-  ] as [number, number][], []);
+  ];
 
-  const lines = useMemo(() => {
-    const result: { points: THREE.Vector3[]; pairIndex: number }[] = [];
-    for (let layer = 0; layer < 3; layer++) {
-      const topY = (1.5 - layer) * gap - h / 2;
-      const bottomY = (1.5 - (layer + 1)) * gap + h / 2;
-      corners.forEach(([cx, cz]) => {
-        result.push({
-          points: [new THREE.Vector3(cx, topY, cz), new THREE.Vector3(cx, bottomY, cz)],
-          pairIndex: layer + 1,
-        });
+  const segments: { start: THREE.Vector3; end: THREE.Vector3; pairIndex: number }[] = [];
+  for (let layer = 0; layer < 3; layer++) {
+    const topY = (1.5 - layer) * gap - h / 2;
+    const bottomY = (1.5 - (layer + 1)) * gap + h / 2;
+    corners.forEach(([cx, cz]) => {
+      segments.push({
+        start: new THREE.Vector3(cx, topY, cz),
+        end: new THREE.Vector3(cx, bottomY, cz),
+        pairIndex: layer + 1,
       });
-    }
-    return result;
-  }, [corners]);
+    });
+  }
 
-  // Dots at corners
-  const dots = useMemo(() => {
-    const result: { pos: [number, number, number]; layerIdx: number }[] = [];
-    for (let layer = 0; layer < 4; layer++) {
-      const baseY = (1.5 - layer) * gap;
-      corners.forEach(([cx, cz]) => {
-        dots.push;
-        result.push({ pos: [cx, baseY + h / 2, cz], layerIdx: layer });
-        result.push({ pos: [cx, baseY - h / 2, cz], layerIdx: layer });
-      });
-    }
-    return result;
-  }, [corners]);
+  const dots: { pos: [number, number, number]; layerIdx: number }[] = [];
+  for (let layer = 0; layer < 4; layer++) {
+    const baseY = (1.5 - layer) * gap;
+    corners.forEach(([cx, cz]) => {
+      dots.push({ pos: [cx, baseY + h / 2, cz], layerIdx: layer });
+      dots.push({ pos: [cx, baseY - h / 2, cz], layerIdx: layer });
+    });
+  }
 
   return (
     <group>
-      {lines.map((line, i) => {
-        const geo = new THREE.BufferGeometry().setFromPoints(line.points);
-        const bright = activeLayer === line.pairIndex;
-        return (
-          <lineSegments key={i}>
-            <bufferGeometry attach="geometry" {...geo} />
-            <lineDashedMaterial
-              attach="material"
-              color={bright ? "#8B8BBA" : "#3A3A6A"}
-              dashSize={0.1}
-              gapSize={0.1}
-              transparent
-              opacity={bright ? 0.8 : 0.4}
-            />
-          </lineSegments>
-        );
-      })}
+      {segments.map((seg, i) => (
+        <ConnectorLine key={i} start={seg.start} end={seg.end} bright={activeLayer === seg.pairIndex} />
+      ))}
       {dots.map((dot, i) => (
         <mesh key={`dot-${i}`} position={dot.pos}>
           <sphereGeometry args={[0.05, 8, 8]} />
