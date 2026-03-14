@@ -168,7 +168,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
   // Vent slots on front face
   const ventGeo = useMemo(() => new THREE.BoxGeometry(0.3, 0.12, 0.05), []);
-  const ventMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#111122", metalness: 0.5, roughness: 0.8 }), []);
+  const ventMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#081018", metalness: 0.5, roughness: 0.8 }), []);
 
   useFrame((state, delta) => {
     if (!groupRef.current) return;
