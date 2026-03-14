@@ -340,8 +340,8 @@ const Scene = ({ activeLayer }: { activeLayer: number }) => {
 
   useEffect(() => {
     // Classic isometric: rotate 45° on Y, ~35.264° on X
-    camera.position.set(8, 6, 8);
-    camera.lookAt(0, 0.5, 0);
+    camera.position.set(10, 8, 10);
+    camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
   }, [camera]);
 
