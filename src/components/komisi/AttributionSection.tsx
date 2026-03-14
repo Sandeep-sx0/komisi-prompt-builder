@@ -82,14 +82,14 @@ const StepBlock = ({
         <div
           className="w-8 h-8 rounded-lg flex items-center justify-center mb-3"
           style={{
-            background: active ? "rgba(167,139,250,0.15)" : "rgba(255,255,255,0.03)",
+            background: active ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.03)",
             transition: "background 0.6s ease"
           }}>
           
           <Icon
             size={16}
             style={{
-              color: active ? "#A78BFA" : "#4B5563",
+              color: active ? "#FFFFFF" : "#4B5563",
               transition: "color 0.6s ease"
             }} />
           
