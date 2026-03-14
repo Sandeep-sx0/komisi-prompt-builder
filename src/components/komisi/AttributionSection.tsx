@@ -186,7 +186,7 @@ export const AttributionSection: React.FC = () => {
       style={{
         backgroundColor: bgColor,
         transition: "background-color 0.05s linear",
-        minHeight: "250vh",
+        minHeight: "600vh",
       }}
     >
       {/* Sticky viewport */}
