@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Check, Loader2 } from "lucide-react";
+import creatorAvatar from "@/assets/creator-avatar.webp";
 
 type CardState = "default" | "reviewing" | "approved";
 
