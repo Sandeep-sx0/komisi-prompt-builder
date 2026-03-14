@@ -106,8 +106,8 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   const pointLightRef = useRef<THREE.PointLight>(null);
 
   const w = 3.5, d = 3.5, h = 0.6;
-  const gap = 1.4;
-  const baseY = (1.5 - index) * gap; // top to bottom: index 0 at top
+  const gap = 2.8;
+  const baseY = (1.5 - index) * gap;
 
   const isActive = activeLayer === index;
   const targetY = useRef(baseY);
