@@ -89,7 +89,7 @@ function createIconTexture(index: number, active: boolean): THREE.CanvasTexture 
   canvas.height = size;
   const ctx = canvas.getContext("2d")!;
   ctx.clearRect(0, 0, size, size);
-  const color = active ? "#FFFFFF" : "#3A3A6A";
+  const color = active ? "#FFFFFF" : "#3A3A4A";
   iconDrawers[index](ctx, size, color);
   const tex = new THREE.CanvasTexture(canvas);
   tex.needsUpdate = true;
@@ -119,7 +119,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
   // Materials
   const inactiveMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1A1A2E"),
+    color: new THREE.Color("#1A1A1E"),
     metalness: 0.8,
     roughness: 0.4,
     transparent: true,
@@ -127,7 +127,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   }), []);
 
   const activeMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1A1A2E"),
+    color: new THREE.Color("#1A1A1E"),
     metalness: 1.0,
     roughness: 0.1,
     envMapIntensity: 2.0,
@@ -150,7 +150,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
   // Corner screws
   const screwGeo = useMemo(() => new THREE.CylinderGeometry(0.06, 0.06, 0.08, 8), []);
-  const screwMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#3A3A5A", metalness: 0.9, roughness: 0.3 }), []);
+  const screwMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#3A3A4A", metalness: 0.9, roughness: 0.3 }), []);
   const screwPositions = useMemo(() => [
     [w / 2 - 0.15, h / 2 + 0.04, d / 2 - 0.15],
     [-w / 2 + 0.15, h / 2 + 0.04, d / 2 - 0.15],
@@ -160,7 +160,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
   // Vent slots on front face
   const ventGeo = useMemo(() => new THREE.BoxGeometry(0.3, 0.12, 0.05), []);
-  const ventMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#111122", metalness: 0.5, roughness: 0.8 }), []);
+  const ventMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#111118", metalness: 0.5, roughness: 0.8 }), []);
 
   useFrame((state, delta) => {
     if (!groupRef.current) return;
@@ -185,11 +185,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
       const glowMat = glowRef.current.material as THREE.MeshBasicMaterial;
       const t = state.clock.elapsedTime;
       if (isActive) {
-        // Cycle through blue → purple → teal
-        const r = 0.31 + 0.15 * Math.sin(t * 1.2);
-        const g = 0.5 + 0.2 * Math.sin(t * 1.2 + 2.1);
-        const b = 0.85 + 0.1 * Math.sin(t * 1.2 + 4.2);
-        glowMat.color.setRGB(r, g, b);
+        glowMat.color.setRGB(0.85, 0.85, 0.9);
         glowMat.opacity = THREE.MathUtils.lerp(glowMat.opacity, 0.15, delta * 4);
       } else {
         glowMat.opacity = THREE.MathUtils.lerp(glowMat.opacity, 0, delta * 4);
@@ -200,7 +196,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
     if (edgesRef.current) {
       const eMat = edgesRef.current.material as THREE.LineBasicMaterial;
       if (isActive) {
-        eMat.color.lerp(new THREE.Color("#8B8BBA"), delta * 4);
+        eMat.color.lerp(new THREE.Color("#C0C0C0"), delta * 4);
         eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 1, delta * 4);
       } else {
         eMat.color.lerp(new THREE.Color("#2A5570"), delta * 4);
@@ -228,7 +224,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
       {/* Glow box */}
       <mesh ref={glowRef} geometry={glowGeo}>
-        <meshBasicMaterial transparent opacity={0} color="#4FC3F7" side={THREE.BackSide} />
+        <meshBasicMaterial transparent opacity={0} color="#FFFFFF" side={THREE.BackSide} />
       </mesh>
 
       {/* Icon on top */}
@@ -302,7 +298,7 @@ const ConnectorLine = ({ start, end, bright }: { start: THREE.Vector3; end: THRE
   return (
     <line_ ref={ref} geometry={geo}>
       <lineDashedMaterial
-        color={bright ? "#8B8BBA" : "#2A5570"}
+        color={bright ? "#C0C0C0" : "#2A5570"}
         dashSize={0.1}
         gapSize={0.1}
         transparent

@@ -63,8 +63,8 @@ const StepBlock = ({
         <div
           className="w-[6px] h-[6px] rounded-full shrink-0"
           style={{
-            background: active ? "#FFFFFF" : "#4A4A7A",
-            boxShadow: active ? "0 0 8px rgba(167,139,250,0.6)" : "none",
+            background: active ? "#FFFFFF" : "#4A4A6A",
+            boxShadow: active ? "0 0 8px rgba(255,255,255,0.4)" : "none",
             transition: "all 0.6s ease"
           }} />
         
@@ -82,14 +82,14 @@ const StepBlock = ({
         <div
           className="w-8 h-8 rounded-lg flex items-center justify-center mb-3"
           style={{
-            background: active ? "rgba(167,139,250,0.15)" : "rgba(255,255,255,0.03)",
+            background: active ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.03)",
             transition: "background 0.6s ease"
           }}>
           
           <Icon
             size={16}
             style={{
-              color: active ? "#A78BFA" : "#4B5563",
+              color: active ? "#FFFFFF" : "#4B5563",
               transition: "color 0.6s ease"
             }} />
           
@@ -131,25 +131,16 @@ export const AttributionSection: React.FC = () => {
   const headlineRef = useRef<HTMLDivElement>(null);
   const diagramRef = useRef<HTMLDivElement>(null);
   const [activeLayer, setActiveLayer] = useState(-1);
-  const [bgProgress, setBgProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const headlineEl = headlineRef.current;
       const diagramEl = diagramRef.current;
-      if (!headlineEl || !diagramEl) return;
+      if (!diagramEl) return;
 
       const vh = window.innerHeight;
-
-      // Background: use the headline section's entry for the fade
-      const headlineRect = headlineEl.getBoundingClientRect();
-      const enterProgress = Math.max(0, Math.min(1, (vh - headlineRect.top) / (vh * 0.6)));
-      setBgProgress(enterProgress);
-
-      // Diagram section: step activation
       const diagramRect = diagramEl.getBoundingClientRect();
       const scrolled = -diagramRect.top;
-      const stepsZone = vh * 4.8; // 480vh total, 120vh per step
+      const stepsZone = vh * 4.8;
 
       if (scrolled <= 0) {
         setActiveLayer(-1);
@@ -164,12 +155,6 @@ export const AttributionSection: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Lerp white → near-black
-  const r = Math.round(255 - bgProgress * (255 - 10));
-  const g = Math.round(255 - bgProgress * (255 - 10));
-  const b = Math.round(255 - bgProgress * (255 - 15));
-  const bgColor = `rgb(${r},${g},${b})`;
-
   const leftSteps = steps.filter((s) => s.side === "left");
   const rightSteps = steps.filter((s) => s.side === "right");
 
@@ -179,10 +164,7 @@ export const AttributionSection: React.FC = () => {
       <section
         ref={headlineRef}
         className="relative px-4 md:px-6 pt-8 pb-6 lg:pt-[16px] lg:pb-[8px]"
-        style={{
-          backgroundColor: bgColor,
-          transition: "background-color 0.05s linear"
-        }}>
+        style={{ backgroundColor: "rgb(10,10,15)" }}>
         
         <motion.div
           className="text-center mb-4 lg:mb-6"
