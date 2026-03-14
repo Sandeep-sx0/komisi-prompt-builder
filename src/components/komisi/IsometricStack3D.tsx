@@ -251,40 +251,35 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
         />
       ))}
 
-      {/* Smooth gradient flame glow at all 4 top-surface corners */}
+      {/* Smooth white gradient flame glow at all 4 top-surface corners */}
       {screwPositions.map((pos, i) => (
         <group key={`glow-orb-${i}`} position={[pos[0], pos[1] + 0.02, pos[2]]}>
-          {/* Bright white-purple core */}
           <mesh>
             <sphereGeometry args={[0.03, 24, 24]} />
-            <meshBasicMaterial color="#F0E6FF" transparent opacity={isActive ? 0.9 : 0} depthWrite={false} />
+            <meshBasicMaterial color="#FFFFFF" transparent opacity={isActive ? 0.9 : 0} depthWrite={false} />
           </mesh>
-          {/* Layer 1 */}
           <mesh position={[0, 0.03, 0]} scale={[1, 1.8, 1]}>
             <sphereGeometry args={[0.055, 24, 24]} />
-            <meshBasicMaterial color="#C4B5FD" transparent opacity={isActive ? 0.45 : 0} depthWrite={false} />
+            <meshBasicMaterial color="#E0E0E0" transparent opacity={isActive ? 0.45 : 0} depthWrite={false} />
           </mesh>
-          {/* Layer 2 */}
           <mesh position={[0, 0.05, 0]} scale={[1, 2.0, 1]}>
             <sphereGeometry args={[0.09, 24, 24]} />
-            <meshBasicMaterial color="#8B5CF6" transparent opacity={isActive ? 0.22 : 0} depthWrite={false} />
+            <meshBasicMaterial color="#C0C0C0" transparent opacity={isActive ? 0.22 : 0} depthWrite={false} />
           </mesh>
-          {/* Layer 3 */}
           <mesh position={[0, 0.07, 0]} scale={[1, 2.2, 1]}>
             <sphereGeometry args={[0.14, 24, 24]} />
-            <meshBasicMaterial color="#6D28D9" transparent opacity={isActive ? 0.1 : 0} depthWrite={false} />
+            <meshBasicMaterial color="#A0A0A0" transparent opacity={isActive ? 0.1 : 0} depthWrite={false} />
           </mesh>
-          {/* Layer 4 - outermost haze */}
           <mesh position={[0, 0.08, 0]} scale={[1, 2.0, 1]}>
             <sphereGeometry args={[0.22, 24, 24]} />
-            <meshBasicMaterial color="#5B21B6" transparent opacity={isActive ? 0.04 : 0} depthWrite={false} />
+            <meshBasicMaterial color="#808080" transparent opacity={isActive ? 0.04 : 0} depthWrite={false} />
           </mesh>
-          <pointLight color="#8B5CF6" intensity={isActive ? 0.8 : 0} distance={2} />
+          <pointLight color="#FFFFFF" intensity={isActive ? 0.8 : 0} distance={2} />
         </group>
       ))}
 
       {/* Point light for active glow */}
-      <pointLight ref={pointLightRef} position={[0, 1.5, 0]} color="#A78BFA" intensity={0} distance={5} />
+      <pointLight ref={pointLightRef} position={[0, 1.5, 0]} color="#FFFFFF" intensity={0} distance={5} />
     </group>
   );
 };
