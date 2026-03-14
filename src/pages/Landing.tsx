@@ -322,10 +322,10 @@ const Landing = () => {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch md:auto-rows-fr">
             {/* Card 1 — Install SDK */}
-            <Reveal delay={0} className="flex">
-              <Tilt maxTilt={6} className="flex w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full">
+            <Reveal delay={0} className="h-full">
+              <Tilt maxTilt={6} className="h-full w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full h-full">
                 <div className="h-[240px] p-3">
                   <TerminalAnimation />
                 </div>
@@ -342,8 +342,8 @@ const Landing = () => {
             </Reveal>
 
             {/* Card 2 — Connect Revenue */}
-            <Reveal delay={0.08} className="flex">
-              <Tilt maxTilt={6} className="flex w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full">
+            <Reveal delay={0.08} className="h-full">
+              <Tilt maxTilt={6} className="h-full w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full h-full">
                 <div className="h-[240px] bg-muted flex items-center justify-center">
                   <DataFlowAnimation />
                 </div>
@@ -360,8 +360,8 @@ const Landing = () => {
             </Reveal>
 
             {/* Card 3 — Invite Creators */}
-            <Reveal delay={0.16} className="flex">
-              <Tilt maxTilt={6} className="flex w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full">
+            <Reveal delay={0.16} className="h-full">
+              <Tilt maxTilt={6} className="h-full w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full h-full">
                 <div className="h-[240px] bg-muted">
                   <CreatorFlipCard />
                 </div>

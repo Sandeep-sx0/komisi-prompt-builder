@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { motion, useAnimationControls } from "motion/react";
 
 const LogoNode = ({
@@ -25,82 +25,85 @@ export const DataFlowAnimation: React.FC = () => {
   const komisiGlow = useAnimationControls();
 
   useEffect(() => {
+    let mounted = true;
+    const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
     const run = async () => {
-      while (true) {
-        // Both dots travel inward simultaneously
+      while (mounted) {
+        leftDot.set({ left: "-6px", opacity: 0 });
+        rightDot.set({ right: "-6px", opacity: 0 });
+        komisiGlow.set({
+          scale: 1,
+          boxShadow: "0 0 0px rgba(100,130,255,0)",
+        });
+
         await Promise.all([
           leftDot.start({
-            left: ["0%", "calc(100% + 4px)"],
-            transition: { duration: 1.2, ease: "easeIn" },
+            left: ["-6px", "calc(100% - 6px)"],
+            opacity: [0, 1, 1],
+            transition: { duration: 1.35, ease: "linear" },
           }),
           rightDot.start({
-            right: ["0%", "calc(100% + 4px)"],
-            transition: { duration: 1.2, ease: "easeIn" },
+            right: ["-6px", "calc(100% - 6px)"],
+            opacity: [0, 1, 1],
+            transition: { duration: 1.35, ease: "linear" },
           }),
         ]);
 
-        // Komisi pulses on arrival
         await komisiGlow.start({
           boxShadow: [
             "0 0 0px rgba(100,130,255,0)",
-            "0 0 20px rgba(100,130,255,0.5)",
+            "0 0 18px rgba(100,130,255,0.45)",
             "0 0 0px rgba(100,130,255,0)",
           ],
-          scale: [1, 1.08, 1],
-          transition: { duration: 0.6, ease: "easeOut" },
+          scale: [1, 1.06, 1],
+          transition: { duration: 0.45, ease: "easeOut" },
         });
 
-        // Brief pause before restart
-        await new Promise((r) => setTimeout(r, 600));
-
-        // Reset dots instantly
-        leftDot.set({ left: "0%" });
-        rightDot.set({ right: "0%" });
+        await wait(0);
+        await wait(350);
       }
     };
+
     run();
+
+    return () => {
+      mounted = false;
+      leftDot.stop();
+      rightDot.stop();
+      komisiGlow.stop();
+    };
   }, [leftDot, rightDot, komisiGlow]);
 
   return (
     <div className="w-full h-full flex items-center justify-center px-4">
       <div className="flex items-center w-full max-w-[320px]">
-        {/* RevenueCat */}
         <LogoNode src="/logos/revenuecat.svg" bg="rgba(242,90,90,0.1)" />
 
-        {/* Left line: RC → Komisi */}
         <div className="flex-1 relative h-[2px] mx-1">
           <div className="absolute inset-0 bg-border rounded-full" />
           <motion.div
             className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
             style={{
-              background:
-                "radial-gradient(circle, rgba(242,90,90,0.8) 0%, rgba(242,90,90,0) 70%)",
+              background: "radial-gradient(circle, rgba(242,90,90,0.82) 0%, rgba(242,90,90,0) 70%)",
             }}
             animate={leftDot}
           />
         </div>
 
-        {/* Komisi hub */}
-        <LogoNode
-          src="/logos/komisi.svg"
-          bg="rgba(0,0,0,0.06)"
-          glowControls={komisiGlow}
-        />
+        <LogoNode src="/logos/komisi.svg" bg="rgba(0,0,0,0.06)" glowControls={komisiGlow} />
 
-        {/* Right line: Adapty → Komisi */}
         <div className="flex-1 relative h-[2px] mx-1">
           <div className="absolute inset-0 bg-border rounded-full" />
           <motion.div
             className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
             style={{
-              background:
-                "radial-gradient(circle, rgba(152,64,255,0.8) 0%, rgba(152,64,255,0) 70%)",
+              background: "radial-gradient(circle, rgba(152,64,255,0.82) 0%, rgba(152,64,255,0) 70%)",
             }}
             animate={rightDot}
           />
         </div>
 
-        {/* Adapty */}
         <LogoNode src="/logos/adapty.svg" bg="rgba(152,64,255,0.1)" />
       </div>
     </div>
