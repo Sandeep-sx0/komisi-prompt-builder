@@ -17,7 +17,6 @@ function drawLinkIcon(ctx: CanvasRenderingContext2D, size: number, color: string
   ctx.strokeStyle = color;
   ctx.lineWidth = size * 0.04;
   ctx.lineCap = "round";
-  // Two interlocking ovals
   ctx.beginPath();
   ctx.ellipse(cx - r * 0.5, cy, r, r * 0.6, -Math.PI / 4, 0, Math.PI * 2);
   ctx.stroke();
@@ -32,7 +31,6 @@ function drawDownloadIcon(ctx: CanvasRenderingContext2D, size: number, color: st
   ctx.lineWidth = size * 0.04;
   ctx.lineCap = "round";
   ctx.lineJoin = "round";
-  // Arrow down
   ctx.beginPath();
   ctx.moveTo(cx, cy - s);
   ctx.lineTo(cx, cy + s * 0.6);
@@ -42,7 +40,6 @@ function drawDownloadIcon(ctx: CanvasRenderingContext2D, size: number, color: st
   ctx.lineTo(cx, cy + s * 0.6);
   ctx.lineTo(cx + s * 0.6, cy);
   ctx.stroke();
-  // Base line
   ctx.beginPath();
   ctx.moveTo(cx - s, cy + s);
   ctx.lineTo(cx + s, cy + s);
@@ -67,11 +64,9 @@ function drawDollarIcon(ctx: CanvasRenderingContext2D, size: number, color: stri
   ctx.strokeStyle = color;
   ctx.lineWidth = size * 0.035;
   ctx.lineCap = "round";
-  // Circle
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
   ctx.stroke();
-  // Dollar sign
   const fs = size * 0.14;
   ctx.font = `bold ${fs}px sans-serif`;
   ctx.fillStyle = color;
@@ -89,8 +84,31 @@ function createIconTexture(index: number, active: boolean): THREE.CanvasTexture 
   canvas.height = size;
   const ctx = canvas.getContext("2d")!;
   ctx.clearRect(0, 0, size, size);
-  const color = active ? "#FFFFFF" : "#1E3A4A";
-  iconDrawers[index](ctx, size, color);
+  if (active) {
+    ctx.globalAlpha = 1.0;
+    iconDrawers[index](ctx, size, "#FFFFFF");
+  } else {
+    ctx.globalAlpha = 0.4;
+    iconDrawers[index](ctx, size, "#1E3A4A");
+    ctx.globalAlpha = 1.0;
+  }
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.needsUpdate = true;
+  return tex;
+}
+
+/* ── Surface gradient texture for inactive top face ── */
+function createGradientTexture(): THREE.CanvasTexture {
+  const size = 256;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d")!;
+  const gradient = ctx.createLinearGradient(0, 0, size, size);
+  gradient.addColorStop(0, "#122333");
+  gradient.addColorStop(1, "#0D1F2D");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, size, size);
   const tex = new THREE.CanvasTexture(canvas);
   tex.needsUpdate = true;
   return tex;
@@ -100,6 +118,7 @@ function createIconTexture(index: number, active: boolean): THREE.CanvasTexture 
 const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }) => {
   const groupRef = useRef<THREE.Group>(null);
   const meshRef = useRef<THREE.Mesh>(null);
+  const topFaceRef = useRef<THREE.Mesh>(null);
   const glowRef = useRef<THREE.Mesh>(null);
   const edgesRef = useRef<THREE.LineSegments>(null);
   const iconMeshRef = useRef<THREE.Mesh>(null);
@@ -116,14 +135,15 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   // Textures
   const inactiveTexture = useMemo(() => createIconTexture(index, false), [index]);
   const activeTexture = useMemo(() => createIconTexture(index, true), [index]);
+  const gradientTexture = useMemo(() => createGradientTexture(), []);
 
   // Materials
   const inactiveMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#0C1C28"),
-    metalness: 0.8,
-    roughness: 0.4,
+    color: new THREE.Color("#0D1F2D"),
+    metalness: 0.7,
+    roughness: 0.5,
     transparent: true,
-    opacity: 0.85,
+    opacity: 0.95,
   }), []);
 
   const activeMat = useMemo(() => new THREE.MeshStandardMaterial({
@@ -133,18 +153,25 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
     envMapIntensity: 2.0,
   }), []);
 
-  const edgeMatInactive = useMemo(() => new THREE.LineDashedMaterial({
+  // Gradient overlay for inactive top face
+  const topFaceInactiveMat = useMemo(() => new THREE.MeshBasicMaterial({
+    map: gradientTexture,
+    transparent: true,
+    opacity: 0.6,
+  }), [gradientTexture]);
+
+  const edgeMatInactive = useMemo(() => new THREE.LineBasicMaterial({
     color: new THREE.Color("#1E3A4A"),
     transparent: true,
-    opacity: 0.8,
-    dashSize: 0.08,
-    gapSize: 0.06,
+    opacity: 0.7,
+    linewidth: 1,
   }), []);
 
   const edgeMatActive = useMemo(() => new THREE.LineBasicMaterial({
     color: new THREE.Color("#FFFFFF"),
     transparent: true,
     opacity: 1.0,
+    linewidth: 1,
   }), []);
 
   const boxGeo = useMemo(() => new THREE.BoxGeometry(w, h, d), []);
@@ -155,6 +182,9 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
   // Icon plane on top face
   const iconGeo = useMemo(() => new THREE.PlaneGeometry(1.2, 1.2), []);
+
+  // Top face gradient plane
+  const topPlaneGeo = useMemo(() => new THREE.PlaneGeometry(w - 0.02, d - 0.02), []);
 
   // Corner screws
   const screwGeo = useMemo(() => new THREE.CylinderGeometry(0.06, 0.06, 0.08, 8), []);
@@ -170,7 +200,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   const ventGeo = useMemo(() => new THREE.BoxGeometry(0.3, 0.12, 0.05), []);
   const ventMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#081018", metalness: 0.5, roughness: 0.8 }), []);
 
-  useFrame((state, delta) => {
+  useFrame((_, delta) => {
     if (!groupRef.current) return;
 
     targetY.current = isActive ? baseY + 0.3 : baseY;
@@ -182,6 +212,11 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
       meshRef.current.material = isActive ? activeMat : inactiveMat;
     }
 
+    // Top face gradient visibility
+    if (topFaceRef.current) {
+      (topFaceRef.current.material as THREE.MeshBasicMaterial).opacity = isActive ? 0 : 0.6;
+    }
+
     // Icon texture swap
     if (iconMeshRef.current) {
       (iconMeshRef.current.material as THREE.MeshBasicMaterial).map = isActive ? activeTexture : inactiveTexture;
@@ -191,7 +226,6 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
     // Glow
     if (glowRef.current) {
       const glowMat = glowRef.current.material as THREE.MeshBasicMaterial;
-      const t = state.clock.elapsedTime;
       if (isActive) {
         glowMat.color.set("#FFFFFF");
         glowMat.opacity = THREE.MathUtils.lerp(glowMat.opacity, 0.12, delta * 4);
@@ -200,15 +234,9 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
       }
     }
 
-    // Edge brightness
+    // Edge material swap
     if (edgesRef.current) {
-      if (isActive) {
-        edgesRef.current.material = edgeMatActive;
-      } else {
-        edgesRef.current.material = edgeMatInactive;
-        // Ensure dashed lines compute distances
-        edgesRef.current.computeLineDistances();
-      }
+      edgesRef.current.material = isActive ? edgeMatActive : edgeMatInactive;
     }
 
     // Point light
@@ -226,7 +254,10 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
       {/* Main box */}
       <mesh ref={meshRef} geometry={boxGeo} material={inactiveMat} />
 
-      {/* Edges wireframe */}
+      {/* Gradient overlay on top face (inactive only) */}
+      <mesh ref={topFaceRef} position={[0, h / 2 + 0.005, 0]} rotation={[-Math.PI / 2, 0, 0]} geometry={topPlaneGeo} material={topFaceInactiveMat} />
+
+      {/* Edges wireframe — always visible */}
       <lineSegments ref={edgesRef} geometry={edgesGeo} material={edgeMatInactive} />
 
       {/* Glow box */}
@@ -236,7 +267,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
       {/* Icon on top */}
       <mesh ref={iconMeshRef} position={[0, h / 2 + 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]} geometry={iconGeo}>
-        <meshBasicMaterial map={inactiveTexture} transparent alphaTest={0.1} />
+        <meshBasicMaterial map={inactiveTexture} transparent alphaTest={0.05} />
       </mesh>
 
       {/* Corner screws */}
@@ -282,7 +313,7 @@ const ConnectorLine = ({ start, end, bright }: { start: THREE.Vector3; end: THRE
         dashSize={0.1}
         gapSize={0.1}
         transparent
-        opacity={bright ? 0.8 : 0.4}
+        opacity={bright ? 0.8 : 0.3}
       />
     </line_>
   );
@@ -327,12 +358,19 @@ const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
       {segments.map((seg, i) => (
         <ConnectorLine key={i} start={seg.start} end={seg.end} bright={activeLayer === seg.pairIndex} />
       ))}
-      {dots.map((dot, i) => (
-        <mesh key={`dot-${i}`} position={dot.pos}>
-          <sphereGeometry args={[0.05, 8, 8]} />
-          <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#1E3A4A"} />
-        </mesh>
-      ))}
+      {dots.map((dot, i) => {
+        const isActiveDot = activeLayer === dot.layerIdx;
+        return (
+          <mesh key={`dot-${i}`} position={dot.pos}>
+            <sphereGeometry args={[0.05, 8, 8]} />
+            <meshBasicMaterial
+              color="#FFFFFF"
+              transparent
+              opacity={isActiveDot ? 1.0 : 0.25}
+            />
+          </mesh>
+        );
+      })}
     </group>
   );
 };
@@ -342,7 +380,6 @@ const Scene = ({ activeLayer }: { activeLayer: number }) => {
   const { camera } = useThree();
 
   useEffect(() => {
-    // Classic isometric: rotate 45° on Y, ~35.264° on X
     camera.position.set(10, 8, 10);
     camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
@@ -369,8 +406,8 @@ export const IsometricStack3D = ({ activeLayer }: { activeLayer: number }) => {
       <Canvas
         orthographic
         camera={{
-        zoom: 54,
-        position: [10, 8, 10],
+          zoom: 54,
+          position: [10, 8, 10],
           near: 0.1,
           far: 100,
         }}
