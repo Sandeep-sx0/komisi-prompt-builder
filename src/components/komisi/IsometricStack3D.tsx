@@ -279,7 +279,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
       ))}
 
       {/* Point light for active glow */}
-      <pointLight ref={pointLightRef} position={[0, 1.5, 0]} color="#A78BFA" intensity={0} distance={5} />
+      <pointLight ref={pointLightRef} position={[0, 1.5, 0]} color="#FFFFFF" intensity={0} distance={5} />
     </group>
   );
 };
