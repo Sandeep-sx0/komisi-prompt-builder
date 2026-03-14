@@ -322,15 +322,66 @@ const Landing = () => {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-            {/* Card 1 — Install SDK */}
-            <Reveal delay={0}>
-              <Tilt maxTilt={6} className="w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full">
-                <div className="h-[240px] p-3">
-                  <TerminalAnimation />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-normal text-foreground mb-2">Install the SDK</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                delay: 0,
+                illustration: (
+                  <div className="h-full p-3">
+                    <TerminalAnimation />
+                  </div>
+                ),
+                heading: "Install the SDK",
+                body: "One method call. Works on iOS, Android, Flutter, and React Native. Initializes in under 100ms. Zero impact on app performance.",
+                tags: ["iOS", "Android", "Flutter", "React Native"],
+              },
+              {
+                delay: 0.08,
+                illustration: (
+                  <div className="h-full flex items-center justify-center">
+                    <DataFlowAnimation />
+                  </div>
+                ),
+                heading: "Connect RevenueCat or Adapty",
+                body: "Point your existing webhook to Komisi. The SDK sets $komisiAffiliateId on every attributed user automatically. No additional code.",
+                tags: ["RevenueCat", "Adapty", "Stripe Connect"],
+              },
+              {
+                delay: 0.16,
+                illustration: (
+                  <div className="h-full flex items-center justify-center">
+                    <CreatorFlipCard />
+                  </div>
+                ),
+                heading: "Invite creators or find them in the marketplace",
+                body: "Share your program link or browse the Komisi marketplace. Creators apply, you approve. Tracking links generated instantly.",
+                tags: ["Tracking Links", "Referral Codes", "Marketplace"],
+              },
+            ].map((card, i) => (
+              <Reveal key={i} delay={card.delay}>
+                <Tilt maxTilt={6} className="w-full">
+                  <motion.div className="border border-border bg-card overflow-hidden w-full">
+                    {/* Zone 1 — Illustration: fixed 240px */}
+                    <div className="h-[240px] bg-muted overflow-hidden">{card.illustration}</div>
+                    {/* Zone 2 — Heading: fixed 64px */}
+                    <div className="h-16 px-6 pt-6 flex items-start">
+                      <h3 className="text-lg font-normal text-foreground leading-snug line-clamp-2">{card.heading}</h3>
+                    </div>
+                    {/* Zone 3 — Body: fixed 80px */}
+                    <div className="h-20 px-6 pt-2 overflow-hidden">
+                      <p className="text-sm text-text-secondary line-clamp-3">{card.body}</p>
+                    </div>
+                    {/* Zone 4 — Tags: fixed 48px */}
+                    <div className="h-12 px-6 pb-6 flex flex-wrap items-start gap-2">
+                      {card.tags.map(t => (
+                        <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
+                      ))}
+                    </div>
+                  </motion.div>
+                </Tilt>
+              </Reveal>
+            ))}
+          </div>
                   <p className="text-sm text-text-secondary mb-4">One method call. Works on iOS, Android, Flutter, and React Native. Initializes in under 100ms. Zero impact on app performance.</p>
                   <div className="flex flex-wrap gap-2">
                     {["iOS", "Android", "Flutter", "React Native"].map(t => (
