@@ -19,7 +19,7 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { TerminalAnimation } from "@/components/komisi/TerminalAnimation";
 import { DataFlowAnimation } from "@/components/komisi/DataFlowAnimation";
 import { CreatorFlipCard } from "@/components/komisi/CreatorFlipCard";
-import { IsometricStack } from "@/components/komisi/IsometricStack";
+import { AttributionSection } from "@/components/komisi/AttributionSection";
 
 /* ── Pill label component ── */
 const PillLabel = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
