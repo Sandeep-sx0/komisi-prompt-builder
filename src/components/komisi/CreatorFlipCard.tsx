@@ -47,8 +47,8 @@ export const CreatorFlipCard: React.FC = () => {
       <div className="border border-border bg-background rounded-lg p-4">
         {/* Profile */}
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-xs font-medium text-text-secondary">
-            JL
+          <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
+            <img src={creatorAvatar} alt="Creator avatar" className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="text-sm font-medium text-foreground">@creator</div>
