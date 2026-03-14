@@ -224,7 +224,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
       {/* Glow box */}
       <mesh ref={glowRef} geometry={glowGeo}>
-        <meshBasicMaterial transparent opacity={0} color="#4FC3F7" side={THREE.BackSide} />
+        <meshBasicMaterial transparent opacity={0} color="#FFFFFF" side={THREE.BackSide} />
       </mesh>
 
       {/* Icon on top */}
