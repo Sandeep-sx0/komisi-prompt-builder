@@ -131,7 +131,7 @@ export const AttributionSection: React.FC = () => {
   const headlineRef = useRef<HTMLDivElement>(null);
   const diagramRef = useRef<HTMLDivElement>(null);
   const [activeLayer, setActiveLayer] = useState(-1);
-  
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -169,7 +169,7 @@ export const AttributionSection: React.FC = () => {
       {/* Section A — Headline block (normal scroll) */}
       <section
         ref={headlineRef}
-        className="relative px-4 md:px-6 pt-8 pb-6 lg:pt-[16px] lg:pb-[8px]"
+        className="relative px-4 md:px-6 pt-8 pb-6 lg:pb-[8px] lg:pt-[32px]"
         style={{ backgroundColor: "#0B1118" }}>
         
         <motion.div
