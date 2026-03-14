@@ -382,52 +382,6 @@ const Landing = () => {
               </Reveal>
             ))}
           </div>
-                  <p className="text-sm text-text-secondary mb-4">One method call. Works on iOS, Android, Flutter, and React Native. Initializes in under 100ms. Zero impact on app performance.</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["iOS", "Android", "Flutter", "React Native"].map(t => (
-                      <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div></Tilt>
-            </Reveal>
-
-            {/* Card 2 — Connect Revenue */}
-            <Reveal delay={0.08}>
-              <Tilt maxTilt={6} className="w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full">
-                <div className="h-[240px] bg-muted flex items-center justify-center">
-                  <DataFlowAnimation />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-normal text-foreground mb-2">Connect RevenueCat or Adapty</h3>
-                  <p className="text-sm text-text-secondary mb-4">Point your existing webhook to Komisi. The SDK sets $komisiAffiliateId on every attributed user automatically. No additional code.</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["RevenueCat", "Adapty", "Stripe Connect"].map(t => (
-                      <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div></Tilt>
-            </Reveal>
-
-            {/* Card 3 — Invite Creators */}
-            <Reveal delay={0.16}>
-              <Tilt maxTilt={6} className="w-full"><motion.div className="border border-border bg-card overflow-hidden flex flex-col w-full transition-all duration-500 ease-in-out">
-                <div className="bg-muted p-6 flex items-center justify-center">
-                  <CreatorFlipCard />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-normal text-foreground mb-2">Invite creators or find them in the marketplace</h3>
-                  <p className="text-sm text-text-secondary mb-4">Share your program link or browse the Komisi marketplace. Creators apply, you approve. Tracking links generated instantly.</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["Tracking Links", "Referral Codes", "Marketplace"].map(t => (
-                      <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div></Tilt>
-            </Reveal>
-          </div>
         </div>
       </section>
 
