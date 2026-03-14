@@ -377,22 +377,6 @@ const Landing = () => {
               </motion.div></Tilt>
             </Reveal>
           </div>
-                  <p className="text-sm text-text-secondary mb-4">One method call. Works on iOS, Android, Flutter, and React Native. Initializes in under 100ms. Zero impact on app performance.</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["iOS", "Android", "Flutter", "React Native"].map(t => (
-                      <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div></Tilt>
-            </Reveal>
-
-            {/* Card 2 — Connect Revenue */}
-            <Reveal delay={0.08}>
-              <Tilt maxTilt={6}><motion.div className="border border-border bg-card overflow-hidden h-full">
-                <div className="bg-muted p-6 flex items-center justify-center gap-6 h-[160px]">
-                  <div className="w-16 h-16 bg-background border border-border flex items-center justify-center">
-                    <span className="text-[10px] text-text-tertiary text-center leading-tight">Revenue<br/>Cat</span>
                   </div>
                   <div className="w-8 border-t border-dashed border-text-tertiary" />
                   <div className="w-16 h-16 bg-background border border-border flex items-center justify-center">
