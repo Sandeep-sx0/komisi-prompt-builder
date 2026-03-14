@@ -336,12 +336,23 @@ const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
     });
   }
 
-  const dots: { pos: [number, number, number]; layerIdx: number }[] = [];
+  const glowTex = useMemo(() => getGlowTexture(), []);
+
+  // Top-face corner glow orbs for all layers
+  const cornerGlows: { pos: [number, number, number]; layerIdx: number }[] = [];
   for (let layer = 0; layer < 4; layer++) {
     const baseY = (1.5 - layer) * gap;
     corners.forEach(([cx, cz]) => {
-      dots.push({ pos: [cx, baseY + h / 2, cz], layerIdx: layer });
-      dots.push({ pos: [cx, baseY - h / 2, cz], layerIdx: layer });
+      cornerGlows.push({ pos: [cx, baseY + h / 2 + 0.05, cz], layerIdx: layer });
+    });
+  }
+
+  // Bottom-face dots (small, subtle)
+  const bottomDots: { pos: [number, number, number]; layerIdx: number }[] = [];
+  for (let layer = 0; layer < 4; layer++) {
+    const baseY = (1.5 - layer) * gap;
+    corners.forEach(([cx, cz]) => {
+      bottomDots.push({ pos: [cx, baseY - h / 2, cz], layerIdx: layer });
     });
   }
 
@@ -350,9 +361,43 @@ const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
       {segments.map((seg, i) => (
         <ConnectorLine key={i} start={seg.start} end={seg.end} bright={activeLayer === seg.pairIndex} />
       ))}
-      {dots.map((dot, i) => (
+
+      {/* Corner glow orbs on top face */}
+      {cornerGlows.map((glow, i) => {
+        const isActive = activeLayer === glow.layerIdx;
+        const isVisited = glow.layerIdx < activeLayer;
+        const color = isActive ? "#FFFFFF" : "#2A5570";
+        const opacity = isActive ? 1.0 : isVisited ? 0.6 : 0.4;
+        const scale = isActive ? 0.7 : isVisited ? 0.4 : 0.3;
+        return (
+          <group key={`glow-${i}`}>
+            <sprite position={glow.pos} scale={[scale, scale, 1]}>
+              <spriteMaterial
+                map={glowTex}
+                color={color}
+                transparent
+                opacity={opacity}
+                depthWrite={false}
+                blending={THREE.AdditiveBlending}
+              />
+            </sprite>
+            {isActive && (
+              <pointLight
+                position={glow.pos}
+                color="#A78BFA"
+                intensity={0.8}
+                distance={2.5}
+                decay={2}
+              />
+            )}
+          </group>
+        );
+      })}
+
+      {/* Bottom face dots */}
+      {bottomDots.map((dot, i) => (
         <mesh key={`dot-${i}`} position={dot.pos}>
-          <sphereGeometry args={[0.05, 8, 8]} />
+          <sphereGeometry args={[0.04, 8, 8]} />
           <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#2A5570"} transparent opacity={activeLayer === dot.layerIdx ? 1 : 0.4} />
         </mesh>
       ))}
