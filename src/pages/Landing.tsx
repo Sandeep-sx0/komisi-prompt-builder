@@ -19,6 +19,7 @@ import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { TerminalAnimation } from "@/components/komisi/TerminalAnimation";
 import { DataFlowAnimation } from "@/components/komisi/DataFlowAnimation";
 import { CreatorFlipCard } from "@/components/komisi/CreatorFlipCard";
+import { IsometricStack } from "@/components/komisi/IsometricStack";
 
 /* ── Pill label component ── */
 const PillLabel = ({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) => (
@@ -380,76 +381,79 @@ const Landing = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTION 5 — ATTRIBUTION ENGINE
+          SECTION 5 — ATTRIBUTION ENGINE (Isometric)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 border-t border-border">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left — Copy */}
-          <Reveal>
-            <PillLabel>HOW ATTRIBUTION WORKS</PillLabel>
-            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-10">
+      <section className="relative overflow-hidden">
+        {/* Gradient fade from light to dark */}
+        <div className="h-32 bg-gradient-to-b from-background to-[#0A0A0F]" />
+
+        <div className="bg-[#0A0A0F] pb-24 px-6">
+          {/* Header */}
+          <Reveal className="text-center mb-6">
+            <div className="inline-flex items-center px-4 py-1.5 mb-8 border border-white/15 font-mono text-xs uppercase tracking-[0.15em] text-white/40">
+              HOW ATTRIBUTION WORKS
+            </div>
+            <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight">
               Every install attributed.<br />
               No IDFA. No ATT prompt.<br />
               No guesswork.
             </h2>
+          </Reveal>
 
-            <div className="space-y-0">
-              {[
-                { step: "STEP 1", text: "Creator shares their unique Komisi link" },
-                { step: "STEP 2", text: "User clicks and lands in App Store or Google Play" },
-                { step: "STEP 3", text: "App installs" },
-                { step: "STEP 4", text: "SDK resolves attribution on first launch", detail: "Android — deterministic via Google Play Install Referrer API. 100% accurate.\n\niOS — server-side fingerprint matching using IP, locale, timezone, device model, screen resolution. Confidence scoring 0.60–0.95. Referral code fallback if below threshold." },
-                { step: "STEP 5", text: "RevenueCat or Adapty webhook fires on subscription event" },
-                { step: "STEP 6", text: "Commission calculated against net revenue after store fees. Payout queued." },
-              ].map((s, i) => (
-                <div key={i} className="border-t border-border py-4">
-                  <div className="flex gap-4">
-                    <span className="text-xs font-mono text-text-tertiary tracking-wider whitespace-nowrap pt-0.5">{s.step}</span>
-                    <div>
-                      <p className="text-sm text-foreground">{s.text}</p>
-                      {s.detail && <p className="text-xs text-text-secondary mt-2 whitespace-pre-line leading-relaxed">{s.detail}</p>}
-                    </div>
-                  </div>
+          {/* Chips */}
+          <Reveal delay={0.1} className="flex flex-wrap justify-center gap-2 mb-20">
+            {["No IDFA", "No ATT prompt", "No cookies", "App Store privacy label: zero impact"].map(t => (
+              <span key={t} className="text-xs border border-white/10 text-white/50 px-3 py-1.5">{t}</span>
+            ))}
+          </Reveal>
+
+          {/* 3-column layout: left text — stack — right text */}
+          <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-8 lg:gap-4 items-center">
+            {/* Left text blocks — Steps 1 & 3 */}
+            <div className="flex flex-col justify-between gap-24 lg:gap-40">
+              <Reveal>
+                <div className="lg:text-right">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">STEP 1</span>
+                  <h4 className="text-base font-normal text-white mb-2">Creator shares their link</h4>
+                  <p className="text-sm text-[#9CA3AF] leading-relaxed">Every creator gets a unique Komisi link. One tap takes the user directly to the App Store or Google Play.</p>
                 </div>
-              ))}
-              <div className="border-t border-border" />
+              </Reveal>
+              <Reveal delay={0.2}>
+                <div className="lg:text-right">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">STEP 3</span>
+                  <h4 className="text-base font-normal text-white mb-2">SDK resolves attribution</h4>
+                  <p className="text-sm text-[#9CA3AF] leading-relaxed">On first launch, the SDK matches the install to the creator. No IDFA. No ATT prompt. No cookies.</p>
+                </div>
+              </Reveal>
             </div>
 
-            <div className="flex flex-wrap gap-2 mt-8">
-              {["No IDFA", "No ATT prompt", "No cookies", "App Store privacy label: zero impact"].map(t => (
-                <span key={t} className="text-xs bg-muted text-text-secondary px-3 py-1.5">{t}</span>
-              ))}
-            </div>
-          </Reveal>
+            {/* Center — Isometric stack */}
+            <Reveal delay={0.15} className="flex justify-center">
+              <IsometricStack />
+            </Reveal>
 
-          {/* Right — Flow diagram */}
-          <Reveal delay={0.2} className="flex items-center">
-            <div className="w-full bg-foreground p-8 lg:p-10">
-              <div className="space-y-4">
-                {[
-                  { label: "Creator Link", sub: "" },
-                  { label: "App Store / Play Store", sub: "" },
-                  { label: "App Install", sub: "" },
-                  { label: "SDK First Launch", sub: "Android: Play Install Referrer | iOS: Fingerprint Match" },
-                  { label: "RevenueCat Webhook", sub: "" },
-                  { label: "Commission Queued", sub: "" },
-                ].map((node, i) => (
-                  <React.Fragment key={i}>
-                    <div className="border border-white/20 px-5 py-3">
-                      <p className="text-sm text-primary-foreground">{node.label}</p>
-                      {node.sub && <p className="text-[10px] text-white/40 mt-1">{node.sub}</p>}
-                    </div>
-                    {i < 5 && (
-                      <div className="flex justify-center">
-                        <div className="w-px h-4 bg-white/20" />
-                      </div>
-                    )}
-                  </React.Fragment>
-                ))}
-              </div>
+            {/* Right text blocks — Steps 2 & 4 */}
+            <div className="flex flex-col justify-between gap-24 lg:gap-40">
+              <Reveal delay={0.1}>
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">STEP 2</span>
+                  <h4 className="text-base font-normal text-white mb-2">User clicks and installs</h4>
+                  <p className="text-sm text-[#9CA3AF] leading-relaxed">The user lands in the App Store, installs, and opens the app. The full journey is captured.</p>
+                </div>
+              </Reveal>
+              <Reveal delay={0.25}>
+                <div>
+                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/30 block mb-2">STEP 4</span>
+                  <h4 className="text-base font-normal text-white mb-2">Commission queued automatically</h4>
+                  <p className="text-sm text-[#9CA3AF] leading-relaxed">RevenueCat or Adapty fires a webhook. Commission is calculated against net revenue and queued for payout.</p>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
+          </div>
         </div>
+
+        {/* Gradient fade from dark back to light */}
+        <div className="h-32 bg-gradient-to-b from-[#0A0A0F] to-background" />
       </section>
 
       {/* ═══════════════════════════════════════════
