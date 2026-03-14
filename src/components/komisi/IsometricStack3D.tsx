@@ -232,7 +232,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
       <mesh ref={meshRef} geometry={boxGeo} material={inactiveMat} />
 
       {/* Edges wireframe */}
-      <lineSegments ref={edgesRef} geometry={edgesGeo} material={edgeMat} />
+      <lineSegments ref={edgesRef} geometry={edgesGeo} material={edgeMatInactive} />
 
       {/* Glow box */}
       <mesh ref={glowRef} geometry={glowGeo}>
