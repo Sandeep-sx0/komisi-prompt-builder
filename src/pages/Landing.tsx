@@ -121,7 +121,21 @@ const Landing = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background">
+      {/* PrismaticBurst full-page background */}
+      <div className="fixed inset-0 z-0">
+        <PrismaticBurst
+          intensity={1.2}
+          speed={0.4}
+          animationType="rotate3d"
+          colors={["#111827", "#6B7280", "#1f2937"]}
+          distort={1}
+          mixBlendMode="lighten"
+        />
+      </div>
+
+      {/* All content sits above */}
+      <div className="relative z-10">
 
       {/* ═══════════════════════════════════════════
           SECTION 1 — NAVBAR
