@@ -330,7 +330,7 @@ const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
       {dots.map((dot, i) => (
         <mesh key={`dot-${i}`} position={dot.pos}>
           <sphereGeometry args={[0.05, 8, 8]} />
-          <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#4A4A7A"} />
+          <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#1E3A4A"} />
         </mesh>
       ))}
     </group>
