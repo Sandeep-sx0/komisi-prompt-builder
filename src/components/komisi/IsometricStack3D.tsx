@@ -119,7 +119,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
 
   // Materials
   const inactiveMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1A1A2E"),
+    color: new THREE.Color("#1A1A1E"),
     metalness: 0.8,
     roughness: 0.4,
     transparent: true,
