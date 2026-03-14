@@ -143,19 +143,25 @@ export const AttributionSection: React.FC = () => {
       const enterProgress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.6)));
       setBgProgress(enterProgress);
 
-      // Layer activation: 4 zones across the scrollable portion
-      const sectionProgress = Math.max(0, Math.min(1, -rect.top / (rect.height - vh)));
+      // Total scroll travel = sectionHeight - vh
+      const totalTravel = rect.height - vh;
+      // scrolled = how far past the top of the section
+      const scrolled = -rect.top;
 
-      if (sectionProgress <= 0 || enterProgress < 0.5) {
+      // Pre-activation buffer: 10% of total travel (diagram centers on screen)
+      // Steps zone: 80% of total travel (4 equal zones)
+      // Post-release buffer: 10% of total travel
+      const bufferFraction = 0.1;
+      const preBuffer = totalTravel * bufferFraction;
+      const stepsZone = totalTravel * 0.8;
+
+      const stepsScrolled = scrolled - preBuffer;
+
+      if (stepsScrolled <= 0 || enterProgress < 0.5) {
         setActiveLayer(-1);
-      } else if (sectionProgress < 0.25) {
-        setActiveLayer(0);
-      } else if (sectionProgress < 0.5) {
-        setActiveLayer(1);
-      } else if (sectionProgress < 0.75) {
-        setActiveLayer(2);
       } else {
-        setActiveLayer(3);
+        const stepProgress = Math.min(stepsScrolled / stepsZone, 0.9999);
+        setActiveLayer(Math.floor(stepProgress * 4));
       }
     };
 
