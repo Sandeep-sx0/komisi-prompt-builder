@@ -377,55 +377,6 @@ const Landing = () => {
               </motion.div></Tilt>
             </Reveal>
           </div>
-                  </div>
-                  <div className="w-8 border-t border-dashed border-text-tertiary" />
-                  <div className="w-16 h-16 bg-background border border-border flex items-center justify-center">
-                    <span className="text-[10px] text-text-tertiary">Komisi</span>
-                  </div>
-                  <div className="w-8 border-t border-dashed border-text-tertiary" />
-                  <div className="w-16 h-16 bg-background border border-border flex items-center justify-center">
-                    <span className="text-[10px] text-text-tertiary">Adapty</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-normal text-foreground mb-2">Connect RevenueCat or Adapty</h3>
-                  <p className="text-sm text-text-secondary mb-4">Point your existing webhook to Komisi. The SDK sets $komisiAffiliateId on every attributed user automatically. No additional code.</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["RevenueCat", "Adapty", "Stripe Connect"].map(t => (
-                      <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div></Tilt>
-            </Reveal>
-
-            {/* Card 3 — Invite Creators */}
-            <Reveal delay={0.16}>
-              <Tilt maxTilt={6}><motion.div className="border border-border bg-card overflow-hidden h-full">
-                <div className="bg-muted p-6 flex items-center justify-center h-[160px]">
-                  <div className="w-full max-w-[200px] border border-border bg-background p-4">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 bg-muted flex items-center justify-center text-xs text-text-tertiary">AV</div>
-                      <div>
-                        <div className="text-sm text-foreground">@creator</div>
-                        <div className="text-[10px] text-text-tertiary">12.4K followers</div>
-                      </div>
-                    </div>
-                    <div className="bg-foreground text-primary-foreground text-xs text-center py-1.5">Apply</div>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-normal text-foreground mb-2">Invite creators or find them in the marketplace</h3>
-                  <p className="text-sm text-text-secondary mb-4">Share your program link or browse the Komisi marketplace. Creators apply, you approve. Tracking links generated instantly.</p>
-                  <div className="flex flex-wrap gap-2">
-                    {["Tracking Links", "Referral Codes", "Marketplace"].map(t => (
-                      <span key={t} className="text-xs border border-border text-text-tertiary px-2 py-1">{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div></Tilt>
-            </Reveal>
-          </div>
         </div>
       </section>
 
