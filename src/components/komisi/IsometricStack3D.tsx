@@ -106,8 +106,8 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   const pointLightRef = useRef<THREE.PointLight>(null);
 
   const w = 3.5, d = 3.5, h = 0.6;
-  const gap = 1.4;
-  const baseY = (1.5 - index) * gap; // top to bottom: index 0 at top
+  const gap = 2.8;
+  const baseY = (1.5 - index) * gap;
 
   const isActive = activeLayer === index;
   const targetY = useRef(baseY);
@@ -288,7 +288,7 @@ const ConnectorLine = ({ start, end, bright }: { start: THREE.Vector3; end: THRE
 /* ── Dashed connector lines between layers ── */
 const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
   const w = 3.5, d = 3.5, h = 0.6;
-  const gap = 1.4;
+  const gap = 2.8;
 
   const corners: [number, number][] = [
     [w / 2 - 0.15, d / 2 - 0.15],
@@ -340,8 +340,8 @@ const Scene = ({ activeLayer }: { activeLayer: number }) => {
 
   useEffect(() => {
     // Classic isometric: rotate 45° on Y, ~35.264° on X
-    camera.position.set(8, 6, 8);
-    camera.lookAt(0, 0.5, 0);
+    camera.position.set(10, 8, 10);
+    camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
   }, [camera]);
 
@@ -366,8 +366,8 @@ export const IsometricStack3D = ({ activeLayer }: { activeLayer: number }) => {
       <Canvas
         orthographic
         camera={{
-          zoom: 55,
-          position: [8, 6, 8],
+        zoom: 38,
+        position: [10, 8, 10],
           near: 0.1,
           far: 100,
         }}
