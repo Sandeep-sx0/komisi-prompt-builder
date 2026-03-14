@@ -251,9 +251,9 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
         />
       ))}
 
-      {/* Purple glowing orbs at all 4 top-surface corners */}
+      {/* Purple glowing orbs at all 4 top-surface corners (at screw positions) */}
       {screwPositions.map((pos, i) => (
-        <group key={`glow-orb-${i}`} position={[pos[0], -h / 2 - 0.05, pos[2]]}>
+        <group key={`glow-orb-${i}`} position={pos}>
           <mesh>
             <sphereGeometry args={[0.08, 16, 16]} />
             <meshBasicMaterial color="#A78BFA" transparent opacity={isActive ? 1 : 0} />
