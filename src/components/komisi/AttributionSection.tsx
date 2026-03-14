@@ -63,8 +63,8 @@ const StepBlock = ({
         <div
           className="w-[6px] h-[6px] rounded-full shrink-0"
           style={{
-            background: active ? "#FFFFFF" : "#4A4A7A",
-            boxShadow: active ? "0 0 8px rgba(167,139,250,0.6)" : "none",
+            background: active ? "#FFFFFF" : "#4A4A6A",
+            boxShadow: active ? "0 0 8px rgba(255,255,255,0.4)" : "none",
             transition: "all 0.6s ease"
           }} />
         
