@@ -185,11 +185,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
       const glowMat = glowRef.current.material as THREE.MeshBasicMaterial;
       const t = state.clock.elapsedTime;
       if (isActive) {
-        // Cycle through blue → purple → teal
-        const r = 0.31 + 0.15 * Math.sin(t * 1.2);
-        const g = 0.5 + 0.2 * Math.sin(t * 1.2 + 2.1);
-        const b = 0.85 + 0.1 * Math.sin(t * 1.2 + 4.2);
-        glowMat.color.setRGB(r, g, b);
+        glowMat.color.setRGB(0.85, 0.85, 0.9);
         glowMat.opacity = THREE.MathUtils.lerp(glowMat.opacity, 0.15, delta * 4);
       } else {
         glowMat.opacity = THREE.MathUtils.lerp(glowMat.opacity, 0, delta * 4);
