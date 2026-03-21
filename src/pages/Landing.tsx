@@ -903,7 +903,7 @@ const Landing = () => {
                     "Creators love that they just get paid. No back-and-forth, no invoices. It's made recruiting affiliates so much easier."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">PN</div>
+                    <img src="/avatars/user-4.jpg" alt="Priya Nair" className="w-7 h-7 rounded-full object-cover" />
                     <div>
                       <p className="text-xs text-foreground">Priya Nair</p>
                       <p className="text-[10px] text-text-tertiary">Founder, MindfulApp</p>
