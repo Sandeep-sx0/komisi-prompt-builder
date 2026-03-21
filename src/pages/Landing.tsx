@@ -647,8 +647,8 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 7 — FEATURE ALTERNATING SECTIONS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6">
-        <div className="max-w-[1200px] mx-auto space-y-32">
+      <section className="px-6">
+        <div className="max-w-[1200px] mx-auto space-y-0">
 
           {/* Feature 1 — Attribution flow */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
