@@ -519,12 +519,11 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 7 — FEATURE ALTERNATING SECTIONS
       ═══════════════════════════════════════════ */}
-      <section className="px-6">
-        <div className="max-w-[1200px] mx-auto space-y-0">
 
-          {/* Feature 1 — Attribution flow */}
-          <div className="py-24" style={{ backgroundColor: "#FFFFFF" }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
+      {/* Feature 1 — Attribution flow (white bg) */}
+      <section className="w-full" style={{ backgroundColor: "#FFFFFF" }}>
+        <div className="max-w-[1200px] mx-auto px-6 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
@@ -551,8 +550,8 @@ const Landing = () => {
               </div>
             </Reveal>
             <Reveal delay={0.15}>
-              <div className="bg-muted border border-border p-8">
-                <div className="flex items-center justify-between gap-2">
+              <div className="h-[380px] flex items-center justify-center p-8" style={{ backgroundColor: "#F8F9FA", border: "1px solid #E5E7EB", borderRadius: "16px" }}>
+                <div className="flex items-center justify-between gap-2 w-full">
                   {[
                     { label: "Creator Link", icon: <Link2 size={14} /> },
                     { label: "App Store", icon: <Download size={14} /> },
@@ -581,47 +580,51 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
-          </div>
+        </div>
+      </section>
 
-          {/* Feature 2 — Fraud detection */}
-          <div className="py-24" style={{ backgroundColor: "#F8F9FA" }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
+      {/* Feature 2 — Fraud detection (gray bg) */}
+      <section className="w-full" style={{ backgroundColor: "#F8F9FA" }}>
+        <div className="max-w-[1200px] mx-auto px-6 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
-              <div className="bg-background border border-border shadow-sm">
-                <div className="flex items-center gap-2 p-4 border-b border-border" style={{ borderLeft: "3px solid hsl(38 92% 50%)" }}>
-                  <AlertTriangle size={16} className="text-warning" />
-                  <span className="text-sm text-foreground">Fraud Alert Detected</span>
-                </div>
-                <div className="p-4 space-y-2 border-b border-border">
-                  <div className="flex justify-between text-xs">
-                    <span className="text-text-secondary">Installs</span><span className="text-foreground">47</span>
+              <div className="h-[380px] flex items-center p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid #E5E7EB", borderRadius: "16px" }}>
+                <div className="w-full bg-background border border-border shadow-sm">
+                  <div className="flex items-center gap-2 p-4 border-b border-border" style={{ borderLeft: "3px solid hsl(38 92% 50%)" }}>
+                    <AlertTriangle size={16} className="text-warning" />
+                    <span className="text-sm text-foreground">Fraud Alert Detected</span>
                   </div>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-text-secondary">Pattern</span><span className="text-foreground">Same IP range</span>
-                  </div>
-                  <div className="flex justify-between text-xs">
-                    <span className="text-text-secondary">Timeframe</span><span className="text-foreground">2 hours</span>
-                  </div>
-                </div>
-                <div className="flex gap-3 p-4 border-b border-border">
-                  <Button size="sm" variant="secondary" className="flex-1">Review Details</Button>
-                  <Button size="sm" variant="ghost" className="flex-1">Dismiss</Button>
-                </div>
-                <div className="text-[11px]">
-                  {[
-                    { ip: "192.168.1.x", time: "14:02", status: "flagged" },
-                    { ip: "192.168.1.x", time: "14:05", status: "flagged" },
-                    { ip: "10.0.0.x", time: "14:12", status: "clean" },
-                  ].map((row, i) => (
-                    <div key={i} className={cn(
-                      "flex items-center justify-between px-4 py-2 border-b border-border last:border-0",
-                      row.status === "flagged" ? "bg-warning/5" : ""
-                    )}>
-                      <span className="text-text-secondary">{row.ip}</span>
-                      <span className="text-text-tertiary">{row.time}</span>
-                      <span className={row.status === "flagged" ? "text-warning" : "text-text-tertiary"}>{row.status}</span>
+                  <div className="p-4 space-y-2 border-b border-border">
+                    <div className="flex justify-between text-xs">
+                      <span className="text-text-secondary">Installs</span><span className="text-foreground">47</span>
                     </div>
-                  ))}
+                    <div className="flex justify-between text-xs">
+                      <span className="text-text-secondary">Pattern</span><span className="text-foreground">Same IP range</span>
+                    </div>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-text-secondary">Timeframe</span><span className="text-foreground">2 hours</span>
+                    </div>
+                  </div>
+                  <div className="flex gap-3 p-4 border-b border-border">
+                    <Button size="sm" variant="secondary" className="flex-1">Review Details</Button>
+                    <Button size="sm" variant="ghost" className="flex-1">Dismiss</Button>
+                  </div>
+                  <div className="text-[11px]">
+                    {[
+                      { ip: "192.168.1.x", time: "14:02", status: "flagged" },
+                      { ip: "192.168.1.x", time: "14:05", status: "flagged" },
+                      { ip: "10.0.0.x", time: "14:12", status: "clean" },
+                    ].map((row, i) => (
+                      <div key={i} className={cn(
+                        "flex items-center justify-between px-4 py-2 border-b border-border last:border-0",
+                        row.status === "flagged" ? "bg-warning/5" : ""
+                      )}>
+                        <span className="text-text-secondary">{row.ip}</span>
+                        <span className="text-text-tertiary">{row.time}</span>
+                        <span className={row.status === "flagged" ? "text-warning" : "text-text-tertiary"}>{row.status}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -651,11 +654,13 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
-          </div>
+        </div>
+      </section>
 
-          {/* Feature 3 — Analytics */}
-          <div className="py-24" style={{ backgroundColor: "#FFFFFF" }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
+      {/* Feature 3 — Analytics (white bg) */}
+      <section className="w-full" style={{ backgroundColor: "#FFFFFF" }}>
+        <div className="max-w-[1200px] mx-auto px-6 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
@@ -682,80 +687,84 @@ const Landing = () => {
               </div>
             </Reveal>
             <Reveal delay={0.15}>
-              <div className="bg-background border border-border shadow-sm overflow-hidden">
-                <div className="flex items-center justify-between p-4 border-b border-border">
-                  <span className="text-xs text-foreground">Creator Performance</span>
-                  <span className="text-[10px] text-text-tertiary border border-border px-2 py-0.5">Last 30 days</span>
-                </div>
-                <table className="w-full text-[11px]">
-                  <thead>
-                    <tr className="border-b border-border">
-                      {["Creator", "Platform", "Installs", "Revenue", "Commission"].map(h => (
-                        <th key={h} className="text-left p-3 text-text-tertiary font-normal">{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[
-                      { creator: "@sarah_creates", platform: "TikTok", installs: "234", revenue: "$2,100", commission: "$630" },
-                      { creator: "@techreview", platform: "YouTube", installs: "89", revenue: "$445", commission: "$89" },
-                      { creator: "@dailyapps", platform: "Instagram", installs: "56", revenue: "$340", commission: "$85" },
-                    ].map((row, i) => (
-                      <tr key={i} className={cn("border-b border-border last:border-0", i % 2 === 1 ? "bg-muted/50" : "")}>
-                        <td className="p-3 text-foreground">{row.creator}</td>
-                        <td className="p-3 text-text-secondary">{row.platform}</td>
-                        <td className="p-3 text-foreground">{row.installs}</td>
-                        <td className="p-3 text-foreground">{row.revenue}</td>
-                        <td className="p-3 text-foreground">{row.commission}</td>
+              <div className="h-[380px] flex items-center p-8" style={{ backgroundColor: "#F8F9FA", border: "1px solid #E5E7EB", borderRadius: "16px" }}>
+                <div className="w-full bg-background border border-border shadow-sm overflow-hidden">
+                  <div className="flex items-center justify-between p-4 border-b border-border">
+                    <span className="text-xs text-foreground">Creator Performance</span>
+                    <span className="text-[10px] text-text-tertiary border border-border px-2 py-0.5">Last 30 days</span>
+                  </div>
+                  <table className="w-full text-[11px]">
+                    <thead>
+                      <tr className="border-b border-border">
+                        {["Creator", "Platform", "Installs", "Revenue", "Commission"].map(h => (
+                          <th key={h} className="text-left p-3 text-text-tertiary font-normal">{h}</th>
+                        ))}
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {[
+                        { creator: "@sarah_creates", platform: "TikTok", installs: "234", revenue: "$2,100", commission: "$630" },
+                        { creator: "@techreview", platform: "YouTube", installs: "89", revenue: "$445", commission: "$89" },
+                        { creator: "@dailyapps", platform: "Instagram", installs: "56", revenue: "$340", commission: "$85" },
+                      ].map((row, i) => (
+                        <tr key={i} className={cn("border-b border-border last:border-0", i % 2 === 1 ? "bg-muted/50" : "")}>
+                          <td className="p-3 text-foreground">{row.creator}</td>
+                          <td className="p-3 text-text-secondary">{row.platform}</td>
+                          <td className="p-3 text-foreground">{row.installs}</td>
+                          <td className="p-3 text-foreground">{row.revenue}</td>
+                          <td className="p-3 text-foreground">{row.commission}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </Reveal>
           </div>
-          </div>
+        </div>
+      </section>
 
-          {/* Feature 4 — Payouts */}
-          <div className="py-24" style={{ backgroundColor: "#F8F9FA" }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
+      {/* Feature 4 — Payouts (gray bg) */}
+      <section className="w-full" style={{ backgroundColor: "#F8F9FA" }}>
+        <div className="max-w-[1200px] mx-auto px-6 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
-              <div className="bg-background border border-border shadow-sm">
-                <div className="flex items-center justify-between p-4 border-b border-border">
-                  <span className="text-xs text-foreground">Upcoming Payouts</span>
-                  <span className="text-[10px] text-text-tertiary">Mar 15</span>
-                </div>
-                <div className="divide-y divide-border">
-                  {[
-                    { name: "Emma Davis", amount: "$124.50", status: "Paid", paid: true },
-                    { name: "James Lee", amount: "$89.20", status: "Paid", paid: true },
-                    { name: "Sofia Martinez", amount: "$156.80", status: "Pending", paid: false },
-                    { name: "Alex Rivera", amount: "$97.50", status: "Pending", paid: false },
-                  ].map((row, i) => (
-                    <div key={i} className="flex items-center justify-between p-4">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">
-                          {row.name.split(" ").map(n => n[0]).join("")}
+              <div className="h-[380px] flex items-center p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid #E5E7EB", borderRadius: "16px" }}>
+                <div className="w-full bg-background border border-border shadow-sm">
+                  <div className="flex items-center justify-between p-4 border-b border-border">
+                    <span className="text-xs text-foreground">Upcoming Payouts</span>
+                    <span className="text-[10px] text-text-tertiary">Mar 15</span>
+                  </div>
+                  <div className="divide-y divide-border">
+                    {[
+                      { name: "Emma Davis", avatar: "/avatars/user-1.jpg", amount: "$124.50", status: "Paid", paid: true },
+                      { name: "James Lee", avatar: "/avatars/user-2.jpg", amount: "$89.20", status: "Paid", paid: true },
+                      { name: "Sofia Martinez", avatar: "/avatars/user-3.jpg", amount: "$156.80", status: "Pending", paid: false },
+                      { name: "Alex Rivera", avatar: "/avatars/user-4.jpg", amount: "$97.50", status: "Pending", paid: false },
+                    ].map((row, i) => (
+                      <div key={i} className="flex items-center justify-between p-4">
+                        <div className="flex items-center gap-3">
+                          <img src={row.avatar} alt={row.name} className="w-8 h-8 rounded-full object-cover" />
+                          <span className="text-sm text-foreground">{row.name}</span>
                         </div>
-                        <span className="text-sm text-foreground">{row.name}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="text-sm text-foreground">{row.amount}</span>
+                          <span className={cn(
+                            "text-[10px] px-2 py-0.5",
+                            row.paid
+                              ? "bg-green-50 text-green-600 border border-green-200"
+                              : "bg-muted text-text-tertiary border border-border"
+                          )}>
+                            {row.paid ? "Paid ✔" : "Pending"}
+                          </span>
+                        </div>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <span className="text-sm text-foreground">{row.amount}</span>
-                        <span className={cn(
-                          "text-[10px] px-2 py-0.5",
-                          row.paid
-                            ? "bg-green-50 text-green-600 border border-green-200"
-                            : "bg-muted text-text-tertiary border border-border"
-                        )}>
-                          {row.paid ? "Paid ✔" : "Pending"}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex items-center justify-between p-4 border-t border-border">
-                  <span className="text-sm text-foreground">Total: $468.00</span>
-                  <Button size="sm">Process All Payouts</Button>
+                    ))}
+                  </div>
+                  <div className="flex items-center justify-between p-4 border-t border-border">
+                    <span className="text-sm text-foreground">Total: $468.00</span>
+                    <Button size="sm">Process All Payouts</Button>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -785,8 +794,7 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
-          </div>
-          </div>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
