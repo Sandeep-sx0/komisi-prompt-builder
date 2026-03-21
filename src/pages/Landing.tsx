@@ -550,34 +550,7 @@ const Landing = () => {
               </div>
             </Reveal>
             <Reveal delay={0.15}>
-              <div className="h-[380px] flex items-center justify-center p-8" style={{ backgroundColor: "#F8F9FA", border: "1px solid #E5E7EB", borderRadius: "16px" }}>
-                <div className="flex items-center justify-between gap-2 w-full">
-                  {[
-                    { label: "Creator Link", icon: <Link2 size={14} /> },
-                    { label: "App Store", icon: <Download size={14} /> },
-                    { label: "Install", icon: <Download size={14} /> },
-                    { label: "SDK Launch", icon: <Fingerprint size={14} /> },
-                    { label: "Commission ✔", icon: <CircleDollarSign size={14} />, active: true },
-                  ].map((node, i, arr) => (
-                    <React.Fragment key={node.label}>
-                      <div className="flex flex-col items-center gap-1.5">
-                        <div className={cn(
-                          "w-10 h-10 border flex items-center justify-center text-text-secondary",
-                          node.active ? "border-green-400 bg-green-50 text-green-600" : "border-border bg-background"
-                        )}>
-                          {node.icon}
-                        </div>
-                        <span className="text-[8px] text-text-tertiary text-center leading-tight max-w-[60px]">{node.label}</span>
-                      </div>
-                      {i < arr.length - 1 && (
-                        <div className="flex-1 h-px bg-border relative min-w-[12px]">
-                          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-l-[4px] border-l-border border-y-[3px] border-y-transparent" />
-                        </div>
-                      )}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
+              <AttributionFlowAnimation />
             </Reveal>
           </div>
         </div>
