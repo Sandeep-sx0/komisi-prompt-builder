@@ -82,19 +82,19 @@ const codeExamples: Record<string, string[]> = {
 const testimonials = [
   {
     quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.",
-    name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp", initials: "SC", color: "hsl(var(--foreground))",
+    name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp", avatar: "/avatars/user-1.jpg",
   },
   {
     quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.",
-    name: "James Park", title: "Founder", company: "FocusTimer", initials: "JP", color: "hsl(215 16% 47%)",
+    name: "James Park", title: "Founder", company: "FocusTimer", avatar: "/avatars/user-2.jpg",
   },
   {
     quote: "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely.",
-    name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap", initials: "ML", color: "hsl(160 84% 39%)",
+    name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap", avatar: "/avatars/user-3.jpg",
   },
   {
     quote: "The fraud detection alone paid for itself. We caught fake installs in the first week.",
-    name: "Priya Nair", title: "Founder", company: "MindfulApp", initials: "PN", color: "hsl(38 92% 50%)",
+    name: "Priya Nair", title: "Founder", company: "MindfulApp", avatar: "/avatars/user-4.jpg",
   },
 ];
 
