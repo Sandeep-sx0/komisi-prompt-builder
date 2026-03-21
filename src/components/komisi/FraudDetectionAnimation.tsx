@@ -25,39 +25,21 @@ const FraudDetectionAnimation = () => {
   useEffect(() => {
     const run = () => {
       startRef.current = Date.now();
-      setVisibleRows(0);
-      setFlaggedRows(false);
-      setScanning(false);
-      setScanHighlight(false);
-      setAnomalyDetected(false);
-      setShowAlert(false);
-      setAlertPulse(false);
-      setProgress(0);
+      setVisibleRows(0); setFlaggedRows(false); setScanning(false);
+      setScanHighlight(false); setAnomalyDetected(false); setShowAlert(false);
+      setAlertPulse(false); setProgress(0);
 
-      // Act 1: rows fade in one by one
       for (let i = 0; i < 5; i++) {
         setTimeout(() => setVisibleRows(i + 1), i * 1000 + 400);
       }
-
-      // Act 2: scan highlight on rows 4-5
       setTimeout(() => setScanHighlight(true), 6000);
-      // Flag rows 4-5
       setTimeout(() => setFlaggedRows(true), 7500);
-      // Show scanning indicator
       setTimeout(() => setScanning(true), 8000);
-      // Anomaly detected
       setTimeout(() => { setScanning(false); setAnomalyDetected(true); }, 10000);
-
-      // Act 3: alert card
       setTimeout(() => { setAnomalyDetected(false); setShowAlert(true); setAlertPulse(true); }, 12000);
       setTimeout(() => setAlertPulse(false), 13000);
-
-      // Fade everything out
       setTimeout(() => {
-        setShowAlert(false);
-        setVisibleRows(0);
-        setFlaggedRows(false);
-        setScanHighlight(false);
+        setShowAlert(false); setVisibleRows(0); setFlaggedRows(false); setScanHighlight(false);
       }, 17000);
     };
 
@@ -72,9 +54,8 @@ const FraudDetectionAnimation = () => {
   return (
     <div
       className="relative w-full overflow-hidden flex items-center justify-center"
-      style={{ backgroundColor: "#0C1C28", borderRadius: "16px", height: "380px" }}
+      style={{ backgroundColor: "#1E0A3C", borderRadius: "16px", height: "380px" }}
     >
-      {/* Install log table */}
       <AnimatePresence>
         {visibleRows > 0 && (
           <motion.div
@@ -87,10 +68,9 @@ const FraudDetectionAnimation = () => {
           >
             <div
               className="w-full max-w-[360px] overflow-hidden"
-              style={{ backgroundColor: "#0D1117", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.08)" }}
+              style={{ backgroundColor: "#0D0010", borderRadius: "12px", border: "1px solid rgba(167,139,250,0.15)" }}
             >
-              {/* Header */}
-              <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+              <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(167,139,250,0.1)" }}>
                 <span className="text-sm text-white" style={{ fontWeight: 400 }}>Live Install Feed</span>
                 <span className="flex items-center gap-1.5 text-[11px]" style={{ color: "#4ADE80" }}>
                   <span className="relative flex h-2 w-2">
@@ -101,14 +81,12 @@ const FraudDetectionAnimation = () => {
                 </span>
               </div>
 
-              {/* Column headers */}
-              <div className="grid grid-cols-3 px-4 py-2 text-[10px] uppercase tracking-wider" style={{ color: "#6B7280", borderBottom: "1px solid rgba(255,255,255,0.04)" }}>
+              <div className="grid grid-cols-3 px-4 py-2 text-[10px] uppercase tracking-wider" style={{ color: "#6B7280", borderBottom: "1px solid rgba(167,139,250,0.06)" }}>
                 <span>IP Address</span>
                 <span>Time</span>
                 <span className="text-right">Status</span>
               </div>
 
-              {/* Rows */}
               <div>
                 {rows.map((row, i) => {
                   const isFlagged = flaggedRows && i >= 3;
@@ -123,7 +101,7 @@ const FraudDetectionAnimation = () => {
                           transition={{ duration: 0.6, ease: "easeInOut" }}
                           className="grid grid-cols-3 px-4 py-2.5 font-mono text-[11px]"
                           style={{
-                            borderBottom: "1px solid rgba(255,255,255,0.03)",
+                            borderBottom: "1px solid rgba(167,139,250,0.04)",
                             backgroundColor: isHighlighted ? "rgba(245, 158, 11, 0.08)" : "transparent",
                             transition: "background-color 800ms ease-in-out",
                           }}
@@ -133,24 +111,11 @@ const FraudDetectionAnimation = () => {
                           <span className="text-right">
                             <AnimatePresence mode="wait">
                               {isFlagged ? (
-                                <motion.span
-                                  key="flagged"
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ duration: 0.6 }}
-                                  style={{ color: "#F59E0B" }}
-                                >
+                                <motion.span key="flagged" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }} style={{ color: "#F59E0B" }}>
                                   ⚠ flagged
                                 </motion.span>
                               ) : (
-                                <motion.span
-                                  key="clean"
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  exit={{ opacity: 0 }}
-                                  transition={{ duration: 0.6 }}
-                                  style={{ color: "#4ADE80" }}
-                                >
+                                <motion.span key="clean" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} style={{ color: "#4ADE80" }}>
                                   ✔ clean
                                 </motion.span>
                               )}
@@ -163,38 +128,21 @@ const FraudDetectionAnimation = () => {
                 })}
               </div>
 
-              {/* Scanning / Anomaly indicator */}
               <AnimatePresence mode="wait">
                 {scanning && (
-                  <motion.div
-                    key="scanning"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                  <motion.div key="scanning" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                     className="px-4 py-3 flex items-center gap-2 text-xs"
-                    style={{ color: "#9CA3AF", borderTop: "1px solid rgba(255,255,255,0.04)" }}
-                  >
-                    <motion.span
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                      className="inline-block"
-                    >
-                      ◌
-                    </motion.span>
+                    style={{ color: "#9CA3AF", borderTop: "1px solid rgba(167,139,250,0.06)" }}>
+                    <motion.span animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="inline-block">◌</motion.span>
                     AI scoring pattern... 47 installs · Same IP range
                   </motion.div>
                 )}
                 {anomalyDetected && (
-                  <motion.div
-                    key="anomaly"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
+                  <motion.div key="anomaly" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                     className="px-4 py-3 flex items-center gap-2 text-xs"
-                    style={{ color: "#F59E0B", borderTop: "1px solid rgba(255,255,255,0.04)" }}
-                  >
+                    style={{ color: "#F59E0B", borderTop: "1px solid rgba(167,139,250,0.06)" }}>
                     ⚠ Anomaly detected — confidence 94%
                   </motion.div>
                 )}
@@ -204,28 +152,18 @@ const FraudDetectionAnimation = () => {
         )}
       </AnimatePresence>
 
-      {/* Fraud alert overlay */}
       <AnimatePresence>
         {showAlert && (
-          <motion.div
-            key="alert"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <motion.div key="alert" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0 flex items-center justify-center p-6"
-            style={{ backgroundColor: "rgba(12, 28, 40, 0.85)" }}
-          >
+            style={{ backgroundColor: "rgba(30, 10, 60, 0.85)" }}>
             <div className="w-full max-w-[340px] shadow-2xl" style={{ backgroundColor: "#FFFFFF", borderRadius: "16px", overflow: "hidden" }}>
-              {/* Amber left border bar */}
-              <div
-                className="p-5"
+              <div className="p-5"
                 style={{
                   borderLeft: `4px solid #F59E0B`,
-                  opacity: alertPulse ? undefined : 1,
                   animation: alertPulse ? "alertPulse 1s ease-in-out" : "none",
-                }}
-              >
+                }}>
                 <div className="flex items-center gap-2 mb-5">
                   <span style={{ color: "#F59E0B" }}>⚠</span>
                   <span className="text-sm" style={{ color: "#111827", fontWeight: 400 }}>Fraud Alert Detected</span>
@@ -243,18 +181,8 @@ const FraudDetectionAnimation = () => {
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <div
-                    className="flex-1 py-2 text-xs text-center"
-                    style={{ color: "#111827", border: "1px solid #E5E7EB", borderRadius: "8px" }}
-                  >
-                    Review Details
-                  </div>
-                  <div
-                    className="flex-1 py-2 text-xs text-center"
-                    style={{ color: "#6B7280" }}
-                  >
-                    Dismiss
-                  </div>
+                  <div className="flex-1 py-2 text-xs text-center" style={{ color: "#111827", border: "1px solid #E5E7EB", borderRadius: "8px" }}>Review Details</div>
+                  <div className="flex-1 py-2 text-xs text-center" style={{ color: "#6B7280" }}>Dismiss</div>
                 </div>
               </div>
             </div>
@@ -262,7 +190,6 @@ const FraudDetectionAnimation = () => {
         )}
       </AnimatePresence>
 
-      {/* Progress bar */}
       <div className="absolute bottom-0 left-0 right-0 h-[3px]" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}>
         <div className="h-full" style={{ backgroundColor: "#F59E0B", width: `${progress * 100}%`, transition: "width 30ms linear" }} />
       </div>

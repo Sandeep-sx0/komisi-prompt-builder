@@ -7,7 +7,7 @@ import { CountingNumber } from "@/components/animate-ui/primitives/texts/countin
    CARD 1 — Developer Terminal Animation
    ═══════════════════════════════════════════ */
 const DeveloperVisual = () => {
-  const [phase, setPhase] = useState(0); // 0=idle, 1=step1, 2=step2-typing, 3=step3, 4=pause
+  const [phase, setPhase] = useState(0);
   const [typedChars, setTypedChars] = useState(0);
   const codeStr = 'KomisiSDK.configure(apiKey: "YOUR_KEY")';
 
@@ -15,18 +15,10 @@ const DeveloperVisual = () => {
     const cycle = () => {
       setPhase(0);
       setTypedChars(0);
-
-      // Step 1 fade in
       const t1 = setTimeout(() => setPhase(1), 300);
-      // Step 2 slide in, then type
       const t2 = setTimeout(() => setPhase(2), 1100);
-      // Step 3 fade in
       const t3 = setTimeout(() => setPhase(3), 3200);
-      // Pause then reset
-      const t4 = setTimeout(() => {
-        setPhase(4);
-      }, 4700);
-
+      const t4 = setTimeout(() => setPhase(4), 4700);
       return [t1, t2, t3, t4];
     };
 
@@ -42,7 +34,6 @@ const DeveloperVisual = () => {
     };
   }, []);
 
-  // Typing effect
   useEffect(() => {
     if (phase !== 2) return;
     setTypedChars(0);
@@ -57,12 +48,10 @@ const DeveloperVisual = () => {
 
   const typed = codeStr.slice(0, typedChars);
 
-  // Syntax highlight the typed text
   const renderCode = () => {
     const sdk = "KomisiSDK";
     const configure = ".configure(apiKey: ";
     const key = '"YOUR_KEY"';
-    const close = ")";
 
     if (typed.length <= sdk.length) {
       return <span className="text-white">{typed}</span>;
@@ -72,7 +61,7 @@ const DeveloperVisual = () => {
       return (
         <>
           <span className="text-white">{sdk}</span>
-          <span style={{ color: "#64B5F6" }}>{rest1}</span>
+          <span style={{ color: "#A78BFA" }}>{rest1}</span>
         </>
       );
     }
@@ -81,7 +70,7 @@ const DeveloperVisual = () => {
       return (
         <>
           <span className="text-white">{sdk}</span>
-          <span style={{ color: "#64B5F6" }}>{configure}</span>
+          <span style={{ color: "#A78BFA" }}>{configure}</span>
           <span style={{ color: "#81C784" }}>{rest2}</span>
         </>
       );
@@ -89,9 +78,9 @@ const DeveloperVisual = () => {
     return (
       <>
         <span className="text-white">{sdk}</span>
-        <span style={{ color: "#64B5F6" }}>{configure}</span>
+        <span style={{ color: "#A78BFA" }}>{configure}</span>
         <span style={{ color: "#81C784" }}>{key}</span>
-        <span style={{ color: "#64B5F6" }}>{rest2.slice(key.length)}</span>
+        <span style={{ color: "#A78BFA" }}>{rest2.slice(key.length)}</span>
       </>
     );
   };
@@ -108,7 +97,7 @@ const DeveloperVisual = () => {
         <span
           className="w-6 h-6 shrink-0 flex items-center justify-center text-[10px]"
           style={{
-            backgroundColor: phase >= 1 ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.05)",
+            backgroundColor: phase >= 1 ? "rgba(124,58,237,0.3)" : "rgba(255,255,255,0.05)",
             color: "rgba(255,255,255,0.8)",
             borderRadius: "50%",
           }}
@@ -132,7 +121,7 @@ const DeveloperVisual = () => {
           <span
             className="w-6 h-6 shrink-0 flex items-center justify-center text-[10px]"
             style={{
-              backgroundColor: phase >= 2 ? "rgba(255,255,255,0.2)" : "rgba(255,255,255,0.05)",
+              backgroundColor: phase >= 2 ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.05)",
               color: "white",
               borderRadius: "50%",
             }}
@@ -412,13 +401,13 @@ const PersonaCard = ({ label, chips, visual, delay = 0 }: PersonaCardProps) => {
         transition: "border-color 300ms ease",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "#0C1C28";
+        (e.currentTarget as HTMLElement).style.borderColor = "#7C3AED";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = "#E5E7EB";
       }}
     >
-      <div className="h-[240px]" style={{ backgroundColor: "#0C1C28" }}>
+      <div className="h-[240px]" style={{ backgroundColor: "#1E0A3C" }}>
         {visual}
       </div>
       <div className="p-6 flex-1 flex flex-col">
@@ -445,7 +434,7 @@ const PersonaCard = ({ label, chips, visual, delay = 0 }: PersonaCardProps) => {
    ═══════════════════════════════════════════ */
 const PersonaCards = () => {
   return (
-    <section className="py-24 px-6" style={{ backgroundColor: "#F8F9FA" }}>
+    <section className="py-24 px-6" style={{ backgroundColor: "#F5F0FF" }}>
       <div className="max-w-[1200px] mx-auto">
         <motion.div
           className="text-center mb-16"
