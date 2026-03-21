@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
 import PersonaCards from "@/components/komisi/PersonaCards";
+import AttributionFlowAnimation from "@/components/komisi/AttributionFlowAnimation";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
