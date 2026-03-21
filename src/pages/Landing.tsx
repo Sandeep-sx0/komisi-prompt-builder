@@ -971,7 +971,7 @@ const Landing = () => {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="text-8xl text-foreground/10 text-center mb-4 leading-none select-none font-serif">"</div>
+            <div className="text-8xl text-foreground text-center mb-4 leading-none select-none font-serif">&ldquo;</div>
 
             <AnimatePresence mode="wait">
               <motion.div
