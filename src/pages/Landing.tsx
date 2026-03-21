@@ -1038,8 +1038,8 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 10 — TRUST / ENTERPRISE BAR
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6 border-t border-border">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      <section className="py-20 px-6" style={{ backgroundColor: "#F3F4F6" }}>
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
               icon: <Shield size={24} />,
