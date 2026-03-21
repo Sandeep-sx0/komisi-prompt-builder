@@ -966,7 +966,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 9 — TESTIMONIALS CAROUSEL
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 border-t border-border">
+      <section className="py-24 px-6" style={{ backgroundColor: "#F9FAFB" }}>
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
