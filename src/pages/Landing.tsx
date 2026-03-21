@@ -26,20 +26,21 @@ const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode;
   </motion.div>
 );
 
-/* ── Logo files ── */
-const logoFiles = [
-  "/logos/calibre.svg", "/logos/atomicojs.svg", "/logos/hootsuite.svg",
-  "/logos/nvidia.svg", "/logos/broadcom.svg", "/logos/architect.svg",
-  "/logos/descript.svg", "/logos/storyblocks.svg", "/logos/builder-io.svg",
-  "/logos/launchdarkly.svg", "/logos/notion.svg", "/logos/posthog.svg",
-  "/logos/snaplet.svg", "/logos/linear.svg", "/logos/biomejs.svg",
-  "/logos/perplexity.svg", "/logos/importio.svg",
+/* ── Social proof logos ── */
+const socialProofLogos = [
+  { name: "Notion", src: "/logos/notion.webp" },
+  { name: "Linear", src: "/logos/linear.webp" },
+  { name: "Vercel", src: "/logos/vercel.webp" },
+  { name: "Figma", src: "/logos/figma.webp" },
+  { name: "Supabase", src: "/logos/supabase.webp" },
+  { name: "PostHog", src: "/logos/posthog.webp" },
+  { name: "Amplitude", src: "/logos/amplitude.webp" },
+  { name: "Slack", src: "/logos/slack.webp" },
 ];
 
 /* ── Code tabs data ── */
 const codeExamples: Record<string, string[]> = {
   Swift: [
-    "// Your app's code",
     "import KomisiSDK",
     "",
     "KomisiSDK.configure(",
@@ -49,33 +50,30 @@ const codeExamples: Record<string, string[]> = {
     "// ✔ Attribution active",
   ],
   Kotlin: [
-    "// Your app's code",
-    "import com.komisi.sdk.Komisi",
+    "import io.komisi.sdk.KomisiSDK",
     "",
-    "Komisi.configure(",
+    "KomisiSDK.configure(",
     '  apiKey = "YOUR_API_KEY"',
     ")",
-    "Komisi.resolve()",
+    "KomisiSDK.resolve()",
     "// ✔ Attribution active",
   ],
   Flutter: [
-    "// Your app's code",
-    "import 'package:komisi_sdk/komisi.dart';",
+    "import 'package:komisi_sdk/komisi_sdk.dart';",
     "",
-    "Komisi.configure(",
-    "  apiKey: 'YOUR_API_KEY',",
+    "await KomisiSDK.configure(",
+    '  apiKey: "YOUR_API_KEY",',
     ");",
-    "Komisi.resolve();",
+    "await KomisiSDK.resolve();",
     "// ✔ Attribution active",
   ],
   "React Native": [
-    "// Your app's code",
-    "import Komisi from 'komisi-react-native';",
+    "import KomisiSDK from '@komisi/react-native-sdk';",
     "",
-    "Komisi.configure({",
-    "  apiKey: 'YOUR_API_KEY',",
+    "await KomisiSDK.configure({",
+    "  apiKey: 'YOUR_API_KEY'",
     "});",
-    "Komisi.resolve();",
+    "await KomisiSDK.resolve();",
     "// ✔ Attribution active",
   ],
 };
@@ -83,7 +81,7 @@ const codeExamples: Record<string, string[]> = {
 /* ── Testimonial data ── */
 const testimonials = [
   {
-    quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months. I wish we had started sooner.",
+    quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.",
     name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp", initials: "SC", color: "hsl(var(--foreground))",
   },
   {
@@ -91,7 +89,7 @@ const testimonials = [
     name: "James Park", title: "Founder", company: "FocusTimer", initials: "JP", color: "hsl(215 16% 47%)",
   },
   {
-    quote: "Creators love the portal. They can see their earnings in real time and they get paid without asking. Retention on our affiliate program is way higher than I expected.",
+    quote: "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely.",
     name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap", initials: "ML", color: "hsl(160 84% 39%)",
   },
   {
@@ -100,23 +98,23 @@ const testimonials = [
   },
 ];
 
-/* ── Integration data with brand colors ── */
+/* ── Integration data with logos ── */
 const integrations = [
-  { name: "RevenueCat", abbr: "RC", bg: "#F97316" },
-  { name: "Adapty", abbr: "A", bg: "#9840FF" },
-  { name: "Stripe Connect", abbr: "S", bg: "#635BFF" },
-  { name: "Apple App Store", abbr: "AS", bg: "#000000" },
-  { name: "Google Play", abbr: "GP", bg: "#34A853" },
-  { name: "Amplitude", abbr: "Am", bg: "#1A73E8" },
-  { name: "Mixpanel", abbr: "Mp", bg: "#7856FF" },
-  { name: "AppsFlyer", abbr: "AF", bg: "#12CBC4" },
-  { name: "Adjust", abbr: "Ad", bg: "#003B5C" },
-  { name: "Firebase", abbr: "Fi", bg: "#FFCA28" },
-  { name: "Braze", abbr: "Bz", bg: "#ED1C24" },
-  { name: "Slack", abbr: "Sl", bg: "#4A154B" },
-  { name: "Webhooks", abbr: "Wh", bg: "#1A1A2E" },
-  { name: "REST API", abbr: "RA", bg: "#1A1A2E" },
-  { name: "TikTok", abbr: "Tk", bg: "#000000" },
+  { name: "RevenueCat", logo: "/logos/revenuecat.webp" },
+  { name: "Adapty", logo: "/logos/adapty.webp" },
+  { name: "Stripe Connect", logo: "/logos/stripe.webp" },
+  { name: "Apple App Store", logo: "/logos/apple.webp" },
+  { name: "Google Play", logo: "/logos/google.webp" },
+  { name: "Amplitude", logo: "/logos/amplitude.webp" },
+  { name: "Mixpanel", logo: "/logos/mixpanel.webp" },
+  { name: "AppsFlyer", logo: "/logos/appsflyer.webp" },
+  { name: "Adjust", logo: "/logos/adjust.webp" },
+  { name: "Firebase", logo: "/logos/firebase.webp" },
+  { name: "Braze", logo: "/logos/braze.webp" },
+  { name: "Slack", logo: "/logos/slack.webp" },
+  { name: "TikTok", logo: "/logos/tiktok.webp" },
+  { name: "OneSignal", logo: "/logos/onesignal.webp" },
+  { name: "PostHog", logo: "/logos/posthog.webp" },
 ];
 
 const sdkPlatforms = [
@@ -136,6 +134,10 @@ const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
   }
   if (line.includes("import")) {
     return <div className="leading-6">{lineNum}<span style={{ color: "#79B8FF" }}>import</span><span style={{ color: "#E1E4E8" }}>{line.replace("import", "")}</span></div>;
+  }
+  if (line.includes("await")) {
+    const rest = line.replace("await ", "");
+    return <div className="leading-6">{lineNum}<span style={{ color: "#79B8FF" }}>await </span><span style={{ color: "#E1E4E8" }}>{rest}</span></div>;
   }
   if (line.includes('"') || line.includes("'")) {
     const parts: React.ReactNode[] = [];
@@ -178,7 +180,6 @@ const Landing = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Testimonial auto-advance
   useEffect(() => {
     if (isPaused) return;
     autoPlayRef.current = setInterval(() => {
@@ -246,7 +247,6 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="pt-32 pb-20 px-6" id="product">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left — text */}
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-text-secondary border border-border px-3 py-1.5 mb-6">
@@ -302,7 +302,6 @@ const Landing = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            {/* Dashboard card — behind */}
             <div className="relative ml-auto max-w-[360px] p-5 border border-white/10 shadow-xl" style={{ backgroundColor: "#0C1C28" }}>
               <div className="flex items-center justify-between mb-5">
                 <span className="text-xs text-white/60 tracking-wider uppercase">Komisi Dashboard</span>
@@ -326,28 +325,18 @@ const Landing = () => {
                   </div>
                 ))}
               </div>
-              {/* Mini sparkline */}
               <div className="h-8 w-full">
                 <svg viewBox="0 0 200 32" className="w-full h-full" preserveAspectRatio="none">
-                  <polyline
-                    fill="none"
-                    stroke="hsl(160 84% 39%)"
-                    strokeWidth="1.5"
-                    points="0,28 20,24 40,26 60,20 80,22 100,16 120,18 140,12 160,14 180,8 200,4"
-                  />
+                  <polyline fill="none" stroke="hsl(160 84% 39%)" strokeWidth="1.5" points="0,28 20,24 40,26 60,20 80,22 100,16 120,18 140,12 160,14 180,8 200,4" />
                   <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0%" stopColor="hsl(160 84% 39%)" stopOpacity="0.2" />
                     <stop offset="100%" stopColor="hsl(160 84% 39%)" stopOpacity="0" />
                   </linearGradient>
-                  <polygon
-                    fill="url(#sparkGrad)"
-                    points="0,28 20,24 40,26 60,20 80,22 100,16 120,18 140,12 160,14 180,8 200,4 200,32 0,32"
-                  />
+                  <polygon fill="url(#sparkGrad)" points="0,28 20,24 40,26 60,20 80,22 100,16 120,18 140,12 160,14 180,8 200,4 200,32 0,32" />
                 </svg>
               </div>
             </div>
 
-            {/* Creator row card — overlapping in front */}
             <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -371,21 +360,24 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="py-10 border-y border-border overflow-hidden">
         <Reveal>
-          <p className="text-xs text-text-tertiary text-center mb-6 uppercase tracking-[0.15em]">
+          <p className="text-xs text-text-tertiary text-center mb-8 uppercase tracking-[0.15em]">
             DEVELOPERS BUILDING WITH KOMISI
           </p>
         </Reveal>
-        <div className="marquee-container">
-          <div className="marquee-track hover:[animation-play-state:paused]">
-            {[...logoFiles, ...logoFiles].map((src, i) => (
-              <div key={i} className="opacity-50 flex items-center shrink-0">
-                <img src={src} alt="" height={20} className="h-5 w-auto brightness-0" />
+        <div className="max-w-[900px] mx-auto px-6">
+          <div className="flex items-center justify-between gap-8 flex-wrap">
+            {socialProofLogos.map((logo) => (
+              <div key={logo.name} className="group transition-all duration-200" style={{ filter: "grayscale(100%) opacity(0.5)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.filter = "none"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.filter = "grayscale(100%) opacity(0.5)"; }}
+              >
+                <img src={logo.src} alt={logo.name} className="h-7 w-auto object-contain" />
               </div>
             ))}
           </div>
         </div>
         <Reveal>
-          <p className="text-xs text-text-tertiary text-center mt-6">
+          <p className="text-xs text-text-tertiary text-center mt-8">
             200+ app developers trust Komisi to run their affiliate programs
           </p>
         </Reveal>
@@ -406,22 +398,39 @@ const Landing = () => {
             {/* Card 1 — Developers */}
             <Reveal delay={0}>
               <div className="border border-border bg-card h-full flex flex-col">
-                <div className="h-[200px] flex items-center justify-center p-6" style={{ backgroundColor: "#0C1C28" }}>
-                  <pre className="text-xs text-white/90 leading-relaxed font-mono">
-{`KomisiSDK.configure(
-  apiKey: "your_key"
-)`}<span className="animate-pulse">▊</span>
-                  </pre>
+                <div className="h-[220px] flex flex-col justify-center p-6 bg-muted">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full border border-border bg-background flex items-center justify-center text-[10px] text-text-tertiary">①</span>
+                      <span className="text-sm text-text-secondary">Configure your app</span>
+                    </div>
+                    <div className="border border-border bg-background p-3 ml-2">
+                      <div className="flex items-center gap-3 mb-2">
+                        <span className="w-6 h-6 rounded-full border border-foreground bg-foreground flex items-center justify-center text-[10px] text-background">②</span>
+                        <span className="text-sm text-foreground font-medium">Install Komisi SDK</span>
+                      </div>
+                      <pre className="text-[11px] font-mono ml-9 leading-relaxed">
+                        <span style={{ color: "#79B8FF" }}>KomisiSDK</span>
+                        <span className="text-foreground">.configure(</span>{"\n"}
+                        <span className="text-foreground">  apiKey: </span>
+                        <span style={{ color: "#85E89D" }}>"YOUR_KEY"</span>
+                        <span className="text-foreground">)</span>
+                      </pre>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="w-6 h-6 rounded-full border border-border bg-background flex items-center justify-center text-[10px] text-text-tertiary">③</span>
+                      <span className="text-sm text-text-secondary">Attribution active</span>
+                      <CheckCircle size={14} className="text-green-500" />
+                    </div>
+                  </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
-                  <p className="text-xs text-text-tertiary uppercase tracking-wider mb-2">For Developers →</p>
-                  <ul className="space-y-2 mt-auto">
-                    {["Lightweight SDK", "No IDFA", "Privacy-safe attribution", "RevenueCat integration"].map(f => (
-                      <li key={f} className="flex items-center gap-2 text-sm text-text-secondary">
-                        <Check size={12} className="text-foreground shrink-0" /> {f}
-                      </li>
+                  <p className="text-sm font-medium text-foreground mb-3">For Developers →</p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {["Lightweight SDK", "No IDFA", "RevenueCat integration", "Privacy-safe"].map(f => (
+                      <span key={f} className="text-[10px] text-text-secondary border border-border px-2 py-1">{f}</span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -429,32 +438,42 @@ const Landing = () => {
             {/* Card 2 — Growth Teams */}
             <Reveal delay={0.08}>
               <div className="border border-border bg-card h-full flex flex-col">
-                <div className="bg-muted h-[200px] flex items-center justify-center p-6">
-                  <div className="w-full max-w-[220px]">
-                    <p className="text-[10px] text-text-tertiary mb-3">Install Growth (6 months)</p>
-                    <div className="flex items-end gap-1.5 h-24">
-                      {[25, 32, 38, 50, 62, 78].map((h, i) => (
-                        <div key={i} className="flex-1 flex flex-col justify-end">
-                          <div className="w-full" style={{ height: `${h}%`, backgroundColor: "#0C1C28" }} />
-                        </div>
-                      ))}
+                <div className="bg-muted h-[220px] flex flex-col justify-center p-6">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] text-text-tertiary uppercase tracking-wider">Installs</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg text-foreground font-medium tracking-tight">$56,823</span>
+                      <span className="text-[10px] text-green-500 bg-green-50 border border-green-200 px-1.5 py-0.5">+11.4%</span>
                     </div>
-                    <div className="flex justify-between mt-2">
-                      {["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"].map(m => (
-                        <span key={m} className="text-[8px] text-text-tertiary flex-1 text-center">{m}</span>
-                      ))}
-                    </div>
+                  </div>
+                  <div className="flex items-end gap-1 h-24 mt-2">
+                    {[30, 38, 28, 45, 55, 42, 65, 78].map((h, i) => (
+                      <div key={i} className="flex-1 flex flex-col justify-end">
+                        <div className="w-full transition-all" style={{ height: `${h}%`, backgroundColor: "#0C1C28" }} />
+                      </div>
+                    ))}
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    {["Aug 12", "Aug 19", "Aug 26", "Sep 02", "Sep 09"].map(m => (
+                      <span key={m} className="text-[7px] text-text-tertiary">{m}</span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3 mt-3">
+                    {[{ c: "#0C1C28", l: "Campaign 1" }, { c: "#6B7280", l: "Campaign 2" }, { c: "#D1D5DB", l: "Campaign 3" }].map(d => (
+                      <div key={d.l} className="flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full" style={{ backgroundColor: d.c }} />
+                        <span className="text-[8px] text-text-tertiary">{d.l}</span>
+                      </div>
+                    ))}
                   </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
-                  <p className="text-xs text-text-tertiary uppercase tracking-wider mb-2">For Growth Teams →</p>
-                  <ul className="space-y-2 mt-auto">
-                    {["Campaign management", "Creator analytics", "CAC tracking", "Commission tiers"].map(f => (
-                      <li key={f} className="flex items-center gap-2 text-sm text-text-secondary">
-                        <Check size={12} className="text-foreground shrink-0" /> {f}
-                      </li>
+                  <p className="text-sm font-medium text-foreground mb-3">For Growth Teams →</p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {["Campaign tracking", "Creator analytics", "CAC dashboard", "Commission tiers"].map(f => (
+                      <span key={f} className="text-[10px] text-text-secondary border border-border px-2 py-1">{f}</span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -462,27 +481,35 @@ const Landing = () => {
             {/* Card 3 — Creators */}
             <Reveal delay={0.16}>
               <div className="border border-border bg-card h-full flex flex-col">
-                <div className="bg-muted h-[200px] flex items-center justify-center p-6">
-                  <div className="bg-background border border-border p-5 w-full max-w-[220px]">
-                    <p className="text-[10px] text-text-tertiary mb-1">This month</p>
-                    <p className="text-3xl text-foreground tracking-tight">$3,562</p>
-                    <p className="text-[10px] text-text-tertiary mb-3">earned this month</p>
-                    <div className="flex gap-2">
-                      {["234 installs", "$630 pending", "Mar 15 payout"].map(c => (
-                        <span key={c} className="text-[9px] text-text-tertiary border border-border px-1.5 py-0.5">{c}</span>
-                      ))}
+                <div className="bg-muted h-[220px] flex items-center justify-center p-6 relative overflow-hidden">
+                  {/* Back screen */}
+                  <div className="absolute left-4 top-4 w-[180px] p-4 shadow-md" style={{ backgroundColor: "#0C1C28" }}>
+                    <p className="text-[11px] text-white/90 font-medium mb-2">Earn from every install</p>
+                    <div className="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                      <div className="h-full bg-green-400 rounded-full" style={{ width: "68%" }} />
                     </div>
+                    <p className="text-[9px] text-white/40 mt-1">68% of monthly goal</p>
+                  </div>
+                  {/* Front screen */}
+                  <div className="absolute right-4 bottom-4 w-[180px] bg-background border border-border p-4 shadow-lg z-10">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-[10px] text-text-tertiary">@creator</span>
+                      <span className="text-[9px] px-1.5 py-0.5 bg-green-50 text-green-600 border border-green-200">Active</span>
+                    </div>
+                    <p className="text-xl text-foreground tracking-tight font-medium">$3,562</p>
+                    <p className="text-[9px] text-text-tertiary mb-3">earned this month</p>
+                    <button className="text-[10px] text-foreground border border-border px-2 py-1 hover:bg-muted transition-colors w-full text-center">
+                      View Links →
+                    </button>
                   </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
-                  <p className="text-xs text-text-tertiary uppercase tracking-wider mb-2">For Creators →</p>
-                  <ul className="space-y-2 mt-auto">
-                    {["Unique tracking links", "Real-time earnings", "Automatic payouts", "Content performance"].map(f => (
-                      <li key={f} className="flex items-center gap-2 text-sm text-text-secondary">
-                        <Check size={12} className="text-foreground shrink-0" /> {f}
-                      </li>
+                  <p className="text-sm font-medium text-foreground mb-3">For Creators →</p>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {["Tracking links", "Real-time earnings", "Auto payouts", "Content analytics"].map(f => (
+                      <span key={f} className="text-[10px] text-text-secondary border border-border px-2 py-1">{f}</span>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -529,28 +556,26 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6" style={{ backgroundColor: "#0C1C28" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Left — text + testimonial */}
           <Reveal>
             <div>
               <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-6">
                 Integrate in under<br />30 minutes.
               </h2>
               <p className="text-base mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
-                One SDK. Works on iOS, Android, Flutter, and React Native. Drop in 3 lines of code and Komisi handles attribution, fraud detection, and payouts automatically.
+                One SDK. Works on iOS, Android, Flutter, and React Native. Drop in 3 lines of code and Komisi handles attribution, fraud detection, and payouts automatically. No server coding required.
               </p>
               <a href="#" className="text-sm text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 mb-10">
                 Read the docs <ArrowRight size={14} />
               </a>
 
-              {/* Testimonial card */}
               <div className="bg-white/5 border border-white/10 p-6 mt-8">
                 <p className="text-sm text-white/70 mb-4 leading-relaxed italic">
                   "Setup was faster than I expected. The RevenueCat integration just worked — I had my first affiliate attributed within the hour."
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-white/10 flex items-center justify-center text-[10px] text-white/60">JP</div>
+                  <div className="w-8 h-8 bg-white/10 flex items-center justify-center text-[10px] text-white/60 rounded-full">JP</div>
                   <div>
-                    <p className="text-xs text-white/80">James Park</p>
+                    <p className="text-xs text-white/80 font-medium">James Park</p>
                     <p className="text-[10px] text-white/40">Founder, FocusTimer</p>
                   </div>
                 </div>
@@ -558,10 +583,8 @@ const Landing = () => {
             </div>
           </Reveal>
 
-          {/* Right — code block */}
           <Reveal delay={0.15}>
             <div>
-              {/* Tabs */}
               <div className="flex" style={{ backgroundColor: "#161B22" }}>
                 {Object.keys(codeExamples).map(tab => (
                   <button
@@ -577,7 +600,6 @@ const Landing = () => {
                 ))}
               </div>
 
-              {/* Code area */}
               <div className="relative" style={{ backgroundColor: "#0D1117" }}>
                 <button
                   onClick={handleCopy}
@@ -592,7 +614,6 @@ const Landing = () => {
                 </pre>
               </div>
 
-              {/* Footer bar */}
               <div className="flex items-center justify-between px-4 py-3 border-t border-white/5" style={{ backgroundColor: "#161B22" }}>
                 <div className="flex items-center gap-2">
                   <Github size={14} className="text-white/40" />
@@ -603,7 +624,6 @@ const Landing = () => {
                 </a>
               </div>
 
-              {/* SDK platform grid */}
               <div className="grid grid-cols-3 gap-3 mt-6">
                 {sdkPlatforms.map(p => (
                   <div key={p.name} className="border border-white/10 p-3 text-center hover:border-white/25 transition-colors" style={{ backgroundColor: "rgba(255,255,255,0.02)" }}>
@@ -641,7 +661,7 @@ const Landing = () => {
                     "We finally know which creators are actually driving installs. Komisi's attribution is the most accurate we've tested."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">SC</div>
+                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">SC</div>
                     <div>
                       <p className="text-xs text-foreground">Sarah Chen</p>
                       <p className="text-[10px] text-text-tertiary">Head of Growth, MindfulApp</p>
@@ -686,12 +706,10 @@ const Landing = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
               <div className="bg-background border border-border shadow-sm">
-                {/* Alert header */}
                 <div className="flex items-center gap-2 p-4 border-b border-border" style={{ borderLeft: "3px solid hsl(38 92% 50%)" }}>
                   <AlertTriangle size={16} className="text-warning" />
                   <span className="text-sm text-foreground">Fraud Alert Detected</span>
                 </div>
-                {/* Details */}
                 <div className="p-4 space-y-2 border-b border-border">
                   <div className="flex justify-between text-xs">
                     <span className="text-text-secondary">Installs</span><span className="text-foreground">47</span>
@@ -703,12 +721,10 @@ const Landing = () => {
                     <span className="text-text-secondary">Timeframe</span><span className="text-foreground">2 hours</span>
                   </div>
                 </div>
-                {/* Action buttons */}
                 <div className="flex gap-3 p-4 border-b border-border">
                   <Button size="sm" variant="secondary" className="flex-1">Review Details</Button>
                   <Button size="sm" variant="ghost" className="flex-1">Dismiss</Button>
                 </div>
-                {/* Mini table */}
                 <div className="text-[11px]">
                   {[
                     { ip: "192.168.1.x", time: "14:02", status: "flagged" },
@@ -743,7 +759,7 @@ const Landing = () => {
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">DP</div>
+                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">DP</div>
                     <div>
                       <p className="text-xs text-foreground">David Park</p>
                       <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
@@ -772,7 +788,7 @@ const Landing = () => {
                     "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">ML</div>
+                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">ML</div>
                     <div>
                       <p className="text-xs text-foreground">Marcus Lee</p>
                       <p className="text-[10px] text-text-tertiary">Growth Lead, CalorieSnap</p>
@@ -832,7 +848,7 @@ const Landing = () => {
                   ].map((row, i) => (
                     <div key={i} className="flex items-center justify-between p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">
+                        <div className="w-8 h-8 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">
                           {row.name.split(" ").map(n => n[0]).join("")}
                         </div>
                         <span className="text-sm text-foreground">{row.name}</span>
@@ -873,7 +889,7 @@ const Landing = () => {
                     "Creators love that they just get paid. No back-and-forth, no invoices. It's made recruiting affiliates so much easier."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">PN</div>
+                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">PN</div>
                     <div>
                       <p className="text-xs text-foreground">Priya Nair</p>
                       <p className="text-[10px] text-text-tertiary">Founder, MindfulApp</p>
@@ -903,14 +919,13 @@ const Landing = () => {
           <Reveal className="mt-12">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
               {integrations.map(item => (
-                <div key={item.name} className="border border-border bg-card p-4 text-center hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default group">
-                  <div
-                    className="w-10 h-10 mx-auto mb-2 flex items-center justify-center text-[11px] text-white font-normal"
-                    style={{ backgroundColor: item.bg }}
-                  >
-                    {item.abbr}
-                  </div>
-                  <span className="text-xs text-text-secondary">{item.name}</span>
+                <div key={item.name} className="border border-border bg-card rounded-xl p-5 text-center hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default group">
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    className="w-12 h-12 mx-auto mb-3 object-contain"
+                  />
+                  <span className="text-sm font-medium text-text-secondary">{item.name}</span>
                 </div>
               ))}
             </div>
@@ -922,9 +937,9 @@ const Landing = () => {
                 "The RevenueCat integration saved us weeks. Komisi just reads our existing webhook events — zero additional engineering."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">JP</div>
+                <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">JP</div>
                 <div>
-                  <p className="text-xs text-foreground">James Park</p>
+                  <p className="text-xs text-foreground font-medium">James Park</p>
                   <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
                 </div>
               </div>
@@ -945,12 +960,11 @@ const Landing = () => {
           </Reveal>
 
           <div
-            className="relative max-w-[700px] mx-auto"
+            className="relative max-w-[720px] mx-auto"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            {/* Large decorative quote */}
-            <div className="text-6xl text-foreground/10 text-center mb-4 leading-none select-none">"</div>
+            <div className="text-8xl text-foreground/10 text-center mb-4 leading-none select-none font-serif">"</div>
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -959,18 +973,18 @@ const Landing = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -30 }}
                 transition={{ duration: 0.3 }}
-                className="text-center px-12"
+                className="text-center px-16"
               >
                 <div
-                  className="w-12 h-12 mx-auto mb-6 flex items-center justify-center text-sm text-white"
+                  className="w-14 h-14 mx-auto mb-6 flex items-center justify-center text-sm text-white rounded-full"
                   style={{ backgroundColor: testimonials[activeTestimonial].color }}
                 >
                   {testimonials[activeTestimonial].initials}
                 </div>
-                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-[600px] mx-auto">
+                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-[600px] mx-auto italic">
                   "{testimonials[activeTestimonial].quote}"
                 </p>
-                <p className="text-sm text-foreground">{testimonials[activeTestimonial].name}</p>
+                <p className="text-sm text-foreground font-medium">{testimonials[activeTestimonial].name}</p>
                 <p className="text-xs text-text-tertiary">
                   {testimonials[activeTestimonial].title}, {testimonials[activeTestimonial].company}
                 </p>
@@ -979,13 +993,13 @@ const Landing = () => {
 
             <button
               onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 border border-border flex items-center justify-center text-text-secondary hover:text-foreground transition-colors"
+              className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:text-foreground hover:border-foreground transition-colors"
             >
               <ChevronLeft size={18} />
             </button>
             <button
               onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 border border-border flex items-center justify-center text-text-secondary hover:text-foreground transition-colors"
+              className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:text-foreground hover:border-foreground transition-colors"
             >
               <ChevronRight size={18} />
             </button>
@@ -996,8 +1010,8 @@ const Landing = () => {
                   key={i}
                   onClick={() => setActiveTestimonial(i)}
                   className={cn(
-                    "w-2 h-2 transition-colors",
-                    i === activeTestimonial ? "bg-foreground" : "bg-border"
+                    "w-2.5 h-2.5 rounded-full transition-colors",
+                    i === activeTestimonial ? "bg-foreground" : "border border-border"
                   )}
                 />
               ))}
@@ -1062,7 +1076,6 @@ const Landing = () => {
           SECTION 11 — FINAL CTA (Dark)
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#0C1C28" }}>
-        {/* Subtle noise texture */}
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")" }} />
         <Reveal className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4">
