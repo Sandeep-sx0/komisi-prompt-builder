@@ -274,3 +274,9 @@ html {
   100% { opacity: 0; transform: scale(1.5); }
 }
 .animate-confetti { animation: confetti-burst 1s ease-out forwards; }
+
+@keyframes fraudPulse {
+  0% { border-left-color: rgba(245,158,11,1); }
+  50% { border-left-color: rgba(245,158,11,0.4); }
+  100% { border-left-color: rgba(245,158,11,1); }
+}
