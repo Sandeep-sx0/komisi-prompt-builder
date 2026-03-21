@@ -19,6 +19,7 @@ import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
 import HeroVisual from "@/components/komisi/HeroVisual";
+import LineWaves from "@/components/LineWaves";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
@@ -213,21 +214,21 @@ const Landing = () => {
       <nav className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
-      )}>
+      )} style={{ color: scrolled ? undefined : '#fff' }}>
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <span className="text-lg text-foreground tracking-tight font-normal">komisi</span>
+            <span className={cn("text-lg tracking-tight font-normal", scrolled ? "text-foreground" : "text-white")}>{scrolled ? "komisi" : "komisi"}</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-text-secondary hover:text-foreground transition-colors">{l}</a>
+              <a key={l} href={`#${l.toLowerCase()}`} className={cn("text-sm transition-colors", scrolled ? "text-text-secondary hover:text-foreground" : "text-white/70 hover:text-white")}>{l}</a>
             ))}
           </div>
           <div className="hidden md:flex items-center gap-3">
-            <Link to="/login"><Button variant="ghost" size="sm">Login</Button></Link>
-            <Link to="/signup"><Button size="sm">Get Started <ArrowRight size={14} /></Button></Link>
+            <Link to="/login"><Button variant="ghost" size="sm" className={scrolled ? "" : "text-white/70 hover:text-white hover:bg-white/10"}>Login</Button></Link>
+            <Link to="/signup"><Button size="sm" className={scrolled ? "" : "bg-white text-black hover:bg-white/90"}>Get Started <ArrowRight size={14} /></Button></Link>
           </div>
-          <button className="md:hidden text-foreground" onClick={() => setMobileMenu(!mobileMenu)}>
+          <button className={cn("md:hidden", scrolled ? "text-foreground" : "text-white")} onClick={() => setMobileMenu(!mobileMenu)}>
             {mobileMenu ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -252,11 +253,22 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
-      <section className="pt-32 pb-20 px-6 overflow-hidden" id="product">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-black" id="product">
+        {/* LineWaves background */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <LineWaves
+            speed={0.15}
+            brightness={0.15}
+            color1="#ffffff"
+            color2="#ffffff"
+            color3="#ffffff"
+            enableMouseInteraction={false}
+          />
+        </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-text-secondary border border-border px-3 py-1.5 mb-6">
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-white/70 border border-white/20 bg-white/5 px-3 py-1.5 mb-6">
                 ✦ Built for mobile app developers
               </span>
             </motion.div>
@@ -265,7 +277,7 @@ const Landing = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-foreground leading-[1.05] mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-white leading-[1.05] mb-6"
             >
               Affiliate marketing<br />
               infrastructure for<br />
@@ -276,7 +288,7 @@ const Landing = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-base text-text-secondary mb-8 max-w-[480px]"
+              className="text-base text-white/70 mb-8 max-w-[480px]"
             >
               Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
             </motion.p>
@@ -287,17 +299,17 @@ const Landing = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-3 mb-4"
             >
-              <Input placeholder="Enter your email" className="h-12 max-w-[280px]" />
+              <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/[0.08] border-white/15 text-white placeholder:text-white/40" />
               <Link to="/signup">
                 <Button size="lg" className="h-12 px-6 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
               </Link>
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex items-center gap-4 mb-2">
-              <Link to="/demo" className="text-sm text-text-secondary hover:text-foreground transition-colors">Book a Demo →</Link>
+              <Link to="/demo" className="text-sm text-white/60 hover:text-white transition-colors">Book a Demo →</Link>
             </motion.div>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-text-tertiary mt-4">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-white/45 mt-4">
               Trusted by 200+ indie app developers · No credit card required
             </motion.p>
           </div>
