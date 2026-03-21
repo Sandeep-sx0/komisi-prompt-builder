@@ -952,7 +952,7 @@ const Landing = () => {
                 "The RevenueCat integration saved us weeks. Komisi just reads our existing webhook events — zero additional engineering."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">JP</div>
+                <img src="/avatars/user-2.jpg" alt="James Park" className="w-7 h-7 rounded-full object-cover" />
                 <div>
                   <p className="text-xs text-foreground font-medium">James Park</p>
                   <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
