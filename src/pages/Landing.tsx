@@ -15,6 +15,7 @@ import { CountingNumber } from "@/components/animate-ui/primitives/texts/countin
 import PersonaCards from "@/components/komisi/PersonaCards";
 import AttributionFlowAnimation from "@/components/komisi/AttributionFlowAnimation";
 import FraudDetectionAnimation from "@/components/komisi/FraudDetectionAnimation";
+import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
