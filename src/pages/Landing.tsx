@@ -306,7 +306,7 @@ const Landing = () => {
             </motion.div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex items-center gap-4 mb-2">
-              <Link to="/demo" className="text-sm text-text-secondary hover:text-foreground transition-colors">Book a Demo →</Link>
+              <Link to="/demo" className="text-sm text-white/60 hover:text-white transition-colors">Book a Demo →</Link>
             </motion.div>
 
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-text-tertiary mt-4">
