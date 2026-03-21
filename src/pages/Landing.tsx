@@ -118,12 +118,12 @@ const integrations = [
 ];
 
 const sdkPlatforms = [
-  { name: "Swift", icon: "🍎" },
-  { name: "Kotlin", icon: "🤖" },
-  { name: "Flutter", icon: "💙" },
-  { name: "React Native", icon: "⚛️" },
-  { name: "Web API", icon: "🌐" },
-  { name: "Unity", icon: "🎮" },
+  { name: "Swift", logo: "/logos/swift.webp" },
+  { name: "Kotlin", logo: "/logos/kotlin.webp" },
+  { name: "Flutter", logo: "/logos/flutter.webp" },
+  { name: "React Native", logo: "/logos/react-native.webp" },
+  { name: "Web API", logo: null },
+  { name: "Unity", logo: "/logos/unity.webp" },
 ];
 
 /* ── Syntax highlighting helper ── */
