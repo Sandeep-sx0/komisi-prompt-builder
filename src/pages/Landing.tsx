@@ -800,7 +800,7 @@ const Landing = () => {
                     "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">ML</div>
+                    <img src="/avatars/user-3.jpg" alt="Marcus Lee" className="w-7 h-7 rounded-full object-cover" />
                     <div>
                       <p className="text-xs text-foreground">Marcus Lee</p>
                       <p className="text-[10px] text-text-tertiary">Growth Lead, CalorieSnap</p>
