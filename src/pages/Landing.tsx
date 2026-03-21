@@ -364,16 +364,17 @@ const Landing = () => {
             DEVELOPERS BUILDING WITH KOMISI
           </p>
         </Reveal>
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden w-full">
           <div
-            className="flex items-center w-max"
-            style={{ animation: "marquee 30s linear infinite", gap: "48px" }}
+            className="marquee-track"
+            style={{ gap: "48px" }}
             onMouseEnter={(e) => { e.currentTarget.style.animationPlayState = "paused"; }}
             onMouseLeave={(e) => { e.currentTarget.style.animationPlayState = "running"; }}
           >
-            {[...socialProofLogos, ...socialProofLogos].map((logo, i) => (
-              <div key={`${logo.name}-${i}`} className="shrink-0">
-                <img src={logo.src} alt={logo.name} className="h-8 w-auto object-contain" />
+            {[...socialProofLogos, ...socialProofLogos, ...socialProofLogos, ...socialProofLogos].map((logo, i) => (
+              <div key={`${logo.name}-${i}`} className="shrink-0 flex items-center gap-2">
+                <img src={logo.src} alt={logo.name} className="h-6 w-6 object-contain" />
+                <span className="text-sm text-text-secondary whitespace-nowrap" style={{ fontWeight: 400 }}>{logo.name}</span>
               </div>
             ))}
           </div>
