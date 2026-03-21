@@ -389,7 +389,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 4 — PERSONA SPLIT
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6">
+       <section className="py-24 px-6" style={{ backgroundColor: "#F8F9FA" }}>
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
