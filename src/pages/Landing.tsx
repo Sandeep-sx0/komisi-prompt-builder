@@ -636,44 +636,7 @@ const Landing = () => {
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
-              <div className="h-[380px] flex items-center p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid #E5E7EB", borderRadius: "16px" }}>
-                <div className="w-full bg-background border border-border shadow-sm">
-                  <div className="flex items-center justify-between p-4 border-b border-border">
-                    <span className="text-xs text-foreground">Upcoming Payouts</span>
-                    <span className="text-[10px] text-text-tertiary">Mar 15</span>
-                  </div>
-                  <div className="divide-y divide-border">
-                    {[
-                      { name: "Emma Davis", avatar: "/avatars/user-1.jpg", amount: "$124.50", status: "Paid", paid: true },
-                      { name: "James Lee", avatar: "/avatars/user-2.jpg", amount: "$89.20", status: "Paid", paid: true },
-                      { name: "Sofia Martinez", avatar: "/avatars/user-3.jpg", amount: "$156.80", status: "Pending", paid: false },
-                      { name: "Alex Rivera", avatar: "/avatars/user-4.jpg", amount: "$97.50", status: "Pending", paid: false },
-                    ].map((row, i) => (
-                      <div key={i} className="flex items-center justify-between p-4">
-                        <div className="flex items-center gap-3">
-                          <img src={row.avatar} alt={row.name} className="w-8 h-8 rounded-full object-cover" />
-                          <span className="text-sm text-foreground">{row.name}</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <span className="text-sm text-foreground">{row.amount}</span>
-                          <span className={cn(
-                            "text-[10px] px-2 py-0.5",
-                            row.paid
-                              ? "bg-green-50 text-green-600 border border-green-200"
-                              : "bg-muted text-text-tertiary border border-border"
-                          )}>
-                            {row.paid ? "Paid ✔" : "Pending"}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between p-4 border-t border-border">
-                    <span className="text-sm text-foreground">Total: $468.00</span>
-                    <Button size="sm">Process All Payouts</Button>
-                  </div>
-                </div>
-              </div>
+              <PayoutsAnimation />
             </Reveal>
             <Reveal delay={0.15} className="order-1 lg:order-2">
               <div>
