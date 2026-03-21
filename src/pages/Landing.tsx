@@ -82,19 +82,19 @@ const codeExamples: Record<string, string[]> = {
 const testimonials = [
   {
     quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.",
-    name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp", initials: "SC", color: "hsl(var(--foreground))",
+    name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp", avatar: "/avatars/user-1.jpg",
   },
   {
     quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.",
-    name: "James Park", title: "Founder", company: "FocusTimer", initials: "JP", color: "hsl(215 16% 47%)",
+    name: "James Park", title: "Founder", company: "FocusTimer", avatar: "/avatars/user-2.jpg",
   },
   {
     quote: "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely.",
-    name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap", initials: "ML", color: "hsl(160 84% 39%)",
+    name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap", avatar: "/avatars/user-3.jpg",
   },
   {
     quote: "The fraud detection alone paid for itself. We caught fake installs in the first week.",
-    name: "Priya Nair", title: "Founder", company: "MindfulApp", initials: "PN", color: "hsl(38 92% 50%)",
+    name: "Priya Nair", title: "Founder", company: "MindfulApp", avatar: "/avatars/user-4.jpg",
   },
 ];
 
@@ -576,7 +576,7 @@ const Landing = () => {
                   "Setup was faster than I expected. The RevenueCat integration just worked — I had my first affiliate attributed within the hour."
                 </p>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-white/10 flex items-center justify-center text-[10px] text-white/60 rounded-full">JP</div>
+                  <img src="/avatars/user-2.jpg" alt="James Park" className="w-8 h-8 rounded-full object-cover" />
                   <div>
                     <p className="text-xs text-white/80 font-medium">James Park</p>
                     <p className="text-[10px] text-white/40">Founder, FocusTimer</p>
@@ -669,7 +669,7 @@ const Landing = () => {
                     "We finally know which creators are actually driving installs. Komisi's attribution is the most accurate we've tested."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">SC</div>
+                    <img src="/avatars/user-1.jpg" alt="Sarah Chen" className="w-7 h-7 rounded-full object-cover" />
                     <div>
                       <p className="text-xs text-foreground">Sarah Chen</p>
                       <p className="text-[10px] text-text-tertiary">Head of Growth, MindfulApp</p>
@@ -800,7 +800,7 @@ const Landing = () => {
                     "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">ML</div>
+                    <img src="/avatars/user-3.jpg" alt="Marcus Lee" className="w-7 h-7 rounded-full object-cover" />
                     <div>
                       <p className="text-xs text-foreground">Marcus Lee</p>
                       <p className="text-[10px] text-text-tertiary">Growth Lead, CalorieSnap</p>
@@ -903,7 +903,7 @@ const Landing = () => {
                     "Creators love that they just get paid. No back-and-forth, no invoices. It's made recruiting affiliates so much easier."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">PN</div>
+                    <img src="/avatars/user-4.jpg" alt="Priya Nair" className="w-7 h-7 rounded-full object-cover" />
                     <div>
                       <p className="text-xs text-foreground">Priya Nair</p>
                       <p className="text-[10px] text-text-tertiary">Founder, MindfulApp</p>
@@ -952,7 +952,7 @@ const Landing = () => {
                 "The RevenueCat integration saved us weeks. Komisi just reads our existing webhook events — zero additional engineering."
               </p>
               <div className="flex items-center gap-3">
-                <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">JP</div>
+                <img src="/avatars/user-2.jpg" alt="James Park" className="w-7 h-7 rounded-full object-cover" />
                 <div>
                   <p className="text-xs text-foreground font-medium">James Park</p>
                   <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
@@ -990,12 +990,11 @@ const Landing = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center px-16"
               >
-                <div
-                  className="w-14 h-14 mx-auto mb-6 flex items-center justify-center text-sm text-white"
-                  style={{ backgroundColor: testimonials[activeTestimonial].color, borderRadius: "50%", width: 56, height: 56 }}
-                >
-                  {testimonials[activeTestimonial].initials}
-                </div>
+                <img
+                  src={testimonials[activeTestimonial].avatar}
+                  alt={testimonials[activeTestimonial].name}
+                  className="w-14 h-14 mx-auto mb-6 rounded-full object-cover"
+                />
                 <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-[600px] mx-auto italic">
                   "{testimonials[activeTestimonial].quote}"
                 </p>
