@@ -302,60 +302,13 @@ const Landing = () => {
 
           {/* Right — product visual composite */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="w-full max-w-[480px]"
+            style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }}
           >
-            <div className="relative ml-auto max-w-[360px] p-5 border border-white/10" style={{ backgroundColor: "#0C1C28", boxShadow: "0 20px 60px rgba(0,0,0,0.12)" }}>
-              <div className="flex items-center justify-between mb-5">
-                <span className="text-xs text-white/60 tracking-wider uppercase">Komisi Dashboard</span>
-                <span className="flex items-center gap-1.5 text-[10px] text-green-400">
-                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                  Live
-                </span>
-              </div>
-              <div className="space-y-3 mb-5">
-                {[
-                  { label: "Installs Today", value: "47", trend: "↑ 12%" },
-                  { label: "Revenue Attributed", value: "$1,240", trend: "↑ 8%" },
-                  { label: "Active Creators", value: "12", trend: "↑ 3" },
-                ].map((m) => (
-                  <div key={m.label} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
-                    <span className="text-xs text-white/40">{m.label}</span>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-white">{m.value}</span>
-                      <span className="text-[10px] text-green-400">{m.trend}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <div className="h-8 w-full">
-                <svg viewBox="0 0 200 32" className="w-full h-full" preserveAspectRatio="none">
-                  <polyline fill="none" stroke="hsl(160 84% 39%)" strokeWidth="1.5" points="0,28 20,24 40,26 60,20 80,22 100,16 120,18 140,12 160,14 180,8 200,4" />
-                  <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="hsl(160 84% 39%)" stopOpacity="0.2" />
-                    <stop offset="100%" stopColor="hsl(160 84% 39%)" stopOpacity="0" />
-                  </linearGradient>
-                  <polygon fill="url(#sparkGrad)" points="0,28 20,24 40,26 60,20 80,22 100,16 120,18 140,12 160,14 180,8 200,4 200,32 0,32" />
-                </svg>
-              </div>
-            </div>
-
-            <motion.div
-              animate={{ y: [0, -6, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-4 -bottom-6 bg-background border border-border p-4 shadow-lg w-[280px]"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-muted flex items-center justify-center text-[10px] text-text-tertiary shrink-0">SC</div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs text-foreground">@sarah_creates</p>
-                  <p className="text-[10px] text-text-tertiary">234 installs · $630 earned</p>
-                </div>
-                <span className="text-[10px] px-2 py-0.5 bg-green-50 text-green-600 border border-green-200 shrink-0">Active</span>
-              </div>
-            </motion.div>
+            <HeroDashboard />
           </motion.div>
         </div>
       </section>
