@@ -263,7 +263,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
-      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-black" id="product">
+      <section className="relative px-6 overflow-hidden bg-black flex flex-col justify-center" id="product" style={{ height: '100vh', minHeight: '100vh' }}>
         {/* Dynamic background layer */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           {currentBg.element}
