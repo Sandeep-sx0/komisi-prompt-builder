@@ -449,10 +449,10 @@ const Landing = () => {
                       <span className="text-[10px] text-green-500 bg-green-50 border border-green-200 px-1.5 py-0.5">+11.4%</span>
                     </div>
                   </div>
-                  <div className="flex items-end gap-1 h-24 mt-2">
-                    {[30, 38, 28, 45, 55, 42, 65, 78].map((h, i) => (
-                      <div key={i} className="flex-1 flex flex-col justify-end">
-                        <div className="w-full transition-all" style={{ height: `${h}%`, backgroundColor: "#0C1C28" }} />
+                  <div className="flex items-end gap-1.5 h-28 mt-2">
+                    {[35, 42, 32, 50, 58, 48, 70, 85].map((h, i) => (
+                      <div key={i} className="flex-1 flex flex-col justify-end h-full">
+                        <div className="w-full rounded-sm" style={{ height: `${h}%`, backgroundColor: "#0C1C28", minHeight: "8px" }} />
                       </div>
                     ))}
                   </div>
