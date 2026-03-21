@@ -651,7 +651,8 @@ const Landing = () => {
         <div className="max-w-[1200px] mx-auto space-y-0">
 
           {/* Feature 1 — Attribution flow */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="py-24" style={{ backgroundColor: "#FFFFFF" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
             <Reveal>
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
