@@ -268,7 +268,7 @@ const Landing = () => {
         <div className="relative z-10 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-text-secondary border border-border px-3 py-1.5 mb-6">
+              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-white/70 border border-white/20 bg-white/5 px-3 py-1.5 mb-6">
                 ✦ Built for mobile app developers
               </span>
             </motion.div>
