@@ -28,14 +28,14 @@ const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode;
 
 /* ── Social proof logos ── */
 const socialProofLogos = [
-  { name: "Notion", src: "/logos/notion.webp" },
-  { name: "Linear", src: "/logos/linear.webp" },
-  { name: "Vercel", src: "/logos/vercel.webp" },
-  { name: "Figma", src: "/logos/figma.webp" },
-  { name: "Supabase", src: "/logos/supabase.webp" },
-  { name: "PostHog", src: "/logos/posthog.webp" },
-  { name: "Amplitude", src: "/logos/amplitude.webp" },
-  { name: "Slack", src: "/logos/slack.webp" },
+  { name: "Notion", src: "/logos/notion-horizontal.webp" },
+  { name: "Linear", src: "/logos/linear-horizontal.webp" },
+  { name: "Vercel", src: "/logos/vercel-horizontal.webp" },
+  { name: "Figma", src: "/logos/figma-horizontal.webp" },
+  { name: "Supabase", src: "/logos/supabase-horizontal.webp" },
+  { name: "Stripe", src: "/logos/stripe-horizontal.webp" },
+  { name: "PostHog", src: "/logos/posthog-horizontal.webp" },
+  { name: "Braze", src: "/logos/braze-horizontal.webp" },
 ];
 
 /* ── Code tabs data ── */
@@ -365,15 +365,14 @@ const Landing = () => {
           </p>
         </Reveal>
         <div className="relative overflow-hidden">
-          <div className="flex animate-marquee gap-12 items-center w-max">
+          <div
+            className="flex items-center w-max"
+            style={{ animation: "marquee 30s linear infinite", gap: "48px" }}
+            onMouseEnter={(e) => { e.currentTarget.style.animationPlayState = "paused"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.animationPlayState = "running"; }}
+          >
             {[...socialProofLogos, ...socialProofLogos].map((logo, i) => (
-              <div
-                key={`${logo.name}-${i}`}
-                className="shrink-0 transition-all duration-200 cursor-default"
-                style={{ filter: "grayscale(100%) opacity(0.5)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.filter = "none"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.filter = "grayscale(100%) opacity(0.5)"; }}
-              >
+              <div key={`${logo.name}-${i}`} className="shrink-0">
                 <img src={logo.src} alt={logo.name} className="h-8 w-auto object-contain" />
               </div>
             ))}
@@ -769,7 +768,7 @@ const Landing = () => {
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">DP</div>
+                    <img src="/avatars/user-5.jpg" alt="David Park" className="w-7 h-7 rounded-full object-cover" />
                     <div>
                       <p className="text-xs text-foreground">David Park</p>
                       <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
