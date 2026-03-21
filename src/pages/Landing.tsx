@@ -768,7 +768,7 @@ const Landing = () => {
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">DP</div>
+                    <img src="/avatars/user-5.jpg" alt="David Park" className="w-7 h-7 rounded-full object-cover" />
                     <div>
                       <p className="text-xs text-foreground">David Park</p>
                       <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
