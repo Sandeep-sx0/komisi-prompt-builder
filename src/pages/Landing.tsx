@@ -228,7 +228,7 @@ const Landing = () => {
             <Link to="/login"><Button variant="ghost" size="sm" className={scrolled ? "" : "text-white/70 hover:text-white hover:bg-white/10"}>Login</Button></Link>
             <Link to="/signup"><Button size="sm" className={scrolled ? "" : "bg-white text-black hover:bg-white/90"}>Get Started <ArrowRight size={14} /></Button></Link>
           </div>
-          <button className="md:hidden text-foreground" onClick={() => setMobileMenu(!mobileMenu)}>
+          <button className={cn("md:hidden", scrolled ? "text-foreground" : "text-white")} onClick={() => setMobileMenu(!mobileMenu)}>
             {mobileMenu ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
