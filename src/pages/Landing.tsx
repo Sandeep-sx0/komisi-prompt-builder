@@ -365,15 +365,14 @@ const Landing = () => {
           </p>
         </Reveal>
         <div className="relative overflow-hidden">
-          <div className="flex animate-marquee gap-12 items-center w-max">
+          <div
+            className="flex items-center w-max"
+            style={{ animation: "marquee 30s linear infinite", gap: "48px" }}
+            onMouseEnter={(e) => { e.currentTarget.style.animationPlayState = "paused"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.animationPlayState = "running"; }}
+          >
             {[...socialProofLogos, ...socialProofLogos].map((logo, i) => (
-              <div
-                key={`${logo.name}-${i}`}
-                className="shrink-0 transition-all duration-200 cursor-default"
-                style={{ filter: "grayscale(100%) opacity(0.5)" }}
-                onMouseEnter={(e) => { e.currentTarget.style.filter = "none"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.filter = "grayscale(100%) opacity(0.5)"; }}
-              >
+              <div key={`${logo.name}-${i}`} className="shrink-0">
                 <img src={logo.src} alt={logo.name} className="h-8 w-auto object-contain" />
               </div>
             ))}
