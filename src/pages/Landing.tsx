@@ -562,45 +562,7 @@ const Landing = () => {
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
-              <div className="h-[380px] flex items-center p-8" style={{ backgroundColor: "#FFFFFF", border: "1px solid #E5E7EB", borderRadius: "16px" }}>
-                <div className="w-full bg-background border border-border shadow-sm">
-                  <div className="flex items-center gap-2 p-4 border-b border-border" style={{ borderLeft: "3px solid hsl(38 92% 50%)" }}>
-                    <AlertTriangle size={16} className="text-warning" />
-                    <span className="text-sm text-foreground">Fraud Alert Detected</span>
-                  </div>
-                  <div className="p-4 space-y-2 border-b border-border">
-                    <div className="flex justify-between text-xs">
-                      <span className="text-text-secondary">Installs</span><span className="text-foreground">47</span>
-                    </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-text-secondary">Pattern</span><span className="text-foreground">Same IP range</span>
-                    </div>
-                    <div className="flex justify-between text-xs">
-                      <span className="text-text-secondary">Timeframe</span><span className="text-foreground">2 hours</span>
-                    </div>
-                  </div>
-                  <div className="flex gap-3 p-4 border-b border-border">
-                    <Button size="sm" variant="secondary" className="flex-1">Review Details</Button>
-                    <Button size="sm" variant="ghost" className="flex-1">Dismiss</Button>
-                  </div>
-                  <div className="text-[11px]">
-                    {[
-                      { ip: "192.168.1.x", time: "14:02", status: "flagged" },
-                      { ip: "192.168.1.x", time: "14:05", status: "flagged" },
-                      { ip: "10.0.0.x", time: "14:12", status: "clean" },
-                    ].map((row, i) => (
-                      <div key={i} className={cn(
-                        "flex items-center justify-between px-4 py-2 border-b border-border last:border-0",
-                        row.status === "flagged" ? "bg-warning/5" : ""
-                      )}>
-                        <span className="text-text-secondary">{row.ip}</span>
-                        <span className="text-text-tertiary">{row.time}</span>
-                        <span className={row.status === "flagged" ? "text-warning" : "text-text-tertiary"}>{row.status}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <FraudDetectionAnimation />
             </Reveal>
             <Reveal delay={0.15} className="order-1 lg:order-2">
               <div>
