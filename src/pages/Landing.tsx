@@ -256,7 +256,7 @@ const Landing = () => {
       <section className="relative min-h-screen overflow-hidden" id="product">
         {/* DarkVeil background */}
         <div className="absolute inset-0 z-0">
-          <DarkVeil speed={1.8} warpAmount={1.2} noiseIntensity={0.8} scanlineIntensity={0} scanlineFrequency={0} hueShift={0} resolutionScale={1} />
+          <DarkVeil speed={1.8} warpAmount={1.2} noiseIntensity={0.0} scanlineIntensity={0} scanlineFrequency={0} hueShift={0} resolutionScale={1} />
         </div>
 
         {/* Hero content */}
