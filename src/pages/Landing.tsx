@@ -181,6 +181,16 @@ const Landing = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const autoPlayRef = useRef<ReturnType<typeof setInterval>>();
   const [isPaused, setIsPaused] = useState(false);
+  const [bgIndex, setBgIndex] = useState(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('hero-bg-index') : null;
+    return saved !== null ? parseInt(saved) : 0;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('hero-bg-index', String(bgIndex));
+  }, [bgIndex]);
+
+  const currentBg = backgrounds[bgIndex];
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
