@@ -709,6 +709,7 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
+          </div>
 
           {/* Feature 2 — Fraud detection */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
