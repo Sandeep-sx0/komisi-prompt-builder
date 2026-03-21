@@ -913,7 +913,8 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
-        </div>
+          </div>
+          </div>
       </section>
 
       {/* ═══════════════════════════════════════════
