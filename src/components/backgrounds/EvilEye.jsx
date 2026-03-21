@@ -261,5 +261,5 @@ export default function EvilEye({
     };
   }, [eyeColor, intensity, pupilSize, irisWidth, glowIntensity, scale, noiseScale, pupilFollow, flameSpeed, backgroundColor]);
 
-  return <div ref={containerRef} className="evil-eye-container" />;
+  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />;
 }

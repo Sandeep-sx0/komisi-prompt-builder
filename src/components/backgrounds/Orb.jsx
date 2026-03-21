@@ -287,7 +287,7 @@ export default function Orb({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hue, hoverIntensity, rotateOnHover, forceHoverState, backgroundColor]);
 
-  return <div ref={ctnDom} className="orb-container" />;
+  return <div ref={ctnDom} className="w-full h-full relative overflow-hidden" />;
 }
 
 function hslToRgb(h, s, l) {

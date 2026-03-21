@@ -196,7 +196,7 @@ export const Plasma = ({
     };
   }, [color, speed, direction, scale, opacity, mouseInteractive]);
 
-  return <div ref={containerRef} className="plasma-container" />;
+  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />;
 };
 
 export default Plasma;

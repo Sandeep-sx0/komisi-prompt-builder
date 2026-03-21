@@ -201,5 +201,5 @@ export default function Radar({
     };
   }, [speed, scale, ringCount, spokeCount, ringThickness, spokeThickness, sweepSpeed, sweepWidth, sweepLobes, color, backgroundColor, falloff, brightness, enableMouseInteraction, mouseInfluence]);
 
-  return <div ref={containerRef} className="radar-container" />;
+  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />;
 }

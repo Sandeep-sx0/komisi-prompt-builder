@@ -270,7 +270,7 @@ void main() {
     mouseInteractionRadius
   ]);
 
-  return <div ref={containerRef} className="ripple-grid-container" />;
+  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />;
 };
 
 export default RippleGrid;

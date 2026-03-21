@@ -50,7 +50,7 @@ function extendMaterial(BaseMaterial, cfg) {
 }
 
 const CanvasWrapper = ({ children }) => (
-  <Canvas dpr={[1, 2]} frameloop="always" className="beams-container">
+  <Canvas dpr={[1, 2]} frameloop="always" className="w-full h-full relative overflow-hidden">
     {children}
   </Canvas>
 );

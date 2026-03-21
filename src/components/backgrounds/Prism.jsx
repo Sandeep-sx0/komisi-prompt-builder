@@ -429,7 +429,7 @@ const Prism = ({
     suspendWhenOffscreen
   ]);
 
-  return <div className="prism-container" ref={containerRef} />;
+  return <div className="w-full h-full relative overflow-hidden" ref={containerRef} />;
 };
 
 export default Prism;

@@ -207,5 +207,5 @@ export default function Balatro({
     containerRef
   ]);
 
-  return <div ref={containerRef} className="balatro-container" />;
+  return <div ref={containerRef} className="w-full h-full relative overflow-hidden" />;
 }
