@@ -9,7 +9,7 @@ import {
   Link2, Download, Fingerprint, CircleDollarSign,
   Shield, Zap, CheckCircle, Copy, Check,
   Code, BarChart3, Wallet, ChevronLeft, ChevronRight,
-  AlertTriangle, ExternalLink, TrendingUp,
+  AlertTriangle, ExternalLink, TrendingUp, Globe,
 } from "lucide-react";
 import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
 
@@ -118,12 +118,12 @@ const integrations = [
 ];
 
 const sdkPlatforms = [
-  { name: "Swift", icon: "🍎" },
-  { name: "Kotlin", icon: "🤖" },
-  { name: "Flutter", icon: "💙" },
-  { name: "React Native", icon: "⚛️" },
-  { name: "Web API", icon: "🌐" },
-  { name: "Unity", icon: "🎮" },
+  { name: "Swift", logo: "/logos/swift.webp" },
+  { name: "Kotlin", logo: "/logos/kotlin.webp" },
+  { name: "Flutter", logo: "/logos/flutter.webp" },
+  { name: "React Native", logo: "/logos/react-native.webp" },
+  { name: "Web API", logo: null },
+  { name: "Unity", logo: "/logos/unity.webp" },
 ];
 
 /* ── Syntax highlighting helper ── */
@@ -364,14 +364,17 @@ const Landing = () => {
             DEVELOPERS BUILDING WITH KOMISI
           </p>
         </Reveal>
-        <div className="max-w-[900px] mx-auto px-6">
-          <div className="flex items-center justify-between gap-8 flex-wrap">
-            {socialProofLogos.map((logo) => (
-              <div key={logo.name} className="group transition-all duration-200" style={{ filter: "grayscale(100%) opacity(0.5)" }}
+        <div className="relative overflow-hidden">
+          <div className="flex animate-marquee gap-12 items-center w-max">
+            {[...socialProofLogos, ...socialProofLogos].map((logo, i) => (
+              <div
+                key={`${logo.name}-${i}`}
+                className="shrink-0 transition-all duration-200 cursor-default"
+                style={{ filter: "grayscale(100%) opacity(0.5)" }}
                 onMouseEnter={(e) => { e.currentTarget.style.filter = "none"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.filter = "grayscale(100%) opacity(0.5)"; }}
               >
-                <img src={logo.src} alt={logo.name} className="h-7 w-auto object-contain" />
+                <img src={logo.src} alt={logo.name} className="h-8 w-auto object-contain" />
               </div>
             ))}
           </div>
@@ -446,10 +449,10 @@ const Landing = () => {
                       <span className="text-[10px] text-green-500 bg-green-50 border border-green-200 px-1.5 py-0.5">+11.4%</span>
                     </div>
                   </div>
-                  <div className="flex items-end gap-1 h-24 mt-2">
-                    {[30, 38, 28, 45, 55, 42, 65, 78].map((h, i) => (
-                      <div key={i} className="flex-1 flex flex-col justify-end">
-                        <div className="w-full transition-all" style={{ height: `${h}%`, backgroundColor: "#0C1C28" }} />
+                  <div className="flex items-end gap-1.5 h-28 mt-2">
+                    {[35, 42, 32, 50, 58, 48, 70, 85].map((h, i) => (
+                      <div key={i} className="flex-1 flex flex-col justify-end h-full">
+                        <div className="w-full rounded-sm" style={{ height: `${h}%`, backgroundColor: "#0C1C28", minHeight: "8px" }} />
                       </div>
                     ))}
                   </div>
@@ -626,8 +629,12 @@ const Landing = () => {
 
               <div className="grid grid-cols-3 gap-3 mt-6">
                 {sdkPlatforms.map(p => (
-                  <div key={p.name} className="border border-white/10 p-3 text-center hover:border-white/25 transition-colors" style={{ backgroundColor: "rgba(255,255,255,0.02)" }}>
-                    <span className="text-lg block mb-1">{p.icon}</span>
+                  <div key={p.name} className="border border-white/10 p-3 text-center hover:border-white/25 transition-colors flex flex-col items-center gap-2" style={{ backgroundColor: "rgba(255,255,255,0.02)" }}>
+                    {p.logo ? (
+                      <img src={p.logo} alt={p.name} className="w-10 h-10 object-contain" />
+                    ) : (
+                      <Globe size={24} className="text-white/50" />
+                    )}
                     <span className="text-[10px] text-white/50">{p.name}</span>
                   </div>
                 ))}
@@ -964,7 +971,7 @@ const Landing = () => {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="text-8xl text-foreground/10 text-center mb-4 leading-none select-none font-serif">"</div>
+            <div className="text-8xl text-foreground text-center mb-4 leading-none select-none font-serif">&ldquo;</div>
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -976,8 +983,8 @@ const Landing = () => {
                 className="text-center px-16"
               >
                 <div
-                  className="w-14 h-14 mx-auto mb-6 flex items-center justify-center text-sm text-white rounded-full"
-                  style={{ backgroundColor: testimonials[activeTestimonial].color }}
+                  className="w-14 h-14 mx-auto mb-6 flex items-center justify-center text-sm text-white"
+                  style={{ backgroundColor: testimonials[activeTestimonial].color, borderRadius: "50%", width: 56, height: 56 }}
                 >
                   {testimonials[activeTestimonial].initials}
                 </div>
