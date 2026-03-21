@@ -18,6 +18,7 @@ import FraudDetectionAnimation from "@/components/komisi/FraudDetectionAnimation
 import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
+import HeroVisual from "@/components/komisi/HeroVisual";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
@@ -251,7 +252,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
-      <section className="pt-32 pb-20 px-6" id="product">
+      <section className="pt-32 pb-20 px-6 overflow-hidden" id="product">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
@@ -301,15 +302,15 @@ const Landing = () => {
             </motion.p>
           </div>
 
-          {/* Right — product visual composite */}
+          {/* Right — bleeding dashboard + creator card */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full max-w-[480px]"
-            style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative hidden lg:block"
+            style={{ minHeight: 480 }}
           >
-            <HeroDashboard />
+            <HeroVisual />
           </motion.div>
         </div>
       </section>
