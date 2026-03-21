@@ -624,38 +624,7 @@ const Landing = () => {
               </div>
             </Reveal>
             <Reveal delay={0.15}>
-              <div className="h-[380px] flex items-center p-8" style={{ backgroundColor: "#F8F9FA", border: "1px solid #E5E7EB", borderRadius: "16px" }}>
-                <div className="w-full bg-background border border-border shadow-sm overflow-hidden">
-                  <div className="flex items-center justify-between p-4 border-b border-border">
-                    <span className="text-xs text-foreground">Creator Performance</span>
-                    <span className="text-[10px] text-text-tertiary border border-border px-2 py-0.5">Last 30 days</span>
-                  </div>
-                  <table className="w-full text-[11px]">
-                    <thead>
-                      <tr className="border-b border-border">
-                        {["Creator", "Platform", "Installs", "Revenue", "Commission"].map(h => (
-                          <th key={h} className="text-left p-3 text-text-tertiary font-normal">{h}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        { creator: "@sarah_creates", platform: "TikTok", installs: "234", revenue: "$2,100", commission: "$630" },
-                        { creator: "@techreview", platform: "YouTube", installs: "89", revenue: "$445", commission: "$89" },
-                        { creator: "@dailyapps", platform: "Instagram", installs: "56", revenue: "$340", commission: "$85" },
-                      ].map((row, i) => (
-                        <tr key={i} className={cn("border-b border-border last:border-0", i % 2 === 1 ? "bg-muted/50" : "")}>
-                          <td className="p-3 text-foreground">{row.creator}</td>
-                          <td className="p-3 text-text-secondary">{row.platform}</td>
-                          <td className="p-3 text-foreground">{row.installs}</td>
-                          <td className="p-3 text-foreground">{row.revenue}</td>
-                          <td className="p-3 text-foreground">{row.commission}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              <AnalyticsAnimation />
             </Reveal>
           </div>
         </div>
