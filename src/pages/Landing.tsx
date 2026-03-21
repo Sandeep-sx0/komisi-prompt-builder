@@ -1070,10 +1070,8 @@ const Landing = () => {
             },
           ].map((col, i) => (
             <Reveal key={col.title} delay={i * 0.1}>
-              <div className={cn(
-                "text-center md:text-left",
-                i < 2 && "md:border-r md:border-border md:pr-12"
-              )}>
+              <div className="text-center md:text-left bg-white border border-border p-8">
+
                 <div className="text-foreground mb-4 mx-auto md:mx-0 w-fit">{col.icon}</div>
                 <h4 className="text-lg font-normal text-foreground mb-3">{col.title}</h4>
                 <ul className="space-y-2">
