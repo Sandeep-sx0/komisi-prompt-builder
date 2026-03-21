@@ -9,7 +9,7 @@ import {
   Link2, Download, Fingerprint, CircleDollarSign,
   Shield, Zap, CheckCircle, Copy, Check,
   Code, BarChart3, Wallet, ChevronLeft, ChevronRight,
-  AlertTriangle, ExternalLink, TrendingUp,
+  AlertTriangle, ExternalLink, TrendingUp, Globe,
 } from "lucide-react";
 import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
 
