@@ -364,14 +364,17 @@ const Landing = () => {
             DEVELOPERS BUILDING WITH KOMISI
           </p>
         </Reveal>
-        <div className="max-w-[900px] mx-auto px-6">
-          <div className="flex items-center justify-between gap-8 flex-wrap">
-            {socialProofLogos.map((logo) => (
-              <div key={logo.name} className="group transition-all duration-200" style={{ filter: "grayscale(100%) opacity(0.5)" }}
+        <div className="relative overflow-hidden">
+          <div className="flex animate-marquee gap-12 items-center w-max">
+            {[...socialProofLogos, ...socialProofLogos].map((logo, i) => (
+              <div
+                key={`${logo.name}-${i}`}
+                className="shrink-0 transition-all duration-200 cursor-default"
+                style={{ filter: "grayscale(100%) opacity(0.5)" }}
                 onMouseEnter={(e) => { e.currentTarget.style.filter = "none"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.filter = "grayscale(100%) opacity(0.5)"; }}
               >
-                <img src={logo.src} alt={logo.name} className="h-7 w-auto object-contain" />
+                <img src={logo.src} alt={logo.name} className="h-8 w-auto object-contain" />
               </div>
             ))}
           </div>
