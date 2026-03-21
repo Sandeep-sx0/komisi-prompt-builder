@@ -302,7 +302,7 @@ const Landing = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative ml-auto max-w-[360px] p-5 border border-white/10 shadow-xl" style={{ backgroundColor: "#0C1C28" }}>
+            <div className="relative ml-auto max-w-[360px] p-5 border border-white/10" style={{ backgroundColor: "#0C1C28", boxShadow: "0 20px 60px rgba(0,0,0,0.12)" }}>
               <div className="flex items-center justify-between mb-5">
                 <span className="text-xs text-white/60 tracking-wider uppercase">Komisi Dashboard</span>
                 <span className="flex items-center gap-1.5 text-[10px] text-green-400">
