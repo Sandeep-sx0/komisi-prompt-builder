@@ -28,14 +28,14 @@ const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode;
 
 /* ── Social proof logos ── */
 const socialProofLogos = [
-  { name: "Notion", src: "/logos/notion-horizontal.webp" },
-  { name: "Linear", src: "/logos/linear-horizontal.webp" },
-  { name: "Vercel", src: "/logos/vercel-horizontal.webp" },
-  { name: "Figma", src: "/logos/figma-horizontal.webp" },
-  { name: "Supabase", src: "/logos/supabase-horizontal.webp" },
-  { name: "Stripe", src: "/logos/stripe-horizontal.webp" },
-  { name: "PostHog", src: "/logos/posthog-horizontal.webp" },
-  { name: "Braze", src: "/logos/braze-horizontal.webp" },
+  { name: "Notion", src: "/logos/notion.webp" },
+  { name: "Linear", src: "/logos/linear.webp" },
+  { name: "Vercel", src: "/logos/vercel.webp" },
+  { name: "Figma", src: "/logos/figma.webp" },
+  { name: "Supabase", src: "/logos/supabase.webp" },
+  { name: "Stripe", src: "/logos/stripe.webp" },
+  { name: "PostHog", src: "/logos/posthog.webp" },
+  { name: "Braze", src: "/logos/braze.webp" },
 ];
 
 /* ── Code tabs data ── */
@@ -364,16 +364,17 @@ const Landing = () => {
             DEVELOPERS BUILDING WITH KOMISI
           </p>
         </Reveal>
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden w-full">
           <div
-            className="flex items-center w-max"
-            style={{ animation: "marquee 30s linear infinite", gap: "48px" }}
+            className="marquee-track"
+            style={{ gap: "48px" }}
             onMouseEnter={(e) => { e.currentTarget.style.animationPlayState = "paused"; }}
             onMouseLeave={(e) => { e.currentTarget.style.animationPlayState = "running"; }}
           >
-            {[...socialProofLogos, ...socialProofLogos].map((logo, i) => (
-              <div key={`${logo.name}-${i}`} className="shrink-0">
-                <img src={logo.src} alt={logo.name} className="h-8 w-auto object-contain" />
+            {[...socialProofLogos, ...socialProofLogos, ...socialProofLogos, ...socialProofLogos].map((logo, i) => (
+              <div key={`${logo.name}-${i}`} className="shrink-0 flex items-center gap-2">
+                <img src={logo.src} alt={logo.name} className="h-6 w-6 object-contain" />
+                <span className="text-sm text-text-secondary whitespace-nowrap" style={{ fontWeight: 400 }}>{logo.name}</span>
               </div>
             ))}
           </div>
