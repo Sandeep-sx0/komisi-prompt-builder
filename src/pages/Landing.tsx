@@ -28,14 +28,14 @@ const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode;
 
 /* ── Social proof logos ── */
 const socialProofLogos = [
-  { name: "Notion", src: "/logos/notion-horizontal.webp" },
-  { name: "Linear", src: "/logos/linear-horizontal.webp" },
-  { name: "Vercel", src: "/logos/vercel-horizontal.webp" },
-  { name: "Figma", src: "/logos/figma-horizontal.webp" },
-  { name: "Supabase", src: "/logos/supabase-horizontal.webp" },
-  { name: "Stripe", src: "/logos/stripe-horizontal.webp" },
-  { name: "PostHog", src: "/logos/posthog-horizontal.webp" },
-  { name: "Braze", src: "/logos/braze-horizontal.webp" },
+  { name: "Notion", src: "/logos/notion.webp" },
+  { name: "Linear", src: "/logos/linear.webp" },
+  { name: "Vercel", src: "/logos/vercel.webp" },
+  { name: "Figma", src: "/logos/figma.webp" },
+  { name: "Supabase", src: "/logos/supabase.webp" },
+  { name: "Stripe", src: "/logos/stripe.webp" },
+  { name: "PostHog", src: "/logos/posthog.webp" },
+  { name: "Braze", src: "/logos/braze.webp" },
 ];
 
 /* ── Code tabs data ── */
