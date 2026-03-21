@@ -990,12 +990,11 @@ const Landing = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center px-16"
               >
-                <div
-                  className="w-14 h-14 mx-auto mb-6 flex items-center justify-center text-sm text-white"
-                  style={{ backgroundColor: testimonials[activeTestimonial].color, borderRadius: "50%", width: 56, height: 56 }}
-                >
-                  {testimonials[activeTestimonial].initials}
-                </div>
+                <img
+                  src={testimonials[activeTestimonial].avatar}
+                  alt={testimonials[activeTestimonial].name}
+                  className="w-14 h-14 mx-auto mb-6 rounded-full object-cover"
+                />
                 <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-[600px] mx-auto italic">
                   "{testimonials[activeTestimonial].quote}"
                 </p>
