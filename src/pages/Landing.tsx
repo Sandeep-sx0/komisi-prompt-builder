@@ -309,7 +309,7 @@ const Landing = () => {
               <Link to="/demo" className="text-sm text-white/60 hover:text-white transition-colors">Book a Demo →</Link>
             </motion.div>
 
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-text-tertiary mt-4">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-white/45 mt-4">
               Trusted by 200+ indie app developers · No credit card required
             </motion.p>
           </div>
