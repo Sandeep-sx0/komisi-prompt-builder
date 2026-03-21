@@ -253,8 +253,19 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
-      <section className="pt-32 pb-20 px-6 overflow-hidden" id="product">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-black" id="product">
+        {/* LineWaves background */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <LineWaves
+            speed={0.15}
+            brightness={0.15}
+            color1="#ffffff"
+            color2="#ffffff"
+            color3="#ffffff"
+            enableMouseInteraction={false}
+          />
+        </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-text-secondary border border-border px-3 py-1.5 mb-6">
