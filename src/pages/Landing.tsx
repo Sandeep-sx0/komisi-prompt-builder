@@ -288,7 +288,7 @@ const Landing = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-base text-text-secondary mb-8 max-w-[480px]"
+              className="text-base text-white/70 mb-8 max-w-[480px]"
             >
               Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
             </motion.p>
