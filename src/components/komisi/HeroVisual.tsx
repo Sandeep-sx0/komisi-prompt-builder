@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { CountingNumber } from '@/components/animate-ui/primitives/texts/counting-number';
-import HeroDashboard from './HeroDashboard';
 
 const HeroVisual: React.FC = () => {
   const [inView, setInView] = useState(false);
-  const [showNotification, setShowNotification] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -15,58 +13,44 @@ const HeroVisual: React.FC = () => {
     return () => obs.disconnect();
   }, []);
 
-  // Notification pulse
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setShowNotification(false);
-      setTimeout(() => setShowNotification(true), 2000);
-    }, 6000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 480 }}>
-      {/* Dashboard — bleeding off right edge */}
+    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 520 }}>
+      {/* Actual /dashboard embedded via iframe, scaled down, bleeding right */}
       <div
-        className="absolute top-0 rounded-2xl overflow-hidden"
+        className="absolute top-0 overflow-hidden"
         style={{
-          left: '10%',
-          right: '-80px',
+          left: 0,
+          right: '-120px',
           height: '100%',
+          borderRadius: '16px 0 0 16px',
           boxShadow: '0 32px 80px rgba(0,0,0,0.18)',
         }}
       >
-        <HeroDashboard />
+        <iframe
+          src="/dashboard"
+          title="Komisi Dashboard Preview"
+          style={{
+            width: '1456px',
+            height: '900px',
+            transform: 'scale(0.618)',
+            transformOrigin: 'top left',
+            border: 'none',
+            pointerEvents: 'none',
+          }}
+        />
       </div>
 
-      {/* Floating notification pill */}
-      <div
-        className="absolute z-20 rounded-full px-4 py-2"
-        style={{
-          left: '5%',
-          top: '12%',
-          backgroundColor: '#0C1C28',
-          boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
-          opacity: showNotification ? 1 : 0,
-          transition: 'opacity 600ms ease-in-out',
-        }}
-      >
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: '#4ADE80' }} />
-          <span className="text-white text-[11px]">📱 New install attributed · Just now</span>
-        </div>
-      </div>
-
-      {/* Creator card — foreground, overlapping dashboard */}
+      {/* Creator card — foreground overlapping element */}
       <div
         className="absolute z-10 rounded-2xl"
         style={{
-          left: '0',
-          bottom: '8%',
+          left: '-20px',
+          bottom: '12%',
           width: 260,
           backgroundColor: '#FFFFFF',
           padding: 16,
           boxShadow: '0 24px 64px rgba(0,0,0,0.14)',
+          pointerEvents: 'none',
         }}
       >
         {/* Header */}
@@ -86,7 +70,6 @@ const HeroVisual: React.FC = () => {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="mb-3" style={{ height: 1, backgroundColor: '#F3F4F6' }} />
 
         {/* Stats */}
@@ -131,7 +114,6 @@ const HeroVisual: React.FC = () => {
           <p className="text-[10px] mt-1" style={{ color: '#6B7280' }}>68% of goal</p>
         </div>
 
-        {/* Payout line */}
         <p className="text-xs" style={{ color: '#6B7280' }}>Next payout: $630 · Mar 15</p>
       </div>
     </div>
