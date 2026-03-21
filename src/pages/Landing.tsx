@@ -217,7 +217,7 @@ const Landing = () => {
       )} style={{ color: scrolled ? undefined : '#fff' }}>
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <span className="text-lg text-foreground tracking-tight font-normal">komisi</span>
+            <span className={cn("text-lg tracking-tight font-normal", scrolled ? "text-foreground" : "text-white")}>{scrolled ? "komisi" : "komisi"}</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
