@@ -17,6 +17,7 @@ import AttributionFlowAnimation from "@/components/komisi/AttributionFlowAnimati
 import FraudDetectionAnimation from "@/components/komisi/FraudDetectionAnimation";
 import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
+import HeroDashboard from "@/components/komisi/HeroDashboard";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
