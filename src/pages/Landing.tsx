@@ -264,16 +264,47 @@ const Landing = () => {
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
       <section className="relative pt-32 pb-20 px-6 overflow-hidden bg-black" id="product">
-        {/* LineWaves background */}
+        {/* Dynamic background layer */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <LineWaves
-            speed={0.15}
-            brightness={0.15}
-            color1="#ffffff"
-            color2="#ffffff"
-            color3="#ffffff"
-            enableMouseInteraction={false}
-          />
+          {currentBg.element}
+        </div>
+
+        {/* Background switcher control */}
+        <div className="absolute bottom-6 left-6 z-20 flex flex-col items-start gap-2">
+          <div className="flex items-center gap-2 rounded-full px-3 py-1.5" style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(8px)', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <button
+              onClick={() => setBgIndex(i => (i - 1 + backgrounds.length) % backgrounds.length)}
+              className="text-white/60 hover:text-white transition-colors text-sm px-1"
+            >
+              ←
+            </button>
+            <span className="text-white/80 text-xs font-medium min-w-[80px] text-center">
+              {currentBg.name}
+            </span>
+            <button
+              onClick={() => setBgIndex(i => (i + 1) % backgrounds.length)}
+              className="text-white/60 hover:text-white transition-colors text-sm px-1"
+            >
+              →
+            </button>
+          </div>
+          <div className="flex items-center gap-1 ml-1">
+            {backgrounds.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setBgIndex(i)}
+                className="transition-all duration-300"
+                style={{
+                  width: i === bgIndex ? 16 : 6,
+                  height: 6,
+                  borderRadius: 999,
+                  background: i === bgIndex ? '#ffffff' : 'rgba(255,255,255,0.3)',
+                  cursor: 'pointer',
+                  border: 'none',
+                }}
+              />
+            ))}
+          </div>
         </div>
         <div className="relative z-10 max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
