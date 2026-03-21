@@ -712,7 +712,8 @@ const Landing = () => {
           </div>
 
           {/* Feature 2 — Fraud detection */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="py-24" style={{ backgroundColor: "#F8F9FA" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
             <Reveal className="order-2 lg:order-1">
               <div className="bg-background border border-border shadow-sm">
                 <div className="flex items-center gap-2 p-4 border-b border-border" style={{ borderLeft: "3px solid hsl(38 92% 50%)" }}>
