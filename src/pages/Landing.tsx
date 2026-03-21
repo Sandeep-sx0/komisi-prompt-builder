@@ -221,7 +221,7 @@ const Landing = () => {
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-text-secondary hover:text-foreground transition-colors">{l}</a>
+              <a key={l} href={`#${l.toLowerCase()}`} className={cn("text-sm transition-colors", scrolled ? "text-text-secondary hover:text-foreground" : "text-white/70 hover:text-white")}>{l}</a>
             ))}
           </div>
           <div className="hidden md:flex items-center gap-3">
