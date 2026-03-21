@@ -669,7 +669,7 @@ const Landing = () => {
                     "We finally know which creators are actually driving installs. Komisi's attribution is the most accurate we've tested."
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary rounded-full">SC</div>
+                    <img src="/avatars/user-1.jpg" alt="Sarah Chen" className="w-7 h-7 rounded-full object-cover" />
                     <div>
                       <p className="text-xs text-foreground">Sarah Chen</p>
                       <p className="text-[10px] text-text-tertiary">Head of Growth, MindfulApp</p>
