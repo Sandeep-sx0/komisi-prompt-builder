@@ -983,8 +983,8 @@ const Landing = () => {
                 className="text-center px-16"
               >
                 <div
-                  className="w-14 h-14 mx-auto mb-6 flex items-center justify-center text-sm text-white rounded-full"
-                  style={{ backgroundColor: testimonials[activeTestimonial].color }}
+                  className="w-14 h-14 mx-auto mb-6 flex items-center justify-center text-sm text-white"
+                  style={{ backgroundColor: testimonials[activeTestimonial].color, borderRadius: "50%", width: 56, height: 56 }}
                 >
                   {testimonials[activeTestimonial].initials}
                 </div>
