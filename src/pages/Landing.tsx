@@ -302,7 +302,7 @@ const Landing = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            <div className="relative ml-auto max-w-[360px] p-5 border border-white/10 shadow-xl" style={{ backgroundColor: "#0C1C28" }}>
+            <div className="relative ml-auto max-w-[360px] p-5 border border-white/10" style={{ backgroundColor: "#0C1C28", boxShadow: "0 20px 60px rgba(0,0,0,0.12)" }}>
               <div className="flex items-center justify-between mb-5">
                 <span className="text-xs text-white/60 tracking-wider uppercase">Komisi Dashboard</span>
                 <span className="flex items-center gap-1.5 text-[10px] text-green-400">
@@ -389,7 +389,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 4 — PERSONA SPLIT
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6">
+       <section className="py-24 px-6" style={{ backgroundColor: "#F8F9FA" }}>
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
@@ -647,11 +647,12 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 7 — FEATURE ALTERNATING SECTIONS
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6">
-        <div className="max-w-[1200px] mx-auto space-y-32">
+      <section className="px-6">
+        <div className="max-w-[1200px] mx-auto space-y-0">
 
           {/* Feature 1 — Attribution flow */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="py-24" style={{ backgroundColor: "#FFFFFF" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
             <Reveal>
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
@@ -708,9 +709,11 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
+          </div>
 
           {/* Feature 2 — Fraud detection */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="py-24" style={{ backgroundColor: "#F8F9FA" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
             <Reveal className="order-2 lg:order-1">
               <div className="bg-background border border-border shadow-sm">
                 <div className="flex items-center gap-2 p-4 border-b border-border" style={{ borderLeft: "3px solid hsl(38 92% 50%)" }}>
@@ -776,9 +779,11 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
+          </div>
 
           {/* Feature 3 — Analytics */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="py-24" style={{ backgroundColor: "#FFFFFF" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
             <Reveal>
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
@@ -837,9 +842,11 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
+          </div>
 
           {/* Feature 4 — Payouts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="py-24" style={{ backgroundColor: "#F8F9FA" }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center max-w-[1200px] mx-auto">
             <Reveal className="order-2 lg:order-1">
               <div className="bg-background border border-border shadow-sm">
                 <div className="flex items-center justify-between p-4 border-b border-border">
@@ -906,13 +913,14 @@ const Landing = () => {
               </div>
             </Reveal>
           </div>
-        </div>
+          </div>
+          </div>
       </section>
 
       {/* ═══════════════════════════════════════════
           SECTION 8 — INTEGRATIONS GRID
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 border-t border-border">
+      <section className="py-24 px-6" style={{ backgroundColor: "#EEF2F7" }}>
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
@@ -958,7 +966,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 9 — TESTIMONIALS CAROUSEL
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 border-t border-border">
+      <section className="py-24 px-6" style={{ backgroundColor: "#F9FAFB" }}>
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
@@ -1030,8 +1038,8 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 10 — TRUST / ENTERPRISE BAR
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6 border-t border-border">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      <section className="py-20 px-6" style={{ backgroundColor: "#F3F4F6" }}>
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
               icon: <Shield size={24} />,
@@ -1062,10 +1070,8 @@ const Landing = () => {
             },
           ].map((col, i) => (
             <Reveal key={col.title} delay={i * 0.1}>
-              <div className={cn(
-                "text-center md:text-left",
-                i < 2 && "md:border-r md:border-border md:pr-12"
-              )}>
+              <div className="text-center md:text-left bg-white border border-border p-8">
+
                 <div className="text-foreground mb-4 mx-auto md:mx-0 w-fit">{col.icon}</div>
                 <h4 className="text-lg font-normal text-foreground mb-3">{col.title}</h4>
                 <ul className="space-y-2">
