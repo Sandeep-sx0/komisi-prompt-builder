@@ -19,6 +19,7 @@ import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
 import HeroVisual from "@/components/komisi/HeroVisual";
+import DarkVeil from "@/components/Backgrounds/DarkVeil";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
@@ -252,66 +253,74 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
-      <section className="pt-32 pb-20 px-6 overflow-hidden" id="product">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-text-secondary border border-border px-3 py-1.5 mb-6">
-                ✦ Built for mobile app developers
-              </span>
-            </motion.div>
+      <section className="relative min-h-screen overflow-hidden" id="product">
+        {/* DarkVeil background */}
+        <div className="absolute inset-0 z-0">
+          <DarkVeil speed={0.3} noiseIntensity={0.02} />
+        </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-foreground leading-[1.05] mb-6"
-            >
-              Affiliate marketing<br />
-              infrastructure for<br />
-              mobile apps.
-            </motion.h1>
+        {/* Hero content */}
+        <div className="relative z-10 pt-32 pb-20 px-6">
+          <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-white/60 border border-white/20 px-3 py-1.5 mb-6">
+                  ✦ Built for mobile app developers
+                </span>
+              </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="text-base text-text-secondary mb-8 max-w-[480px]"
-            >
-              Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
-            </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-white leading-[1.05] mb-6"
+              >
+                Affiliate marketing<br />
+                infrastructure for<br />
+                mobile apps.
+              </motion.h1>
 
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.15 }}
+                className="text-base text-white/60 mb-8 max-w-[480px]"
+              >
+                Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="flex flex-col sm:flex-row gap-3 mb-4"
+              >
+                <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+                <Link to="/signup">
+                  <Button size="lg" className="h-12 px-6 bg-white text-[#0C1C28] hover:bg-white/90 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
+                </Link>
+              </motion.div>
+
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex items-center gap-4 mb-2">
+                <Link to="/demo" className="text-sm text-white/60 hover:text-white transition-colors">Book a Demo →</Link>
+              </motion.div>
+
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-white/40 mt-4">
+                Trusted by 200+ indie app developers · No credit card required
+              </motion.p>
+            </div>
+
+            {/* Right — bleeding dashboard + creator card */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="flex flex-col sm:flex-row gap-3 mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative hidden lg:block"
+              style={{ minHeight: 480 }}
             >
-              <Input placeholder="Enter your email" className="h-12 max-w-[280px]" />
-              <Link to="/signup">
-                <Button size="lg" className="h-12 px-6 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
-              </Link>
+              <HeroVisual />
             </motion.div>
-
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex items-center gap-4 mb-2">
-              <Link to="/demo" className="text-sm text-text-secondary hover:text-foreground transition-colors">Book a Demo →</Link>
-            </motion.div>
-
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-text-tertiary mt-4">
-              Trusted by 200+ indie app developers · No credit card required
-            </motion.p>
           </div>
-
-          {/* Right — bleeding dashboard + creator card */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative hidden lg:block"
-            style={{ minHeight: 480 }}
-          >
-            <HeroVisual />
-          </motion.div>
         </div>
       </section>
 
