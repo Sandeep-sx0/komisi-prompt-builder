@@ -299,7 +299,7 @@ const Landing = () => {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-3 mb-4"
             >
-              <Input placeholder="Enter your email" className="h-12 max-w-[280px]" />
+              <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/[0.08] border-white/15 text-white placeholder:text-white/40" />
               <Link to="/signup">
                 <Button size="lg" className="h-12 px-6 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
               </Link>
