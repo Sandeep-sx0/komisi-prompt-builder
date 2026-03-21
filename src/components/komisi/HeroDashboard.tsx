@@ -25,7 +25,6 @@ const leaderboard = [
   { rank: 4, handle: '@fitnesstech', installs: 98, revenue: '$333', conv: '6.1%', highlight: false },
 ];
 
-// Revenue chart points
 const revenuePoints = '0,70 30,58 60,62 90,45 120,48 150,35 180,30 210,22 240,18 270,10';
 const installPoints = '0,75 30,68 60,70 90,55 120,58 150,50 180,42 210,38 240,28 270,20';
 
@@ -33,16 +32,10 @@ const HeroDashboard: React.FC = () => {
   const [scene, setScene] = useState(1);
   const [metricsActive, setMetricsActive] = useState(false);
   const [chartDrawn, setChartDrawn] = useState(false);
-
-  // Scene 2
   const [visibleActivity, setVisibleActivity] = useState(0);
   const [installBump, setInstallBump] = useState(false);
-
-  // Scene 3
   const [visibleLeader, setVisibleLeader] = useState(0);
   const [showTooltip, setShowTooltip] = useState(false);
-
-  // Scene 4
   const [showScanning, setShowScanning] = useState(false);
   const [showFraudAlert, setShowFraudAlert] = useState(false);
   const [alertPulse, setAlertPulse] = useState(false);
@@ -79,20 +72,14 @@ const HeroDashboard: React.FC = () => {
     const run = () => {
       clearAll();
       reset();
-
-      // Scene 1: metrics count + chart draw
       t(() => setMetricsActive(true), 200);
       t(() => setChartDrawn(true), 400);
-
-      // Scene 2 at 8s
       t(() => { setScene(2); setVisibleActivity(0); }, 8000);
       t(() => { setInstallBump(true); setVisibleActivity(1); }, 8500);
       t(() => setVisibleActivity(2), 9200);
       t(() => setVisibleActivity(3), 9900);
       t(() => setVisibleActivity(4), 10600);
       t(() => setInstallBump(false), 11000);
-
-      // Scene 3 at 14s
       t(() => { setScene(3); setVisibleLeader(0); }, 14000);
       t(() => setVisibleLeader(1), 14500);
       t(() => setVisibleLeader(2), 15000);
@@ -100,8 +87,6 @@ const HeroDashboard: React.FC = () => {
       t(() => setVisibleLeader(4), 16000);
       t(() => setShowTooltip(true), 17000);
       t(() => setShowTooltip(false), 19000);
-
-      // Scene 4 at 20s
       t(() => { setScene(4); setShowScanning(true); }, 20000);
       t(() => {
         setShowScanning(false);
@@ -111,8 +96,6 @@ const HeroDashboard: React.FC = () => {
       }, 21500);
       t(() => setAlertPulse(false), 22500);
       t(() => setAmberOverlay(false), 23500);
-
-      // Reset at 26s
       t(() => setScene(0), 25000);
     };
 
@@ -129,7 +112,7 @@ const HeroDashboard: React.FC = () => {
   return (
     <div
       className="w-full rounded-2xl overflow-hidden relative"
-      style={{ backgroundColor: '#0C1C28', minHeight: 380 }}
+      style={{ backgroundColor: '#1E0A3C', minHeight: 380 }}
     >
       {/* Amber overlay for fraud scene */}
       <div
@@ -141,7 +124,7 @@ const HeroDashboard: React.FC = () => {
       />
 
       {/* Top bar */}
-      <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: '1px solid #1E3A4A' }}>
+      <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: '1px solid #2D1B69' }}>
         <span className="text-[10px] text-white/80 tracking-[0.1em] font-semibold uppercase">Komisi Dashboard</span>
         <div className="flex items-center gap-3">
           <span className="text-[10px] text-white/40 px-2 py-0.5 rounded-full" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>MindfulApp ▾</span>
@@ -154,12 +137,12 @@ const HeroDashboard: React.FC = () => {
 
       {/* 5 metric cards */}
       <div className="grid grid-cols-5 gap-1.5 px-3 py-2.5">
-        {metrics.map((m, i) => (
+        {metrics.map((m) => (
           <div
             key={m.key}
             className="rounded-lg px-2 py-2 text-center relative overflow-hidden"
             style={{
-              backgroundColor: installBump && m.key === 'installs' ? 'rgba(74,222,128,0.1)' : '#112233',
+              backgroundColor: installBump && m.key === 'installs' ? 'rgba(74,222,128,0.1)' : '#1A0B2E',
               transition: 'background-color 500ms ease',
             }}
           >
@@ -183,7 +166,7 @@ const HeroDashboard: React.FC = () => {
       </div>
 
       {/* Divider */}
-      <div className="mx-3" style={{ height: 1, backgroundColor: '#1E3A4A' }} />
+      <div className="mx-3" style={{ height: 1, backgroundColor: '#2D1B69' }} />
 
       {/* Scene area */}
       <div className="relative px-3 py-2.5" style={{ minHeight: 220 }}>
@@ -207,7 +190,6 @@ const HeroDashboard: React.FC = () => {
                 </div>
               </div>
               <div className="relative" style={{ height: 140 }}>
-                {/* Y-axis labels */}
                 <div className="absolute left-0 top-0 h-full flex flex-col justify-between text-[8px]" style={{ color: '#4B5563' }}>
                   {['$2,500', '$2,000', '$1,500', '$1,000'].map(l => <span key={l}>{l}</span>)}
                 </div>
@@ -242,7 +224,6 @@ const HeroDashboard: React.FC = () => {
                     }}
                   />
                 </svg>
-                {/* X-axis */}
                 <div className="flex justify-between ml-8 mt-1 text-[8px]" style={{ color: '#4B5563' }}>
                   {['2/25', '26', '27', '28', '3/1', '2', '3', '3/4'].map(l => <span key={l}>{l}</span>)}
                 </div>
@@ -266,7 +247,7 @@ const HeroDashboard: React.FC = () => {
                   <div
                     key={i}
                     className="rounded-lg px-2.5 py-2 flex items-start gap-2"
-                    style={{ backgroundColor: '#112233', ...fade(visibleActivity > i) }}
+                    style={{ backgroundColor: '#1A0B2E', ...fade(visibleActivity > i) }}
                   >
                     <span className="text-sm leading-none mt-0.5">{row.icon}</span>
                     <div className="flex-1 min-w-0">
@@ -287,15 +268,13 @@ const HeroDashboard: React.FC = () => {
             <div className="relative">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[10px] text-white/80 font-medium">Top Affiliates</span>
-                <span className="text-[9px]" style={{ color: '#3B82F6' }}>View All →</span>
+                <span className="text-[9px]" style={{ color: '#A78BFA' }}>View All →</span>
               </div>
-              {/* Column headers */}
               <div className="grid grid-cols-[24px_1fr_60px_60px_50px] gap-1 mb-1.5 px-2">
                 {['#', 'Affiliate', 'Installs', 'Revenue', 'Conv'].map(h => (
                   <span key={h} className="text-[8px] uppercase" style={{ color: '#4B5563' }}>{h}</span>
                 ))}
               </div>
-              {/* Rows */}
               {leaderboard.map((row, i) => (
                 <div
                   key={i}
@@ -312,10 +291,9 @@ const HeroDashboard: React.FC = () => {
                   <span className="text-[10px]" style={{ color: '#4ADE80' }}>{row.conv}</span>
                 </div>
               ))}
-              {/* Tooltip */}
               <div
                 className="absolute left-1/2 top-1 -translate-x-1/2 rounded-lg px-3 py-2 z-10 text-center"
-                style={{ backgroundColor: '#1E3A4A', ...fade(showTooltip) }}
+                style={{ backgroundColor: '#2D1B69', ...fade(showTooltip) }}
               >
                 <p className="text-[9px] text-white">✦ Top performer this month</p>
                 <p className="text-[8px]" style={{ color: '#9CA3AF' }}>Drove 38% of total revenue</p>
@@ -328,14 +306,12 @@ const HeroDashboard: React.FC = () => {
         <div className="absolute inset-0 px-3 py-2.5" style={fade(scene === 4)}>
           {scene === 4 && (
             <div className="flex flex-col items-center justify-center h-full gap-3">
-              {/* Scanning */}
               <div style={fade(showScanning)} className="text-center">
                 <span className="text-[10px] inline-flex items-center gap-1.5" style={{ color: '#9CA3AF' }}>
                   <span className="inline-block animate-spin" style={{ animationDuration: '2s' }}>◌</span>
                   AI monitoring affiliate activity...
                 </span>
               </div>
-              {/* Alert card */}
               <div
                 className="w-full max-w-[300px] rounded-xl p-3.5"
                 style={{
@@ -381,7 +357,7 @@ const HeroDashboard: React.FC = () => {
             style={{
               width: scene === s ? 6 : 4,
               height: scene === s ? 6 : 4,
-              backgroundColor: scene === s ? '#FFFFFF' : '#2A4A5E',
+              backgroundColor: scene === s ? '#FFFFFF' : '#4C1D95',
               transition: 'all 400ms ease',
             }}
           />

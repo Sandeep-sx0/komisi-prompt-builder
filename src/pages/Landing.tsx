@@ -221,12 +221,12 @@ const Landing = () => {
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-text-secondary hover:text-foreground transition-colors">{l}</a>
+              <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-text-secondary hover:text-foreground transition-colors" style={{ hover: undefined }}>{l}</a>
             ))}
           </div>
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login"><Button variant="ghost" size="sm">Login</Button></Link>
-            <Link to="/signup"><Button size="sm">Get Started <ArrowRight size={14} /></Button></Link>
+            <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
           </div>
           <button className="md:hidden text-foreground" onClick={() => setMobileMenu(!mobileMenu)}>
             {mobileMenu ? <X size={24} /> : <Menu size={24} />}
@@ -244,7 +244,7 @@ const Landing = () => {
                 <a key={l} href={`#${l.toLowerCase()}`} className="block text-sm py-2 text-text-secondary">{l}</a>
               ))}
               <Link to="/login"><Button variant="secondary" className="w-full mt-2">Login</Button></Link>
-              <Link to="/signup"><Button className="w-full">Get Started</Button></Link>
+              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }}>Get Started</Button></Link>
             </motion.div>
           )}
         </AnimatePresence>
@@ -297,7 +297,7 @@ const Landing = () => {
               >
                 <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/10 border-white/20 text-white placeholder:text-white/40" />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 bg-white text-[#0C1C28] hover:bg-white/90 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
+                  <Button size="lg" className="h-12 px-6 bg-white text-[#1E0A3C] hover:bg-white/90 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
                 </Link>
               </motion.div>
 
@@ -363,7 +363,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 5 — STATS BAR (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#0C1C28" }}>
+      <section className="py-20 px-6" style={{ backgroundColor: "#0A0010" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { value: 2, prefix: "$", suffix: "M+", label: "Creator commissions tracked" },
@@ -397,7 +397,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 6 — SDK CODE BLOCK (Dark, continues)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#0C1C28" }}>
+      <section className="py-24 px-6" style={{ backgroundColor: "#0A0010" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <Reveal>
             <div>
@@ -407,7 +407,7 @@ const Landing = () => {
               <p className="text-base mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
                 One SDK. Works on iOS, Android, Flutter, and React Native. Drop in 3 lines of code and Komisi handles attribution, fraud detection, and payouts automatically. No server coding required.
               </p>
-              <a href="#" className="text-sm text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 mb-10">
+              <a href="#" className="text-sm hover:text-white transition-colors inline-flex items-center gap-1 mb-10" style={{ color: '#A78BFA' }}>
                 Read the docs <ArrowRight size={14} />
               </a>
 
@@ -428,7 +428,7 @@ const Landing = () => {
 
           <Reveal delay={0.15}>
             <div>
-              <div className="flex" style={{ backgroundColor: "#161B22" }}>
+              <div className="flex" style={{ backgroundColor: "#160020" }}>
                 {Object.keys(codeExamples).map(tab => (
                   <button
                     key={tab}
@@ -443,7 +443,7 @@ const Landing = () => {
                 ))}
               </div>
 
-              <div className="relative" style={{ backgroundColor: "#0D1117" }}>
+              <div className="relative" style={{ backgroundColor: "#0D0010" }}>
                 <button
                   onClick={handleCopy}
                   className="absolute top-4 right-4 text-white/30 hover:text-white/60 transition-colors z-10"
@@ -457,7 +457,7 @@ const Landing = () => {
                 </pre>
               </div>
 
-              <div className="flex items-center justify-between px-4 py-3 border-t border-white/5" style={{ backgroundColor: "#161B22" }}>
+              <div className="flex items-center justify-between px-4 py-3 border-t border-white/5" style={{ backgroundColor: "#160020" }}>
                 <div className="flex items-center gap-2">
                   <Github size={14} className="text-white/40" />
                   <span className="text-xs text-white/40">100% Open Source</span>
@@ -500,10 +500,10 @@ const Landing = () => {
                 <p className="text-base text-text-secondary mb-6">
                   Komisi's SDK uses privacy-safe fingerprint matching on iOS and the Play Install Referrer API on Android. 100% deterministic on Android. 0.60–0.95 confidence scoring on iOS. No ATT prompt. No impact on your App Store privacy label.
                 </p>
-                <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors inline-flex items-center gap-1 mb-8">
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#7C3AED' }}>
                   Learn how attribution works <ArrowRight size={14} />
                 </a>
-                <div className="border border-border p-5 mt-4">
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(124,58,237,0.15)' }}>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "We finally know which creators are actually driving installs. Komisi's attribution is the most accurate we've tested."
                   </p>
@@ -524,8 +524,8 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Feature 2 — Fraud detection (gray bg) */}
-      <section className="w-full" style={{ backgroundColor: "#F8F9FA" }}>
+      {/* Feature 2 — Fraud detection (lavender bg) */}
+      <section className="w-full" style={{ backgroundColor: "#F5F0FF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
@@ -539,10 +539,10 @@ const Landing = () => {
                 <p className="text-base text-text-secondary mb-6">
                   Every conversion is scored in real time. Komisi flags suspicious install patterns — same IP clusters, abnormal velocity, emulator installs — before they cost you money.
                 </p>
-                <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors inline-flex items-center gap-1 mb-8">
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#7C3AED' }}>
                   See how fraud detection works <ArrowRight size={14} />
                 </a>
-                <div className="border border-border p-5 mt-4">
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(124,58,237,0.15)' }}>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
@@ -572,10 +572,10 @@ const Landing = () => {
                 <p className="text-base text-text-secondary mb-6">
                   Real-time analytics broken down by creator, campaign, platform, and content. See install volume, trial starts, subscription conversions, and revenue attributed — all in one dashboard.
                 </p>
-                <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors inline-flex items-center gap-1 mb-8">
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#7C3AED' }}>
                   Explore the analytics dashboard <ArrowRight size={14} />
                 </a>
-                <div className="border border-border p-5 mt-4">
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(124,58,237,0.15)' }}>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely."
                   </p>
@@ -596,8 +596,8 @@ const Landing = () => {
         </div>
       </section>
 
-      {/* Feature 4 — Payouts (gray bg) */}
-      <section className="w-full" style={{ backgroundColor: "#F8F9FA" }}>
+      {/* Feature 4 — Payouts (lavender bg) */}
+      <section className="w-full" style={{ backgroundColor: "#F5F0FF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
@@ -611,10 +611,10 @@ const Landing = () => {
                 <p className="text-base text-text-secondary mb-6">
                   Creators connect their Stripe account during onboarding. Komisi calculates commissions against net revenue after store fees and queues payouts automatically on your chosen schedule — weekly, bi-weekly, or monthly.
                 </p>
-                <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors inline-flex items-center gap-1 mb-8">
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#7C3AED' }}>
                   Learn about payouts <ArrowRight size={14} />
                 </a>
-                <div className="border border-border p-5 mt-4">
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(124,58,237,0.15)' }}>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "Creators love that they just get paid. No back-and-forth, no invoices. It's made recruiting affiliates so much easier."
                   </p>
@@ -635,7 +635,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 8 — INTEGRATIONS GRID
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#EEF2F7" }}>
+      <section className="py-24 px-6" style={{ backgroundColor: "#EDE5FF" }}>
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
@@ -649,7 +649,7 @@ const Landing = () => {
           <Reveal className="mt-12">
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
               {integrations.map(item => (
-                <div key={item.name} className="border border-border bg-card rounded-xl p-5 text-center hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default group">
+                <div key={item.name} className="border border-border bg-card rounded-xl p-5 text-center hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default group" style={{ borderColor: undefined }}>
                   <img
                     src={item.logo}
                     alt={item.name}
@@ -662,7 +662,7 @@ const Landing = () => {
           </Reveal>
 
           <Reveal className="mt-12">
-            <div className="border-l-2 border-foreground p-6 max-w-2xl mx-auto">
+            <div className="p-6 max-w-2xl mx-auto" style={{ borderLeft: '2px solid #7C3AED' }}>
               <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                 "The RevenueCat integration saved us weeks. Komisi just reads our existing webhook events — zero additional engineering."
               </p>
@@ -681,7 +681,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 9 — TESTIMONIALS CAROUSEL
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#F9FAFB" }}>
+      <section className="py-24 px-6" style={{ backgroundColor: "#F5F0FF" }}>
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
@@ -694,7 +694,7 @@ const Landing = () => {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="text-8xl text-foreground text-center mb-4 leading-none select-none font-serif">&ldquo;</div>
+            <div className="text-8xl text-center mb-4 leading-none select-none font-serif" style={{ color: '#7C3AED' }}>&ldquo;</div>
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -752,11 +752,11 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 10 — TRUST / ENTERPRISE BAR
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#F3F4F6" }}>
+      <section className="py-20 px-6" style={{ backgroundColor: "#F0E8FF" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
-              icon: <Shield size={24} />,
+              icon: <Shield size={24} style={{ color: '#7C3AED' }} />,
               title: "Secure",
               items: [
                 "Privacy-safe attribution — no IDFA, no cookies",
@@ -765,7 +765,7 @@ const Landing = () => {
               ],
             },
             {
-              icon: <Zap size={24} />,
+              icon: <Zap size={24} style={{ color: '#7C3AED' }} />,
               title: "Reliable",
               items: [
                 "99.9% attribution accuracy",
@@ -774,7 +774,7 @@ const Landing = () => {
               ],
             },
             {
-              icon: <CheckCircle size={24} />,
+              icon: <CheckCircle size={24} style={{ color: '#7C3AED' }} />,
               title: "Simple",
               items: [
                 "Setup in under 30 minutes",
@@ -786,7 +786,7 @@ const Landing = () => {
             <Reveal key={col.title} delay={i * 0.1}>
               <div className="text-center md:text-left bg-white border border-border p-8">
 
-                <div className="text-foreground mb-4 mx-auto md:mx-0 w-fit">{col.icon}</div>
+                <div className="mb-4 mx-auto md:mx-0 w-fit">{col.icon}</div>
                 <h4 className="text-lg font-normal text-foreground mb-3">{col.title}</h4>
                 <ul className="space-y-2">
                   {col.items.map(item => (
@@ -802,7 +802,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 11 — FINAL CTA (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#0C1C28" }}>
+      <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#1E0A3C" }}>
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")" }} />
         <Reveal className="max-w-3xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4">

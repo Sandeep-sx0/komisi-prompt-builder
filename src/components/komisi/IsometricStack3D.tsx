@@ -2,7 +2,6 @@ import React, { useRef, useMemo, useEffect } from "react";
 import { Canvas, useFrame, useThree, extend } from "@react-three/fiber";
 import * as THREE from "three";
 
-// Extend R3F to recognize <line_> as THREE.Line
 extend({ Line_: THREE.Line });
 
 declare module "@react-three/fiber" {
@@ -14,69 +13,34 @@ declare module "@react-three/fiber" {
 /* ── Icon drawing helpers ── */
 function drawLinkIcon(ctx: CanvasRenderingContext2D, size: number, color: string) {
   const cx = size / 2, cy = size / 2, r = size * 0.18;
-  ctx.strokeStyle = color;
-  ctx.lineWidth = size * 0.04;
-  ctx.lineCap = "round";
-  // Two interlocking ovals
-  ctx.beginPath();
-  ctx.ellipse(cx - r * 0.5, cy, r, r * 0.6, -Math.PI / 4, 0, Math.PI * 2);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.ellipse(cx + r * 0.5, cy, r, r * 0.6, -Math.PI / 4, 0, Math.PI * 2);
-  ctx.stroke();
+  ctx.strokeStyle = color; ctx.lineWidth = size * 0.04; ctx.lineCap = "round";
+  ctx.beginPath(); ctx.ellipse(cx - r * 0.5, cy, r, r * 0.6, -Math.PI / 4, 0, Math.PI * 2); ctx.stroke();
+  ctx.beginPath(); ctx.ellipse(cx + r * 0.5, cy, r, r * 0.6, -Math.PI / 4, 0, Math.PI * 2); ctx.stroke();
 }
 
 function drawDownloadIcon(ctx: CanvasRenderingContext2D, size: number, color: string) {
   const cx = size / 2, cy = size / 2, s = size * 0.15;
-  ctx.strokeStyle = color;
-  ctx.lineWidth = size * 0.04;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-  // Arrow down
-  ctx.beginPath();
-  ctx.moveTo(cx, cy - s);
-  ctx.lineTo(cx, cy + s * 0.6);
-  ctx.stroke();
-  ctx.beginPath();
-  ctx.moveTo(cx - s * 0.6, cy);
-  ctx.lineTo(cx, cy + s * 0.6);
-  ctx.lineTo(cx + s * 0.6, cy);
-  ctx.stroke();
-  // Base line
-  ctx.beginPath();
-  ctx.moveTo(cx - s, cy + s);
-  ctx.lineTo(cx + s, cy + s);
-  ctx.stroke();
+  ctx.strokeStyle = color; ctx.lineWidth = size * 0.04; ctx.lineCap = "round"; ctx.lineJoin = "round";
+  ctx.beginPath(); ctx.moveTo(cx, cy - s); ctx.lineTo(cx, cy + s * 0.6); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx - s * 0.6, cy); ctx.lineTo(cx, cy + s * 0.6); ctx.lineTo(cx + s * 0.6, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx - s, cy + s); ctx.lineTo(cx + s, cy + s); ctx.stroke();
 }
 
 function drawFingerprintIcon(ctx: CanvasRenderingContext2D, size: number, color: string) {
   const cx = size / 2, cy = size / 2;
-  ctx.strokeStyle = color;
-  ctx.lineWidth = size * 0.03;
-  ctx.lineCap = "round";
+  ctx.strokeStyle = color; ctx.lineWidth = size * 0.03; ctx.lineCap = "round";
   const radii = [size * 0.06, size * 0.1, size * 0.14, size * 0.18];
   radii.forEach((r, i) => {
-    ctx.beginPath();
-    ctx.arc(cx, cy + size * 0.02, r, -Math.PI * 0.8 + i * 0.1, -Math.PI * 0.2 - i * 0.1);
-    ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy + size * 0.02, r, -Math.PI * 0.8 + i * 0.1, -Math.PI * 0.2 - i * 0.1); ctx.stroke();
   });
 }
 
 function drawDollarIcon(ctx: CanvasRenderingContext2D, size: number, color: string) {
   const cx = size / 2, cy = size / 2, r = size * 0.18;
-  ctx.strokeStyle = color;
-  ctx.lineWidth = size * 0.035;
-  ctx.lineCap = "round";
-  // Circle
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.stroke();
-  // Dollar sign
+  ctx.strokeStyle = color; ctx.lineWidth = size * 0.035; ctx.lineCap = "round";
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
   const fs = size * 0.14;
-  ctx.font = `bold ${fs}px sans-serif`;
-  ctx.fillStyle = color;
-  ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
+  ctx.font = `bold ${fs}px sans-serif`; ctx.fillStyle = color; ctx.textAlign = "center"; ctx.textBaseline = "middle";
   ctx.fillText("$", cx, cy + 1);
 }
 
@@ -84,19 +48,15 @@ const iconDrawers = [drawLinkIcon, drawDownloadIcon, drawFingerprintIcon, drawDo
 
 function createIconTexture(index: number, active: boolean): THREE.CanvasTexture {
   const size = 256;
-  const canvas = document.createElement("canvas");
-  canvas.width = size;
-  canvas.height = size;
+  const canvas = document.createElement("canvas"); canvas.width = size; canvas.height = size;
   const ctx = canvas.getContext("2d")!;
   ctx.clearRect(0, 0, size, size);
   const color = active ? "#FFFFFF" : "#3A3A4A";
   iconDrawers[index](ctx, size, color);
-  const tex = new THREE.CanvasTexture(canvas);
-  tex.needsUpdate = true;
+  const tex = new THREE.CanvasTexture(canvas); tex.needsUpdate = true;
   return tex;
 }
 
-/* ── Single Layer Box ── */
 const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }) => {
   const groupRef = useRef<THREE.Group>(null);
   const meshRef = useRef<THREE.Mesh>(null);
@@ -108,47 +68,29 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   const w = 3.5, d = 3.5, h = 0.6;
   const gap = 2.8;
   const baseY = (1.5 - index) * gap;
-
   const isActive = activeLayer === index;
   const targetY = useRef(baseY);
   const currentY = useRef(baseY);
 
-  // Textures
   const inactiveTexture = useMemo(() => createIconTexture(index, false), [index]);
   const activeTexture = useMemo(() => createIconTexture(index, true), [index]);
 
-  // Materials
   const inactiveMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1A1A1E"),
-    metalness: 0.8,
-    roughness: 0.4,
-    transparent: true,
-    opacity: 0.9,
+    color: new THREE.Color("#1A1A1E"), metalness: 0.8, roughness: 0.4, transparent: true, opacity: 0.9,
   }), []);
 
   const activeMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1A1A1E"),
-    metalness: 1.0,
-    roughness: 0.1,
-    envMapIntensity: 2.0,
+    color: new THREE.Color("#1A1A1E"), metalness: 1.0, roughness: 0.1, envMapIntensity: 2.0,
   }), []);
 
   const edgeMat = useMemo(() => new THREE.LineBasicMaterial({
-    color: new THREE.Color("#2A5570"),
-    transparent: true,
-    opacity: 0.5,
+    color: new THREE.Color("#4C1D95"), transparent: true, opacity: 0.5,
   }), []);
 
   const boxGeo = useMemo(() => new THREE.BoxGeometry(w, h, d), []);
   const edgesGeo = useMemo(() => new THREE.EdgesGeometry(boxGeo), [boxGeo]);
-
-  // Glow box (slightly larger, transparent)
   const glowGeo = useMemo(() => new THREE.BoxGeometry(w + 0.15, h + 0.1, d + 0.15), []);
-
-  // Icon plane on top face
   const iconGeo = useMemo(() => new THREE.PlaneGeometry(1.2, 1.2), []);
-
-  // Corner screws
   const screwGeo = useMemo(() => new THREE.CylinderGeometry(0.06, 0.06, 0.08, 8), []);
   const screwMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#3A3A4A", metalness: 0.9, roughness: 0.3 }), []);
   const screwPositions = useMemo(() => [
@@ -158,32 +100,22 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
     [-w / 2 + 0.15, h / 2 + 0.04, -d / 2 + 0.15],
   ] as [number, number, number][], []);
 
-  // Vent slots on front face
   const ventGeo = useMemo(() => new THREE.BoxGeometry(0.3, 0.12, 0.05), []);
   const ventMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#111118", metalness: 0.5, roughness: 0.8 }), []);
 
   useFrame((state, delta) => {
     if (!groupRef.current) return;
-
     targetY.current = isActive ? baseY + 0.3 : baseY;
     currentY.current = THREE.MathUtils.lerp(currentY.current, targetY.current, delta * 4);
     groupRef.current.position.y = currentY.current;
 
-    // Material swap
-    if (meshRef.current) {
-      meshRef.current.material = isActive ? activeMat : inactiveMat;
-    }
-
-    // Icon texture swap
+    if (meshRef.current) meshRef.current.material = isActive ? activeMat : inactiveMat;
     if (iconMeshRef.current) {
       (iconMeshRef.current.material as THREE.MeshBasicMaterial).map = isActive ? activeTexture : inactiveTexture;
       (iconMeshRef.current.material as THREE.MeshBasicMaterial).needsUpdate = true;
     }
-
-    // Glow
     if (glowRef.current) {
       const glowMat = glowRef.current.material as THREE.MeshBasicMaterial;
-      const t = state.clock.elapsedTime;
       if (isActive) {
         glowMat.color.setRGB(0.85, 0.85, 0.9);
         glowMat.opacity = THREE.MathUtils.lerp(glowMat.opacity, 0.15, delta * 4);
@@ -191,133 +123,69 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
         glowMat.opacity = THREE.MathUtils.lerp(glowMat.opacity, 0, delta * 4);
       }
     }
-
-    // Edge brightness
     if (edgesRef.current) {
       const eMat = edgesRef.current.material as THREE.LineBasicMaterial;
       if (isActive) {
         eMat.color.lerp(new THREE.Color("#C0C0C0"), delta * 4);
         eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 1, delta * 4);
       } else {
-        eMat.color.lerp(new THREE.Color("#2A5570"), delta * 4);
+        eMat.color.lerp(new THREE.Color("#4C1D95"), delta * 4);
         eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 0.5, delta * 4);
       }
     }
-
-    // Point light
     if (pointLightRef.current) {
-      pointLightRef.current.intensity = THREE.MathUtils.lerp(
-        pointLightRef.current.intensity,
-        isActive ? 2.0 : 0,
-        delta * 4
-      );
+      pointLightRef.current.intensity = THREE.MathUtils.lerp(pointLightRef.current.intensity, isActive ? 2.0 : 0, delta * 4);
     }
   });
 
   return (
     <group ref={groupRef} position={[0, baseY, 0]}>
-      {/* Main box */}
       <mesh ref={meshRef} geometry={boxGeo} material={inactiveMat} />
-
-      {/* Edges wireframe */}
       <lineSegments ref={edgesRef} geometry={edgesGeo} material={edgeMat} />
-
-      {/* Glow box */}
       <mesh ref={glowRef} geometry={glowGeo}>
         <meshBasicMaterial transparent opacity={0} color="#FFFFFF" side={THREE.BackSide} />
       </mesh>
-
-      {/* Icon on top */}
       <mesh ref={iconMeshRef} position={[0, h / 2 + 0.01, 0]} rotation={[-Math.PI / 2, 0, 0]} geometry={iconGeo}>
         <meshBasicMaterial map={inactiveTexture} transparent alphaTest={0.1} />
       </mesh>
-
-      {/* Corner screws */}
       {screwPositions.map((pos, i) => (
         <mesh key={`screw-${i}`} geometry={screwGeo} material={screwMat} position={pos} />
       ))}
-
-      {/* Vent slots on front face */}
       {Array.from({ length: 6 }).map((_, i) => (
-        <mesh
-          key={`vent-${i}`}
-          geometry={ventGeo}
-          material={ventMat}
-          position={[-1.25 + i * 0.5, 0, d / 2 + 0.001]}
-        />
+        <mesh key={`vent-${i}`} geometry={ventGeo} material={ventMat} position={[-1.25 + i * 0.5, 0, d / 2 + 0.001]} />
       ))}
-
-      {/* Smooth white gradient flame glow at all 4 top-surface corners */}
       {screwPositions.map((pos, i) => (
         <group key={`glow-orb-${i}`} position={[pos[0], pos[1] + 0.02, pos[2]]}>
-          <mesh>
-            <sphereGeometry args={[0.03, 24, 24]} />
-            <meshBasicMaterial color="#FFFFFF" transparent opacity={isActive ? 0.9 : 0} depthWrite={false} />
-          </mesh>
-          <mesh position={[0, 0.03, 0]} scale={[1, 1.8, 1]}>
-            <sphereGeometry args={[0.055, 24, 24]} />
-            <meshBasicMaterial color="#E0E0E0" transparent opacity={isActive ? 0.45 : 0} depthWrite={false} />
-          </mesh>
-          <mesh position={[0, 0.05, 0]} scale={[1, 2.0, 1]}>
-            <sphereGeometry args={[0.09, 24, 24]} />
-            <meshBasicMaterial color="#C0C0C0" transparent opacity={isActive ? 0.22 : 0} depthWrite={false} />
-          </mesh>
-          <mesh position={[0, 0.07, 0]} scale={[1, 2.2, 1]}>
-            <sphereGeometry args={[0.14, 24, 24]} />
-            <meshBasicMaterial color="#A0A0A0" transparent opacity={isActive ? 0.1 : 0} depthWrite={false} />
-          </mesh>
-          <mesh position={[0, 0.08, 0]} scale={[1, 2.0, 1]}>
-            <sphereGeometry args={[0.22, 24, 24]} />
-            <meshBasicMaterial color="#808080" transparent opacity={isActive ? 0.04 : 0} depthWrite={false} />
-          </mesh>
+          <mesh><sphereGeometry args={[0.03, 24, 24]} /><meshBasicMaterial color="#FFFFFF" transparent opacity={isActive ? 0.9 : 0} depthWrite={false} /></mesh>
+          <mesh position={[0, 0.03, 0]} scale={[1, 1.8, 1]}><sphereGeometry args={[0.055, 24, 24]} /><meshBasicMaterial color="#E0E0E0" transparent opacity={isActive ? 0.45 : 0} depthWrite={false} /></mesh>
+          <mesh position={[0, 0.05, 0]} scale={[1, 2.0, 1]}><sphereGeometry args={[0.09, 24, 24]} /><meshBasicMaterial color="#C0C0C0" transparent opacity={isActive ? 0.22 : 0} depthWrite={false} /></mesh>
+          <mesh position={[0, 0.07, 0]} scale={[1, 2.2, 1]}><sphereGeometry args={[0.14, 24, 24]} /><meshBasicMaterial color="#A0A0A0" transparent opacity={isActive ? 0.1 : 0} depthWrite={false} /></mesh>
+          <mesh position={[0, 0.08, 0]} scale={[1, 2.0, 1]}><sphereGeometry args={[0.22, 24, 24]} /><meshBasicMaterial color="#808080" transparent opacity={isActive ? 0.04 : 0} depthWrite={false} /></mesh>
           <pointLight color="#FFFFFF" intensity={isActive ? 0.8 : 0} distance={2} />
         </group>
       ))}
-
-      {/* Point light for active glow */}
       <pointLight ref={pointLightRef} position={[0, 1.5, 0]} color="#FFFFFF" intensity={0} distance={5} />
     </group>
   );
 };
 
-/* ── Connector line segment ── */
 const ConnectorLine = ({ start, end, bright }: { start: THREE.Vector3; end: THREE.Vector3; bright: boolean }) => {
   const ref = useRef<THREE.Line>(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.computeLineDistances();
-    }
-  }, [start, end]);
-
-  const geo = useMemo(() => {
-    const g = new THREE.BufferGeometry().setFromPoints([start, end]);
-    return g;
-  }, [start, end]);
+  useEffect(() => { if (ref.current) ref.current.computeLineDistances(); }, [start, end]);
+  const geo = useMemo(() => new THREE.BufferGeometry().setFromPoints([start, end]), [start, end]);
 
   return (
     <line_ ref={ref} geometry={geo}>
-      <lineDashedMaterial
-        color={bright ? "#C0C0C0" : "#2A5570"}
-        dashSize={0.1}
-        gapSize={0.1}
-        transparent
-        opacity={bright ? 0.8 : 0.4}
-      />
+      <lineDashedMaterial color={bright ? "#C0C0C0" : "#4C1D95"} dashSize={0.1} gapSize={0.1} transparent opacity={bright ? 0.8 : 0.4} />
     </line_>
   );
 };
 
-/* ── Dashed connector lines between layers ── */
 const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
-  const w = 3.5, d = 3.5, h = 0.6;
-  const gap = 2.8;
-
+  const w = 3.5, d = 3.5, h = 0.6, gap = 2.8;
   const corners: [number, number][] = [
-    [w / 2 - 0.15, d / 2 - 0.15],
-    [-w / 2 + 0.15, d / 2 - 0.15],
-    [w / 2 - 0.15, -d / 2 + 0.15],
-    [-w / 2 + 0.15, -d / 2 + 0.15],
+    [w / 2 - 0.15, d / 2 - 0.15], [-w / 2 + 0.15, d / 2 - 0.15],
+    [w / 2 - 0.15, -d / 2 + 0.15], [-w / 2 + 0.15, -d / 2 + 0.15],
   ];
 
   const segments: { start: THREE.Vector3; end: THREE.Vector3; pairIndex: number }[] = [];
@@ -325,11 +193,7 @@ const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
     const topY = (1.5 - layer) * gap - h / 2;
     const bottomY = (1.5 - (layer + 1)) * gap + h / 2;
     corners.forEach(([cx, cz]) => {
-      segments.push({
-        start: new THREE.Vector3(cx, topY, cz),
-        end: new THREE.Vector3(cx, bottomY, cz),
-        pairIndex: layer + 1,
-      });
+      segments.push({ start: new THREE.Vector3(cx, topY, cz), end: new THREE.Vector3(cx, bottomY, cz), pairIndex: layer + 1 });
     });
   }
 
@@ -344,59 +208,36 @@ const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
 
   return (
     <group>
-      {segments.map((seg, i) => (
-        <ConnectorLine key={i} start={seg.start} end={seg.end} bright={activeLayer === seg.pairIndex} />
-      ))}
+      {segments.map((seg, i) => <ConnectorLine key={i} start={seg.start} end={seg.end} bright={activeLayer === seg.pairIndex} />)}
       {dots.map((dot, i) => (
         <mesh key={`dot-${i}`} position={dot.pos}>
           <sphereGeometry args={[0.05, 8, 8]} />
-          <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#2A5570"} transparent opacity={activeLayer === dot.layerIdx ? 1 : 0.4} />
+          <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#4C1D95"} transparent opacity={activeLayer === dot.layerIdx ? 1 : 0.4} />
         </mesh>
       ))}
     </group>
   );
 };
 
-/* ── Scene ── */
 const Scene = ({ activeLayer }: { activeLayer: number }) => {
   const { camera } = useThree();
-
-  useEffect(() => {
-    // Classic isometric: rotate 45° on Y, ~35.264° on X
-    camera.position.set(10, 8, 10);
-    camera.lookAt(0, 0, 0);
-    camera.updateProjectionMatrix();
-  }, [camera]);
+  useEffect(() => { camera.position.set(10, 8, 10); camera.lookAt(0, 0, 0); camera.updateProjectionMatrix(); }, [camera]);
 
   return (
     <>
       <ambientLight intensity={0.3} color="#ffffff" />
       <directionalLight position={[-5, 8, 5]} intensity={0.6} color="#ffffff" />
-
-      {[0, 1, 2, 3].map((i) => (
-        <LayerBox key={i} index={i} activeLayer={activeLayer} />
-      ))}
-
+      {[0, 1, 2, 3].map((i) => <LayerBox key={i} index={i} activeLayer={activeLayer} />)}
       <DashedConnectors activeLayer={activeLayer} />
     </>
   );
 };
 
-/* ── Exported component ── */
 export const IsometricStack3D = ({ activeLayer }: { activeLayer: number }) => {
   return (
     <div className="w-full h-full min-h-[500px] lg:min-h-[700px]">
-      <Canvas
-        orthographic
-        camera={{
-        zoom: 54,
-        position: [10, 8, 10],
-          near: 0.1,
-          far: 100,
-        }}
-        gl={{ antialias: true, alpha: true }}
-        style={{ background: "transparent" }}
-      >
+      <Canvas orthographic camera={{ zoom: 54, position: [10, 8, 10], near: 0.1, far: 100 }}
+        gl={{ antialias: true, alpha: true }} style={{ background: "transparent" }}>
         <Scene activeLayer={activeLayer} />
       </Canvas>
     </div>
