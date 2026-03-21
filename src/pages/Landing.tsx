@@ -278,8 +278,8 @@ const Landing = () => {
             >
               ←
             </button>
-            <span className="text-white/80 text-xs font-medium min-w-[80px] text-center">
-              {currentBg.name}
+            <span className="text-white/80 text-xs font-medium min-w-[120px] text-center">
+              {currentBg.name} ({bgIndex + 1}/{backgrounds.length})
             </span>
             <button
               onClick={() => setBgIndex(i => (i + 1) % backgrounds.length)}
