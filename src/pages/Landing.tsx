@@ -9,7 +9,7 @@ import {
   Link2, Download, Fingerprint, CircleDollarSign,
   Shield, Zap, CheckCircle, Copy, Check,
   Code, BarChart3, Wallet, ChevronLeft, ChevronRight,
-  AlertTriangle, ExternalLink,
+  AlertTriangle, ExternalLink, TrendingUp,
 } from "lucide-react";
 import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
 
@@ -37,76 +37,131 @@ const logoFiles = [
 ];
 
 /* ── Code tabs data ── */
-const codeExamples: Record<string, string> = {
-  Swift: `// Your app's code
-import KomisiSDK
-
-KomisiSDK.configure(
-  apiKey: "YOUR_API_KEY"
-)
-KomisiSDK.resolve()
-// ✔ Attribution active`,
-  Kotlin: `// Your app's code
-import com.komisi.sdk.Komisi
-
-Komisi.configure(
-  apiKey = "YOUR_API_KEY"
-)
-Komisi.resolve()
-// ✔ Attribution active`,
-  Flutter: `// Your app's code
-import 'package:komisi_sdk/komisi.dart';
-
-Komisi.configure(
-  apiKey: 'YOUR_API_KEY',
-);
-Komisi.resolve();
-// ✔ Attribution active`,
-  "React Native": `// Your app's code
-import Komisi from 'komisi-react-native';
-
-Komisi.configure({
-  apiKey: 'YOUR_API_KEY',
-});
-Komisi.resolve();
-// ✔ Attribution active`,
+const codeExamples: Record<string, string[]> = {
+  Swift: [
+    "// Your app's code",
+    "import KomisiSDK",
+    "",
+    "KomisiSDK.configure(",
+    '  apiKey: "YOUR_API_KEY"',
+    ")",
+    "KomisiSDK.resolve()",
+    "// ✔ Attribution active",
+  ],
+  Kotlin: [
+    "// Your app's code",
+    "import com.komisi.sdk.Komisi",
+    "",
+    "Komisi.configure(",
+    '  apiKey = "YOUR_API_KEY"',
+    ")",
+    "Komisi.resolve()",
+    "// ✔ Attribution active",
+  ],
+  Flutter: [
+    "// Your app's code",
+    "import 'package:komisi_sdk/komisi.dart';",
+    "",
+    "Komisi.configure(",
+    "  apiKey: 'YOUR_API_KEY',",
+    ");",
+    "Komisi.resolve();",
+    "// ✔ Attribution active",
+  ],
+  "React Native": [
+    "// Your app's code",
+    "import Komisi from 'komisi-react-native';",
+    "",
+    "Komisi.configure({",
+    "  apiKey: 'YOUR_API_KEY',",
+    "});",
+    "Komisi.resolve();",
+    "// ✔ Attribution active",
+  ],
 };
 
 /* ── Testimonial data ── */
 const testimonials = [
   {
     quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months. I wish we had started sooner.",
-    name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp",
+    name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp", initials: "SC", color: "hsl(var(--foreground))",
   },
   {
     quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.",
-    name: "James Park", title: "Founder", company: "FocusTimer",
+    name: "James Park", title: "Founder", company: "FocusTimer", initials: "JP", color: "hsl(215 16% 47%)",
   },
   {
     quote: "Creators love the portal. They can see their earnings in real time and they get paid without asking. Retention on our affiliate program is way higher than I expected.",
-    name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap",
+    name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap", initials: "ML", color: "hsl(160 84% 39%)",
   },
   {
     quote: "The fraud detection alone paid for itself. We caught fake installs in the first week.",
-    name: "Priya Nair", title: "Founder", company: "MindfulApp",
+    name: "Priya Nair", title: "Founder", company: "MindfulApp", initials: "PN", color: "hsl(38 92% 50%)",
   },
 ];
 
-/* ── Integration logos ── */
+/* ── Integration data with brand colors ── */
 const integrations = [
-  "RevenueCat", "Adapty", "Stripe Connect", "Apple App Store", "Google Play",
-  "Amplitude", "Mixpanel", "AppsFlyer", "Adjust", "Firebase",
-  "Braze", "Slack", "Webhooks", "REST API", "TikTok",
+  { name: "RevenueCat", abbr: "RC", bg: "#F97316" },
+  { name: "Adapty", abbr: "A", bg: "#9840FF" },
+  { name: "Stripe Connect", abbr: "S", bg: "#635BFF" },
+  { name: "Apple App Store", abbr: "AS", bg: "#000000" },
+  { name: "Google Play", abbr: "GP", bg: "#34A853" },
+  { name: "Amplitude", abbr: "Am", bg: "#1A73E8" },
+  { name: "Mixpanel", abbr: "Mp", bg: "#7856FF" },
+  { name: "AppsFlyer", abbr: "AF", bg: "#12CBC4" },
+  { name: "Adjust", abbr: "Ad", bg: "#003B5C" },
+  { name: "Firebase", abbr: "Fi", bg: "#FFCA28" },
+  { name: "Braze", abbr: "Bz", bg: "#ED1C24" },
+  { name: "Slack", abbr: "Sl", bg: "#4A154B" },
+  { name: "Webhooks", abbr: "Wh", bg: "#1A1A2E" },
+  { name: "REST API", abbr: "RA", bg: "#1A1A2E" },
+  { name: "TikTok", abbr: "Tk", bg: "#000000" },
 ];
 
 const sdkPlatforms = [
-  { name: "Swift SDK", icon: "🍎" },
-  { name: "Kotlin SDK", icon: "🤖" },
-  { name: "Flutter SDK", icon: "💙" },
-  { name: "React Native SDK", icon: "⚛️" },
+  { name: "Swift", icon: "🍎" },
+  { name: "Kotlin", icon: "🤖" },
+  { name: "Flutter", icon: "💙" },
+  { name: "React Native", icon: "⚛️" },
   { name: "Web API", icon: "🌐" },
-  { name: "Unity SDK", icon: "🎮" },
+  { name: "Unity", icon: "🎮" },
 ];
+
+/* ── Syntax highlighting helper ── */
+const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
+  const lineNum = <span className="inline-block w-6 mr-4 text-right select-none" style={{ color: "#4B5563" }}>{num}</span>;
+  if (line.startsWith("//")) {
+    return <div className="leading-6">{lineNum}<span style={{ color: "#6A737D" }}>{line}</span></div>;
+  }
+  if (line.includes("import")) {
+    return <div className="leading-6">{lineNum}<span style={{ color: "#79B8FF" }}>import</span><span style={{ color: "#E1E4E8" }}>{line.replace("import", "")}</span></div>;
+  }
+  if (line.includes('"') || line.includes("'")) {
+    const parts: React.ReactNode[] = [];
+    let inString = false;
+    let current = "";
+    const quoteChar = line.includes('"') ? '"' : "'";
+    for (let i = 0; i < line.length; i++) {
+      if (line[i] === quoteChar) {
+        if (inString) {
+          parts.push(<span key={i} style={{ color: "#85E89D" }}>{quoteChar}{current}{quoteChar}</span>);
+          current = "";
+          inString = false;
+        } else {
+          parts.push(<span key={`b${i}`} style={{ color: "#E1E4E8" }}>{current}</span>);
+          current = "";
+          inString = true;
+        }
+      } else {
+        current += line[i];
+      }
+    }
+    if (current) parts.push(<span key="end" style={{ color: "#E1E4E8" }}>{current}</span>);
+    return <div className="leading-6">{lineNum}{parts}</div>;
+  }
+  return <div className="leading-6">{lineNum}<span style={{ color: "#E1E4E8" }}>{line || "\u00A0"}</span></div>;
+};
 
 const Landing = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -114,6 +169,8 @@ const Landing = () => {
   const [activeCodeTab, setActiveCodeTab] = useState("Swift");
   const [copied, setCopied] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const autoPlayRef = useRef<ReturnType<typeof setInterval>>();
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -121,8 +178,17 @@ const Landing = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Testimonial auto-advance
+  useEffect(() => {
+    if (isPaused) return;
+    autoPlayRef.current = setInterval(() => {
+      setActiveTestimonial((p) => (p + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(autoPlayRef.current);
+  }, [isPaused]);
+
   const handleCopy = () => {
-    navigator.clipboard.writeText(codeExamples[activeCodeTab]);
+    navigator.clipboard.writeText(codeExamples[activeCodeTab].join("\n"));
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -182,11 +248,7 @@ const Landing = () => {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left — text */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-text-secondary border border-border px-3 py-1.5 mb-6">
                 ✦ Built for mobile app developers
               </span>
@@ -196,7 +258,7 @@ const Landing = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-[3.25rem] font-normal tracking-tighter text-foreground leading-[1.1] mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-foreground leading-[1.05] mb-6"
             >
               Affiliate marketing<br />
               infrastructure for<br />
@@ -224,71 +286,80 @@ const Landing = () => {
               </Link>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex items-center gap-4 mb-2"
-            >
-              <Link to="/demo" className="text-sm text-text-secondary hover:text-foreground transition-colors">
-                Book a Demo →
-              </Link>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex items-center gap-4 mb-2">
+              <Link to="/demo" className="text-sm text-text-secondary hover:text-foreground transition-colors">Book a Demo →</Link>
             </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.35 }}
-              className="text-xs text-text-tertiary mt-4"
-            >
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-text-tertiary mt-4">
               Trusted by 200+ indie app developers · No credit card required
             </motion.p>
           </div>
 
-          {/* Right — product visual */}
+          {/* Right — product visual composite */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative"
           >
-            {/* Mock mobile screen */}
-            <div className="relative bg-muted border border-border p-4 max-w-[320px] ml-auto">
-              <div className="bg-background border border-border p-4 mb-3">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 bg-muted flex items-center justify-center text-[10px] text-text-tertiary">CR</div>
-                  <div>
-                    <p className="text-xs text-foreground">@creator_emma</p>
-                    <p className="text-[10px] text-text-tertiary">Sharing affiliate link on TikTok</p>
+            {/* Dashboard card — behind */}
+            <div className="relative ml-auto max-w-[360px] p-5 border border-white/10 shadow-xl" style={{ backgroundColor: "#0C1C28" }}>
+              <div className="flex items-center justify-between mb-5">
+                <span className="text-xs text-white/60 tracking-wider uppercase">Komisi Dashboard</span>
+                <span className="flex items-center gap-1.5 text-[10px] text-green-400">
+                  <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+                  Live
+                </span>
+              </div>
+              <div className="space-y-3 mb-5">
+                {[
+                  { label: "Installs Today", value: "47", trend: "↑ 12%" },
+                  { label: "Revenue Attributed", value: "$1,240", trend: "↑ 8%" },
+                  { label: "Active Creators", value: "12", trend: "↑ 3" },
+                ].map((m) => (
+                  <div key={m.label} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+                    <span className="text-xs text-white/40">{m.label}</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-white">{m.value}</span>
+                      <span className="text-[10px] text-green-400">{m.trend}</span>
+                    </div>
                   </div>
-                </div>
-                <div className="bg-muted border border-border p-3">
-                  <p className="text-[10px] text-text-secondary mb-1">Try this amazing app! 🔗</p>
-                  <p className="text-[10px] text-text-tertiary">komisi.link/emma-focus...</p>
-                </div>
+                ))}
+              </div>
+              {/* Mini sparkline */}
+              <div className="h-8 w-full">
+                <svg viewBox="0 0 200 32" className="w-full h-full" preserveAspectRatio="none">
+                  <polyline
+                    fill="none"
+                    stroke="hsl(160 84% 39%)"
+                    strokeWidth="1.5"
+                    points="0,28 20,24 40,26 60,20 80,22 100,16 120,18 140,12 160,14 180,8 200,4"
+                  />
+                  <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="hsl(160 84% 39%)" stopOpacity="0.2" />
+                    <stop offset="100%" stopColor="hsl(160 84% 39%)" stopOpacity="0" />
+                  </linearGradient>
+                  <polygon
+                    fill="url(#sparkGrad)"
+                    points="0,28 20,24 40,26 60,20 80,22 100,16 120,18 140,12 160,14 180,8 200,4 200,32 0,32"
+                  />
+                </svg>
               </div>
             </div>
 
-            {/* Floating analytics panel */}
+            {/* Creator row card — overlapping in front */}
             <motion.div
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-4 top-8 bg-background border border-border p-4 shadow-lg w-[240px]"
+              className="absolute -left-4 -bottom-6 bg-background border border-border p-4 shadow-lg w-[280px]"
             >
-              <p className="text-[10px] text-text-tertiary uppercase tracking-wider mb-3">Today's Performance</p>
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-xs text-text-secondary">Installs Today</span>
-                  <span className="text-sm text-foreground">47</span>
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 bg-muted flex items-center justify-center text-[10px] text-text-tertiary shrink-0">SC</div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs text-foreground">@sarah_creates</p>
+                  <p className="text-[10px] text-text-tertiary">234 installs · $630 earned</p>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-xs text-text-secondary">Revenue Attributed</span>
-                  <span className="text-sm text-foreground">$1,240</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-xs text-text-secondary">Active Creators</span>
-                  <span className="text-sm text-foreground">12</span>
-                </div>
+                <span className="text-[10px] px-2 py-0.5 bg-green-50 text-green-600 border border-green-200 shrink-0">Active</span>
               </div>
             </motion.div>
           </motion.div>
@@ -331,15 +402,15 @@ const Landing = () => {
             </h2>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {/* Card 1 — Developers */}
             <Reveal delay={0}>
               <div className="border border-border bg-card h-full flex flex-col">
-                <div className="bg-foreground p-6 h-[200px] flex items-center justify-center">
-                  <pre className="text-xs text-primary-foreground leading-relaxed">
+                <div className="h-[200px] flex items-center justify-center p-6" style={{ backgroundColor: "#0C1C28" }}>
+                  <pre className="text-xs text-white/90 leading-relaxed font-mono">
 {`KomisiSDK.configure(
   apiKey: "your_key"
-)`}
+)`}<span className="animate-pulse">▊</span>
                   </pre>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
@@ -358,14 +429,19 @@ const Landing = () => {
             {/* Card 2 — Growth Teams */}
             <Reveal delay={0.08}>
               <div className="border border-border bg-card h-full flex flex-col">
-                <div className="bg-muted p-6 h-[200px] flex items-center justify-center">
-                  <div className="w-full max-w-[200px]">
-                    <p className="text-[10px] text-text-tertiary mb-2">Install Growth</p>
-                    <div className="flex items-end gap-1 h-20">
-                      {[20, 35, 28, 45, 52, 48, 65, 78, 72, 90, 95, 100].map((h, i) => (
-                        <div key={i} className="flex-1 bg-foreground/20" style={{ height: `${h}%` }}>
-                          <div className="w-full bg-foreground" style={{ height: `${Math.min(h, 70)}%` }} />
+                <div className="bg-muted h-[200px] flex items-center justify-center p-6">
+                  <div className="w-full max-w-[220px]">
+                    <p className="text-[10px] text-text-tertiary mb-3">Install Growth (6 months)</p>
+                    <div className="flex items-end gap-1.5 h-24">
+                      {[25, 32, 38, 50, 62, 78].map((h, i) => (
+                        <div key={i} className="flex-1 flex flex-col justify-end">
+                          <div className="w-full" style={{ height: `${h}%`, backgroundColor: "#0C1C28" }} />
                         </div>
+                      ))}
+                    </div>
+                    <div className="flex justify-between mt-2">
+                      {["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"].map(m => (
+                        <span key={m} className="text-[8px] text-text-tertiary flex-1 text-center">{m}</span>
                       ))}
                     </div>
                   </div>
@@ -386,11 +462,16 @@ const Landing = () => {
             {/* Card 3 — Creators */}
             <Reveal delay={0.16}>
               <div className="border border-border bg-card h-full flex flex-col">
-                <div className="bg-muted p-6 h-[200px] flex items-center justify-center">
-                  <div className="bg-background border border-border p-4 w-full max-w-[200px]">
+                <div className="bg-muted h-[200px] flex items-center justify-center p-6">
+                  <div className="bg-background border border-border p-5 w-full max-w-[220px]">
                     <p className="text-[10px] text-text-tertiary mb-1">This month</p>
-                    <p className="text-2xl text-foreground">$3,562</p>
-                    <p className="text-[10px] text-text-tertiary">earned this month</p>
+                    <p className="text-3xl text-foreground tracking-tight">$3,562</p>
+                    <p className="text-[10px] text-text-tertiary mb-3">earned this month</p>
+                    <div className="flex gap-2">
+                      {["234 installs", "$630 pending", "Mar 15 payout"].map(c => (
+                        <span key={c} className="text-[9px] text-text-tertiary border border-border px-1.5 py-0.5">{c}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
                 <div className="p-6 flex-1 flex flex-col">
@@ -421,8 +502,11 @@ const Landing = () => {
             { value: 99.9, suffix: "%", label: "Attribution accuracy", decimals: 1 },
           ].map((s, i) => (
             <Reveal key={i} delay={i * 0.1}>
-              <div>
-                <p className="text-3xl md:text-4xl text-white font-normal mb-2">
+              <div className={cn(
+                "py-4",
+                i < 3 && "md:border-r md:border-white/10"
+              )}>
+                <p className="text-5xl md:text-6xl text-white font-normal mb-3 tracking-tight">
                   <CountingNumber
                     number={s.value}
                     prefix={s.prefix || ""}
@@ -433,7 +517,7 @@ const Landing = () => {
                     transition={{ stiffness: 60, damping: 30 }}
                   />
                 </p>
-                <p className="text-sm" style={{ color: "#9CA3AF" }}>{s.label}</p>
+                <p className="text-xs uppercase tracking-wider" style={{ color: "#6B7280" }}>{s.label}</p>
               </div>
             </Reveal>
           ))}
@@ -444,26 +528,32 @@ const Landing = () => {
           SECTION 6 — SDK CODE BLOCK (Dark, continues)
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6" style={{ backgroundColor: "#0C1C28" }}>
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           {/* Left — text + testimonial */}
           <Reveal>
             <div>
               <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-6">
                 Integrate in under<br />30 minutes.
               </h2>
-              <p className="text-base mb-6" style={{ color: "#9CA3AF" }}>
+              <p className="text-base mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
                 One SDK. Works on iOS, Android, Flutter, and React Native. Drop in 3 lines of code and Komisi handles attribution, fraud detection, and payouts automatically.
               </p>
               <a href="#" className="text-sm text-white/60 hover:text-white transition-colors inline-flex items-center gap-1 mb-10">
                 Read the docs <ArrowRight size={14} />
               </a>
 
-              {/* Testimonial */}
-              <div className="border border-white/10 p-6 mt-8">
-                <p className="text-sm text-white/70 mb-4 leading-relaxed">
+              {/* Testimonial card */}
+              <div className="bg-white/5 border border-white/10 p-6 mt-8">
+                <p className="text-sm text-white/70 mb-4 leading-relaxed italic">
                   "Setup was faster than I expected. The RevenueCat integration just worked — I had my first affiliate attributed within the hour."
                 </p>
-                <p className="text-xs text-white/50">James Park, Founder, FocusTimer</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-white/10 flex items-center justify-center text-[10px] text-white/60">JP</div>
+                  <div>
+                    <p className="text-xs text-white/80">James Park</p>
+                    <p className="text-[10px] text-white/40">Founder, FocusTimer</p>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -472,14 +562,14 @@ const Landing = () => {
           <Reveal delay={0.15}>
             <div>
               {/* Tabs */}
-              <div className="flex border-b border-white/10">
+              <div className="flex" style={{ backgroundColor: "#161B22" }}>
                 {Object.keys(codeExamples).map(tab => (
                   <button
                     key={tab}
                     onClick={() => setActiveCodeTab(tab)}
                     className={cn(
                       "px-4 py-2.5 text-xs transition-colors",
-                      activeCodeTab === tab ? "text-white border-b-2 border-white" : "text-white/40 hover:text-white/60"
+                      activeCodeTab === tab ? "bg-white text-foreground" : "text-white/40 hover:text-white/60"
                     )}
                   >
                     {tab}
@@ -487,39 +577,27 @@ const Landing = () => {
                 ))}
               </div>
 
-              {/* Code */}
-              <div className="relative bg-[#0D1117] p-6">
+              {/* Code area */}
+              <div className="relative" style={{ backgroundColor: "#0D1117" }}>
                 <button
                   onClick={handleCopy}
-                  className="absolute top-4 right-4 text-white/30 hover:text-white/60 transition-colors"
+                  className="absolute top-4 right-4 text-white/30 hover:text-white/60 transition-colors z-10"
                 >
                   {copied ? <Check size={16} /> : <Copy size={16} />}
                 </button>
-                <pre className="text-sm leading-relaxed overflow-x-auto">
-                  {codeExamples[activeCodeTab].split('\n').map((line, i) => (
-                    <div key={i}>
-                      {line.startsWith('//') ? (
-                        <span style={{ color: "#6A737D" }}>{line}</span>
-                      ) : line.includes('import') ? (
-                        <span><span style={{ color: "#F97583" }}>import</span><span style={{ color: "#E1E4E8" }}>{line.replace('import', '')}</span></span>
-                      ) : line.includes('"') ? (
-                        <span style={{ color: "#E1E4E8" }}>
-                          {line.split('"').map((part, j) => 
-                            j % 2 === 1 ? <span key={j} style={{ color: "#9ECE6A" }}>"{part}"</span> : part
-                          )}
-                        </span>
-                      ) : (
-                        <span style={{ color: "#E1E4E8" }}>{line}</span>
-                      )}
-                    </div>
+                <pre className="p-6 text-sm overflow-x-auto font-mono">
+                  {codeExamples[activeCodeTab].map((line, i) => (
+                    <SyntaxLine key={`${activeCodeTab}-${i}`} line={line} num={i + 1} />
                   ))}
                 </pre>
               </div>
 
-              {/* Below code */}
-              <div className="flex items-center gap-4 mt-4">
-                <span className="text-xs text-white/40">Open Source</span>
-                <span className="text-xs text-white/20">·</span>
+              {/* Footer bar */}
+              <div className="flex items-center justify-between px-4 py-3 border-t border-white/5" style={{ backgroundColor: "#161B22" }}>
+                <div className="flex items-center gap-2">
+                  <Github size={14} className="text-white/40" />
+                  <span className="text-xs text-white/40">100% Open Source</span>
+                </div>
                 <a href="#" className="text-xs text-white/40 hover:text-white/60 transition-colors inline-flex items-center gap-1">
                   View on GitHub <ExternalLink size={10} />
                 </a>
@@ -528,7 +606,7 @@ const Landing = () => {
               {/* SDK platform grid */}
               <div className="grid grid-cols-3 gap-3 mt-6">
                 {sdkPlatforms.map(p => (
-                  <div key={p.name} className="border border-white/10 p-3 text-center hover:border-white/20 transition-colors">
+                  <div key={p.name} className="border border-white/10 p-3 text-center hover:border-white/25 transition-colors" style={{ backgroundColor: "rgba(255,255,255,0.02)" }}>
                     <span className="text-lg block mb-1">{p.icon}</span>
                     <span className="text-[10px] text-white/50">{p.name}</span>
                   </div>
@@ -545,7 +623,7 @@ const Landing = () => {
       <section className="py-24 px-6">
         <div className="max-w-[1200px] mx-auto space-y-32">
 
-          {/* Feature 1 — Left text, Right visual */}
+          {/* Feature 1 — Attribution flow */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div>
@@ -559,62 +637,94 @@ const Landing = () => {
                   Learn how attribution works <ArrowRight size={14} />
                 </a>
                 <div className="border border-border p-5 mt-4">
-                  <p className="text-sm text-text-secondary mb-3 leading-relaxed">
+                  <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "We finally know which creators are actually driving installs. Komisi's attribution is the most accurate we've tested."
                   </p>
-                  <p className="text-xs text-text-tertiary">Sarah Chen, Head of Growth, MindfulApp</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">SC</div>
+                    <div>
+                      <p className="text-xs text-foreground">Sarah Chen</p>
+                      <p className="text-[10px] text-text-tertiary">Head of Growth, MindfulApp</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
             <Reveal delay={0.15}>
               <div className="bg-muted border border-border p-8">
-                <div className="flex items-center justify-center gap-3">
+                <div className="flex items-center justify-between gap-2">
                   {[
-                    { icon: <Link2 size={16} />, label: "Creator Link" },
-                    { icon: <ArrowRight size={12} className="text-text-tertiary" />, label: "" },
-                    { icon: <Download size={16} />, label: "App Store" },
-                    { icon: <ArrowRight size={12} className="text-text-tertiary" />, label: "" },
-                    { icon: <Download size={16} />, label: "Install" },
-                    { icon: <ArrowRight size={12} className="text-text-tertiary" />, label: "" },
-                    { icon: <Fingerprint size={16} />, label: "SDK Resolves" },
-                    { icon: <ArrowRight size={12} className="text-text-tertiary" />, label: "" },
-                    { icon: <CircleDollarSign size={16} />, label: "Commission" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex flex-col items-center gap-1">
-                      <div className={cn(item.label ? "w-10 h-10 border border-border bg-background flex items-center justify-center text-text-secondary" : "")}>
-                        {item.icon}
+                    { label: "Creator Link", icon: <Link2 size={14} /> },
+                    { label: "App Store", icon: <Download size={14} /> },
+                    { label: "Install", icon: <Download size={14} /> },
+                    { label: "SDK Launch", icon: <Fingerprint size={14} /> },
+                    { label: "Commission ✔", icon: <CircleDollarSign size={14} />, active: true },
+                  ].map((node, i, arr) => (
+                    <React.Fragment key={node.label}>
+                      <div className="flex flex-col items-center gap-1.5">
+                        <div className={cn(
+                          "w-10 h-10 border flex items-center justify-center text-text-secondary",
+                          node.active ? "border-green-400 bg-green-50 text-green-600" : "border-border bg-background"
+                        )}>
+                          {node.icon}
+                        </div>
+                        <span className="text-[8px] text-text-tertiary text-center leading-tight max-w-[60px]">{node.label}</span>
                       </div>
-                      {item.label && <span className="text-[9px] text-text-tertiary">{item.label}</span>}
-                    </div>
+                      {i < arr.length - 1 && (
+                        <div className="flex-1 h-px bg-border relative min-w-[12px]">
+                          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-0 h-0 border-l-[4px] border-l-border border-y-[3px] border-y-transparent" />
+                        </div>
+                      )}
+                    </React.Fragment>
                   ))}
                 </div>
               </div>
             </Reveal>
           </div>
 
-          {/* Feature 2 — Right text, Left visual */}
+          {/* Feature 2 — Fraud detection */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
-              <div className="bg-muted border border-border p-6">
-                <div className="flex items-center gap-2 mb-4">
+              <div className="bg-background border border-border shadow-sm">
+                {/* Alert header */}
+                <div className="flex items-center gap-2 p-4 border-b border-border" style={{ borderLeft: "3px solid hsl(38 92% 50%)" }}>
                   <AlertTriangle size={16} className="text-warning" />
-                  <span className="text-sm text-foreground">Suspicious activity detected</span>
+                  <span className="text-sm text-foreground">Fraud Alert Detected</span>
                 </div>
-                <div className="space-y-2 mb-4">
+                {/* Details */}
+                <div className="p-4 space-y-2 border-b border-border">
                   <div className="flex justify-between text-xs">
-                    <span className="text-text-secondary">Installs</span>
-                    <span className="text-foreground">47</span>
+                    <span className="text-text-secondary">Installs</span><span className="text-foreground">47</span>
                   </div>
                   <div className="flex justify-between text-xs">
-                    <span className="text-text-secondary">Pattern</span>
-                    <span className="text-foreground">Same IP range</span>
+                    <span className="text-text-secondary">Pattern</span><span className="text-foreground">Same IP range</span>
                   </div>
                   <div className="flex justify-between text-xs">
-                    <span className="text-text-secondary">Timeframe</span>
-                    <span className="text-foreground">2 hours</span>
+                    <span className="text-text-secondary">Timeframe</span><span className="text-foreground">2 hours</span>
                   </div>
                 </div>
-                <Button size="sm" variant="secondary" className="w-full">Review</Button>
+                {/* Action buttons */}
+                <div className="flex gap-3 p-4 border-b border-border">
+                  <Button size="sm" variant="secondary" className="flex-1">Review Details</Button>
+                  <Button size="sm" variant="ghost" className="flex-1">Dismiss</Button>
+                </div>
+                {/* Mini table */}
+                <div className="text-[11px]">
+                  {[
+                    { ip: "192.168.1.x", time: "14:02", status: "flagged" },
+                    { ip: "192.168.1.x", time: "14:05", status: "flagged" },
+                    { ip: "10.0.0.x", time: "14:12", status: "clean" },
+                  ].map((row, i) => (
+                    <div key={i} className={cn(
+                      "flex items-center justify-between px-4 py-2 border-b border-border last:border-0",
+                      row.status === "flagged" ? "bg-warning/5" : ""
+                    )}>
+                      <span className="text-text-secondary">{row.ip}</span>
+                      <span className="text-text-tertiary">{row.time}</span>
+                      <span className={row.status === "flagged" ? "text-warning" : "text-text-tertiary"}>{row.status}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </Reveal>
             <Reveal delay={0.15} className="order-1 lg:order-2">
@@ -623,22 +733,28 @@ const Landing = () => {
                   AI fraud detection that protects your program automatically.
                 </h3>
                 <p className="text-base text-text-secondary mb-6">
-                  Every conversion is scored in real time. Komisi flags suspicious install patterns — same IP clusters, abnormal velocity, emulator installs — before they cost you money. You review flagged events. Komisi handles the rest.
+                  Every conversion is scored in real time. Komisi flags suspicious install patterns — same IP clusters, abnormal velocity, emulator installs — before they cost you money.
                 </p>
                 <a href="#" className="text-sm text-text-secondary hover:text-foreground transition-colors inline-flex items-center gap-1 mb-8">
                   See how fraud detection works <ArrowRight size={14} />
                 </a>
                 <div className="border border-border p-5 mt-4">
-                  <p className="text-sm text-text-secondary mb-3 leading-relaxed">
+                  <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
-                  <p className="text-xs text-text-tertiary">David Park, Founder, FocusTimer</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">DP</div>
+                    <div>
+                      <p className="text-xs text-foreground">David Park</p>
+                      <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
           </div>
 
-          {/* Feature 3 — Left text, Right visual */}
+          {/* Feature 3 — Analytics */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div>
@@ -652,36 +768,45 @@ const Landing = () => {
                   Explore the analytics dashboard <ArrowRight size={14} />
                 </a>
                 <div className="border border-border p-5 mt-4">
-                  <p className="text-sm text-text-secondary mb-3 leading-relaxed">
+                  <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely."
                   </p>
-                  <p className="text-xs text-text-tertiary">Marcus Lee, Growth Lead, CalorieSnap</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">ML</div>
+                    <div>
+                      <p className="text-xs text-foreground">Marcus Lee</p>
+                      <p className="text-[10px] text-text-tertiary">Growth Lead, CalorieSnap</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
             <Reveal delay={0.15}>
-              <div className="bg-muted border border-border overflow-hidden">
-                <table className="w-full text-xs">
+              <div className="bg-background border border-border shadow-sm overflow-hidden">
+                <div className="flex items-center justify-between p-4 border-b border-border">
+                  <span className="text-xs text-foreground">Creator Performance</span>
+                  <span className="text-[10px] text-text-tertiary border border-border px-2 py-0.5">Last 30 days</span>
+                </div>
+                <table className="w-full text-[11px]">
                   <thead>
                     <tr className="border-b border-border">
-                      {["Creator", "Platform", "Installs", "Trials", "Conv.", "Revenue"].map(h => (
+                      {["Creator", "Platform", "Installs", "Revenue", "Commission"].map(h => (
                         <th key={h} className="text-left p-3 text-text-tertiary font-normal">{h}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {[
-                      { creator: "Emma D.", platform: "TikTok", installs: "342", trials: "89", conv: "34", revenue: "$1,240" },
-                      { creator: "James L.", platform: "YouTube", installs: "218", trials: "62", conv: "28", revenue: "$890" },
-                      { creator: "Sofia M.", platform: "Instagram", installs: "156", trials: "41", conv: "19", revenue: "$620" },
+                      { creator: "@sarah_creates", platform: "TikTok", installs: "234", revenue: "$2,100", commission: "$630" },
+                      { creator: "@techreview", platform: "YouTube", installs: "89", revenue: "$445", commission: "$89" },
+                      { creator: "@dailyapps", platform: "Instagram", installs: "56", revenue: "$340", commission: "$85" },
                     ].map((row, i) => (
-                      <tr key={i} className="border-b border-border last:border-0">
+                      <tr key={i} className={cn("border-b border-border last:border-0", i % 2 === 1 ? "bg-muted/50" : "")}>
                         <td className="p-3 text-foreground">{row.creator}</td>
                         <td className="p-3 text-text-secondary">{row.platform}</td>
                         <td className="p-3 text-foreground">{row.installs}</td>
-                        <td className="p-3 text-text-secondary">{row.trials}</td>
-                        <td className="p-3 text-text-secondary">{row.conv}</td>
                         <td className="p-3 text-foreground">{row.revenue}</td>
+                        <td className="p-3 text-foreground">{row.commission}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -690,32 +815,46 @@ const Landing = () => {
             </Reveal>
           </div>
 
-          {/* Feature 4 — Right text, Left visual */}
+          {/* Feature 4 — Payouts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal className="order-2 lg:order-1">
-              <div className="bg-muted border border-border p-6">
-                <div className="space-y-3 mb-4">
+              <div className="bg-background border border-border shadow-sm">
+                <div className="flex items-center justify-between p-4 border-b border-border">
+                  <span className="text-xs text-foreground">Upcoming Payouts</span>
+                  <span className="text-[10px] text-text-tertiary">Mar 15</span>
+                </div>
+                <div className="divide-y divide-border">
                   {[
-                    { name: "Emma Davis", amount: "$124.50", status: "Paid ✔" },
-                    { name: "James Lee", amount: "$89.20", status: "Paid ✔" },
-                    { name: "Sofia Martinez", amount: "$156.80", status: "Paid ✔" },
-                    { name: "Alex Rivera", amount: "$97.50", status: "Paid ✔" },
+                    { name: "Emma Davis", amount: "$124.50", status: "Paid", paid: true },
+                    { name: "James Lee", amount: "$89.20", status: "Paid", paid: true },
+                    { name: "Sofia Martinez", amount: "$156.80", status: "Pending", paid: false },
+                    { name: "Alex Rivera", amount: "$97.50", status: "Pending", paid: false },
                   ].map((row, i) => (
-                    <div key={i} className="flex items-center justify-between bg-background border border-border p-3">
+                    <div key={i} className="flex items-center justify-between p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-muted flex items-center justify-center text-[10px] text-text-tertiary">
+                        <div className="w-8 h-8 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">
                           {row.name.split(" ").map(n => n[0]).join("")}
                         </div>
                         <span className="text-sm text-foreground">{row.name}</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <span className="text-sm text-foreground">{row.amount}</span>
-                        <span className="text-[10px] text-success">{row.status}</span>
+                        <span className={cn(
+                          "text-[10px] px-2 py-0.5",
+                          row.paid
+                            ? "bg-green-50 text-green-600 border border-green-200"
+                            : "bg-muted text-text-tertiary border border-border"
+                        )}>
+                          {row.paid ? "Paid ✔" : "Pending"}
+                        </span>
                       </div>
                     </div>
                   ))}
                 </div>
-                <Button className="w-full">Process All Payouts — $468</Button>
+                <div className="flex items-center justify-between p-4 border-t border-border">
+                  <span className="text-sm text-foreground">Total: $468.00</span>
+                  <Button size="sm">Process All Payouts</Button>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={0.15} className="order-1 lg:order-2">
@@ -730,10 +869,16 @@ const Landing = () => {
                   Learn about payouts <ArrowRight size={14} />
                 </a>
                 <div className="border border-border p-5 mt-4">
-                  <p className="text-sm text-text-secondary mb-3 leading-relaxed">
+                  <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "Creators love that they just get paid. No back-and-forth, no invoices. It's made recruiting affiliates so much easier."
                   </p>
-                  <p className="text-xs text-text-tertiary">Priya Nair, Founder, MindfulApp</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">PN</div>
+                    <div>
+                      <p className="text-xs text-foreground">Priya Nair</p>
+                      <p className="text-[10px] text-text-tertiary">Founder, MindfulApp</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -756,24 +901,33 @@ const Landing = () => {
           </Reveal>
 
           <Reveal className="mt-12">
-            <div className="grid grid-cols-3 md:grid-cols-5 gap-3">
-              {integrations.map(name => (
-                <div key={name} className="border border-border bg-card p-4 text-center hover:border-foreground/20 transition-colors">
-                  <div className="w-8 h-8 bg-muted mx-auto mb-2 flex items-center justify-center text-[10px] text-text-tertiary">
-                    {name.slice(0, 2)}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+              {integrations.map(item => (
+                <div key={item.name} className="border border-border bg-card p-4 text-center hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default group">
+                  <div
+                    className="w-10 h-10 mx-auto mb-2 flex items-center justify-center text-[11px] text-white font-normal"
+                    style={{ backgroundColor: item.bg }}
+                  >
+                    {item.abbr}
                   </div>
-                  <span className="text-xs text-text-secondary">{name}</span>
+                  <span className="text-xs text-text-secondary">{item.name}</span>
                 </div>
               ))}
             </div>
           </Reveal>
 
           <Reveal className="mt-12">
-            <div className="border border-border p-6 text-center max-w-2xl mx-auto">
-              <p className="text-sm text-text-secondary mb-3 leading-relaxed">
+            <div className="border-l-2 border-foreground p-6 max-w-2xl mx-auto">
+              <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                 "The RevenueCat integration saved us weeks. Komisi just reads our existing webhook events — zero additional engineering."
               </p>
-              <p className="text-xs text-text-tertiary">James Park, Founder, FocusTimer</p>
+              <div className="flex items-center gap-3">
+                <div className="w-7 h-7 bg-muted flex items-center justify-center text-[9px] text-text-tertiary">JP</div>
+                <div>
+                  <p className="text-xs text-foreground">James Park</p>
+                  <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -790,7 +944,14 @@ const Landing = () => {
             </h2>
           </Reveal>
 
-          <div className="relative max-w-3xl mx-auto">
+          <div
+            className="relative max-w-[700px] mx-auto"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {/* Large decorative quote */}
+            <div className="text-6xl text-foreground/10 text-center mb-4 leading-none select-none">"</div>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTestimonial}
@@ -800,10 +961,13 @@ const Landing = () => {
                 transition={{ duration: 0.3 }}
                 className="text-center px-12"
               >
-                <div className="w-12 h-12 bg-muted mx-auto mb-6 flex items-center justify-center text-sm text-text-tertiary">
-                  {testimonials[activeTestimonial].name.split(" ").map(n => n[0]).join("")}
+                <div
+                  className="w-12 h-12 mx-auto mb-6 flex items-center justify-center text-sm text-white"
+                  style={{ backgroundColor: testimonials[activeTestimonial].color }}
+                >
+                  {testimonials[activeTestimonial].initials}
                 </div>
-                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6">
+                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-[600px] mx-auto">
                   "{testimonials[activeTestimonial].quote}"
                 </p>
                 <p className="text-sm text-foreground">{testimonials[activeTestimonial].name}</p>
@@ -847,65 +1011,61 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="py-20 px-6 border-t border-border">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* Secure */}
-          <Reveal>
-            <div className="text-center md:text-left">
-              <Shield size={24} className="text-foreground mb-4 mx-auto md:mx-0" />
-              <h4 className="text-lg font-normal text-foreground mb-3">Secure</h4>
-              <ul className="space-y-2">
-                {[
-                  "Privacy-safe attribution — no IDFA, no cookies",
-                  "App Store privacy label: zero impact",
-                  "SOC2 compliant infrastructure",
-                ].map(item => (
-                  <li key={item} className="text-sm text-text-secondary">{item}</li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-
-          {/* Reliable */}
-          <Reveal delay={0.1}>
-            <div className="text-center md:text-left">
-              <Zap size={24} className="text-foreground mb-4 mx-auto md:mx-0" />
-              <h4 className="text-lg font-normal text-foreground mb-3">Reliable</h4>
-              <ul className="space-y-2">
-                {[
-                  "99.9% attribution accuracy",
-                  "Real-time fraud detection",
-                  "Stripe Connect for secure payouts",
-                ].map(item => (
-                  <li key={item} className="text-sm text-text-secondary">{item}</li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-
-          {/* Simple */}
-          <Reveal delay={0.2}>
-            <div className="text-center md:text-left">
-              <CheckCircle size={24} className="text-foreground mb-4 mx-auto md:mx-0" />
-              <h4 className="text-lg font-normal text-foreground mb-3">Simple</h4>
-              <ul className="space-y-2">
-                {[
-                  "Setup in under 30 minutes",
-                  "Works with RevenueCat and Adapty",
-                  "Dedicated onboarding support",
-                ].map(item => (
-                  <li key={item} className="text-sm text-text-secondary">{item}</li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
+          {[
+            {
+              icon: <Shield size={24} />,
+              title: "Secure",
+              items: [
+                "Privacy-safe attribution — no IDFA, no cookies",
+                "App Store privacy label: zero impact",
+                "SOC2 compliant infrastructure",
+              ],
+            },
+            {
+              icon: <Zap size={24} />,
+              title: "Reliable",
+              items: [
+                "99.9% attribution accuracy",
+                "Real-time fraud detection",
+                "Stripe Connect for secure payouts",
+              ],
+            },
+            {
+              icon: <CheckCircle size={24} />,
+              title: "Simple",
+              items: [
+                "Setup in under 30 minutes",
+                "Works with RevenueCat and Adapty",
+                "Dedicated onboarding support",
+              ],
+            },
+          ].map((col, i) => (
+            <Reveal key={col.title} delay={i * 0.1}>
+              <div className={cn(
+                "text-center md:text-left",
+                i < 2 && "md:border-r md:border-border md:pr-12"
+              )}>
+                <div className="text-foreground mb-4 mx-auto md:mx-0 w-fit">{col.icon}</div>
+                <h4 className="text-lg font-normal text-foreground mb-3">{col.title}</h4>
+                <ul className="space-y-2">
+                  {col.items.map(item => (
+                    <li key={item} className="text-sm text-text-secondary">{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════
           SECTION 11 — FINAL CTA (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#0C1C28" }}>
-        <Reveal className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-4">
+      <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#0C1C28" }}>
+        {/* Subtle noise texture */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")" }} />
+        <Reveal className="max-w-3xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4">
             Your next 1,000 installs<br />
             are one affiliate program away.
           </h2>
@@ -947,7 +1107,7 @@ const Landing = () => {
               { title: "Legal", links: ["Privacy Policy", "Terms of Service", "Data Protection"] },
             ].map(col => (
               <div key={col.title}>
-                <h4 className="text-sm font-normal mb-3">{col.title}</h4>
+                <h4 className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-3">{col.title}</h4>
                 <ul className="space-y-2">
                   {col.links.map(l => (
                     <li key={l}><a href="#" className="text-xs text-white/40 hover:text-white transition-colors">{l}</a></li>
