@@ -306,7 +306,7 @@ const Landing = () => {
                   : <a key={l} href={`#${l.toLowerCase()}`} className="block text-sm py-2 text-text-secondary">{l}</a>
               ))}
               <Link to="/login"><Button variant="secondary" className="w-full mt-2">Login</Button></Link>
-              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: '#0891B2', color: '#FFFFFF' }}>Get Started</Button></Link>
+              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: '#09090B', color: '#FFFFFF' }}>Get Started</Button></Link>
             </motion.div>
           )}
         </AnimatePresence>
