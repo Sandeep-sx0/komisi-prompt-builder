@@ -846,7 +846,7 @@ const Pricing = () => {
             >
               The more you grow, the less we take.
             </h2>
-            <p className="mt-4" style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.75 }}>
+            <p className="mt-4 text-base" style={{ color: "#6B7280", lineHeight: 1.75 }}>
               Komisi charges a platform commission on every affiliate payout — a percentage of what you pay your creators. As your program scales, upgrading directly reduces our cut. On Scale, it reaches zero.
             </p>
 
