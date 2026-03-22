@@ -474,8 +474,7 @@ const Pricing = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...anim, delay: 0.08 }}
-            className="mt-5"
-            style={{ fontSize: 58, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.08 }}
+            className="mt-5 text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight"
           >
             Start free, scale with affiliates.
           </motion.h1>
