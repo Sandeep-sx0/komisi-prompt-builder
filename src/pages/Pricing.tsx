@@ -708,7 +708,7 @@ const Pricing = () => {
                         fontWeight: 600,
                         cursor: "pointer",
                         ...(plan.ctaStyle === "filled"
-                          ? { backgroundColor: "#0891B2", color: "#FFFFFF", border: "none" }
+                          ? { backgroundColor: "#FFFFFF", color: "#09090B", border: "none" }
                           : plan.ctaStyle === "enterprise"
                           ? {
                               backgroundColor: "transparent",
@@ -717,8 +717,8 @@ const Pricing = () => {
                             }
                           : {
                               backgroundColor: "transparent",
-                              color: "#0891B2",
-                              border: "1.5px solid #0891B2",
+                              color: "#FFFFFF",
+                              border: "1.5px solid rgba(255,255,255,0.3)",
                             }),
                       }}
                     >
