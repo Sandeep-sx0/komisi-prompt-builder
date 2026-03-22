@@ -1175,8 +1175,8 @@ const Pricing = () => {
                     position: "sticky",
                     top: 64,
                     backgroundColor: "#FAFAFA",
-                    borderBottom: "2px solid #F3F4F6",
-                    zIndex: 10,
+                    zIndex: 20,
+                    boxShadow: "0 1px 0 #F3F4F6",
                   }}
                 >
                   <th className="text-left py-3 px-4" style={{ width: "38%", fontSize: 11, fontWeight: 600, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.06em" }}>
@@ -1192,6 +1192,9 @@ const Pricing = () => {
                         color: h === "Scale" ? "#7C3AED" : "#9CA3AF",
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",
+                        backgroundColor: h === "Scale" ? "rgba(124,58,237,0.08)" : "transparent",
+                        borderTop: h === "Scale" ? "3px solid #7C3AED" : "none",
+                        borderBottom: h === "Scale" ? "2px solid #7C3AED" : "none",
                       }}
                     >
                       {h}
@@ -1206,13 +1209,13 @@ const Pricing = () => {
                       <td
                         colSpan={5}
                         style={{
-                          backgroundColor: "#F5F0FF",
+                          backgroundColor: "#EDE9FE",
                           padding: "10px 16px",
                           fontSize: 11,
-                          fontWeight: 700,
+                          fontWeight: 800,
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
-                          color: "#7C3AED",
+                          color: "#5B21B6",
                         }}
                       >
                         {group.label}
@@ -1221,8 +1224,11 @@ const Pricing = () => {
                     {group.rows.map((row, ri) => (
                       <tr
                         key={ri}
-                        className="transition-colors hover:bg-[#F9FAFB]"
-                        style={{ borderBottom: "1px solid #F3F4F6" }}
+                        className="transition-colors hover:bg-[#F3F4F6]"
+                        style={{
+                          borderBottom: "1px solid #F3F4F6",
+                          backgroundColor: ri % 2 === 1 ? "#FAFAFA" : "#FFFFFF",
+                        }}
                       >
                         <td className="py-3.5 px-4" style={{ color: "#374151", fontWeight: 500 }}>
                           {row[0]}
@@ -1232,7 +1238,7 @@ const Pricing = () => {
                             key={ci}
                             className="text-center py-3.5 px-4"
                             style={{
-                              backgroundColor: ci === 3 ? "rgba(124,58,237,0.03)" : "transparent",
+                              backgroundColor: ci === 3 ? "rgba(124,58,237,0.04)" : "transparent",
                             }}
                           >
                             <CellValue val={row[ci]} isScaleCol={ci === 3} />
