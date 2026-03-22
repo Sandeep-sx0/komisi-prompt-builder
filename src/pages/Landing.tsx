@@ -764,7 +764,7 @@ const Landing = () => {
                 <img
                   src={item.logo}
                   alt={item.name}
-                  className="w-12 h-12 mx-auto mb-3 object-contain"
+                  className="w-12 h-12 mx-auto mb-3 object-contain rounded-xl"
                 />
                 <span className="text-sm font-medium text-text-secondary">{item.name}</span>
               </motion.div>
