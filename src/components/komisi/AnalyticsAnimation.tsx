@@ -6,13 +6,19 @@ const CYCLE = 20000;
 
 const columns = ["Creator", "Platform", "Installs", "Revenue", "Commission"];
 
+const platformLogos: Record<string, string> = {
+  TikTok: "https://img.logo.dev/tiktok.com?token=pk_UqhvkqwoTO2Dv0eZ3bWXoA&format=webp&size=128",
+  YouTube: "https://img.logo.dev/youtube.com?token=pk_UqhvkqwoTO2Dv0eZ3bWXoA&format=webp&size=128",
+  Instagram: "https://img.logo.dev/instagram.com?token=pk_UqhvkqwoTO2Dv0eZ3bWXoA&format=webp&size=128",
+};
+
 const dataRows = [
-  { creator: "@sarah_creates", platform: "TikTok", platformColor: "#000000", installs: 234, revenue: 2100, commission: 630 },
-  { creator: "@techreview", platform: "YouTube", platformColor: "#FF0000", installs: 89, revenue: 445, commission: 89 },
-  { creator: "@dailyapps", platform: "Instagram", platformColor: "#8B5CF6", installs: 56, revenue: 340, commission: 85 },
+  { creator: "@sarah_creates", platform: "TikTok", installs: 234, revenue: 2100, commission: 630 },
+  { creator: "@techreview", platform: "YouTube", installs: 89, revenue: 445, commission: 89 },
+  { creator: "@dailyapps", platform: "Instagram", installs: 56, revenue: 340, commission: 85 },
 ];
 
-const lateRow = { creator: "@fitnessapp", platform: "Instagram", platformColor: "#8B5CF6", installs: 12, revenue: 89, commission: 22 };
+const lateRow = { creator: "@fitnessapp", platform: "Instagram", installs: 12, revenue: 89, commission: 22 };
 
 const AnalyticsAnimation = () => {
   const [showCard, setShowCard] = useState(false);
