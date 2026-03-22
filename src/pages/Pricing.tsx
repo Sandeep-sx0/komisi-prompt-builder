@@ -1062,7 +1062,6 @@ const Pricing = () => {
                 ENTERPRISE
               </span>
               <h2 className="mt-3 text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight">
-              >
                 Built for volume, velocity, and compliance.
               </h2>
               <p className="mt-4 text-base" style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>
