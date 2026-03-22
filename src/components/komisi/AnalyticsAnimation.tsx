@@ -6,13 +6,19 @@ const CYCLE = 20000;
 
 const columns = ["Creator", "Platform", "Installs", "Revenue", "Commission"];
 
+const platformLogos: Record<string, string> = {
+  TikTok: "https://img.logo.dev/tiktok.com?token=pk_UqhvkqwoTO2Dv0eZ3bWXoA&format=webp&size=128",
+  YouTube: "https://img.logo.dev/youtube.com?token=pk_UqhvkqwoTO2Dv0eZ3bWXoA&format=webp&size=128",
+  Instagram: "https://img.logo.dev/instagram.com?token=pk_UqhvkqwoTO2Dv0eZ3bWXoA&format=webp&size=128",
+};
+
 const dataRows = [
-  { creator: "@sarah_creates", platform: "TikTok", platformColor: "#000000", installs: 234, revenue: 2100, commission: 630 },
-  { creator: "@techreview", platform: "YouTube", platformColor: "#FF0000", installs: 89, revenue: 445, commission: 89 },
-  { creator: "@dailyapps", platform: "Instagram", platformColor: "#8B5CF6", installs: 56, revenue: 340, commission: 85 },
+  { creator: "@sarah_creates", platform: "TikTok", installs: 234, revenue: 2100, commission: 630 },
+  { creator: "@techreview", platform: "YouTube", installs: 89, revenue: 445, commission: 89 },
+  { creator: "@dailyapps", platform: "Instagram", installs: 56, revenue: 340, commission: 85 },
 ];
 
-const lateRow = { creator: "@fitnessapp", platform: "Instagram", platformColor: "#8B5CF6", installs: 12, revenue: 89, commission: 22 };
+const lateRow = { creator: "@fitnessapp", platform: "Instagram", installs: 12, revenue: 89, commission: 22 };
 
 const AnalyticsAnimation = () => {
   const [showCard, setShowCard] = useState(false);
@@ -102,7 +108,7 @@ const AnalyticsAnimation = () => {
                 )}
               </AnimatePresence>
 
-              <div className="grid grid-cols-5 px-5 py-2.5 text-[9px] uppercase tracking-wider" style={{ color: "#9CA3AF" }}>
+              <div className="px-5 py-2.5 text-[9px] uppercase tracking-wider" style={{ color: "#9CA3AF", display: "grid", gridTemplateColumns: "minmax(160px, 1fr) minmax(120px, 1fr) 1fr 1fr 1fr" }}>
                 {columns.map((col, i) => (
                   <AnimatePresence key={col}>
                     {i < visibleCols && (
@@ -122,24 +128,26 @@ const AnalyticsAnimation = () => {
                       {isVisible && (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                           transition={{ duration: 0.6, ease: "easeInOut" }}
-                          className="grid grid-cols-5 px-5 py-2.5 text-[11px] items-center"
+                          className="px-5 py-2.5 text-[11px] items-center"
                           style={{
+                            display: "grid",
+                            gridTemplateColumns: "minmax(160px, 1fr) minmax(120px, 1fr) 1fr 1fr 1fr",
                             borderTop: "1px solid #F3F4F6",
                             backgroundColor: isSpotlit ? "rgba(124,58,237,0.06)" : "transparent",
                             transition: "background-color 800ms ease-in-out",
                           }}>
-                          <span className="flex items-center gap-1" style={{ color: "#111827" }}>
-                            {row.creator}
+                          <span className="flex items-center gap-1 min-w-0" style={{ color: "#111827" }}>
+                            <span className="truncate">{row.creator}</span>
                             <AnimatePresence>
                               {isSpotlit && showBadge && (
                                 <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                                  transition={{ duration: 0.5 }} className="text-[8px] px-1.5 py-0.5 whitespace-nowrap"
+                                  transition={{ duration: 0.5 }} className="text-[8px] px-1.5 py-0.5 whitespace-nowrap flex-shrink-0"
                                   style={{ backgroundColor: "#7C3AED", color: "#FFFFFF", borderRadius: "4px" }}>🏆 Top</motion.span>
                               )}
                             </AnimatePresence>
                           </span>
-                          <span>
-                            <span className="text-[9px] px-1.5 py-0.5" style={{ backgroundColor: row.platformColor, color: "#FFFFFF", borderRadius: "4px" }}>{row.platform}</span>
+                          <span className="flex items-center">
+                            <img src={platformLogos[row.platform]} alt={row.platform} width={24} height={24} style={{ borderRadius: "6px", objectFit: "cover" }} />
                           </span>
                           <span className="text-right" style={{ color: "#111827" }}>
                             {rowCounters[i] ? <CountingNumber number={row.installs} decimalPlaces={0} inView transition={{ stiffness: 80, damping: 20 }} /> : "0"}
