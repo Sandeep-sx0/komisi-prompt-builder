@@ -488,7 +488,7 @@ const Landing = () => {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
             <div>
-              <div className="flex" style={{ backgroundColor: "#160020" }}>
+              <div className="flex" style={{ backgroundColor: "#1a1b26" }}>
                 {Object.keys(codeExamples).map(tab => (
                   <button
                     key={tab}
