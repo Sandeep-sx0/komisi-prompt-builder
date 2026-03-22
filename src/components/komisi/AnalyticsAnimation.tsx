@@ -108,7 +108,7 @@ const AnalyticsAnimation = () => {
                 )}
               </AnimatePresence>
 
-              <div className="grid grid-cols-5 px-5 py-2.5 text-[9px] uppercase tracking-wider" style={{ color: "#9CA3AF" }}>
+              <div className="px-5 py-2.5 text-[9px] uppercase tracking-wider" style={{ color: "#9CA3AF", display: "grid", gridTemplateColumns: "minmax(160px, 1fr) minmax(120px, 1fr) 1fr 1fr 1fr" }}>
                 {columns.map((col, i) => (
                   <AnimatePresence key={col}>
                     {i < visibleCols && (
