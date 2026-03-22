@@ -407,7 +407,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 5 — STATS BAR (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#0D0023" }}>
+      <section className="py-20 px-6" style={{ backgroundColor: "#1E0A3C" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { value: 2, prefix: "$", suffix: "M+", label: "Creator commissions tracked" },
@@ -447,7 +447,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 6 — SDK CODE BLOCK (Dark, continues)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#0D0023" }}>
+      <section className="py-24 px-6" style={{ backgroundColor: "#1E0A3C" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
