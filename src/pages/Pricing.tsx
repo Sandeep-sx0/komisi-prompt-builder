@@ -846,7 +846,7 @@ const Pricing = () => {
             >
               HOW OUR PRICING WORKS
             </span>
-            <h2 className="mt-3 text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
+            <h2 className="mt-3 text-2xl md:text-3xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               The more you grow, the less we take.
             </h2>
             <p className="mt-4 text-base" style={{ color: "#6B7280", lineHeight: 1.75 }}>
