@@ -238,20 +238,41 @@ const Landing = () => {
             </motion.span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-              <motion.a
-                key={l}
-                href={`#${l.toLowerCase()}`}
-                animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="text-sm"
-                style={{ cursor: 'pointer' }}
-                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
-                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
-              >
-                {l}
-              </motion.a>
-            ))}
+            {["Product", "Pricing", "Docs", "Marketplace"].map(l => {
+              const isLink = l === "Pricing";
+              const Comp = isLink ? Link : motion.a;
+              const linkProps = isLink
+                ? { to: "/pricing" as string }
+                : {
+                    href: `#${l.toLowerCase()}`,
+                    animate: { color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' },
+                    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+                    onMouseEnter: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; },
+                    onMouseLeave: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; },
+                  };
+              if (isLink) {
+                return (
+                  <Link key={l} to="/pricing" className="text-sm" style={{ cursor: 'pointer', color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)', transition: 'color 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
+                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
+                    onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
+                  >{l}</Link>
+                );
+              }
+              return (
+                <motion.a
+                  key={l}
+                  href={`#${l.toLowerCase()}`}
+                  animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-sm"
+                  style={{ cursor: 'pointer' }}
+                  onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
+                  onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
+                >
+                  {l}
+                </motion.a>
+              );
+            })}
           </div>
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login">
