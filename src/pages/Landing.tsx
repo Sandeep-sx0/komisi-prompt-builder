@@ -402,7 +402,12 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6" style={{ backgroundColor: "#0A0010" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <Reveal>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <div>
               <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-6">
                 Integrate in under<br />30 minutes.
@@ -427,9 +432,14 @@ const Landing = () => {
                 </div>
               </div>
             </div>
-          </Reveal>
+          </motion.div>
 
-          <Reveal delay={0.15}>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+          >
             <div>
               <div className="flex" style={{ backgroundColor: "#160020" }}>
                 {Object.keys(codeExamples).map(tab => (
