@@ -1017,7 +1017,7 @@ const Pricing = () => {
           </div>
 
           {/* CTA */}
-          <div className="mt-12 text-center">
+          <div className="mt-16 text-center">
             <Link to="/signup">
               <button
                 className="transition-colors duration-200"
