@@ -1186,11 +1186,11 @@ const Pricing = () => {
                       key={h}
                       className="text-center py-3 px-4"
                       style={{
-                        fontSize: 11,
+                        fontSize: 12,
                         fontWeight: h === "Scale" ? 700 : 600,
                         color: h === "Scale" ? "#7C3AED" : "#9CA3AF",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.06em",
+                        textTransform: "uppercase" as const,
+                        letterSpacing: "0.07em",
                         backgroundColor: h === "Scale" ? "rgba(124,58,237,0.08)" : "transparent",
                         borderTop: h === "Scale" ? "3px solid #7C3AED" : "none",
                         borderBottom: h === "Scale" ? "2px solid #7C3AED" : "none",
