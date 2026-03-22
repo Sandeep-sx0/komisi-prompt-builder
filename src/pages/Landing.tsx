@@ -20,6 +20,7 @@ import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
 import HeroVisual from "@/components/komisi/HeroVisual";
 import DarkVeil from "@/components/Backgrounds/DarkVeil";
+import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
@@ -88,16 +89,19 @@ const codeExamples: Record<string, string[]> = {
 
 /* ── Testimonial data ── */
 const testimonials = [
-  { quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.", name: "Sarah Chen", handle: "@sarahchen", role: "Founder", company: "MindfulApp", date: "Jan 2026", avatar: "/avatars/user-1.jpg" },
-  { quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.", name: "James Park", handle: "@jamespark", role: "Developer", company: "FocusTimer", date: "Feb 2026", avatar: "/avatars/user-2.jpg" },
-  { quote: "I can finally see which creator drove which subscription. That data alone is worth the price.", name: "Marcus Lee", handle: "@marcuslee", role: "Growth", company: "SleepWell", date: "Dec 2025", avatar: "/avatars/user-3.jpg" },
-  { quote: "Automated payouts saved me hours every month. Creators love getting paid on time without me chasing invoices.", name: "Priya Nair", handle: "@priyanair", role: "Founder", company: "HabitKit", date: "Jan 2026", avatar: "/avatars/user-4.jpg" },
-  { quote: "The fraud detection flagged a click farm on day two. Would have wasted thousands without it.", name: "David Park", handle: "@davidpark", role: "Developer", company: "CalTrack", date: "Feb 2026", avatar: "/avatars/user-5.jpg" },
-  { quote: "Komisi is the first affiliate tool that actually understands mobile. Everything else was built for web.", name: "Aisha Okonkwo", handle: "@aishao", role: "Founder", company: "MeditateNow", date: "Jan 2026", avatar: "/avatars/user-6.jpg" },
-  { quote: "Went from zero affiliates to 40 active creators in six weeks. The marketplace made discovery effortless.", name: "Tom Rivera", handle: "@tomrivera", role: "Growth", company: "RunCoach", date: "Dec 2025", avatar: "/avatars/user-7.jpg" },
-  { quote: "Three lines of SDK code and attribution was live. I expected it to take a week.", name: "Nina Walsh", handle: "@ninawalsh", role: "Developer", company: "StudyFlash", date: "Feb 2026", avatar: "/avatars/user-8.jpg" },
-  { quote: "Our top creator drives 22% of all new subscribers. Komisi made that relationship visible and scalable.", name: "Kai Nakamura", handle: "@kainakamura", role: "Founder", company: "LanguagePal", date: "Jan 2026", avatar: "/avatars/user-9.jpg" },
+  { text: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.", image: "/avatars/user-1.jpg", name: "Sarah Chen", role: "Founder, MindfulApp" },
+  { text: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.", image: "/avatars/user-2.jpg", name: "James Park", role: "Developer, FocusTimer" },
+  { text: "I can finally see which creator drove which subscription. That data alone is worth the price.", image: "/avatars/user-3.jpg", name: "Marcus Lee", role: "Growth, SleepWell" },
+  { text: "Automated payouts saved me hours every month. Creators love getting paid on time without me chasing invoices.", image: "/avatars/user-4.jpg", name: "Priya Nair", role: "Founder, HabitKit" },
+  { text: "The fraud detection flagged a click farm on day two. Would have wasted thousands without it.", image: "/avatars/user-5.jpg", name: "David Park", role: "Developer, CalTrack" },
+  { text: "Komisi is the first affiliate tool that actually understands mobile. Everything else was built for web.", image: "/avatars/user-6.jpg", name: "Aisha Okonkwo", role: "Founder, MeditateNow" },
+  { text: "Went from zero affiliates to 40 active creators in six weeks. The marketplace made discovery effortless.", image: "/avatars/user-7.jpg", name: "Tom Rivera", role: "Growth, RunCoach" },
+  { text: "Three lines of SDK code and attribution was live. I expected it to take a week.", image: "/avatars/user-8.jpg", name: "Nina Walsh", role: "Developer, StudyFlash" },
+  { text: "Our top creator drives 22% of all new subscribers. Komisi made that relationship visible and scalable.", image: "/avatars/user-9.jpg", name: "Kai Nakamura", role: "Founder, LanguagePal" },
 ];
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
 
 /* ── Integration data with logos ── */
 const integrations = [
@@ -760,46 +764,21 @@ const Landing = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTION 9 — TESTIMONIALS GRID
+          SECTION 9 — TESTIMONIALS (SCROLLING COLUMNS)
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#F5F0FF", paddingTop: '80px', paddingBottom: 0 }}>
+      <section style={{ backgroundColor: "#F5F0FF", padding: '80px 0' }}>
         <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 24px' }}>
 
-          {/* BLOCK 1 — AWARD BADGES */}
-          <div className="flex items-center justify-center gap-12 mb-10">
-            {[
-              "Product Hunt\n#1 Tool",
-              "Top Mobile\nAttribution Platform",
-              "Best Affiliate\nSDK 2025",
-            ].map((label, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="flex flex-col items-center text-center"
-              >
-                {/* Laurel wreath SVG */}
-                <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 38C12 34 6 26 4 18C6 22 10 26 16 28C10 22 6 14 6 6C10 12 16 18 22 20C18 14 16 6 18 0C20 8 24 14 30 18C28 12 28 4 32 0C32 8 34 16 38 20" stroke="#7C3AED" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                  <path d="M60 38C68 34 74 26 76 18C74 22 70 26 64 28C70 22 74 14 74 6C70 12 64 18 58 20C62 14 64 6 62 0C60 8 56 14 50 18C52 12 52 4 48 0C48 8 46 16 42 20" stroke="#7C3AED" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                </svg>
-                <span style={{ fontSize: '13px', fontWeight: 600, color: '#1a1a2e', whiteSpace: 'pre-line', lineHeight: 1.3, marginTop: '4px' }}>
-                  {label}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* BLOCK 2 — SECTION HEADER */}
-          <div className="flex flex-col items-center text-center" style={{ marginBottom: '56px' }}>
-            {/* Eyebrow pill */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center text-center"
+            style={{ maxWidth: '540px', margin: '0 auto 40px' }}
+          >
+            <span
               style={{
                 background: '#ffffff',
                 border: '1px solid #e2d9f3',
@@ -808,123 +787,42 @@ const Landing = () => {
                 fontSize: '13px',
                 fontWeight: 500,
                 color: '#3b1f6e',
-                marginBottom: '20px',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
+                marginBottom: '20px',
               }}
             >
               <span style={{ color: '#7C3AED', fontSize: '12px' }}>⚡</span>
               Real Feedback
-            </motion.div>
+            </span>
 
-            {/* Headline */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.05 }}
+            <h2
               className="text-[28px] md:text-[42px]"
-              style={{ fontWeight: 700, color: '#0a0010', lineHeight: 1.15, maxWidth: '720px', marginBottom: '16px' }}
+              style={{ fontWeight: 700, color: '#0a0010', lineHeight: 1.15, marginBottom: '16px' }}
             >
               App developers of all sizes grow with Komisi.
-            </motion.h2>
+            </h2>
 
-            {/* Subtext */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              style={{ fontSize: '17px', color: '#6b7280', maxWidth: '560px', marginBottom: '14px' }}
-            >
+            <p style={{ fontSize: '17px', color: '#6b7280' }}>
               Real stories from indie developers, growth teams, and creators.
-            </motion.p>
+            </p>
+          </motion.div>
 
-            {/* Social proof line */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: 0.15 }}
-              className="inline-flex items-center gap-2"
-              style={{ fontSize: '14px', color: '#374151' }}
-            >
-              <span>Trusted by <strong>200+ app developers</strong></span>
-              <span className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} style={{ color: '#7C3AED', fontSize: '16px' }}>★</span>
-                ))}
-              </span>
-              <span>4.9/5</span>
-            </motion.div>
-          </div>
-
-          {/* BLOCK 3 — TESTIMONIAL GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '24px' }}>
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.04 }}
-                style={{
-                  background: '#ffffff',
-                  borderRadius: '16px',
-                  boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05)',
-                  padding: '24px',
-                  display: 'flex',
-                  flexDirection: 'column' as const,
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                {/* Zone A — Person header */}
-                <div className="flex items-center" style={{ gap: '12px', marginBottom: '20px' }}>
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-                  />
-                  <div style={{ minWidth: 0, flex: 1 }}>
-                    <p style={{ fontSize: '15px', fontWeight: 600, color: '#111827', margin: 0 }}>{t.name}</p>
-                    <p style={{ fontSize: '13px', color: '#9ca3af', margin: 0 }}>{t.handle}</p>
-                  </div>
-                  <span style={{ fontSize: '13px', fontWeight: 500, color: '#6b7280', flexShrink: 0 }}>
-                    {t.role}
-                  </span>
-                </div>
-
-                {/* Zone B — Quote body */}
-                <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#374151', flexGrow: 1, marginBottom: '24px', margin: '0 0 24px 0' }}>
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-
-                {/* Zone C — Card footer */}
-                <div className="flex items-center justify-between" style={{ borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
-                  <span style={{ fontSize: '13px', fontWeight: 500, letterSpacing: '0.03em', color: '#9ca3af' }}>
-                    {t.company}
-                  </span>
-                  <span style={{ fontSize: '12px', color: '#d1d5db' }}>
-                    {t.date}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* BLOCK 4 — BOTTOM FADE OVERLAY */}
+          {/* Scrolling columns */}
           <div
+            className="flex justify-center gap-6"
             style={{
-              position: 'relative',
-              marginTop: '-200px',
-              height: '200px',
-              pointerEvents: 'none',
-              background: 'linear-gradient(to bottom, transparent 0%, #F5F0FF 100%)',
-              zIndex: 2,
+              maxHeight: '740px',
+              overflow: 'hidden',
+              maskImage: 'linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 25%, black 75%, transparent)',
             }}
-          />
+          >
+            <TestimonialsColumn testimonials={firstColumn} duration={15} />
+            <TestimonialsColumn testimonials={secondColumn} duration={19} className="hidden md:block" />
+            <TestimonialsColumn testimonials={thirdColumn} duration={17} className="hidden lg:block" />
+          </div>
         </div>
       </section>
 
