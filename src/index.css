@@ -137,8 +137,11 @@ html {
   * {
     font-weight: inherit;
   }
-  .font-bold, .font-semibold, .font-extrabold, .font-black, strong, b {
-    font-weight: 400 !important;
+  .font-bold, .font-extrabold, .font-black, strong, b {
+    font-weight: 500 !important;
+  }
+  .font-semibold {
+    font-weight: 600 !important;
   }
 }
 
