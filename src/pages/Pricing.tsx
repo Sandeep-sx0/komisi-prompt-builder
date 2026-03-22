@@ -801,21 +801,20 @@ const Pricing = () => {
           Trusted by 200+ indie app developers
         </p>
         <div className="overflow-hidden">
-          <div className="marquee-track">
+          <div className="marquee-track" style={{ gap: 48 }}>
             {[...Array(4)].map((_, ri) =>
               socialProofLogos.map((logo, li) => (
                 <div
                   key={`${ri}-${li}`}
-                  className="flex items-center gap-2.5 px-8"
-                  style={{ opacity: 0.5 }}
+                  className="shrink-0 flex items-center gap-2.5"
                 >
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="h-5 w-5 object-contain"
-                    style={{ filter: "brightness(0) invert(1)", opacity: 0.6 }}
+                    className="h-6 w-6 object-contain"
+                    style={{ filter: "brightness(0) invert(1)", opacity: 0.7 }}
                   />
-                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", whiteSpace: "nowrap" }}>
+                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", whiteSpace: "nowrap" }}>
                     {logo.name}
                   </span>
                 </div>
