@@ -778,24 +778,6 @@ const Landing = () => {
             className="flex flex-col items-center text-center"
             style={{ maxWidth: '540px', margin: '0 auto 40px' }}
           >
-            <span
-              style={{
-                background: '#ffffff',
-                border: '1px solid #e2d9f3',
-                borderRadius: '999px',
-                padding: '6px 14px',
-                fontSize: '13px',
-                fontWeight: 500,
-                color: '#3b1f6e',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                marginBottom: '20px',
-              }}
-            >
-              <span style={{ color: '#7C3AED', fontSize: '12px' }}>⚡</span>
-              Real Feedback
-            </span>
 
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
               App developers of all sizes grow with Komisi.
