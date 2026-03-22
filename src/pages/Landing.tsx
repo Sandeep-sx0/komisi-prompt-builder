@@ -263,36 +263,39 @@ const Landing = () => {
         <div className="relative z-10 pt-32 pb-20 px-6">
           <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-white/60 border border-white/20 px-3 py-1.5 mb-6">
                   ✦ Built for mobile app developers
                 </span>
               </motion.div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-white leading-[1.05] mb-6"
-              >
-                Affiliate marketing<br />
-                infrastructure for<br />
-                mobile apps.
-              </motion.h1>
+              <div className="mb-6">
+                {["Affiliate marketing", "infrastructure for", "mobile apps."].map((line, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 + i * 0.15 }}
+                    className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-white leading-[1.05]"
+                  >
+                    {line}
+                  </motion.div>
+                ))}
+              </div>
 
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.15 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
                 className="text-base text-white/60 mb-8 max-w-[480px]"
               >
                 Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
                 className="flex flex-col sm:flex-row gap-3 mb-4"
               >
                 <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/10 border-white/20 text-white placeholder:text-white/40" />
@@ -301,11 +304,11 @@ const Landing = () => {
                 </Link>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex items-center gap-4 mb-2">
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.1 }} className="flex items-center gap-4 mb-2">
                 <Link to="/demo" className="text-sm text-white/60 hover:text-white transition-colors">Book a Demo →</Link>
               </motion.div>
 
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-white/40 mt-4">
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.3 }} className="text-xs text-white/40 mt-4">
                 Trusted by 200+ indie app developers · No credit card required
               </motion.p>
             </div>
