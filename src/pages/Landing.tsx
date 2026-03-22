@@ -693,20 +693,26 @@ const Landing = () => {
             </p>
           </Reveal>
 
-          <Reveal className="mt-12">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-              {integrations.map(item => (
-                <div key={item.name} className="border border-border bg-card rounded-xl p-5 text-center hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default group" style={{ borderColor: undefined }}>
-                  <img
-                    src={item.logo}
-                    alt={item.name}
-                    className="w-12 h-12 mx-auto mb-3 object-contain"
-                  />
-                  <span className="text-sm font-medium text-text-secondary">{item.name}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mt-12">
+            {integrations.map((item, i) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
+                whileHover={{ scale: 1.06, boxShadow: "0 8px 24px rgba(124,58,237,0.15)" }}
+                className="border border-border bg-card rounded-xl p-5 text-center cursor-default"
+              >
+                <img
+                  src={item.logo}
+                  alt={item.name}
+                  className="w-12 h-12 mx-auto mb-3 object-contain"
+                />
+                <span className="text-sm font-medium text-text-secondary">{item.name}</span>
+              </motion.div>
+            ))}
+          </div>
 
           <Reveal className="mt-12">
             <div className="p-6 max-w-2xl mx-auto" style={{ borderLeft: '2px solid #7C3AED' }}>
