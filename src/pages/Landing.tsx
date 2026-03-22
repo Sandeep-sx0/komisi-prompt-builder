@@ -211,18 +211,20 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <motion.nav
         animate={{
-          backgroundColor: isPastHero ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0)',
-          boxShadow: isPastHero ? '0 1px 32px rgba(0,0,0,0.06)' : '0 0 0 rgba(0,0,0,0)',
+          backgroundColor: isPastHero ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0)',
+          boxShadow: isPastHero
+            ? '0 1px 0 rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06)'
+            : '0 0 0 rgba(0,0,0,0)',
         }}
-        transition={{ duration: 0.4, ease: 'easeInOut' }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           zIndex: 100,
-          backdropFilter: isPastHero ? 'blur(16px)' : 'none',
-          borderBottom: isPastHero ? '1px solid rgba(0,0,0,0.06)' : '1px solid transparent',
+          backdropFilter: isPastHero ? 'blur(16px) saturate(180%)' : 'none',
+          WebkitBackdropFilter: isPastHero ? 'blur(16px) saturate(180%)' : 'none',
         }}
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
