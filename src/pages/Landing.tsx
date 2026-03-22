@@ -493,7 +493,7 @@ const Landing = () => {
                 ))}
               </div>
             </div>
-          </Reveal>
+          </motion.div>
         </div>
       </section>
 
