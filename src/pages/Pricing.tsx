@@ -1425,6 +1425,10 @@ const Pricing = () => {
           0% { transform: translate(0, 0); }
           100% { transform: translate(20px, 10px); }
         }
+        @keyframes enterprise-card-glow {
+          0% { background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.18) 0%, transparent 70%); }
+          100% { background: radial-gradient(ellipse at 70% 50%, rgba(124,58,237,0.18) 0%, transparent 70%); }
+        }
       `}</style>
     </div>
   );
