@@ -797,10 +797,7 @@ const Landing = () => {
               Real Feedback
             </span>
 
-            <h2
-              className="text-[28px] md:text-[42px]"
-              style={{ fontWeight: 700, color: '#0a0010', lineHeight: 1.15, marginBottom: '16px' }}
-            >
+            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
               App developers of all sizes grow with Komisi.
             </h2>
 
