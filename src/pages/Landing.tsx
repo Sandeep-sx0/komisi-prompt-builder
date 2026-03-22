@@ -230,8 +230,8 @@ const Landing = () => {
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <motion.span
-              animate={{ color: isPastHero ? '#1E0A3C' : '#FFFFFF' }}
-              transition={{ duration: 0.3 }}
+              animate={{ color: isPastHero ? '#0a0010' : '#FFFFFF' }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="text-lg tracking-tight font-normal"
             >
               komisi
