@@ -134,18 +134,18 @@ const sdkPlatforms = [
   { name: "Unity", logo: "/logos/unity.webp" },
 ];
 
-/* ── Syntax highlighting helper ── */
+/* ── Syntax highlighting helper (Tokyo Night) ── */
 const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
-  const lineNum = <span className="inline-block w-6 mr-4 text-right select-none" style={{ color: "#4B5563" }}>{num}</span>;
+  const lineNum = <span className="inline-block w-6 mr-4 text-right select-none" style={{ color: "#565f89" }}>{num}</span>;
   if (line.startsWith("//")) {
-    return <div className="leading-6">{lineNum}<span style={{ color: "#6A737D" }}>{line}</span></div>;
+    return <div className="leading-6">{lineNum}<span style={{ color: "#565f89", fontStyle: "italic" }}>{line}</span></div>;
   }
   if (line.includes("import")) {
-    return <div className="leading-6">{lineNum}<span style={{ color: "#79B8FF" }}>import</span><span style={{ color: "#E1E4E8" }}>{line.replace("import", "")}</span></div>;
+    return <div className="leading-6">{lineNum}<span style={{ color: "#bb9af7" }}>import</span><span style={{ color: "#c0caf5" }}>{line.replace("import", "")}</span></div>;
   }
   if (line.includes("await")) {
     const rest = line.replace("await ", "");
-    return <div className="leading-6">{lineNum}<span style={{ color: "#79B8FF" }}>await </span><span style={{ color: "#E1E4E8" }}>{rest}</span></div>;
+    return <div className="leading-6">{lineNum}<span style={{ color: "#bb9af7" }}>await </span><span style={{ color: "#c0caf5" }}>{rest}</span></div>;
   }
   if (line.includes('"') || line.includes("'")) {
     const parts: React.ReactNode[] = [];
@@ -155,11 +155,11 @@ const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
     for (let i = 0; i < line.length; i++) {
       if (line[i] === quoteChar) {
         if (inString) {
-          parts.push(<span key={i} style={{ color: "#85E89D" }}>{quoteChar}{current}{quoteChar}</span>);
+          parts.push(<span key={i} style={{ color: "#9ece6a" }}>{quoteChar}{current}{quoteChar}</span>);
           current = "";
           inString = false;
         } else {
-          parts.push(<span key={`b${i}`} style={{ color: "#E1E4E8" }}>{current}</span>);
+          parts.push(<span key={`b${i}`} style={{ color: "#c0caf5" }}>{current}</span>);
           current = "";
           inString = true;
         }
@@ -167,10 +167,10 @@ const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
         current += line[i];
       }
     }
-    if (current) parts.push(<span key="end" style={{ color: "#E1E4E8" }}>{current}</span>);
+    if (current) parts.push(<span key="end" style={{ color: "#c0caf5" }}>{current}</span>);
     return <div className="leading-6">{lineNum}{parts}</div>;
   }
-  return <div className="leading-6">{lineNum}<span style={{ color: "#E1E4E8" }}>{line || "\u00A0"}</span></div>;
+  return <div className="leading-6">{lineNum}<span style={{ color: "#c0caf5" }}>{line || "\u00A0"}</span></div>;
 };
 
 const Landing = () => {
