@@ -431,9 +431,9 @@ const Landing = () => {
       <section className="py-20 px-6" style={{ backgroundColor: "#09090B" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { value: 2, prefix: "$", suffix: "M+", label: "Creator commissions tracked" },
+            { value: 2, prefix: "$", suffix: "M+", label: "Creator commissions tracked", amber: true },
             { value: 200, suffix: "+", label: "App developers" },
-            { value: 60, suffix: "%", label: "Average CAC reduction" },
+            { value: 60, suffix: "%", label: "Average CAC reduction", amber: true },
             { value: 99.9, suffix: "%", label: "Attribution accuracy", decimals: 1 },
           ].map((s, i) => (
             <motion.div
