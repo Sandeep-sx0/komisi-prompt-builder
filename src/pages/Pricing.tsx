@@ -375,11 +375,11 @@ const enterpriseFeatures = [
 
 /* ── Cell renderer ── */
 const CellValue = ({ val, isScaleCol }: { val: string; isScaleCol: boolean }) => {
-  if (val === "✓") return <Check size={18} strokeWidth={2} style={{ color: "#0891B2" }} className="inline" />;
+  if (val === "✓") return <Check size={18} strokeWidth={2} style={{ color: "#7C3AED" }} className="inline" />;
   if (val === "✗") return <XIcon size={18} strokeWidth={2} style={{ color: "#D1D5DB" }} className="inline" />;
   if (val === "—") return <span style={{ color: "#D1D5DB" }}>—</span>;
   const bold = isScaleCol && val === "0%";
-  return <span style={{ color: bold ? "#09090B" : "#374151", fontWeight: bold ? 700 : 400 }}>{val}</span>;
+  return <span style={{ color: bold ? "#0A0010" : "#374151", fontWeight: bold ? 700 : 400 }}>{val}</span>;
 };
 
 /* ═══════════════════════════════════════════════════════
@@ -390,7 +390,7 @@ const Pricing = () => {
   const [isYearly, setIsYearly] = useState(false);
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#09090B" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#0A0010" }}>
 
       {/* ── NAVBAR (solid light) ── */}
       <nav
@@ -404,7 +404,7 @@ const Pricing = () => {
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <span className="text-lg tracking-tight font-normal" style={{ color: "#09090B" }}>komisi</span>
+            <span className="text-lg tracking-tight font-normal" style={{ color: "#0a0010" }}>komisi</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map(l => (
@@ -412,9 +412,9 @@ const Pricing = () => {
                 key={l}
                 to={l === "Pricing" ? "/pricing" : `/#${l.toLowerCase()}`}
                 className="text-sm transition-colors"
-                style={{ color: l === "Pricing" ? "#0891B2" : "#374151" }}
-                onMouseEnter={e => { (e.target as HTMLElement).style.color = "#09090B"; }}
-                onMouseLeave={e => { (e.target as HTMLElement).style.color = l === "Pricing" ? "#0891B2" : "#374151"; }}
+                style={{ color: l === "Pricing" ? "#7C3AED" : "#374151" }}
+                onMouseEnter={e => { (e.target as HTMLElement).style.color = "#0a0010"; }}
+                onMouseLeave={e => { (e.target as HTMLElement).style.color = l === "Pricing" ? "#7C3AED" : "#374151"; }}
               >
                 {l}
               </Link>
@@ -423,7 +423,7 @@ const Pricing = () => {
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login"><span className="text-sm cursor-pointer" style={{ color: "#374151" }}>Login</span></Link>
             <Link to="/signup">
-              <Button size="sm" style={{ backgroundColor: "#09090B", color: "#FFFFFF" }} className="hover:opacity-90">
+              <Button size="sm" style={{ backgroundColor: "#7C3AED", color: "#FFFFFF" }} className="hover:opacity-90">
                 Get Started <ArrowRight size={14} />
               </Button>
             </Link>
@@ -444,7 +444,7 @@ const Pricing = () => {
                 <Link key={l} to={l === "Pricing" ? "/pricing" : `/#${l.toLowerCase()}`} className="block text-sm py-2" style={{ color: "#374151" }}>{l}</Link>
               ))}
               <Link to="/login"><Button variant="secondary" className="w-full mt-2">Login</Button></Link>
-              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: "#09090B", color: "#FFFFFF" }}>Get Started</Button></Link>
+              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: "#7C3AED", color: "#FFFFFF" }}>Get Started</Button></Link>
             </motion.div>
           )}
         </AnimatePresence>
@@ -453,7 +453,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 1 — HERO (Dark)
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#09090B", paddingTop: 120, paddingBottom: 90 }} className="px-6">
+      <section style={{ backgroundColor: "#0A0010", paddingTop: 120, paddingBottom: 90 }} className="px-6">
         <div className="max-w-[800px] mx-auto text-center">
           <motion.span
             initial={{ opacity: 0, y: 16 }}
@@ -461,9 +461,9 @@ const Pricing = () => {
             transition={anim}
             className="inline-block text-[13px] font-medium px-4 py-1.5"
             style={{
-              color: "#0891B2",
-              backgroundColor: "rgba(8,145,178,0.15)",
-              border: "1px solid rgba(8,145,178,0.3)",
+              color: "#A78BFA",
+              backgroundColor: "rgba(124,58,237,0.15)",
+              border: "1px solid rgba(124,58,237,0.3)",
               borderRadius: 999,
             }}
           >
@@ -508,7 +508,7 @@ const Pricing = () => {
               style={{
                 padding: "9px 28px",
                 borderRadius: 999,
-                backgroundColor: !isYearly ? "#0891B2" : "transparent",
+                backgroundColor: !isYearly ? "#7C3AED" : "transparent",
                 color: !isYearly ? "#FFFFFF" : "rgba(255,255,255,0.45)",
                 fontWeight: !isYearly ? 600 : 400,
               }}
@@ -521,7 +521,7 @@ const Pricing = () => {
               style={{
                 padding: "9px 28px",
                 borderRadius: 999,
-                backgroundColor: isYearly ? "#0891B2" : "transparent",
+                backgroundColor: isYearly ? "#7C3AED" : "transparent",
                 color: isYearly ? "#FFFFFF" : "rgba(255,255,255,0.45)",
                 fontWeight: isYearly ? 600 : 400,
               }}
@@ -537,7 +537,7 @@ const Pricing = () => {
                     borderRadius: 999,
                     padding: "2px 8px",
                     fontSize: 11,
-                    fontWeight: 500,
+                    fontWeight: 700,
                     marginLeft: 6,
                   }}
                 >
@@ -552,7 +552,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — PRICING CARDS
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#09090B", paddingBottom: 80 }} className="px-6">
+      <section style={{ backgroundColor: "#0A0010", paddingBottom: 80 }} className="px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           {plans.map((plan, i) => {
             const isDark = plan.dark;
@@ -570,16 +570,16 @@ const Pricing = () => {
                 style={{
                   borderRadius: 20,
                   minHeight: 580,
-                  backgroundColor: isDark ? "#111827" : "#FFFFFF",
+                  backgroundColor: isDark ? "#1E0A3C" : "#FFFFFF",
                   border: isPopular
-                    ? "2px solid #0891B2"
+                    ? "2px solid #7C3AED"
                     : isDark
-                    ? "1px solid rgba(8,145,178,0.45)"
+                    ? "1px solid rgba(124,58,237,0.45)"
                     : "1px solid rgba(255,255,255,0.1)",
                   boxShadow: isPopular
-                    ? "0 0 0 1px #0891B2, 0 24px 80px rgba(8,145,178,0.25)"
+                    ? "0 0 0 1px #7C3AED, 0 24px 80px rgba(124,58,237,0.25)"
                     : isDark
-                    ? "0 0 0 1px rgba(8,145,178,0.2), 0 24px 60px rgba(8,145,178,0.2)"
+                    ? "0 0 0 1px rgba(124,58,237,0.2), 0 24px 60px rgba(124,58,237,0.2)"
                     : "none",
                   transform: isPopular ? "scale(1.035)" : "none",
                   zIndex: isPopular ? 2 : 1,
@@ -592,7 +592,7 @@ const Pricing = () => {
                     className="absolute inset-0 pointer-events-none"
                     style={{
                       borderRadius: 20,
-                      background: "radial-gradient(ellipse at 30% 50%, rgba(8,145,178,0.18) 0%, transparent 70%)",
+                      background: "radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.18) 0%, transparent 70%)",
                       animation: "enterprise-card-glow 8s ease-in-out infinite alternate",
                     }}
                   />
@@ -606,14 +606,14 @@ const Pricing = () => {
                       top: -15,
                       left: "50%",
                       transform: "translateX(-50%)",
-                      backgroundColor: "#0891B2",
+                      backgroundColor: "#7C3AED",
                       color: "#FFFFFF",
                       fontSize: 12,
-                      fontWeight: 500,
+                      fontWeight: 700,
                       padding: "5px 16px",
                       borderRadius: 999,
                       letterSpacing: "0.05em",
-                      boxShadow: "0 4px 12px rgba(8,145,178,0.4)",
+                      boxShadow: "0 4px 12px rgba(124,58,237,0.4)",
                     }}
                   >
                     Most Popular
@@ -627,7 +627,7 @@ const Pricing = () => {
                       fontSize: 11,
                       fontWeight: 600,
                       letterSpacing: "0.1em",
-                      color: isDark ? "#0891B2" : "#0891B2",
+                      color: isDark ? "#A78BFA" : "#7C3AED",
                     }}
                   >
                     {plan.name}
@@ -652,9 +652,9 @@ const Pricing = () => {
                             transition={{ duration: 0.12 }}
                             style={{
                               fontSize: 52,
-                              fontWeight: 500,
+                              fontWeight: 700,
                               lineHeight: 1,
-                              color: isDark ? "#FFFFFF" : "#09090B",
+                              color: isDark ? "#FFFFFF" : "#0A0010",
                             }}
                           >
                             ${price}
@@ -674,7 +674,7 @@ const Pricing = () => {
                       <span
                         style={{
                           fontSize: 52,
-                          fontWeight: 500,
+                          fontWeight: 700,
                           lineHeight: 1,
                           color: "#FFFFFF",
                         }}
@@ -708,7 +708,7 @@ const Pricing = () => {
                         fontWeight: 600,
                         cursor: "pointer",
                         ...(plan.ctaStyle === "filled"
-                          ? { backgroundColor: "#FFFFFF", color: "#09090B", border: "none" }
+                          ? { backgroundColor: "#7C3AED", color: "#FFFFFF", border: "none" }
                           : plan.ctaStyle === "enterprise"
                           ? {
                               backgroundColor: "transparent",
@@ -717,8 +717,8 @@ const Pricing = () => {
                             }
                           : {
                               backgroundColor: "transparent",
-                              color: "#FFFFFF",
-                              border: "1.5px solid rgba(255,255,255,0.3)",
+                              color: "#7C3AED",
+                              border: "1.5px solid #7C3AED",
                             }),
                       }}
                     >
@@ -755,7 +755,7 @@ const Pricing = () => {
                     {plan.features.map((f, fi) => (
                       <div key={fi} className="flex items-start gap-2.5" style={{ padding: "6px 0" }}>
                         {f.included ? (
-                          <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#0891B2" }} />
+                          <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#7C3AED" }} />
                         ) : (
                           <XIcon size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#D1D5DB" }} />
                         )}
@@ -789,7 +789,7 @@ const Pricing = () => {
       ═══════════════════════════════════════════ */}
       <section
         style={{
-          backgroundColor: "#09090B",
+          backgroundColor: "#0A0010",
           borderTop: "1px solid rgba(255,255,255,0.06)",
           padding: "56px 0",
         }}
@@ -827,7 +827,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 4 — COMMISSION EXPLAINER
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#CFFAFE" }} className="py-20 px-6">
+      <section style={{ backgroundColor: "#F5F0FF" }} className="py-20 px-6">
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Left */}
           <motion.div
@@ -841,12 +841,12 @@ const Pricing = () => {
                 fontSize: 11,
                 fontWeight: 600,
                 letterSpacing: "0.1em",
-                color: "#0891B2",
+                color: "#7C3AED",
               }}
             >
               HOW OUR PRICING WORKS
             </span>
-            <h2 className="mt-3 text-2xl md:text-3xl font-normal tracking-tight leading-tight" style={{ color: "#09090B" }}>
+            <h2 className="mt-3 text-2xl md:text-3xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               The more you grow, the less we take.
             </h2>
             <p className="mt-4 text-base" style={{ color: "#6B7280", lineHeight: 1.75 }}>
@@ -871,7 +871,7 @@ const Pricing = () => {
             <a
               href="#"
               className="inline-block mt-4"
-              style={{ color: "#0891B2", fontSize: 14, fontWeight: 500 }}
+              style={{ color: "#7C3AED", fontSize: 14, fontWeight: 500 }}
             >
               How commission is calculated →
             </a>
@@ -918,17 +918,17 @@ const Pricing = () => {
                 style={{
                   padding: "16px 20px",
                   borderBottom: "1px solid #F3F4F6",
-                  backgroundColor: row.highlight ? "rgba(8,145,178,0.06)" : "transparent",
+                  backgroundColor: row.highlight ? "rgba(124,58,237,0.06)" : "transparent",
                 }}
               >
                 <span style={{ fontSize: 14, color: "#374151", fontWeight: row.highlight ? 700 : 400 }}>
                   {row.plan}
                 </span>
-                <span style={{ fontSize: row.highlight ? 16 : 14, color: row.highlight ? "#0891B2" : "#374151", fontWeight: row.highlight ? 700 : 400 }}>
+                <span style={{ fontSize: row.highlight ? 16 : 14, color: row.highlight ? "#7C3AED" : "#374151", fontWeight: row.highlight ? 700 : 400 }}>
                   {row.comm}
                 </span>
                 <div className="flex items-center gap-2">
-                  <span style={{ fontSize: 14, color: row.highlight ? "#09090B" : "#374151", fontWeight: row.highlight ? 700 : 400 }}>
+                  <span style={{ fontSize: 14, color: row.highlight ? "#0A0010" : "#374151", fontWeight: row.highlight ? 700 : 400 }}>
                     {row.cost}
                   </span>
                   {row.highlight && (
@@ -941,7 +941,7 @@ const Pricing = () => {
                         borderRadius: 999,
                         padding: "3px 10px",
                         fontSize: 11,
-                        fontWeight: 500,
+                        fontWeight: 700,
                       }}
                     >
                       SAVE $300
@@ -966,7 +966,7 @@ const Pricing = () => {
             transition={anim}
             className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#09090B" }}>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               Everything ambitious apps need, all yours.
             </h2>
             <p className="mt-3 text-base" style={{ color: "#6B7280" }}>
@@ -988,8 +988,8 @@ const Pricing = () => {
                   style={{ borderTop: ci > 0 ? "1px solid #F3F4F6" : "none", padding: "52px 0" }}
                 >
                   <div style={{ borderRight: "1px solid #F3F4F6", paddingRight: 24 }} className="hidden lg:block">
-                    <Icon size={32} style={{ color: "#0891B2" }} />
-                    <h3 style={{ fontSize: 20, fontWeight: 500, color: "#09090B", marginTop: 14 }}>
+                    <Icon size={32} style={{ color: "#7C3AED" }} />
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#0A0010", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
@@ -997,8 +997,8 @@ const Pricing = () => {
                     </p>
                   </div>
                   <div className="lg:hidden">
-                    <Icon size={32} style={{ color: "#0891B2" }} />
-                    <h3 style={{ fontSize: 20, fontWeight: 500, color: "#09090B", marginTop: 14 }}>
+                    <Icon size={32} style={{ color: "#7C3AED" }} />
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#0A0010", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
@@ -1008,7 +1008,7 @@ const Pricing = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1">
                     {cat.bullets.map((b, bi) => (
                       <div key={bi} className="flex items-start gap-2.5 py-1.5">
-                        <Check size={14} strokeWidth={2.5} className="flex-shrink-0 mt-1" style={{ color: "#0891B2" }} />
+                        <Check size={14} strokeWidth={2.5} className="flex-shrink-0 mt-1" style={{ color: "#7C3AED" }} />
                         <span style={{ fontSize: 14, color: "#374151", lineHeight: 2.0 }}>{b}</span>
                       </div>
                     ))}
@@ -1024,7 +1024,7 @@ const Pricing = () => {
               <button
                 className="transition-colors duration-200"
                 style={{
-                  backgroundColor: "#09090B",
+                  backgroundColor: "#7C3AED",
                   color: "#FFFFFF",
                   padding: "14px 36px",
                   borderRadius: 10,
@@ -1044,12 +1044,12 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 6 — ENTERPRISE DEEP DIVE (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 px-6" style={{ backgroundColor: "#111827" }}>
+      <section className="relative overflow-hidden py-20 px-6" style={{ backgroundColor: "#1E0A3C" }}>
         {/* Animated bg */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: "radial-gradient(ellipse at 40% 30%, rgba(8,145,178,0.12) 0%, transparent 60%)",
+            background: "radial-gradient(ellipse at 40% 30%, rgba(124,58,237,0.12) 0%, transparent 60%)",
             animation: "enterprise-drift 10s ease-in-out infinite alternate",
           }}
         />
@@ -1064,7 +1064,7 @@ const Pricing = () => {
               viewport={{ once: true }}
               transition={anim}
             >
-              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "#0891B2" }}>
+              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "#A78BFA" }}>
                 ENTERPRISE
               </span>
               <h2 className="mt-3 text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight">
@@ -1077,8 +1077,8 @@ const Pricing = () => {
                 <Link to="/demo">
                   <button
                     style={{
-                      backgroundColor: "#FFFFFF",
-                      color: "#09090B",
+                      backgroundColor: "#7C3AED",
+                      color: "#FFFFFF",
                       padding: "12px 28px",
                       borderRadius: 10,
                       fontWeight: 600,
@@ -1110,7 +1110,7 @@ const Pricing = () => {
               <div className="space-y-1">
                 {enterpriseFeatures.map((f, fi) => (
                   <div key={fi} className="flex items-start gap-2.5 py-1.5">
-                    <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#0891B2" }} />
+                    <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#A78BFA" }} />
                     <span style={{ fontSize: 14, color: "rgba(255,255,255,0.85)" }}>{f}</span>
                   </div>
                 ))}
@@ -1128,13 +1128,13 @@ const Pricing = () => {
             style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
           >
             {[
-              { num: "$2M+", label: "Creator commissions tracked", amber: true },
-              { num: "200+", label: "App developers", amber: false },
-              { num: "99.9%", label: "Attribution accuracy", amber: false },
-              { num: "150+", label: "Payout countries", amber: false },
+              { num: "$2M+", label: "Creator commissions tracked" },
+              { num: "200+", label: "App developers" },
+              { num: "99.9%", label: "Attribution accuracy" },
+              { num: "150+", label: "Payout countries" },
             ].map(s => (
               <div key={s.num}>
-                <div style={{ fontSize: 36, fontWeight: 500, color: s.amber ? "#F59E0B" : "#FFFFFF" }}>{s.num}</div>
+                <div style={{ fontSize: 36, fontWeight: 700, color: "#FFFFFF" }}>{s.num}</div>
                 <div className="mt-1" style={{ fontSize: 13, color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
               </div>
             ))}
@@ -1154,7 +1154,7 @@ const Pricing = () => {
             transition={anim}
             className="text-center"
           >
-            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#09090B" }}>Everything, compared.</h2>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>Everything, compared.</h2>
             <p className="mt-2.5 text-base" style={{ color: "#6B7280" }}>
               Every feature, every plan, side by side.
             </p>
@@ -1202,11 +1202,11 @@ const Pricing = () => {
                       style={{
                         fontSize: 12,
                         fontWeight: h === "Scale" ? 700 : 600,
-                        color: h === "Scale" ? "#0891B2" : "#9CA3AF",
+                        color: h === "Scale" ? "#7C3AED" : "#9CA3AF",
                         textTransform: "uppercase",
                         letterSpacing: "0.07em",
-                        backgroundColor: h === "Scale" ? "#E0F7FA" : "#FAFAFA",
-                        boxShadow: h === "Scale" ? "inset 0 3px 0 #0891B2" : "none",
+                        backgroundColor: h === "Scale" ? "#F3EEFF" : "#FAFAFA",
+                        boxShadow: h === "Scale" ? "inset 0 3px 0 #7C3AED" : "none",
                       }}
                     >
                       {h}
@@ -1223,13 +1223,13 @@ const Pricing = () => {
                       <td
                         colSpan={5}
                         style={{
-                          backgroundColor: "#CFFAFE",
+                          backgroundColor: "#EDE9FE",
                           padding: "10px 16px",
                           fontSize: 11,
                           fontWeight: 600,
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
-                          color: "#0E7490",
+                          color: "#5B21B6",
                         }}
                       >
                         {group.label}
@@ -1252,7 +1252,7 @@ const Pricing = () => {
                             key={ci}
                             className="text-center py-3.5 px-4"
                             style={{
-                              backgroundColor: ci === 3 ? "rgba(8,145,178,0.04)" : "transparent",
+                              backgroundColor: ci === 3 ? "rgba(124,58,237,0.04)" : "transparent",
                             }}
                           >
                             <CellValue val={row[ci]} isScaleCol={ci === 3} />
@@ -1281,7 +1281,7 @@ const Pricing = () => {
             transition={anim}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#09090B" }}>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               Frequently asked questions.
             </h2>
             <p className="mt-2.5 text-base" style={{ color: "#6B7280" }}>
@@ -1320,7 +1320,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 9 — FINAL CTA (DarkVeil)
       ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "#111827", padding: "100px 24px" }}>
+      <section className="relative overflow-hidden" style={{ backgroundColor: "#1E0A3C", padding: "100px 24px" }}>
         <div className="absolute inset-0 z-0 pointer-events-none">
           <DarkVeil
             speed={1.8}
@@ -1362,8 +1362,8 @@ const Pricing = () => {
             <Link to="/signup">
               <button
                 style={{
-                  backgroundColor: "#FFFFFF",
-                  color: "#09090B",
+                  backgroundColor: "#7C3AED",
+                  color: "#FFFFFF",
                   padding: "14px 36px",
                   borderRadius: 10,
                   fontWeight: 600,
@@ -1441,8 +1441,8 @@ const Pricing = () => {
           100% { transform: translate(20px, 10px); }
         }
         @keyframes enterprise-card-glow {
-          0% { background: radial-gradient(ellipse at 30% 50%, rgba(8,145,178,0.18) 0%, transparent 70%); }
-          100% { background: radial-gradient(ellipse at 70% 50%, rgba(8,145,178,0.18) 0%, transparent 70%); }
+          0% { background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.18) 0%, transparent 70%); }
+          100% { background: radial-gradient(ellipse at 70% 50%, rgba(124,58,237,0.18) 0%, transparent 70%); }
         }
       `}</style>
     </div>

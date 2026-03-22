@@ -84,7 +84,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
   }), []);
 
   const edgeMat = useMemo(() => new THREE.LineBasicMaterial({
-    color: new THREE.Color("#111827"), transparent: true, opacity: 0.5,
+    color: new THREE.Color("#4C1D95"), transparent: true, opacity: 0.5,
   }), []);
 
   const boxGeo = useMemo(() => new THREE.BoxGeometry(w, h, d), []);
@@ -129,7 +129,7 @@ const LayerBox = ({ index, activeLayer }: { index: number; activeLayer: number }
         eMat.color.lerp(new THREE.Color("#C0C0C0"), delta * 4);
         eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 1, delta * 4);
       } else {
-        eMat.color.lerp(new THREE.Color("#111827"), delta * 4);
+        eMat.color.lerp(new THREE.Color("#4C1D95"), delta * 4);
         eMat.opacity = THREE.MathUtils.lerp(eMat.opacity, 0.5, delta * 4);
       }
     }
@@ -176,7 +176,7 @@ const ConnectorLine = ({ start, end, bright }: { start: THREE.Vector3; end: THRE
 
   return (
     <line_ ref={ref} geometry={geo}>
-      <lineDashedMaterial color={bright ? "#C0C0C0" : "#111827"} dashSize={0.1} gapSize={0.1} transparent opacity={bright ? 0.8 : 0.4} />
+      <lineDashedMaterial color={bright ? "#C0C0C0" : "#4C1D95"} dashSize={0.1} gapSize={0.1} transparent opacity={bright ? 0.8 : 0.4} />
     </line_>
   );
 };
@@ -212,7 +212,7 @@ const DashedConnectors = ({ activeLayer }: { activeLayer: number }) => {
       {dots.map((dot, i) => (
         <mesh key={`dot-${i}`} position={dot.pos}>
           <sphereGeometry args={[0.05, 8, 8]} />
-          <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#111827"} transparent opacity={activeLayer === dot.layerIdx ? 1 : 0.4} />
+          <meshBasicMaterial color={activeLayer === dot.layerIdx ? "#FFFFFF" : "#4C1D95"} transparent opacity={activeLayer === dot.layerIdx ? 1 : 0.4} />
         </mesh>
       ))}
     </group>
