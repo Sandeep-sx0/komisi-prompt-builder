@@ -762,52 +762,169 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 9 — TESTIMONIALS GRID
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#F5F0FF" }}>
-        <div className="max-w-[1200px] mx-auto">
-          <Reveal className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight">
-              App developers of all sizes grow with Komisi.
-            </h2>
-          </Reveal>
+      <section style={{ backgroundColor: "#F5F0FF", paddingTop: '80px', paddingBottom: 0 }}>
+        <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 24px' }}>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {testimonials.map((t, i) => {
-              const roleColors: Record<string, string> = {
-                Founder: "bg-purple-100 text-purple-700",
-                Developer: "bg-blue-100 text-blue-700",
-                Growth: "bg-green-100 text-green-700",
-              };
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.04 }}
-                  className="bg-white rounded-2xl p-6"
-                  style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-sm font-semibold text-gray-900 truncate">{t.name}</p>
-                      <p className="text-xs text-gray-500">{t.handle}</p>
-                    </div>
-                    <span className={cn("text-xs font-medium px-2.5 py-0.5 rounded-full flex-shrink-0", roleColors[t.role] || "bg-gray-100 text-gray-700")}>
-                      {t.role}
-                    </span>
-                  </div>
-                  <p className="text-gray-700 leading-relaxed mb-4" style={{ fontSize: '15px', lineHeight: 1.6 }}>
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <p className="text-xs text-gray-400">{t.company}</p>
-                    <p className="text-xs text-gray-400">{t.date}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
+          {/* BLOCK 1 — AWARD BADGES */}
+          <div className="flex items-center justify-center gap-12 mb-10">
+            {[
+              "Product Hunt\n#1 Tool",
+              "Top Mobile\nAttribution Platform",
+              "Best Affiliate\nSDK 2025",
+            ].map((label, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="flex flex-col items-center text-center"
+              >
+                {/* Laurel wreath SVG */}
+                <svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 38C12 34 6 26 4 18C6 22 10 26 16 28C10 22 6 14 6 6C10 12 16 18 22 20C18 14 16 6 18 0C20 8 24 14 30 18C28 12 28 4 32 0C32 8 34 16 38 20" stroke="#7C3AED" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                  <path d="M60 38C68 34 74 26 76 18C74 22 70 26 64 28C70 22 74 14 74 6C70 12 64 18 58 20C62 14 64 6 62 0C60 8 56 14 50 18C52 12 52 4 48 0C48 8 46 16 42 20" stroke="#7C3AED" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
+                </svg>
+                <span style={{ fontSize: '13px', fontWeight: 600, color: '#1a1a2e', whiteSpace: 'pre-line', lineHeight: 1.3, marginTop: '4px' }}>
+                  {label}
+                </span>
+              </motion.div>
+            ))}
           </div>
+
+          {/* BLOCK 2 — SECTION HEADER */}
+          <div className="flex flex-col items-center text-center" style={{ marginBottom: '56px' }}>
+            {/* Eyebrow pill */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              style={{
+                background: '#ffffff',
+                border: '1px solid #e2d9f3',
+                borderRadius: '999px',
+                padding: '6px 14px',
+                fontSize: '13px',
+                fontWeight: 500,
+                color: '#3b1f6e',
+                marginBottom: '20px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              <span style={{ color: '#7C3AED', fontSize: '12px' }}>⚡</span>
+              Real Feedback
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="text-[28px] md:text-[42px]"
+              style={{ fontWeight: 700, color: '#0a0010', lineHeight: 1.15, maxWidth: '720px', marginBottom: '16px' }}
+            >
+              App developers of all sizes grow with Komisi.
+            </motion.h2>
+
+            {/* Subtext */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              style={{ fontSize: '17px', color: '#6b7280', maxWidth: '560px', marginBottom: '14px' }}
+            >
+              Real stories from indie developers, growth teams, and creators.
+            </motion.p>
+
+            {/* Social proof line */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="inline-flex items-center gap-2"
+              style={{ fontSize: '14px', color: '#374151' }}
+            >
+              <span>Trusted by <strong>200+ app developers</strong></span>
+              <span className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} style={{ color: '#7C3AED', fontSize: '16px' }}>★</span>
+                ))}
+              </span>
+              <span>4.9/5</span>
+            </motion.div>
+          </div>
+
+          {/* BLOCK 3 — TESTIMONIAL GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3" style={{ gap: '24px' }}>
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.04 }}
+                style={{
+                  background: '#ffffff',
+                  borderRadius: '16px',
+                  boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05)',
+                  padding: '24px',
+                  display: 'flex',
+                  flexDirection: 'column' as const,
+                  justifyContent: 'space-between',
+                  height: '100%',
+                }}
+              >
+                {/* Zone A — Person header */}
+                <div className="flex items-center" style={{ gap: '12px', marginBottom: '20px' }}>
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    style={{ width: '48px', height: '48px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+                  />
+                  <div style={{ minWidth: 0, flex: 1 }}>
+                    <p style={{ fontSize: '15px', fontWeight: 600, color: '#111827', margin: 0 }}>{t.name}</p>
+                    <p style={{ fontSize: '13px', color: '#9ca3af', margin: 0 }}>{t.handle}</p>
+                  </div>
+                  <span style={{ fontSize: '13px', fontWeight: 500, color: '#6b7280', flexShrink: 0 }}>
+                    {t.role}
+                  </span>
+                </div>
+
+                {/* Zone B — Quote body */}
+                <p style={{ fontSize: '15px', lineHeight: 1.7, color: '#374151', flexGrow: 1, marginBottom: '24px', margin: '0 0 24px 0' }}>
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+
+                {/* Zone C — Card footer */}
+                <div className="flex items-center justify-between" style={{ borderTop: '1px solid #f3f4f6', paddingTop: '16px' }}>
+                  <span style={{ fontSize: '13px', fontWeight: 500, letterSpacing: '0.03em', color: '#9ca3af' }}>
+                    {t.company}
+                  </span>
+                  <span style={{ fontSize: '12px', color: '#d1d5db' }}>
+                    {t.date}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* BLOCK 4 — BOTTOM FADE OVERLAY */}
+          <div
+            style={{
+              position: 'relative',
+              marginTop: '-200px',
+              height: '200px',
+              pointerEvents: 'none',
+              background: 'linear-gradient(to bottom, transparent 0%, #F5F0FF 100%)',
+              zIndex: 2,
+            }}
+          />
         </div>
       </section>
 
