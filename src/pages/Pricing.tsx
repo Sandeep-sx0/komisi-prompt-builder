@@ -883,8 +883,8 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ ...anim, delay: 0.1 }}
-            className="overflow-hidden"
-            style={{ borderRadius: 16, border: "1px solid #E5E7EB", backgroundColor: "#FFFFFF" }}
+            className="overflow-hidden self-start"
+            style={{ borderRadius: 16, border: "1px solid #E5E7EB", backgroundColor: "#FFFFFF", height: "fit-content" }}
           >
             {/* Header */}
             <div
