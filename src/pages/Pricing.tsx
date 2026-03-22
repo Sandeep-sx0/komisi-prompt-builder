@@ -444,7 +444,7 @@ const Pricing = () => {
                 <Link key={l} to={l === "Pricing" ? "/pricing" : `/#${l.toLowerCase()}`} className="block text-sm py-2" style={{ color: "#374151" }}>{l}</Link>
               ))}
               <Link to="/login"><Button variant="secondary" className="w-full mt-2">Login</Button></Link>
-              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: "#0891B2", color: "#FFFFFF" }}>Get Started</Button></Link>
+              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: "#09090B", color: "#FFFFFF" }}>Get Started</Button></Link>
             </motion.div>
           )}
         </AnimatePresence>
