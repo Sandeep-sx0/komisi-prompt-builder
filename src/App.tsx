@@ -26,6 +26,7 @@ import CreatorSettings from "./pages/CreatorSettings";
 import Landing from "./pages/Landing";
 import Apps from "./pages/Apps";
 import UtmTracking from "./pages/UtmTracking";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +40,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/design-system" element={<Index />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
