@@ -162,7 +162,7 @@ const PayoutsAnimation = () => {
                   ) : (
                     <motion.span key="process" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                       transition={{ duration: 0.6 }} className="text-[10px] px-3 py-1.5"
-                      style={{ backgroundColor: "#0891B2", color: "#FFFFFF", borderRadius: "6px" }}>Process All Payouts</motion.span>
+                      style={{ backgroundColor: "#FFFFFF", color: "#09090B", borderRadius: "6px" }}>Process All Payouts</motion.span>
                   )}
                 </AnimatePresence>
               </div>

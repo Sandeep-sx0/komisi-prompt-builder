@@ -537,7 +537,7 @@ const Pricing = () => {
                     borderRadius: 999,
                     padding: "2px 8px",
                     fontSize: 11,
-                    fontWeight: 700,
+                    fontWeight: 500,
                     marginLeft: 6,
                   }}
                 >
@@ -609,7 +609,7 @@ const Pricing = () => {
                       backgroundColor: "#0891B2",
                       color: "#FFFFFF",
                       fontSize: 12,
-                      fontWeight: 700,
+                      fontWeight: 500,
                       padding: "5px 16px",
                       borderRadius: 999,
                       letterSpacing: "0.05em",
@@ -652,7 +652,7 @@ const Pricing = () => {
                             transition={{ duration: 0.12 }}
                             style={{
                               fontSize: 52,
-                              fontWeight: 700,
+                              fontWeight: 500,
                               lineHeight: 1,
                               color: isDark ? "#FFFFFF" : "#09090B",
                             }}
@@ -674,7 +674,7 @@ const Pricing = () => {
                       <span
                         style={{
                           fontSize: 52,
-                          fontWeight: 700,
+                          fontWeight: 500,
                           lineHeight: 1,
                           color: "#FFFFFF",
                         }}
@@ -941,7 +941,7 @@ const Pricing = () => {
                         borderRadius: 999,
                         padding: "3px 10px",
                         fontSize: 11,
-                        fontWeight: 700,
+                        fontWeight: 500,
                       }}
                     >
                       SAVE $300
@@ -989,7 +989,7 @@ const Pricing = () => {
                 >
                   <div style={{ borderRight: "1px solid #F3F4F6", paddingRight: 24 }} className="hidden lg:block">
                     <Icon size={32} style={{ color: "#0891B2" }} />
-                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#09090B", marginTop: 14 }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 500, color: "#09090B", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
@@ -998,7 +998,7 @@ const Pricing = () => {
                   </div>
                   <div className="lg:hidden">
                     <Icon size={32} style={{ color: "#0891B2" }} />
-                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#09090B", marginTop: 14 }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 500, color: "#09090B", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
