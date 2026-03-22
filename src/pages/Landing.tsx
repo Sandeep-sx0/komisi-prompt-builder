@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,7 @@ import {
   ArrowRight, Menu, X, Twitter, Github, Linkedin,
   Link2, Download, Fingerprint, CircleDollarSign,
   Shield, Zap, CheckCircle, Copy, Check,
-  Code, BarChart3, Wallet, ChevronLeft, ChevronRight,
+  Code, BarChart3, Wallet,
   AlertTriangle, ExternalLink, TrendingUp, Globe,
 } from "lucide-react";
 import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
@@ -88,22 +88,15 @@ const codeExamples: Record<string, string[]> = {
 
 /* ── Testimonial data ── */
 const testimonials = [
-  {
-    quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.",
-    name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp", avatar: "/avatars/user-1.jpg",
-  },
-  {
-    quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.",
-    name: "James Park", title: "Founder", company: "FocusTimer", avatar: "/avatars/user-2.jpg",
-  },
-  {
-    quote: "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely.",
-    name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap", avatar: "/avatars/user-3.jpg",
-  },
-  {
-    quote: "The fraud detection alone paid for itself. We caught fake installs in the first week.",
-    name: "Priya Nair", title: "Founder", company: "MindfulApp", avatar: "/avatars/user-4.jpg",
-  },
+  { quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.", name: "Sarah Chen", handle: "@sarahchen", role: "Founder", company: "MindfulApp", date: "Jan 2026", avatar: "/avatars/user-1.jpg" },
+  { quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.", name: "James Park", handle: "@jamespark", role: "Developer", company: "FocusTimer", date: "Feb 2026", avatar: "/avatars/user-2.jpg" },
+  { quote: "I can finally see which creator drove which subscription. That data alone is worth the price.", name: "Marcus Lee", handle: "@marcuslee", role: "Growth", company: "SleepWell", date: "Dec 2025", avatar: "/avatars/user-3.jpg" },
+  { quote: "Automated payouts saved me hours every month. Creators love getting paid on time without me chasing invoices.", name: "Priya Nair", handle: "@priyanair", role: "Founder", company: "HabitKit", date: "Jan 2026", avatar: "/avatars/user-4.jpg" },
+  { quote: "The fraud detection flagged a click farm on day two. Would have wasted thousands without it.", name: "David Park", handle: "@davidpark", role: "Developer", company: "CalTrack", date: "Feb 2026", avatar: "/avatars/user-5.jpg" },
+  { quote: "Komisi is the first affiliate tool that actually understands mobile. Everything else was built for web.", name: "Aisha Okonkwo", handle: "@aishao", role: "Founder", company: "MeditateNow", date: "Jan 2026", avatar: "/avatars/user-6.jpg" },
+  { quote: "Went from zero affiliates to 40 active creators in six weeks. The marketplace made discovery effortless.", name: "Tom Rivera", handle: "@tomrivera", role: "Growth", company: "RunCoach", date: "Dec 2025", avatar: "/avatars/user-7.jpg" },
+  { quote: "Three lines of SDK code and attribution was live. I expected it to take a week.", name: "Nina Walsh", handle: "@ninawalsh", role: "Developer", company: "StudyFlash", date: "Feb 2026", avatar: "/avatars/user-8.jpg" },
+  { quote: "Our top creator drives 22% of all new subscribers. Komisi made that relationship visible and scalable.", name: "Kai Nakamura", handle: "@kainakamura", role: "Founder", company: "LanguagePal", date: "Jan 2026", avatar: "/avatars/user-9.jpg" },
 ];
 
 /* ── Integration data with logos ── */
@@ -178,34 +171,12 @@ const Landing = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeCodeTab, setActiveCodeTab] = useState("Swift");
   const [copied, setCopied] = useState(false);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const autoPlayRef = useRef<ReturnType<typeof setInterval>>();
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsPastHero(window.scrollY > window.innerHeight - 80);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (isPaused) return;
-    autoPlayRef.current = setInterval(() => {
-      setActiveTestimonial((p) => (p + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(autoPlayRef.current);
-  }, [isPaused]);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(codeExamples[activeCodeTab].join("\n"));
+    navigator.clipboard.writeText("npm install @komisi/sdk");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  const nextTestimonial = () => setActiveTestimonial((p) => (p + 1) % testimonials.length);
-  const prevTestimonial = () => setActiveTestimonial((p) => (p - 1 + testimonials.length) % testimonials.length);
 
   return (
     <div className="min-h-screen bg-background">
@@ -789,7 +760,7 @@ const Landing = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTION 9 — TESTIMONIALS CAROUSEL
+          SECTION 9 — TESTIMONIALS GRID
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6" style={{ backgroundColor: "#F5F0FF" }}>
         <div className="max-w-[1200px] mx-auto">
@@ -799,62 +770,43 @@ const Landing = () => {
             </h2>
           </Reveal>
 
-          <div
-            className="relative max-w-[720px] mx-auto"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <div className="text-8xl text-center mb-4 leading-none select-none font-serif" style={{ color: '#7C3AED' }}>&ldquo;</div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTestimonial}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 0.3 }}
-                className="text-center px-16"
-              >
-                <img
-                  src={testimonials[activeTestimonial].avatar}
-                  alt={testimonials[activeTestimonial].name}
-                  className="w-14 h-14 mx-auto mb-6 rounded-full object-cover"
-                />
-                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-[600px] mx-auto italic">
-                  "{testimonials[activeTestimonial].quote}"
-                </p>
-                <p className="text-sm text-foreground font-medium">{testimonials[activeTestimonial].name}</p>
-                <p className="text-xs text-text-tertiary">
-                  {testimonials[activeTestimonial].title}, {testimonials[activeTestimonial].company}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-
-            <button
-              onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:text-foreground hover:border-foreground transition-colors"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:text-foreground hover:border-foreground transition-colors"
-            >
-              <ChevronRight size={18} />
-            </button>
-
-            <div className="flex justify-center gap-2 mt-8">
-              {testimonials.map((_, i) => (
-                <button
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {testimonials.map((t, i) => {
+              const roleColors: Record<string, string> = {
+                Founder: "bg-purple-100 text-purple-700",
+                Developer: "bg-blue-100 text-blue-700",
+                Growth: "bg-green-100 text-green-700",
+              };
+              return (
+                <motion.div
                   key={i}
-                  onClick={() => setActiveTestimonial(i)}
-                  className={cn(
-                    "w-2.5 h-2.5 rounded-full transition-colors",
-                    i === activeTestimonial ? "bg-foreground" : "border border-border"
-                  )}
-                />
-              ))}
-            </div>
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.04 }}
+                  className="bg-white rounded-2xl p-6"
+                  style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-semibold text-gray-900 truncate">{t.name}</p>
+                      <p className="text-xs text-gray-500">{t.handle}</p>
+                    </div>
+                    <span className={cn("text-xs font-medium px-2.5 py-0.5 rounded-full flex-shrink-0", roleColors[t.role] || "bg-gray-100 text-gray-700")}>
+                      {t.role}
+                    </span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed mb-4" style={{ fontSize: '15px', lineHeight: 1.6 }}>
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs text-gray-400">{t.company}</p>
+                    <p className="text-xs text-gray-400">{t.date}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
