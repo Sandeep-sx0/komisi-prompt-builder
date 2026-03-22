@@ -782,7 +782,7 @@ const Landing = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTION 9 — TESTIMONIALS CAROUSEL
+          SECTION 9 — TESTIMONIALS GRID
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6" style={{ backgroundColor: "#F5F0FF" }}>
         <div className="max-w-[1200px] mx-auto">
@@ -792,62 +792,43 @@ const Landing = () => {
             </h2>
           </Reveal>
 
-          <div
-            className="relative max-w-[720px] mx-auto"
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-          >
-            <div className="text-8xl text-center mb-4 leading-none select-none font-serif" style={{ color: '#7C3AED' }}>&ldquo;</div>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTestimonial}
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{ duration: 0.3 }}
-                className="text-center px-16"
-              >
-                <img
-                  src={testimonials[activeTestimonial].avatar}
-                  alt={testimonials[activeTestimonial].name}
-                  className="w-14 h-14 mx-auto mb-6 rounded-full object-cover"
-                />
-                <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 max-w-[600px] mx-auto italic">
-                  "{testimonials[activeTestimonial].quote}"
-                </p>
-                <p className="text-sm text-foreground font-medium">{testimonials[activeTestimonial].name}</p>
-                <p className="text-xs text-text-tertiary">
-                  {testimonials[activeTestimonial].title}, {testimonials[activeTestimonial].company}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-
-            <button
-              onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:text-foreground hover:border-foreground transition-colors"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border border-border flex items-center justify-center text-text-secondary hover:text-foreground hover:border-foreground transition-colors"
-            >
-              <ChevronRight size={18} />
-            </button>
-
-            <div className="flex justify-center gap-2 mt-8">
-              {testimonials.map((_, i) => (
-                <button
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {testimonials.map((t, i) => {
+              const roleColors: Record<string, string> = {
+                Founder: "bg-purple-100 text-purple-700",
+                Developer: "bg-blue-100 text-blue-700",
+                Growth: "bg-green-100 text-green-700",
+              };
+              return (
+                <motion.div
                   key={i}
-                  onClick={() => setActiveTestimonial(i)}
-                  className={cn(
-                    "w-2.5 h-2.5 rounded-full transition-colors",
-                    i === activeTestimonial ? "bg-foreground" : "border border-border"
-                  )}
-                />
-              ))}
-            </div>
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.04 }}
+                  className="bg-white rounded-2xl p-6"
+                  style={{ boxShadow: '0 2px 16px rgba(0,0,0,0.06)' }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <img src={t.avatar} alt={t.name} className="w-10 h-10 rounded-full object-cover flex-shrink-0" />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-sm font-semibold text-gray-900 truncate">{t.name}</p>
+                      <p className="text-xs text-gray-500">{t.handle}</p>
+                    </div>
+                    <span className={cn("text-xs font-medium px-2.5 py-0.5 rounded-full flex-shrink-0", roleColors[t.role] || "bg-gray-100 text-gray-700")}>
+                      {t.role}
+                    </span>
+                  </div>
+                  <p className="text-gray-700 leading-relaxed mb-4" style={{ fontSize: '15px', lineHeight: 1.6 }}>
+                    &ldquo;{t.quote}&rdquo;
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <p className="text-xs text-gray-400">{t.company}</p>
+                    <p className="text-xs text-gray-400">{t.date}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
