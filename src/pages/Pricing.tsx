@@ -934,11 +934,13 @@ const Pricing = () => {
                   {row.highlight && (
                     <span
                       style={{
+                        display: "inline-flex",
+                        alignItems: "center",
                         backgroundColor: "rgba(74,222,128,0.12)",
                         color: "#4ADE80",
                         borderRadius: 999,
-                        padding: "2px 8px",
-                        fontSize: 10,
+                        padding: "3px 10px",
+                        fontSize: 11,
                         fontWeight: 700,
                       }}
                     >
