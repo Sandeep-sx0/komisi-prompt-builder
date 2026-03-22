@@ -587,8 +587,9 @@ const Pricing = () => {
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      background: "radial-gradient(ellipse at 30% 20%, rgba(124,58,237,0.12) 0%, transparent 60%)",
-                      animation: "enterprise-drift 8s ease-in-out infinite alternate",
+                      borderRadius: 20,
+                      background: "radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.18) 0%, transparent 70%)",
+                      animation: "enterprise-card-glow 8s ease-in-out infinite alternate",
                     }}
                   />
                 )}
