@@ -1264,6 +1264,7 @@ const Pricing = () => {
                 ))}
               </tbody>
             </table>
+          </div>
           </motion.div>
         </div>
       </section>
