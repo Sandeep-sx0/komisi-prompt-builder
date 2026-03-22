@@ -693,7 +693,7 @@ const Pricing = () => {
                 </div>
 
                 {/* Zone B — CTA */}
-                <div style={{ padding: "0 28px 24px" }}>
+                <div style={{ padding: "0 32px 28px" }}>
                   <Link to={plan.ctaLink} className="block">
                     <button
                       className="w-full transition-all duration-200"
