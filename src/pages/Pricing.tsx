@@ -1066,7 +1066,7 @@ const Pricing = () => {
               >
                 Built for volume, velocity, and compliance.
               </h2>
-              <p className="mt-4" style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>
+              <p className="mt-4 text-base" style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>
                 Handle complex affiliate programs at massive scale with infrastructure designed for the world's largest app companies. Get priority access to our team and total control over your data.
               </p>
               <div className="mt-7 flex items-center gap-4">
