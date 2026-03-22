@@ -499,6 +499,7 @@ const Pricing = () => {
               backgroundColor: "rgba(255,255,255,0.07)",
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: 999,
+              overflow: "visible",
             }}
           >
             <button
@@ -516,7 +517,7 @@ const Pricing = () => {
             </button>
             <button
               onClick={() => setIsYearly(true)}
-              className="text-sm transition-all duration-200 flex items-center gap-2"
+              className="text-sm transition-all duration-200 inline-flex items-center gap-1.5"
               style={{
                 padding: "9px 28px",
                 borderRadius: 999,
@@ -528,12 +529,16 @@ const Pricing = () => {
               Yearly
               {isYearly && (
                 <span
-                  className="text-[11px] font-semibold"
                   style={{
+                    display: "inline-flex",
+                    alignItems: "center",
                     backgroundColor: "rgba(74,222,128,0.15)",
                     color: "#4ADE80",
                     borderRadius: 999,
                     padding: "2px 8px",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    marginLeft: 6,
                   }}
                 >
                   Save 20%
@@ -620,7 +625,7 @@ const Pricing = () => {
                   <div
                     style={{
                       fontSize: 11,
-                      fontWeight: 700,
+                      fontWeight: 600,
                       letterSpacing: "0.1em",
                       color: isDark ? "#A78BFA" : "#7C3AED",
                     }}
@@ -647,7 +652,7 @@ const Pricing = () => {
                             transition={{ duration: 0.12 }}
                             style={{
                               fontSize: 52,
-                              fontWeight: 800,
+                              fontWeight: 700,
                               lineHeight: 1,
                               color: isDark ? "#FFFFFF" : "#0A0010",
                             }}
@@ -669,7 +674,7 @@ const Pricing = () => {
                       <span
                         style={{
                           fontSize: 52,
-                          fontWeight: 800,
+                          fontWeight: 700,
                           lineHeight: 1,
                           color: "#FFFFFF",
                         }}
@@ -786,7 +791,7 @@ const Pricing = () => {
         style={{
           backgroundColor: "#0A0010",
           borderTop: "1px solid rgba(255,255,255,0.06)",
-          padding: "40px 0",
+          padding: "56px 0",
         }}
       >
         <p
@@ -796,21 +801,20 @@ const Pricing = () => {
           Trusted by 200+ indie app developers
         </p>
         <div className="overflow-hidden">
-          <div className="marquee-track">
+          <div className="marquee-track" style={{ gap: 48 }}>
             {[...Array(4)].map((_, ri) =>
               socialProofLogos.map((logo, li) => (
                 <div
                   key={`${ri}-${li}`}
-                  className="flex items-center gap-2.5 px-8"
-                  style={{ opacity: 0.5 }}
+                  className="shrink-0 flex items-center gap-2.5"
                 >
                   <img
                     src={logo.src}
                     alt={logo.name}
-                    className="h-5 w-5 object-contain"
-                    style={{ filter: "brightness(0) invert(1)", opacity: 0.6 }}
+                    className="h-6 w-6 object-contain"
+                    style={{ filter: "brightness(0) invert(1)", opacity: 0.7 }}
                   />
-                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", whiteSpace: "nowrap" }}>
+                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", whiteSpace: "nowrap" }}>
                     {logo.name}
                   </span>
                 </div>
@@ -835,14 +839,14 @@ const Pricing = () => {
             <span
               style={{
                 fontSize: 11,
-                fontWeight: 700,
+                fontWeight: 600,
                 letterSpacing: "0.1em",
                 color: "#7C3AED",
               }}
             >
               HOW OUR PRICING WORKS
             </span>
-            <h2 className="mt-3 text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
+            <h2 className="mt-3 text-2xl md:text-3xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               The more you grow, the less we take.
             </h2>
             <p className="mt-4 text-base" style={{ color: "#6B7280", lineHeight: 1.75 }}>
@@ -879,8 +883,8 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ ...anim, delay: 0.1 }}
-            className="overflow-hidden"
-            style={{ borderRadius: 16, border: "1px solid #E5E7EB", backgroundColor: "#FFFFFF" }}
+            className="overflow-hidden self-start"
+            style={{ borderRadius: 16, border: "1px solid #E5E7EB", backgroundColor: "#FFFFFF", height: "fit-content" }}
           >
             {/* Header */}
             <div
@@ -914,13 +918,13 @@ const Pricing = () => {
                 style={{
                   padding: "16px 20px",
                   borderBottom: "1px solid #F3F4F6",
-                  backgroundColor: row.highlight ? "rgba(124,58,237,0.04)" : "transparent",
+                  backgroundColor: row.highlight ? "rgba(124,58,237,0.06)" : "transparent",
                 }}
               >
                 <span style={{ fontSize: 14, color: "#374151", fontWeight: row.highlight ? 700 : 400 }}>
                   {row.plan}
                 </span>
-                <span style={{ fontSize: 14, color: row.highlight ? "#0A0010" : "#374151", fontWeight: row.highlight ? 700 : 400 }}>
+                <span style={{ fontSize: row.highlight ? 16 : 14, color: row.highlight ? "#7C3AED" : "#374151", fontWeight: row.highlight ? 700 : 400 }}>
                   {row.comm}
                 </span>
                 <div className="flex items-center gap-2">
@@ -930,11 +934,13 @@ const Pricing = () => {
                   {row.highlight && (
                     <span
                       style={{
+                        display: "inline-flex",
+                        alignItems: "center",
                         backgroundColor: "rgba(74,222,128,0.12)",
                         color: "#4ADE80",
                         borderRadius: 999,
-                        padding: "2px 8px",
-                        fontSize: 10,
+                        padding: "3px 10px",
+                        fontSize: 11,
                         fontWeight: 700,
                       }}
                     >
@@ -1058,7 +1064,7 @@ const Pricing = () => {
               viewport={{ once: true }}
               transition={anim}
             >
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#A78BFA" }}>
+              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "#A78BFA" }}>
                 ENTERPRISE
               </span>
               <h2 className="mt-3 text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight">
@@ -1169,10 +1175,10 @@ const Pricing = () => {
                     top: 64,
                     backgroundColor: "#FAFAFA",
                     zIndex: 20,
-                    boxShadow: "0 1px 0 #F3F4F6",
+                    boxShadow: "0 1px 0 rgba(0,0,0,0.06)",
                   }}
                 >
-                  <th className="text-left py-3 px-4" style={{ width: "38%", fontSize: 11, fontWeight: 600, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <th className="text-left py-3 px-4" style={{ width: "38%", fontSize: 12, fontWeight: 600, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.07em" }}>
                     Feature
                   </th>
                   {["Free", "Growth", "Scale", "Enterprise"].map(h => (
@@ -1180,11 +1186,11 @@ const Pricing = () => {
                       key={h}
                       className="text-center py-3 px-4"
                       style={{
-                        fontSize: 11,
+                        fontSize: 12,
                         fontWeight: h === "Scale" ? 700 : 600,
                         color: h === "Scale" ? "#7C3AED" : "#9CA3AF",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.06em",
+                        textTransform: "uppercase" as const,
+                        letterSpacing: "0.07em",
                         backgroundColor: h === "Scale" ? "rgba(124,58,237,0.08)" : "transparent",
                         borderTop: h === "Scale" ? "3px solid #7C3AED" : "none",
                         borderBottom: h === "Scale" ? "2px solid #7C3AED" : "none",
@@ -1205,7 +1211,7 @@ const Pricing = () => {
                           backgroundColor: "#EDE9FE",
                           padding: "10px 16px",
                           fontSize: 11,
-                          fontWeight: 800,
+                          fontWeight: 600,
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
                           color: "#5B21B6",
