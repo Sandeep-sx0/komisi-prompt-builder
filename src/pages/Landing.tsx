@@ -263,36 +263,39 @@ const Landing = () => {
         <div className="relative z-10 pt-32 pb-20 px-6">
           <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-white/60 border border-white/20 px-3 py-1.5 mb-6">
                   ✦ Built for mobile app developers
                 </span>
               </motion.div>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-white leading-[1.05] mb-6"
-              >
-                Affiliate marketing<br />
-                infrastructure for<br />
-                mobile apps.
-              </motion.h1>
+              <div className="mb-6">
+                {["Affiliate marketing", "infrastructure for", "mobile apps."].map((line, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 + i * 0.15 }}
+                    className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-white leading-[1.05]"
+                  >
+                    {line}
+                  </motion.div>
+                ))}
+              </div>
 
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.15 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
                 className="text-base text-white/60 mb-8 max-w-[480px]"
               >
                 Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
               </motion.p>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.9 }}
                 className="flex flex-col sm:flex-row gap-3 mb-4"
               >
                 <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/10 border-white/20 text-white placeholder:text-white/40" />
@@ -301,11 +304,11 @@ const Landing = () => {
                 </Link>
               </motion.div>
 
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }} className="flex items-center gap-4 mb-2">
+              <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.1 }} className="flex items-center gap-4 mb-2">
                 <Link to="/demo" className="text-sm text-white/60 hover:text-white transition-colors">Book a Demo →</Link>
               </motion.div>
 
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.35 }} className="text-xs text-white/40 mt-4">
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.3 }} className="text-xs text-white/40 mt-4">
                 Trusted by 200+ indie app developers · No credit card required
               </motion.p>
             </div>
@@ -371,7 +374,13 @@ const Landing = () => {
             { value: 60, suffix: "%", label: "Average CAC reduction" },
             { value: 99.9, suffix: "%", label: "Attribution accuracy", decimals: 1 },
           ].map((s, i) => (
-            <Reveal key={i} delay={i * 0.1}>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
               <div className={cn(
                 "py-4",
                 i < 3 && "md:border-r md:border-white/10"
@@ -389,7 +398,7 @@ const Landing = () => {
                 </p>
                 <p className="text-xs uppercase tracking-wider" style={{ color: "#6B7280" }}>{s.label}</p>
               </div>
-            </Reveal>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -399,7 +408,12 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6" style={{ backgroundColor: "#0A0010" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <Reveal>
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
             <div>
               <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-6">
                 Integrate in under<br />30 minutes.
@@ -424,9 +438,14 @@ const Landing = () => {
                 </div>
               </div>
             </div>
-          </Reveal>
+          </motion.div>
 
-          <Reveal delay={0.15}>
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+          >
             <div>
               <div className="flex" style={{ backgroundColor: "#160020" }}>
                 {Object.keys(codeExamples).map(tab => (
@@ -480,7 +499,7 @@ const Landing = () => {
                 ))}
               </div>
             </div>
-          </Reveal>
+          </motion.div>
         </div>
       </section>
 
@@ -491,8 +510,13 @@ const Landing = () => {
       {/* Feature 1 — Attribution flow (white bg) */}
       <section className="w-full" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <Reveal>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
                   Attribute every install without IDFA or cookies.
@@ -516,10 +540,15 @@ const Landing = () => {
                   </div>
                 </div>
               </div>
-            </Reveal>
-            <Reveal delay={0.15}>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            >
               <AttributionFlowAnimation />
-            </Reveal>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -528,10 +557,22 @@ const Landing = () => {
       <section className="w-full" style={{ backgroundColor: "#F5F0FF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <Reveal className="order-2 lg:order-1">
+            <motion.div
+              className="order-2 lg:order-1"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            >
               <FraudDetectionAnimation />
-            </Reveal>
-            <Reveal delay={0.15} className="order-1 lg:order-2">
+            </motion.div>
+            <motion.div
+              className="order-1 lg:order-2"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
                   AI fraud detection that protects your program automatically.
@@ -555,7 +596,7 @@ const Landing = () => {
                   </div>
                 </div>
               </div>
-            </Reveal>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -564,7 +605,12 @@ const Landing = () => {
       <section className="w-full" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <Reveal>
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
                   Know exactly which creator drove every install and subscription.
@@ -588,10 +634,15 @@ const Landing = () => {
                   </div>
                 </div>
               </div>
-            </Reveal>
-            <Reveal delay={0.15}>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            >
               <AnalyticsAnimation />
-            </Reveal>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -600,10 +651,22 @@ const Landing = () => {
       <section className="w-full" style={{ backgroundColor: "#F5F0FF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <Reveal className="order-2 lg:order-1">
+            <motion.div
+              className="order-2 lg:order-1"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            >
               <PayoutsAnimation />
-            </Reveal>
-            <Reveal delay={0.15} className="order-1 lg:order-2">
+            </motion.div>
+            <motion.div
+              className="order-1 lg:order-2"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
                   Pay every creator automatically. No invoices, no chasing.
@@ -627,7 +690,7 @@ const Landing = () => {
                   </div>
                 </div>
               </div>
-            </Reveal>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -646,20 +709,26 @@ const Landing = () => {
             </p>
           </Reveal>
 
-          <Reveal className="mt-12">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-              {integrations.map(item => (
-                <div key={item.name} className="border border-border bg-card rounded-xl p-5 text-center hover:shadow-md hover:-translate-y-0.5 transition-all cursor-default group" style={{ borderColor: undefined }}>
-                  <img
-                    src={item.logo}
-                    alt={item.name}
-                    className="w-12 h-12 mx-auto mb-3 object-contain"
-                  />
-                  <span className="text-sm font-medium text-text-secondary">{item.name}</span>
-                </div>
-              ))}
-            </div>
-          </Reveal>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mt-12">
+            {integrations.map((item, i) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, scale: 0.85 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
+                whileHover={{ scale: 1.06, boxShadow: "0 8px 24px rgba(124,58,237,0.15)" }}
+                className="border border-border bg-card rounded-xl p-5 text-center cursor-default"
+              >
+                <img
+                  src={item.logo}
+                  alt={item.name}
+                  className="w-12 h-12 mx-auto mb-3 object-contain"
+                />
+                <span className="text-sm font-medium text-text-secondary">{item.name}</span>
+              </motion.div>
+            ))}
+          </div>
 
           <Reveal className="mt-12">
             <div className="p-6 max-w-2xl mx-auto" style={{ borderLeft: '2px solid #7C3AED' }}>
@@ -804,15 +873,33 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#1E0A3C" }}>
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")" }} />
-        <Reveal className="max-w-3xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4">
+        <div className="max-w-3xl mx-auto text-center relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4"
+          >
             Your next 1,000 installs<br />
             are one affiliate program away.
-          </h2>
-          <p className="text-base mb-10" style={{ color: "#9CA3AF" }}>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base mb-10" style={{ color: "#9CA3AF" }}
+          >
             Get started today or book a demo for a personal walkthrough.
-          </p>
-          <div className="flex items-center justify-center gap-4 mb-6">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
             <Link to="/signup">
               <Button size="lg" className="h-12 px-8 bg-white text-foreground hover:bg-white/90 border border-transparent">
                 Get Started Free <ArrowRight size={16} />
@@ -823,11 +910,17 @@ const Landing = () => {
                 Book a Demo
               </Button>
             </Link>
-          </div>
-          <p className="text-xs" style={{ color: "#6B7280" }}>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-xs" style={{ color: "#6B7280" }}
+          >
             200+ app developers · No credit card required · Setup in 30 minutes
-          </p>
-        </Reveal>
+          </motion.p>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
