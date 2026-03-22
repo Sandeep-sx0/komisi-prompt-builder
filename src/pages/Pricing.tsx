@@ -1211,7 +1211,7 @@ const Pricing = () => {
                           backgroundColor: "#EDE9FE",
                           padding: "10px 16px",
                           fontSize: 11,
-                          fontWeight: 800,
+                          fontWeight: 600,
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
                           color: "#5B21B6",
