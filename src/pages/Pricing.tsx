@@ -562,20 +562,24 @@ const Pricing = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ ...anim, delay: 0.1 + i * 0.08 }}
-                className="relative flex flex-col overflow-hidden"
+                className="relative flex flex-col"
                 style={{
                   borderRadius: 20,
+                  minHeight: 580,
                   backgroundColor: isDark ? "#1E0A3C" : "#FFFFFF",
                   border: isPopular
                     ? "2px solid #7C3AED"
                     : isDark
-                    ? "1px solid rgba(124,58,237,0.3)"
+                    ? "1px solid rgba(124,58,237,0.45)"
                     : "1px solid rgba(255,255,255,0.1)",
                   boxShadow: isPopular
                     ? "0 0 0 1px #7C3AED, 0 24px 80px rgba(124,58,237,0.25)"
+                    : isDark
+                    ? "0 0 0 1px rgba(124,58,237,0.2), 0 24px 60px rgba(124,58,237,0.2)"
                     : "none",
                   transform: isPopular ? "scale(1.035)" : "none",
                   zIndex: isPopular ? 2 : 1,
+                  overflow: isPopular ? "visible" : "hidden",
                 }}
               >
                 {/* Enterprise shimmer bg */}
