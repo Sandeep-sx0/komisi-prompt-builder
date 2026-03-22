@@ -1024,7 +1024,7 @@ const Pricing = () => {
               <button
                 className="transition-colors duration-200"
                 style={{
-                  backgroundColor: "#0891B2",
+                  backgroundColor: "#09090B",
                   color: "#FFFFFF",
                   padding: "14px 36px",
                   borderRadius: 10,
