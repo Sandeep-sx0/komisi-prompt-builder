@@ -84,7 +84,7 @@ const PayoutsAnimation = () => {
   return (
     <div
       className="relative w-full overflow-hidden flex items-center justify-center"
-      style={{ backgroundColor: "#1E0A3C", borderRadius: "16px", height: "380px" }}
+      style={{ backgroundColor: "#111827", borderRadius: "16px", height: "380px" }}
     >
       <AnimatePresence>
         {showCard && (
@@ -162,7 +162,7 @@ const PayoutsAnimation = () => {
                   ) : (
                     <motion.span key="process" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                       transition={{ duration: 0.6 }} className="text-[10px] px-3 py-1.5"
-                      style={{ backgroundColor: "#7C3AED", color: "#FFFFFF", borderRadius: "6px" }}>Process All Payouts</motion.span>
+                      style={{ backgroundColor: "#FFFFFF", color: "#09090B", borderRadius: "6px" }}>Process All Payouts</motion.span>
                   )}
                 </AnimatePresence>
               </div>

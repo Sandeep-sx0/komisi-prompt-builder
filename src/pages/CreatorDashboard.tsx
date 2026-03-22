@@ -105,7 +105,7 @@ const CreatorDashboard = () => {
         </div>
 
         {/* Next Payout */}
-        <div className="bg-card border border-border rounded-xl p-5 border-l-[3px] border-l-transparent" style={{ borderImage: "linear-gradient(135deg, #A78BFA, #EC4899, #F59E0B) 1", borderImageSlice: "0 0 0 3" }}>
+        <div className="bg-card border border-border rounded-xl p-5 border-l-[3px] border-l-transparent" style={{ borderImage: "linear-gradient(135deg, #0891B2, #EC4899, #F59E0B) 1", borderImageSlice: "0 0 0 3" }}>
           <div className="flex items-center justify-between">
             <div>
               <div className="text-lg font-semibold text-foreground">💰 Next Payout: $890</div>

@@ -28,7 +28,7 @@ export const AILoading: React.FC<AILoadingProps> = ({ steps, className, autoPlay
 
   return (
     <div className={cn("max-w-md mx-auto rounded-xl border border-border p-6 bg-card", className)}
-         style={{ boxShadow: "0 0 0 1px rgba(167,139,250,0.1), 0 0 20px rgba(167,139,250,0.05)" }}>
+         style={{ boxShadow: "0 0 0 1px rgba(8,145,178,0.1), 0 0 20px rgba(8,145,178,0.05)" }}>
       <div className="space-y-4">
         {steps.map((step, i) => {
           const isCompleted = i < currentStep;
@@ -42,10 +42,10 @@ export const AILoading: React.FC<AILoadingProps> = ({ steps, className, autoPlay
                 !isCompleted && !isActive && "border-2 border-dashed border-border"
               )}
               style={isActive ? { 
-                borderImage: "linear-gradient(135deg, #A78BFA, #EC4899, #F59E0B) 1",
+                borderImage: "linear-gradient(135deg, #0891B2, #EC4899, #F59E0B) 1",
                 borderRadius: "50%",
                 border: "2px solid",
-                borderColor: "#A78BFA"
+                borderColor: "#0891B2"
               } : {}}>
                 {isCompleted && <Check size={14} className="text-primary-foreground" />}
               </div>

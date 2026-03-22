@@ -73,7 +73,7 @@ const AttributionFlowAnimation = () => {
     { text: "KomisiSDK.resolve()", color: "#FFFFFF" },
     { text: "> Checking fingerprint...", color: "#6A737D" },
     { text: "> ✔ Match found", color: "#4ADE80" },
-    { text: "> Confidence score: 0.94", color: "#A78BFA" },
+    { text: "> Confidence score: 0.94", color: "#0891B2" },
     { text: "> ✔ Attributed to @sarah_creates", color: "#4ADE80" },
   ];
   const visibleLineCount = useFadingLines(terminalLines, step === 4, 600);
@@ -81,7 +81,7 @@ const AttributionFlowAnimation = () => {
   return (
     <div
       className="relative w-full overflow-hidden flex items-center justify-center"
-      style={{ backgroundColor: "#1E0A3C", borderRadius: "16px", height: "380px" }}
+      style={{ backgroundColor: "#111827", borderRadius: "16px", height: "380px" }}
     >
       <AnimatePresence mode="wait">
         {/* STEP 1: Creator shares link */}
@@ -95,12 +95,12 @@ const AttributionFlowAnimation = () => {
                     <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.8.1V9.01a6.27 6.27 0 0 0-.8-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.87a8.16 8.16 0 0 0 4.77 1.52V6.96a4.85 4.85 0 0 1-1.01-.27z" />
                   </svg>
                 </div>
-                <span className="text-sm" style={{ color: "#1E0A3C", fontWeight: 400 }}>@sarah_creates</span>
+                <span className="text-sm" style={{ color: "#111827", fontWeight: 400 }}>@sarah_creates</span>
               </div>
               <p className="text-xs mb-4" style={{ color: "#6B7280" }}>
                 ▶ "Best productivity app 🔥 link in bio"
               </p>
-              <div className="flex items-center gap-1 text-xs" style={{ color: "#7C3AED" }}>
+              <div className="flex items-center gap-1 text-xs" style={{ color: "#0891B2" }}>
                 <span>tap link ↗</span>
                 <motion.span
                   animate={cursorTap ? { scale: [1, 0.7, 1] } : {}}
@@ -118,9 +118,9 @@ const AttributionFlowAnimation = () => {
             className="absolute inset-0 flex items-center justify-center p-8">
             <div className="w-[260px] p-5 shadow-xl" style={{ backgroundColor: "#FFFFFF", borderRadius: "16px" }}>
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-12 h-12" style={{ borderRadius: "12px", background: "linear-gradient(135deg, #1E0A3C, #4C1D95)" }} />
+                <div className="w-12 h-12" style={{ borderRadius: "12px", background: "linear-gradient(135deg, #111827, #111827)" }} />
                 <div>
-                  <p className="text-sm" style={{ color: "#1E0A3C", fontWeight: 400 }}>FocusTimer</p>
+                  <p className="text-sm" style={{ color: "#111827", fontWeight: 400 }}>FocusTimer</p>
                   <div className="flex items-center gap-1">
                     <span className="text-[10px]" style={{ color: "#F59E0B" }}>★★★★★</span>
                     <span className="text-[10px]" style={{ color: "#9CA3AF" }}>4.8 (2.4k)</span>
@@ -131,13 +131,13 @@ const AttributionFlowAnimation = () => {
               <div className="relative">
                 <motion.button
                   className="w-full py-2 text-xs text-white text-center"
-                  style={{ backgroundColor: "#7C3AED", borderRadius: "20px", fontWeight: 400 }}
+                  style={{ backgroundColor: "#0891B2", borderRadius: "20px", fontWeight: 400 }}
                   animate={cursorTap ? { scale: [1, 0.95, 1] } : {}}
                   transition={{ duration: 0.15 }}
                 >GET</motion.button>
                 {getRingProgress > 0 && (
-                  <div className="mt-2 w-full h-1 overflow-hidden" style={{ backgroundColor: "rgba(124,58,237,0.15)", borderRadius: "2px" }}>
-                    <div className="h-full" style={{ backgroundColor: "#7C3AED", borderRadius: "2px", width: `${getRingProgress * 100}%`, transition: "width 16ms linear" }} />
+                  <div className="mt-2 w-full h-1 overflow-hidden" style={{ backgroundColor: "rgba(8,145,178,0.15)", borderRadius: "2px" }}>
+                    <div className="h-full" style={{ backgroundColor: "#0891B2", borderRadius: "2px", width: `${getRingProgress * 100}%`, transition: "width 16ms linear" }} />
                   </div>
                 )}
               </div>
@@ -173,7 +173,7 @@ const AttributionFlowAnimation = () => {
           <motion.div key="s4" {...fade} transition={{ duration: fadeIn.duration, ease: fadeIn.ease }}
             className="absolute inset-0 flex items-center justify-center p-8">
             <div className="w-full max-w-[340px] p-5 font-mono text-[12px] leading-relaxed"
-              style={{ backgroundColor: "#0D0010", borderRadius: "12px", border: "1px solid rgba(167,139,250,0.15)" }}>
+              style={{ backgroundColor: "#09090B", borderRadius: "12px", border: "1px solid rgba(8,145,178,0.15)" }}>
               <div className="flex items-center gap-1.5 mb-4">
                 <span className="w-2.5 h-2.5" style={{ backgroundColor: "#FF5F57", borderRadius: "50%" }} />
                 <span className="w-2.5 h-2.5" style={{ backgroundColor: "#FEBC2E", borderRadius: "50%" }} />
@@ -197,14 +197,14 @@ const AttributionFlowAnimation = () => {
             <div className="w-[280px] p-6 shadow-xl" style={{ backgroundColor: "#FFFFFF", borderRadius: "16px" }}>
               <div className="flex items-center gap-2 mb-4">
                 <span className="text-lg">💰</span>
-                <span className="text-sm" style={{ color: "#1E0A3C", fontWeight: 400 }}>Commission Queued</span>
+                <span className="text-sm" style={{ color: "#111827", fontWeight: 400 }}>Commission Queued</span>
                 <span className="relative flex h-2 w-2 ml-1">
                   <span className="animate-ping absolute inline-flex h-full w-full opacity-75" style={{ backgroundColor: "#4ADE80", borderRadius: "50%" }} />
                   <span className="relative inline-flex h-2 w-2" style={{ backgroundColor: "#4ADE80", borderRadius: "50%" }} />
                 </span>
               </div>
               <p className="text-xs mb-1" style={{ color: "#6B7280" }}>@sarah_creates</p>
-              <p className="text-2xl mb-1" style={{ color: "#1E0A3C", fontWeight: 400 }}>$3.00</p>
+              <p className="text-2xl mb-1" style={{ color: "#111827", fontWeight: 400 }}>$3.00</p>
               <p className="text-[11px] mb-1" style={{ color: "#9CA3AF" }}>Install commission</p>
               <p className="text-[11px] mb-4" style={{ color: "#9CA3AF" }}>Payout: Mar 15</p>
               <span className="text-[10px] px-2 py-0.5" style={{ color: "#4ADE80", backgroundColor: "rgba(74,222,128,0.1)", border: "1px solid rgba(74,222,128,0.2)" }}>
