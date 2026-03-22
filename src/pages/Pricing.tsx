@@ -1362,8 +1362,8 @@ const Pricing = () => {
             <Link to="/signup">
               <button
                 style={{
-                  backgroundColor: "#0891B2",
-                  color: "#FFFFFF",
+                  backgroundColor: "#FFFFFF",
+                  color: "#09090B",
                   padding: "14px 36px",
                   borderRadius: 10,
                   fontWeight: 600,
