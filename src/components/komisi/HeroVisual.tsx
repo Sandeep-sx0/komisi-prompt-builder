@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { motion } from 'motion/react';
 import { CountingNumber } from '@/components/animate-ui/primitives/texts/counting-number';
 
 const HeroVisual: React.FC = () => {
@@ -15,8 +16,8 @@ const HeroVisual: React.FC = () => {
 
   return (
     <div ref={ref} className="relative w-full h-full" style={{ minHeight: 520 }}>
-      {/* Actual /dashboard embedded via iframe, scaled down, bleeding right */}
-      <div
+      {/* Dashboard iframe — floating */}
+      <motion.div
         className="absolute top-0 overflow-hidden"
         style={{
           left: 0,
@@ -25,6 +26,8 @@ const HeroVisual: React.FC = () => {
           borderRadius: '16px 0 0 16px',
           boxShadow: '0 32px 80px rgba(0,0,0,0.18)',
         }}
+        animate={{ y: [0, -10, 0] }}
+        transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
       >
         <iframe
           src="/dashboard"
@@ -38,10 +41,10 @@ const HeroVisual: React.FC = () => {
             pointerEvents: 'none',
           }}
         />
-      </div>
+      </motion.div>
 
-      {/* Creator card — foreground overlapping element */}
-      <div
+      {/* Creator card — floating at different phase */}
+      <motion.div
         className="absolute z-10 rounded-2xl"
         style={{
           left: '-20px',
@@ -52,6 +55,8 @@ const HeroVisual: React.FC = () => {
           boxShadow: '0 24px 64px rgba(0,0,0,0.14)',
           pointerEvents: 'none',
         }}
+        animate={{ y: [0, -14, -4, 0] }}
+        transition={{ duration: 3, ease: "easeInOut", repeat: Infinity, delay: 0.8 }}
       >
         {/* Header */}
         <div className="flex items-center gap-3 mb-3">
@@ -115,7 +120,7 @@ const HeroVisual: React.FC = () => {
         </div>
 
         <p className="text-xs" style={{ color: '#6B7280' }}>Next payout: $630 · Mar 15</p>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -867,15 +867,33 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#1E0A3C" }}>
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")" }} />
-        <Reveal className="max-w-3xl mx-auto text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4">
+        <div className="max-w-3xl mx-auto text-center relative z-10">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4"
+          >
             Your next 1,000 installs<br />
             are one affiliate program away.
-          </h2>
-          <p className="text-base mb-10" style={{ color: "#9CA3AF" }}>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-base mb-10" style={{ color: "#9CA3AF" }}
+          >
             Get started today or book a demo for a personal walkthrough.
-          </p>
-          <div className="flex items-center justify-center gap-4 mb-6">
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex items-center justify-center gap-4 mb-6"
+          >
             <Link to="/signup">
               <Button size="lg" className="h-12 px-8 bg-white text-foreground hover:bg-white/90 border border-transparent">
                 Get Started Free <ArrowRight size={16} />
@@ -886,11 +904,17 @@ const Landing = () => {
                 Book a Demo
               </Button>
             </Link>
-          </div>
-          <p className="text-xs" style={{ color: "#6B7280" }}>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-xs" style={{ color: "#6B7280" }}
+          >
             200+ app developers · No credit card required · Setup in 30 minutes
-          </p>
-        </Reveal>
+          </motion.p>
+        </div>
       </section>
 
       {/* ═══════════════════════════════════════════
