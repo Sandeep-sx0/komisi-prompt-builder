@@ -88,22 +88,15 @@ const codeExamples: Record<string, string[]> = {
 
 /* ── Testimonial data ── */
 const testimonials = [
-  {
-    quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.",
-    name: "Sarah Chen", title: "Head of Growth", company: "MindfulApp", avatar: "/avatars/user-1.jpg",
-  },
-  {
-    quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.",
-    name: "James Park", title: "Founder", company: "FocusTimer", avatar: "/avatars/user-2.jpg",
-  },
-  {
-    quote: "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely.",
-    name: "Marcus Lee", title: "Growth Lead", company: "CalorieSnap", avatar: "/avatars/user-3.jpg",
-  },
-  {
-    quote: "The fraud detection alone paid for itself. We caught fake installs in the first week.",
-    name: "Priya Nair", title: "Founder", company: "MindfulApp", avatar: "/avatars/user-4.jpg",
-  },
+  { quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.", name: "Sarah Chen", handle: "@sarahchen", role: "Founder", company: "MindfulApp", date: "Jan 2026", avatar: "/avatars/user-1.jpg" },
+  { quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.", name: "James Park", handle: "@jamespark", role: "Developer", company: "FocusTimer", date: "Feb 2026", avatar: "/avatars/user-2.jpg" },
+  { quote: "I can finally see which creator drove which subscription. That data alone is worth the price.", name: "Marcus Lee", handle: "@marcuslee", role: "Growth", company: "SleepWell", date: "Dec 2025", avatar: "/avatars/user-3.jpg" },
+  { quote: "Automated payouts saved me hours every month. Creators love getting paid on time without me chasing invoices.", name: "Priya Nair", handle: "@priyanair", role: "Founder", company: "HabitKit", date: "Jan 2026", avatar: "/avatars/user-4.jpg" },
+  { quote: "The fraud detection flagged a click farm on day two. Would have wasted thousands without it.", name: "David Park", handle: "@davidpark", role: "Developer", company: "CalTrack", date: "Feb 2026", avatar: "/avatars/user-5.jpg" },
+  { quote: "Komisi is the first affiliate tool that actually understands mobile. Everything else was built for web.", name: "Aisha Okonkwo", handle: "@aishao", role: "Founder", company: "MeditateNow", date: "Jan 2026", avatar: "/avatars/user-6.jpg" },
+  { quote: "Went from zero affiliates to 40 active creators in six weeks. The marketplace made discovery effortless.", name: "Tom Rivera", handle: "@tomrivera", role: "Growth", company: "RunCoach", date: "Dec 2025", avatar: "/avatars/user-7.jpg" },
+  { quote: "Three lines of SDK code and attribution was live. I expected it to take a week.", name: "Nina Walsh", handle: "@ninawalsh", role: "Developer", company: "StudyFlash", date: "Feb 2026", avatar: "/avatars/user-8.jpg" },
+  { quote: "Our top creator drives 22% of all new subscribers. Komisi made that relationship visible and scalable.", name: "Kai Nakamura", handle: "@kainakamura", role: "Founder", company: "LanguagePal", date: "Jan 2026", avatar: "/avatars/user-9.jpg" },
 ];
 
 /* ── Integration data with logos ── */
