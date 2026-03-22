@@ -1327,7 +1327,7 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ ...anim, delay: 0.08 }}
-            className="mt-4"
+            className="mt-4 text-base"
             style={{ fontSize: 17, color: "rgba(255,255,255,0.5)" }}
           >
             No credit card required. Your first 5 affiliates are always free.
