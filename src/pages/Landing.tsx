@@ -447,7 +447,7 @@ const Landing = () => {
                 "py-4",
                 i < 3 && "md:border-r md:border-white/10"
               )}>
-                <p className="text-5xl md:text-6xl text-white font-normal mb-3 tracking-tight">
+                <p className={cn("text-5xl md:text-6xl font-normal mb-3 tracking-tight", (s as any).amber ? "text-[#F59E0B]" : "text-white")}>
                   <CountingNumber
                     number={s.value}
                     prefix={s.prefix || ""}
