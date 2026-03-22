@@ -75,7 +75,7 @@ const AnalyticsAnimation = () => {
   return (
     <div
       className="relative w-full overflow-hidden flex items-center justify-center"
-      style={{ backgroundColor: "#1E0A3C", borderRadius: "16px", height: "380px" }}
+      style={{ backgroundColor: "#111827", borderRadius: "16px", height: "380px" }}
     >
       <AnimatePresence>
         {showCard && (
@@ -133,7 +133,7 @@ const AnalyticsAnimation = () => {
                             display: "grid",
                             gridTemplateColumns: "minmax(160px, 1fr) minmax(120px, 1fr) 1fr 1fr 1fr",
                             borderTop: "1px solid #F3F4F6",
-                            backgroundColor: isSpotlit ? "rgba(124,58,237,0.06)" : "transparent",
+                            backgroundColor: isSpotlit ? "rgba(8,145,178,0.06)" : "transparent",
                             transition: "background-color 800ms ease-in-out",
                           }}>
                           <span className="flex items-center gap-1 min-w-0" style={{ color: "#111827" }}>
@@ -142,7 +142,7 @@ const AnalyticsAnimation = () => {
                               {isSpotlit && showBadge && (
                                 <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                                   transition={{ duration: 0.5 }} className="text-[8px] px-1.5 py-0.5 whitespace-nowrap flex-shrink-0"
-                                  style={{ backgroundColor: "#7C3AED", color: "#FFFFFF", borderRadius: "4px" }}>🏆 Top</motion.span>
+                                  style={{ backgroundColor: "#0891B2", color: "#FFFFFF", borderRadius: "4px" }}>🏆 Top</motion.span>
                               )}
                             </AnimatePresence>
                           </span>
@@ -171,7 +171,7 @@ const AnalyticsAnimation = () => {
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                   className="absolute top-6 left-1/2 -translate-x-1/2 px-4 py-3 text-xs text-white max-w-[260px] text-center"
-                  style={{ backgroundColor: "#1E0A3C", borderRadius: "8px", border: "1px solid rgba(167,139,250,0.2)" }}>
+                  style={{ backgroundColor: "#111827", borderRadius: "8px", border: "1px solid rgba(8,145,178,0.2)" }}>
                   ✦ @sarah_creates drove 62% of total revenue this month
                 </motion.div>
               )}

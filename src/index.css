@@ -167,10 +167,10 @@ html {
   background: radial-gradient(ellipse at 60% 40%, #78350F 0%, #92400E 40%, hsl(222 47% 7%) 100%);
 }
 .watercolor-purple {
-  background: radial-gradient(ellipse at 50% 50%, #C4B5FD 0%, #DDD6FE 40%, #EDE9FE 100%);
+  background: radial-gradient(ellipse at 50% 50%, #C4B5FD 0%, #DDD6FE 40%, #CFFAFE 100%);
 }
 .dark .watercolor-purple {
-  background: radial-gradient(ellipse at 50% 50%, #4C1D95 0%, #3B0764 40%, hsl(222 47% 7%) 100%);
+  background: radial-gradient(ellipse at 50% 50%, #111827 0%, #3B0764 40%, hsl(222 47% 7%) 100%);
 }
 .watercolor-mixed {
   background: radial-gradient(ellipse at 20% 30%, #BFDBFE 0%, #FBCFE8 30%, #DDD6FE 60%, #FDE68A 100%);
@@ -180,16 +180,16 @@ html {
 }
 
 .gradient-ai {
-  background: linear-gradient(135deg, #A78BFA, #EC4899, #F59E0B);
+  background: linear-gradient(135deg, #0891B2, #EC4899, #F59E0B);
 }
 .gradient-ai-subtle {
-  background: linear-gradient(135deg, #EDE9FE, #FCE7F3, #FEF3C7);
+  background: linear-gradient(135deg, #CFFAFE, #FCE7F3, #FEF3C7);
 }
 .dark .gradient-ai-subtle {
-  background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(236,72,153,0.15), rgba(245,158,11,0.15));
+  background: linear-gradient(135deg, rgba(8,145,178,0.15), rgba(236,72,153,0.15), rgba(245,158,11,0.15));
 }
 .gradient-ai-text {
-  background: linear-gradient(135deg, #A78BFA, #EC4899, #F59E0B);
+  background: linear-gradient(135deg, #0891B2, #EC4899, #F59E0B);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -199,11 +199,11 @@ html {
 .shimmer-text {
   background: linear-gradient(
     90deg,
-    #A78BFA 0%,
+    #0891B2 0%,
     #EC4899 25%,
     #F59E0B 50%,
     #EC4899 75%,
-    #A78BFA 100%
+    #0891B2 100%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
