@@ -374,7 +374,13 @@ const Landing = () => {
             { value: 60, suffix: "%", label: "Average CAC reduction" },
             { value: 99.9, suffix: "%", label: "Attribution accuracy", decimals: 1 },
           ].map((s, i) => (
-            <Reveal key={i} delay={i * 0.1}>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
               <div className={cn(
                 "py-4",
                 i < 3 && "md:border-r md:border-white/10"
@@ -392,7 +398,7 @@ const Landing = () => {
                 </p>
                 <p className="text-xs uppercase tracking-wider" style={{ color: "#6B7280" }}>{s.label}</p>
               </div>
-            </Reveal>
+            </motion.div>
           ))}
         </div>
       </section>
