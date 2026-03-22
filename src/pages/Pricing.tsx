@@ -1318,7 +1318,7 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={anim}
-            style={{ fontSize: 44, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.15 }}
+            className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight"
           >
             Start for free or schedule a demo for your personal onboarding.
           </motion.h2>
