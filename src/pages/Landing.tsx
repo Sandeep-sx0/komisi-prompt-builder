@@ -174,7 +174,7 @@ const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
 };
 
 const Landing = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeCodeTab, setActiveCodeTab] = useState("Swift");
   const [copied, setCopied] = useState(false);
@@ -183,8 +183,10 @@ const Landing = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setIsPastHero(window.scrollY > window.innerHeight - 80);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -211,25 +213,64 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 1 — NAVIGATION
       ═══════════════════════════════════════════ */}
-      <nav className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
-      )}>
+      <motion.nav
+        animate={{
+          backgroundColor: isPastHero ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0)',
+          boxShadow: isPastHero ? '0 1px 32px rgba(0,0,0,0.06)' : '0 0 0 rgba(0,0,0,0)',
+        }}
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          backdropFilter: isPastHero ? 'blur(16px)' : 'none',
+          borderBottom: isPastHero ? '1px solid rgba(0,0,0,0.06)' : '1px solid transparent',
+        }}
+      >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <span className="text-lg text-foreground tracking-tight font-normal">komisi</span>
+            <motion.span
+              animate={{ color: isPastHero ? '#1E0A3C' : '#FFFFFF' }}
+              transition={{ duration: 0.3 }}
+              className="text-lg tracking-tight font-normal"
+            >
+              komisi
+            </motion.span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-text-secondary hover:text-foreground transition-colors">{l}</a>
+              <motion.a
+                key={l}
+                href={`#${l.toLowerCase()}`}
+                animate={{ color: isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)' }}
+                transition={{ duration: 0.3 }}
+                className="text-sm transition-colors"
+                style={{ cursor: 'pointer' }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#1E0A3C' : '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)'; }}
+              >
+                {l}
+              </motion.a>
             ))}
           </div>
           <div className="hidden md:flex items-center gap-3">
-            <Link to="/login"><Button variant="ghost" size="sm">Login</Button></Link>
+            <Link to="/login">
+              <motion.span
+                animate={{ color: isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)' }}
+                transition={{ duration: 0.3 }}
+                className="text-sm cursor-pointer"
+              >
+                Login
+              </motion.span>
+            </Link>
             <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
           </div>
-          <button className="md:hidden text-foreground" onClick={() => setMobileMenu(!mobileMenu)}>
-            {mobileMenu ? <X size={24} /> : <Menu size={24} />}
+          <button className="md:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
+            <motion.span animate={{ color: isPastHero ? '#1E0A3C' : '#FFFFFF' }} transition={{ duration: 0.3 }}>
+              {mobileMenu ? <X size={24} /> : <Menu size={24} />}
+            </motion.span>
           </button>
         </div>
         <AnimatePresence>
@@ -248,7 +289,7 @@ const Landing = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </motion.nav>
 
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
