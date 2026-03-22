@@ -21,6 +21,7 @@ import HeroDashboard from "@/components/komisi/HeroDashboard";
 import HeroVisual from "@/components/komisi/HeroVisual";
 import DarkVeil from "@/components/Backgrounds/DarkVeil";
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
+import { IntegrationGrid } from "@/components/komisi/IntegrationGrid";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
@@ -725,26 +726,7 @@ const Landing = () => {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mt-12">
-            {integrations.map((item, i) => (
-              <motion.div
-                key={item.name}
-                initial={{ opacity: 0, scale: 0.85 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: i * 0.04 }}
-                whileHover={{ scale: 1.06, boxShadow: "0 8px 24px rgba(124,58,237,0.15)" }}
-                className="border border-border bg-card rounded-xl p-5 text-center cursor-default"
-              >
-                <img
-                  src={item.logo}
-                  alt={item.name}
-                  className="w-12 h-12 mx-auto mb-3 object-contain rounded-xl"
-                />
-                <span className="text-sm font-medium text-text-secondary">{item.name}</span>
-              </motion.div>
-            ))}
-          </div>
+          <IntegrationGrid integrations={integrations} />
 
           <Reveal className="mt-12">
             <div className="p-6 max-w-2xl mx-auto" style={{ borderLeft: '2px solid #7C3AED' }}>
