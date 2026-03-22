@@ -462,7 +462,7 @@ const Landing = () => {
                 ))}
               </div>
 
-              <div className="relative" style={{ backgroundColor: "#0D0010" }}>
+              <div className="relative" style={{ backgroundColor: "#1a1b26" }}>
                 <button
                   onClick={handleCopy}
                   className="absolute top-4 right-4 text-white/30 hover:text-white/60 transition-colors z-10"
