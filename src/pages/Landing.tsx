@@ -808,52 +808,6 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 10 — TRUST / ENTERPRISE BAR
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#F0E8FF" }}>
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              icon: <Shield size={24} style={{ color: '#7C3AED' }} />,
-              title: "Secure",
-              items: [
-                "Privacy-safe attribution — no IDFA, no cookies",
-                "App Store privacy label: zero impact",
-                "SOC2 compliant infrastructure",
-              ],
-            },
-            {
-              icon: <Zap size={24} style={{ color: '#7C3AED' }} />,
-              title: "Reliable",
-              items: [
-                "99.9% attribution accuracy",
-                "Real-time fraud detection",
-                "Stripe Connect for secure payouts",
-              ],
-            },
-            {
-              icon: <CheckCircle size={24} style={{ color: '#7C3AED' }} />,
-              title: "Simple",
-              items: [
-                "Setup in under 30 minutes",
-                "Works with RevenueCat and Adapty",
-                "Dedicated onboarding support",
-              ],
-            },
-          ].map((col, i) => (
-            <Reveal key={col.title} delay={i * 0.1}>
-              <div className="text-center md:text-left bg-white border border-border p-8">
-
-                <div className="mb-4 mx-auto md:mx-0 w-fit">{col.icon}</div>
-                <h4 className="text-lg font-normal text-foreground mb-3">{col.title}</h4>
-                <ul className="space-y-2">
-                  {col.items.map(item => (
-                    <li key={item} className="text-sm text-text-secondary">{item}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
 
       {/* ═══════════════════════════════════════════
           SECTION 11 — FINAL CTA (Dark)
