@@ -652,7 +652,7 @@ const Pricing = () => {
                             transition={{ duration: 0.12 }}
                             style={{
                               fontSize: 52,
-                              fontWeight: 800,
+                              fontWeight: 700,
                               lineHeight: 1,
                               color: isDark ? "#FFFFFF" : "#0A0010",
                             }}
