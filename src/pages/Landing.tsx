@@ -635,10 +635,22 @@ const Landing = () => {
       <section className="w-full" style={{ backgroundColor: "#F5F0FF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <Reveal className="order-2 lg:order-1">
+            <motion.div
+              className="order-2 lg:order-1"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            >
               <PayoutsAnimation />
-            </Reveal>
-            <Reveal delay={0.15} className="order-1 lg:order-2">
+            </motion.div>
+            <motion.div
+              className="order-1 lg:order-2"
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
               <div>
                 <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
                   Pay every creator automatically. No invoices, no chasing.
@@ -662,7 +674,7 @@ const Landing = () => {
                   </div>
                 </div>
               </div>
-            </Reveal>
+            </motion.div>
           </div>
         </div>
       </section>
