@@ -134,18 +134,18 @@ const sdkPlatforms = [
   { name: "Unity", logo: "/logos/unity.webp" },
 ];
 
-/* ── Syntax highlighting helper ── */
+/* ── Syntax highlighting helper (Tokyo Night) ── */
 const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
-  const lineNum = <span className="inline-block w-6 mr-4 text-right select-none" style={{ color: "#4B5563" }}>{num}</span>;
+  const lineNum = <span className="inline-block w-6 mr-4 text-right select-none" style={{ color: "#565f89" }}>{num}</span>;
   if (line.startsWith("//")) {
-    return <div className="leading-6">{lineNum}<span style={{ color: "#6A737D" }}>{line}</span></div>;
+    return <div className="leading-6">{lineNum}<span style={{ color: "#565f89", fontStyle: "italic" }}>{line}</span></div>;
   }
   if (line.includes("import")) {
-    return <div className="leading-6">{lineNum}<span style={{ color: "#79B8FF" }}>import</span><span style={{ color: "#E1E4E8" }}>{line.replace("import", "")}</span></div>;
+    return <div className="leading-6">{lineNum}<span style={{ color: "#bb9af7" }}>import</span><span style={{ color: "#c0caf5" }}>{line.replace("import", "")}</span></div>;
   }
   if (line.includes("await")) {
     const rest = line.replace("await ", "");
-    return <div className="leading-6">{lineNum}<span style={{ color: "#79B8FF" }}>await </span><span style={{ color: "#E1E4E8" }}>{rest}</span></div>;
+    return <div className="leading-6">{lineNum}<span style={{ color: "#bb9af7" }}>await </span><span style={{ color: "#c0caf5" }}>{rest}</span></div>;
   }
   if (line.includes('"') || line.includes("'")) {
     const parts: React.ReactNode[] = [];
@@ -155,11 +155,11 @@ const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
     for (let i = 0; i < line.length; i++) {
       if (line[i] === quoteChar) {
         if (inString) {
-          parts.push(<span key={i} style={{ color: "#85E89D" }}>{quoteChar}{current}{quoteChar}</span>);
+          parts.push(<span key={i} style={{ color: "#9ece6a" }}>{quoteChar}{current}{quoteChar}</span>);
           current = "";
           inString = false;
         } else {
-          parts.push(<span key={`b${i}`} style={{ color: "#E1E4E8" }}>{current}</span>);
+          parts.push(<span key={`b${i}`} style={{ color: "#c0caf5" }}>{current}</span>);
           current = "";
           inString = true;
         }
@@ -167,14 +167,14 @@ const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
         current += line[i];
       }
     }
-    if (current) parts.push(<span key="end" style={{ color: "#E1E4E8" }}>{current}</span>);
+    if (current) parts.push(<span key="end" style={{ color: "#c0caf5" }}>{current}</span>);
     return <div className="leading-6">{lineNum}{parts}</div>;
   }
-  return <div className="leading-6">{lineNum}<span style={{ color: "#E1E4E8" }}>{line || "\u00A0"}</span></div>;
+  return <div className="leading-6">{lineNum}<span style={{ color: "#c0caf5" }}>{line || "\u00A0"}</span></div>;
 };
 
 const Landing = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeCodeTab, setActiveCodeTab] = useState("Swift");
   const [copied, setCopied] = useState(false);
@@ -183,8 +183,10 @@ const Landing = () => {
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      setIsPastHero(window.scrollY > window.innerHeight - 80);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -211,25 +213,64 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 1 — NAVIGATION
       ═══════════════════════════════════════════ */}
-      <nav className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"
-      )}>
+      <motion.nav
+        animate={{
+          backgroundColor: isPastHero ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0)',
+          boxShadow: isPastHero ? '0 1px 32px rgba(0,0,0,0.06)' : '0 0 0 rgba(0,0,0,0)',
+        }}
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 100,
+          backdropFilter: isPastHero ? 'blur(16px)' : 'none',
+          borderBottom: isPastHero ? '1px solid rgba(0,0,0,0.06)' : '1px solid transparent',
+        }}
+      >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <span className="text-lg text-foreground tracking-tight font-normal">komisi</span>
+            <motion.span
+              animate={{ color: isPastHero ? '#1E0A3C' : '#FFFFFF' }}
+              transition={{ duration: 0.3 }}
+              className="text-lg tracking-tight font-normal"
+            >
+              komisi
+            </motion.span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-text-secondary hover:text-foreground transition-colors">{l}</a>
+              <motion.a
+                key={l}
+                href={`#${l.toLowerCase()}`}
+                animate={{ color: isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)' }}
+                transition={{ duration: 0.3 }}
+                className="text-sm transition-colors"
+                style={{ cursor: 'pointer' }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#1E0A3C' : '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)'; }}
+              >
+                {l}
+              </motion.a>
             ))}
           </div>
           <div className="hidden md:flex items-center gap-3">
-            <Link to="/login"><Button variant="ghost" size="sm">Login</Button></Link>
+            <Link to="/login">
+              <motion.span
+                animate={{ color: isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)' }}
+                transition={{ duration: 0.3 }}
+                className="text-sm cursor-pointer"
+              >
+                Login
+              </motion.span>
+            </Link>
             <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
           </div>
-          <button className="md:hidden text-foreground" onClick={() => setMobileMenu(!mobileMenu)}>
-            {mobileMenu ? <X size={24} /> : <Menu size={24} />}
+          <button className="md:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
+            <motion.span animate={{ color: isPastHero ? '#1E0A3C' : '#FFFFFF' }} transition={{ duration: 0.3 }}>
+              {mobileMenu ? <X size={24} /> : <Menu size={24} />}
+            </motion.span>
           </button>
         </div>
         <AnimatePresence>
@@ -248,7 +289,7 @@ const Landing = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </motion.nav>
 
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
@@ -447,7 +488,7 @@ const Landing = () => {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
             <div>
-              <div className="flex" style={{ backgroundColor: "#160020" }}>
+              <div className="flex" style={{ backgroundColor: "#1a1b26" }}>
                 {Object.keys(codeExamples).map(tab => (
                   <button
                     key={tab}
@@ -462,7 +503,7 @@ const Landing = () => {
                 ))}
               </div>
 
-              <div className="relative" style={{ backgroundColor: "#0D0010" }}>
+              <div className="relative" style={{ backgroundColor: "#1a1b26" }}>
                 <button
                   onClick={handleCopy}
                   className="absolute top-4 right-4 text-white/30 hover:text-white/60 transition-colors z-10"
@@ -476,9 +517,9 @@ const Landing = () => {
                 </pre>
               </div>
 
-              <div className="flex items-center justify-between px-4 py-3 border-t border-white/5" style={{ backgroundColor: "#160020" }}>
-                <div className="flex items-center gap-2">
-                  <Github size={14} className="text-white/40" />
+              <div className="flex items-center justify-between px-4 py-3 border-t border-white/5" style={{ backgroundColor: "#1a1b26" }}>
+                <div className="flex items-center gap-3">
+                  <img src="/logos/github.webp" alt="GitHub" style={{ width: 32, height: 32, borderRadius: 8 }} />
                   <span className="text-xs text-white/40">100% Open Source</span>
                 </div>
                 <a href="#" className="text-xs text-white/40 hover:text-white/60 transition-colors inline-flex items-center gap-1">
@@ -724,6 +765,7 @@ const Landing = () => {
                   src={item.logo}
                   alt={item.name}
                   className="w-12 h-12 mx-auto mb-3 object-contain"
+                  style={{ borderRadius: 12 }}
                 />
                 <span className="text-sm font-medium text-text-secondary">{item.name}</span>
               </motion.div>
