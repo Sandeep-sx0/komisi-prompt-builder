@@ -171,34 +171,8 @@ const Landing = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [activeCodeTab, setActiveCodeTab] = useState("Swift");
   const [copied, setCopied] = useState(false);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const autoPlayRef = useRef<ReturnType<typeof setInterval>>();
-  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsPastHero(window.scrollY > window.innerHeight - 80);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
-  useEffect(() => {
-    if (isPaused) return;
-    autoPlayRef.current = setInterval(() => {
-      setActiveTestimonial((p) => (p + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(autoPlayRef.current);
-  }, [isPaused]);
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(codeExamples[activeCodeTab].join("\n"));
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const nextTestimonial = () => setActiveTestimonial((p) => (p + 1) % testimonials.length);
-  const prevTestimonial = () => setActiveTestimonial((p) => (p - 1 + testimonials.length) % testimonials.length);
 
   return (
     <div className="min-h-screen bg-background">
