@@ -982,23 +982,32 @@ const Pricing = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ ...anim, delay: ci * 0.05 }}
-                  className="grid grid-cols-1 lg:grid-cols-4 gap-8 py-10"
-                  style={{ borderTop: ci > 0 ? "1px solid #F3F4F6" : "none" }}
+                  className="grid grid-cols-1 lg:grid-cols-[22%_1fr] gap-8"
+                  style={{ borderTop: ci > 0 ? "1px solid #F3F4F6" : "none", padding: "52px 0" }}
                 >
-                  <div>
+                  <div style={{ borderRight: "1px solid #F3F4F6", paddingRight: 24 }} className="hidden lg:block">
                     <Icon size={32} style={{ color: "#7C3AED" }} />
-                    <h3 className="mt-3" style={{ fontSize: 18, fontWeight: 700, color: "#0A0010" }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#0A0010", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
                       {cat.description}
                     </p>
                   </div>
-                  <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
+                  <div className="lg:hidden">
+                    <Icon size={32} style={{ color: "#7C3AED" }} />
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#0A0010", marginTop: 14 }}>
+                      {cat.name}
+                    </h3>
+                    <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
+                      {cat.description}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1">
                     {cat.bullets.map((b, bi) => (
-                      <div key={bi} className="flex items-start gap-2 py-1.5">
-                        <span style={{ color: "#7C3AED", fontWeight: 700, fontSize: 14 }} className="flex-shrink-0 mt-0.5">✓</span>
-                        <span style={{ fontSize: 14, color: "#374151", lineHeight: 1.8 }}>{b}</span>
+                      <div key={bi} className="flex items-start gap-2.5 py-1.5">
+                        <Check size={14} strokeWidth={2.5} className="flex-shrink-0 mt-1" style={{ color: "#7C3AED" }} />
+                        <span style={{ fontSize: 14, color: "#374151", lineHeight: 2.0 }}>{b}</span>
                       </div>
                     ))}
                   </div>
