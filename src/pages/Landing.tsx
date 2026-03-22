@@ -904,16 +904,22 @@ const Landing = () => {
               <p className="text-xs text-white/40">© 2026 Komisi. All rights reserved.</p>
             </div>
             {[
-              { title: "Product", links: ["Attribution", "Fraud Detection", "Payouts", "Analytics", "Creator Marketplace"] },
-              { title: "Developers", links: ["SDK Docs", "iOS", "Android", "Flutter", "React Native", "API Reference"] },
-              { title: "Company", links: ["About", "Blog", "Pricing", "Careers", "Contact"] },
-              { title: "Legal", links: ["Privacy Policy", "Terms of Service", "Data Protection"] },
+              { title: "Product", links: [{ label: "Attribution", href: "#" }, { label: "Fraud Detection", href: "#" }, { label: "Payouts", href: "#" }, { label: "Analytics", href: "#" }, { label: "Creator Marketplace", href: "#" }] },
+              { title: "Developers", links: [{ label: "SDK Docs", href: "#" }, { label: "iOS", href: "#" }, { label: "Android", href: "#" }, { label: "Flutter", href: "#" }, { label: "React Native", href: "#" }, { label: "API Reference", href: "#" }] },
+              { title: "Company", links: [{ label: "About", href: "#" }, { label: "Blog", href: "#" }, { label: "Pricing", href: "/pricing" }, { label: "Careers", href: "#" }, { label: "Contact", href: "#" }] },
+              { title: "Legal", links: [{ label: "Privacy Policy", href: "#" }, { label: "Terms of Service", href: "#" }, { label: "Data Protection", href: "#" }] },
             ].map(col => (
               <div key={col.title}>
                 <h4 className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-3">{col.title}</h4>
                 <ul className="space-y-2">
                   {col.links.map(l => (
-                    <li key={l}><a href="#" className="text-xs text-white/40 hover:text-white transition-colors">{l}</a></li>
+                    <li key={l.label}>
+                      {l.href.startsWith("/") ? (
+                        <Link to={l.href} className="text-xs text-white/40 hover:text-white transition-colors">{l.label}</Link>
+                      ) : (
+                        <a href={l.href} className="text-xs text-white/40 hover:text-white transition-colors">{l.label}</a>
+                      )}
+                    </li>
                   ))}
                 </ul>
               </div>
