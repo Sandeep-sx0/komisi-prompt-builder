@@ -238,20 +238,41 @@ const Landing = () => {
             </motion.span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
-            {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-              <motion.a
-                key={l}
-                href={`#${l.toLowerCase()}`}
-                animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' }}
-                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="text-sm"
-                style={{ cursor: 'pointer' }}
-                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
-                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
-              >
-                {l}
-              </motion.a>
-            ))}
+            {["Product", "Pricing", "Docs", "Marketplace"].map(l => {
+              const isLink = l === "Pricing";
+              const Comp = isLink ? Link : motion.a;
+              const linkProps = isLink
+                ? { to: "/pricing" as string }
+                : {
+                    href: `#${l.toLowerCase()}`,
+                    animate: { color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' },
+                    transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+                    onMouseEnter: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; },
+                    onMouseLeave: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; },
+                  };
+              if (isLink) {
+                return (
+                  <Link key={l} to="/pricing" className="text-sm" style={{ cursor: 'pointer', color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)', transition: 'color 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
+                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
+                    onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
+                  >{l}</Link>
+                );
+              }
+              return (
+                <motion.a
+                  key={l}
+                  href={`#${l.toLowerCase()}`}
+                  animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' }}
+                  transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-sm"
+                  style={{ cursor: 'pointer' }}
+                  onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
+                  onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
+                >
+                  {l}
+                </motion.a>
+              );
+            })}
           </div>
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login">
@@ -280,7 +301,9 @@ const Landing = () => {
               className="md:hidden bg-background border-b border-border p-4 space-y-2 overflow-hidden"
             >
               {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-                <a key={l} href={`#${l.toLowerCase()}`} className="block text-sm py-2 text-text-secondary">{l}</a>
+                l === "Pricing"
+                  ? <Link key={l} to="/pricing" className="block text-sm py-2 text-text-secondary">{l}</Link>
+                  : <a key={l} href={`#${l.toLowerCase()}`} className="block text-sm py-2 text-text-secondary">{l}</a>
               ))}
               <Link to="/login"><Button variant="secondary" className="w-full mt-2">Login</Button></Link>
               <Link to="/signup"><Button className="w-full" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }}>Get Started</Button></Link>
@@ -881,16 +904,22 @@ const Landing = () => {
               <p className="text-xs text-white/40">© 2026 Komisi. All rights reserved.</p>
             </div>
             {[
-              { title: "Product", links: ["Attribution", "Fraud Detection", "Payouts", "Analytics", "Creator Marketplace"] },
-              { title: "Developers", links: ["SDK Docs", "iOS", "Android", "Flutter", "React Native", "API Reference"] },
-              { title: "Company", links: ["About", "Blog", "Pricing", "Careers", "Contact"] },
-              { title: "Legal", links: ["Privacy Policy", "Terms of Service", "Data Protection"] },
+              { title: "Product", links: [{ label: "Attribution", href: "#" }, { label: "Fraud Detection", href: "#" }, { label: "Payouts", href: "#" }, { label: "Analytics", href: "#" }, { label: "Creator Marketplace", href: "#" }] },
+              { title: "Developers", links: [{ label: "SDK Docs", href: "#" }, { label: "iOS", href: "#" }, { label: "Android", href: "#" }, { label: "Flutter", href: "#" }, { label: "React Native", href: "#" }, { label: "API Reference", href: "#" }] },
+              { title: "Company", links: [{ label: "About", href: "#" }, { label: "Blog", href: "#" }, { label: "Pricing", href: "/pricing" }, { label: "Careers", href: "#" }, { label: "Contact", href: "#" }] },
+              { title: "Legal", links: [{ label: "Privacy Policy", href: "#" }, { label: "Terms of Service", href: "#" }, { label: "Data Protection", href: "#" }] },
             ].map(col => (
               <div key={col.title}>
                 <h4 className="text-[10px] uppercase tracking-[0.15em] text-white/50 mb-3">{col.title}</h4>
                 <ul className="space-y-2">
                   {col.links.map(l => (
-                    <li key={l}><a href="#" className="text-xs text-white/40 hover:text-white transition-colors">{l}</a></li>
+                    <li key={l.label}>
+                      {l.href.startsWith("/") ? (
+                        <Link to={l.href} className="text-xs text-white/40 hover:text-white transition-colors">{l.label}</Link>
+                      ) : (
+                        <a href={l.href} className="text-xs text-white/40 hover:text-white transition-colors">{l.label}</a>
+                      )}
+                    </li>
                   ))}
                 </ul>
               </div>
