@@ -961,10 +961,10 @@ const Pricing = () => {
             transition={anim}
             className="text-center"
           >
-            <h2 style={{ fontSize: 40, fontWeight: 700, color: "#0A0010" }}>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               Everything ambitious apps need, all yours.
             </h2>
-            <p className="mt-3" style={{ fontSize: 17, color: "#6B7280" }}>
+            <p className="mt-3 text-base" style={{ color: "#6B7280" }}>
               Every feature included in your plan. No feature gating within tiers.
             </p>
           </motion.div>
