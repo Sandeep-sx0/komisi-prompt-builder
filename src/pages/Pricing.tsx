@@ -599,16 +599,17 @@ const Pricing = () => {
                   <div
                     className="absolute z-10"
                     style={{
-                      top: -14,
+                      top: -15,
                       left: "50%",
                       transform: "translateX(-50%)",
                       backgroundColor: "#7C3AED",
                       color: "#FFFFFF",
-                      fontSize: 11,
+                      fontSize: 12,
                       fontWeight: 700,
-                      padding: "4px 14px",
+                      padding: "5px 16px",
                       borderRadius: 999,
                       letterSpacing: "0.05em",
+                      boxShadow: "0 4px 12px rgba(124,58,237,0.4)",
                     }}
                   >
                     Most Popular
