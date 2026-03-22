@@ -172,7 +172,11 @@ const Landing = () => {
   const [activeCodeTab, setActiveCodeTab] = useState("Swift");
   const [copied, setCopied] = useState(false);
 
-
+  const handleCopy = () => {
+    navigator.clipboard.writeText("npm install @komisi/sdk");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="min-h-screen bg-background">
