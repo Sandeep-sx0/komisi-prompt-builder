@@ -765,7 +765,6 @@ const Landing = () => {
                   src={item.logo}
                   alt={item.name}
                   className="w-12 h-12 mx-auto mb-3 object-contain"
-                  style={{ borderRadius: 12 }}
                 />
                 <span className="text-sm font-medium text-text-secondary">{item.name}</span>
               </motion.div>
