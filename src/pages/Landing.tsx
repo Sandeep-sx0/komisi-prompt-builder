@@ -20,6 +20,7 @@ import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
 import HeroVisual from "@/components/komisi/HeroVisual";
 import DarkVeil from "@/components/Backgrounds/DarkVeil";
+import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
