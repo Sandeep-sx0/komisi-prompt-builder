@@ -1128,13 +1128,13 @@ const Pricing = () => {
             style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
           >
             {[
-              { num: "$2M+", label: "Creator commissions tracked" },
-              { num: "200+", label: "App developers" },
-              { num: "99.9%", label: "Attribution accuracy" },
-              { num: "150+", label: "Payout countries" },
+              { num: "$2M+", label: "Creator commissions tracked", amber: true },
+              { num: "200+", label: "App developers", amber: false },
+              { num: "99.9%", label: "Attribution accuracy", amber: false },
+              { num: "150+", label: "Payout countries", amber: false },
             ].map(s => (
               <div key={s.num}>
-                <div style={{ fontSize: 36, fontWeight: 700, color: "#FFFFFF" }}>{s.num}</div>
+                <div style={{ fontSize: 36, fontWeight: 500, color: s.amber ? "#F59E0B" : "#FFFFFF" }}>{s.num}</div>
                 <div className="mt-1" style={{ fontSize: 13, color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
               </div>
             ))}
