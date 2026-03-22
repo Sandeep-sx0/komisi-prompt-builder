@@ -732,7 +732,7 @@ const Pricing = () => {
                 <div
                   className="flex-1"
                   style={{
-                    padding: "0 28px 28px",
+                    padding: "0 32px 32px",
                     borderTop: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "#F3F4F6"}`,
                     paddingTop: 20,
                   }}
