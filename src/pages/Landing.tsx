@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -174,6 +174,26 @@ const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
 const Landing = () => {
   const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroEl = heroRef.current;
+      if (heroEl) {
+        const heroHeight = heroEl.offsetHeight;
+        setIsPastHero(window.scrollY >= heroHeight - 80);
+      } else {
+        setIsPastHero(window.scrollY >= window.innerHeight - 80);
+      }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
   const [activeCodeTab, setActiveCodeTab] = useState("Swift");
   const [copied, setCopied] = useState(false);
 
@@ -191,25 +211,27 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <motion.nav
         animate={{
-          backgroundColor: isPastHero ? 'rgba(255,255,255,0.85)' : 'rgba(0,0,0,0)',
-          boxShadow: isPastHero ? '0 1px 32px rgba(0,0,0,0.06)' : '0 0 0 rgba(0,0,0,0)',
+          backgroundColor: isPastHero ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0)',
+          boxShadow: isPastHero
+            ? '0 1px 0 rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06)'
+            : '0 0 0 rgba(0,0,0,0)',
         }}
-        transition={{ duration: 0.4, ease: 'easeInOut' }}
+        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           zIndex: 100,
-          backdropFilter: isPastHero ? 'blur(16px)' : 'none',
-          borderBottom: isPastHero ? '1px solid rgba(0,0,0,0.06)' : '1px solid transparent',
+          backdropFilter: isPastHero ? 'blur(16px) saturate(180%)' : 'none',
+          WebkitBackdropFilter: isPastHero ? 'blur(16px) saturate(180%)' : 'none',
         }}
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <motion.span
-              animate={{ color: isPastHero ? '#1E0A3C' : '#FFFFFF' }}
-              transition={{ duration: 0.3 }}
+              animate={{ color: isPastHero ? '#0a0010' : '#FFFFFF' }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="text-lg tracking-tight font-normal"
             >
               komisi
@@ -220,12 +242,12 @@ const Landing = () => {
               <motion.a
                 key={l}
                 href={`#${l.toLowerCase()}`}
-                animate={{ color: isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)' }}
-                transition={{ duration: 0.3 }}
-                className="text-sm transition-colors"
+                animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="text-sm"
                 style={{ cursor: 'pointer' }}
-                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#1E0A3C' : '#FFFFFF'; }}
-                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)'; }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
               >
                 {l}
               </motion.a>
@@ -234,8 +256,8 @@ const Landing = () => {
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login">
               <motion.span
-                animate={{ color: isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)' }}
-                transition={{ duration: 0.3 }}
+                animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.75)' }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="text-sm cursor-pointer"
               >
                 Login
@@ -244,7 +266,7 @@ const Landing = () => {
             <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
           </div>
           <button className="md:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
-            <motion.span animate={{ color: isPastHero ? '#1E0A3C' : '#FFFFFF' }} transition={{ duration: 0.3 }}>
+            <motion.span animate={{ color: isPastHero ? '#0a0010' : '#FFFFFF' }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
               {mobileMenu ? <X size={24} /> : <Menu size={24} />}
             </motion.span>
           </button>
@@ -270,7 +292,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
-      <section className="relative min-h-screen overflow-hidden" id="product">
+      <section ref={heroRef} className="relative min-h-screen overflow-hidden" id="product">
         {/* DarkVeil background */}
         <div className="absolute inset-0 z-0">
           <DarkVeil speed={1.8} warpAmount={1.2} noiseIntensity={0.0} scanlineIntensity={0} scanlineFrequency={0} hueShift={0} resolutionScale={1} />
