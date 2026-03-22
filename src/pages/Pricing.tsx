@@ -483,8 +483,8 @@ const Pricing = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...anim, delay: 0.16 }}
-            className="mx-auto mt-[18px]"
-            style={{ fontSize: 18, color: "rgba(255,255,255,0.5)", maxWidth: 580, lineHeight: 1.6 }}
+            className="mx-auto mt-[18px] text-base max-w-[580px]"
+            style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}
           >
             Privacy-safe attribution. Automated payouts. Free until your affiliate program takes off.
           </motion.p>
