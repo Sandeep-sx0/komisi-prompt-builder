@@ -88,16 +88,19 @@ const codeExamples: Record<string, string[]> = {
 
 /* ── Testimonial data ── */
 const testimonials = [
-  { quote: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.", name: "Sarah Chen", handle: "@sarahchen", role: "Founder", company: "MindfulApp", date: "Jan 2026", avatar: "/avatars/user-1.jpg" },
-  { quote: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.", name: "James Park", handle: "@jamespark", role: "Developer", company: "FocusTimer", date: "Feb 2026", avatar: "/avatars/user-2.jpg" },
-  { quote: "I can finally see which creator drove which subscription. That data alone is worth the price.", name: "Marcus Lee", handle: "@marcuslee", role: "Growth", company: "SleepWell", date: "Dec 2025", avatar: "/avatars/user-3.jpg" },
-  { quote: "Automated payouts saved me hours every month. Creators love getting paid on time without me chasing invoices.", name: "Priya Nair", handle: "@priyanair", role: "Founder", company: "HabitKit", date: "Jan 2026", avatar: "/avatars/user-4.jpg" },
-  { quote: "The fraud detection flagged a click farm on day two. Would have wasted thousands without it.", name: "David Park", handle: "@davidpark", role: "Developer", company: "CalTrack", date: "Feb 2026", avatar: "/avatars/user-5.jpg" },
-  { quote: "Komisi is the first affiliate tool that actually understands mobile. Everything else was built for web.", name: "Aisha Okonkwo", handle: "@aishao", role: "Founder", company: "MeditateNow", date: "Jan 2026", avatar: "/avatars/user-6.jpg" },
-  { quote: "Went from zero affiliates to 40 active creators in six weeks. The marketplace made discovery effortless.", name: "Tom Rivera", handle: "@tomrivera", role: "Growth", company: "RunCoach", date: "Dec 2025", avatar: "/avatars/user-7.jpg" },
-  { quote: "Three lines of SDK code and attribution was live. I expected it to take a week.", name: "Nina Walsh", handle: "@ninawalsh", role: "Developer", company: "StudyFlash", date: "Feb 2026", avatar: "/avatars/user-8.jpg" },
-  { quote: "Our top creator drives 22% of all new subscribers. Komisi made that relationship visible and scalable.", name: "Kai Nakamura", handle: "@kainakamura", role: "Founder", company: "LanguagePal", date: "Jan 2026", avatar: "/avatars/user-9.jpg" },
+  { text: "We replaced $3,000/month in paid ads with Komisi affiliates. Our CAC dropped 60% in three months.", image: "/avatars/user-1.jpg", name: "Sarah Chen", role: "Founder, MindfulApp" },
+  { text: "Setup took less time than writing this testimonial. The RevenueCat integration worked out of the box.", image: "/avatars/user-2.jpg", name: "James Park", role: "Developer, FocusTimer" },
+  { text: "I can finally see which creator drove which subscription. That data alone is worth the price.", image: "/avatars/user-3.jpg", name: "Marcus Lee", role: "Growth, SleepWell" },
+  { text: "Automated payouts saved me hours every month. Creators love getting paid on time without me chasing invoices.", image: "/avatars/user-4.jpg", name: "Priya Nair", role: "Founder, HabitKit" },
+  { text: "The fraud detection flagged a click farm on day two. Would have wasted thousands without it.", image: "/avatars/user-5.jpg", name: "David Park", role: "Developer, CalTrack" },
+  { text: "Komisi is the first affiliate tool that actually understands mobile. Everything else was built for web.", image: "/avatars/user-6.jpg", name: "Aisha Okonkwo", role: "Founder, MeditateNow" },
+  { text: "Went from zero affiliates to 40 active creators in six weeks. The marketplace made discovery effortless.", image: "/avatars/user-7.jpg", name: "Tom Rivera", role: "Growth, RunCoach" },
+  { text: "Three lines of SDK code and attribution was live. I expected it to take a week.", image: "/avatars/user-8.jpg", name: "Nina Walsh", role: "Developer, StudyFlash" },
+  { text: "Our top creator drives 22% of all new subscribers. Komisi made that relationship visible and scalable.", image: "/avatars/user-9.jpg", name: "Kai Nakamura", role: "Founder, LanguagePal" },
 ];
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
 
 /* ── Integration data with logos ── */
 const integrations = [
