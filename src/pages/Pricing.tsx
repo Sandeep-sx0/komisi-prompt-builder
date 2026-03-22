@@ -1064,7 +1064,7 @@ const Pricing = () => {
               viewport={{ once: true }}
               transition={anim}
             >
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#A78BFA" }}>
+              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "#A78BFA" }}>
                 ENTERPRISE
               </span>
               <h2 className="mt-3 text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight">
