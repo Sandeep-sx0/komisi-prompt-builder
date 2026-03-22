@@ -1178,7 +1178,7 @@ const Pricing = () => {
                     boxShadow: "0 1px 0 rgba(0,0,0,0.06)",
                   }}
                 >
-                  <th className="text-left py-3 px-4" style={{ width: "38%", fontSize: 11, fontWeight: 600, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <th className="text-left py-3 px-4" style={{ width: "38%", fontSize: 12, fontWeight: 600, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.07em" }}>
                     Feature
                   </th>
                   {["Free", "Growth", "Scale", "Enterprise"].map(h => (
