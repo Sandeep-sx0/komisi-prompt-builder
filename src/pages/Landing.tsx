@@ -301,7 +301,9 @@ const Landing = () => {
               className="md:hidden bg-background border-b border-border p-4 space-y-2 overflow-hidden"
             >
               {["Product", "Pricing", "Docs", "Marketplace"].map(l => (
-                <a key={l} href={`#${l.toLowerCase()}`} className="block text-sm py-2 text-text-secondary">{l}</a>
+                l === "Pricing"
+                  ? <Link key={l} to="/pricing" className="block text-sm py-2 text-text-secondary">{l}</Link>
+                  : <a key={l} href={`#${l.toLowerCase()}`} className="block text-sm py-2 text-text-secondary">{l}</a>
               ))}
               <Link to="/login"><Button variant="secondary" className="w-full mt-2">Login</Button></Link>
               <Link to="/signup"><Button className="w-full" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }}>Get Started</Button></Link>
