@@ -375,8 +375,8 @@ const enterpriseFeatures = [
 
 /* ── Cell renderer ── */
 const CellValue = ({ val, isScaleCol }: { val: string; isScaleCol: boolean }) => {
-  if (val === "✓") return <Check size={15} style={{ color: "#7C3AED" }} className="inline" />;
-  if (val === "✗") return <XIcon size={15} style={{ color: "#D1D5DB" }} className="inline" />;
+  if (val === "✓") return <Check size={18} strokeWidth={2} style={{ color: "#7C3AED" }} className="inline" />;
+  if (val === "✗") return <XIcon size={18} strokeWidth={2} style={{ color: "#D1D5DB" }} className="inline" />;
   if (val === "—") return <span style={{ color: "#D1D5DB" }}>—</span>;
   const bold = isScaleCol && val === "0%";
   return <span style={{ color: bold ? "#0A0010" : "#374151", fontWeight: bold ? 700 : 400 }}>{val}</span>;
