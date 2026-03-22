@@ -924,7 +924,7 @@ const Pricing = () => {
                 <span style={{ fontSize: 14, color: "#374151", fontWeight: row.highlight ? 700 : 400 }}>
                   {row.plan}
                 </span>
-                <span style={{ fontSize: 14, color: row.highlight ? "#0A0010" : "#374151", fontWeight: row.highlight ? 700 : 400 }}>
+                <span style={{ fontSize: row.highlight ? 16 : 14, color: row.highlight ? "#7C3AED" : "#374151", fontWeight: row.highlight ? 700 : 400 }}>
                   {row.comm}
                 </span>
                 <div className="flex items-center gap-2">
