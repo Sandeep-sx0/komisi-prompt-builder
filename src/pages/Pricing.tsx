@@ -1167,54 +1167,58 @@ const Pricing = () => {
             transition={{ ...anim, delay: 0.1 }}
             className="mt-12 overflow-x-auto"
           >
-            <table className="w-full border-separate border-spacing-0 text-sm" style={{ minWidth: 700 }}>
-              <thead>
-                <tr>
-                  <th
-                    className="text-left py-3 px-4"
+            <div style={{ minWidth: 700 }}>
+              <div
+                className="sticky z-20"
+                style={{
+                  top: 64,
+                  backgroundColor: "#FAFAFA",
+                  boxShadow: "0 1px 0 rgba(0,0,0,0.06)",
+                }}
+              >
+                <div
+                  className="grid"
+                  style={{
+                    gridTemplateColumns: "38% repeat(4, minmax(0, 1fr))",
+                  }}
+                >
+                  <div
+                    className="py-3 px-4"
                     style={{
-                      position: "sticky",
-                      top: 64,
-                      zIndex: 20,
-                      width: "38%",
                       fontSize: 12,
                       fontWeight: 600,
                       color: "#9CA3AF",
                       textTransform: "uppercase",
                       letterSpacing: "0.07em",
                       backgroundColor: "#FAFAFA",
-                      boxShadow: "inset 0 -1px 0 rgba(0,0,0,0.06)",
                     }}
                   >
                     Feature
-                  </th>
-                  {["Free", "Growth", "Scale", "Enterprise"].map(h => (
-                    <th
+                  </div>
+                  {["Free", "Growth", "Scale", "Enterprise"].map((h) => (
+                    <div
                       key={h}
-                      className="text-center py-3 px-4"
+                      className="py-3 px-4 text-center"
                       style={{
-                        position: "sticky",
-                        top: 64,
-                        zIndex: 20,
                         fontSize: 12,
                         fontWeight: h === "Scale" ? 700 : 600,
                         color: h === "Scale" ? "#7C3AED" : "#9CA3AF",
                         textTransform: "uppercase",
                         letterSpacing: "0.07em",
-                        backgroundColor: h === "Scale" ? "rgba(124,58,237,0.08)" : "#FAFAFA",
-                        boxShadow: h === "Scale"
-                          ? "inset 0 3px 0 #7C3AED, inset 0 -1px 0 rgba(0,0,0,0.06)"
-                          : "inset 0 -1px 0 rgba(0,0,0,0.06)",
+                        backgroundColor: h === "Scale" ? "#F3EEFF" : "#FAFAFA",
+                        boxShadow: h === "Scale" ? "inset 0 3px 0 #7C3AED" : "none",
                       }}
                     >
                       {h}
-                    </th>
+                    </div>
                   ))}
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonGroups.map(group => (
-                  <React.Fragment key={group.label}>
+                </div>
+              </div>
+
+              <table className="w-full border-separate border-spacing-0 text-sm">
+                <tbody>
+                  {comparisonGroups.map(group => (
+                    <React.Fragment key={group.label}>
                     <tr>
                       <td
                         colSpan={5}
