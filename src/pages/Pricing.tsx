@@ -1077,8 +1077,8 @@ const Pricing = () => {
                 <Link to="/demo">
                   <button
                     style={{
-                      backgroundColor: "#0891B2",
-                      color: "#FFFFFF",
+                      backgroundColor: "#FFFFFF",
+                      color: "#09090B",
                       padding: "12px 28px",
                       borderRadius: 10,
                       fontWeight: 600,
