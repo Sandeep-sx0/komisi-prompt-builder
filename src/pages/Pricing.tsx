@@ -375,8 +375,8 @@ const enterpriseFeatures = [
 
 /* ── Cell renderer ── */
 const CellValue = ({ val, isScaleCol }: { val: string; isScaleCol: boolean }) => {
-  if (val === "✓") return <Check size={15} style={{ color: "#7C3AED" }} className="inline" />;
-  if (val === "✗") return <XIcon size={15} style={{ color: "#D1D5DB" }} className="inline" />;
+  if (val === "✓") return <Check size={18} strokeWidth={2} style={{ color: "#7C3AED" }} className="inline" />;
+  if (val === "✗") return <XIcon size={18} strokeWidth={2} style={{ color: "#D1D5DB" }} className="inline" />;
   if (val === "—") return <span style={{ color: "#D1D5DB" }}>—</span>;
   const bold = isScaleCol && val === "0%";
   return <span style={{ color: bold ? "#0A0010" : "#374151", fontWeight: bold ? 700 : 400 }}>{val}</span>;
@@ -474,8 +474,7 @@ const Pricing = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...anim, delay: 0.08 }}
-            className="mt-5"
-            style={{ fontSize: 58, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.08 }}
+            className="mt-5 text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight"
           >
             Start free, scale with affiliates.
           </motion.h1>
@@ -484,8 +483,8 @@ const Pricing = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ ...anim, delay: 0.16 }}
-            className="mx-auto mt-[18px]"
-            style={{ fontSize: 18, color: "rgba(255,255,255,0.5)", maxWidth: 580, lineHeight: 1.6 }}
+            className="mx-auto mt-[18px] text-base max-w-[580px]"
+            style={{ color: "rgba(255,255,255,0.5)", lineHeight: 1.6 }}
           >
             Privacy-safe attribution. Automated payouts. Free until your affiliate program takes off.
           </motion.p>
@@ -549,7 +548,7 @@ const Pricing = () => {
           SECTION 2 — PRICING CARDS
       ═══════════════════════════════════════════ */}
       <section style={{ backgroundColor: "#0A0010", paddingBottom: 80 }} className="px-6">
-        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           {plans.map((plan, i) => {
             const isDark = plan.dark;
             const isPopular = plan.popular;
@@ -562,20 +561,24 @@ const Pricing = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ ...anim, delay: 0.1 + i * 0.08 }}
-                className="relative flex flex-col overflow-hidden"
+                className="relative flex flex-col"
                 style={{
                   borderRadius: 20,
+                  minHeight: 580,
                   backgroundColor: isDark ? "#1E0A3C" : "#FFFFFF",
                   border: isPopular
                     ? "2px solid #7C3AED"
                     : isDark
-                    ? "1px solid rgba(124,58,237,0.3)"
+                    ? "1px solid rgba(124,58,237,0.45)"
                     : "1px solid rgba(255,255,255,0.1)",
                   boxShadow: isPopular
                     ? "0 0 0 1px #7C3AED, 0 24px 80px rgba(124,58,237,0.25)"
+                    : isDark
+                    ? "0 0 0 1px rgba(124,58,237,0.2), 0 24px 60px rgba(124,58,237,0.2)"
                     : "none",
                   transform: isPopular ? "scale(1.035)" : "none",
                   zIndex: isPopular ? 2 : 1,
+                  overflow: isPopular ? "visible" : "hidden",
                 }}
               >
                 {/* Enterprise shimmer bg */}
@@ -583,8 +586,9 @@ const Pricing = () => {
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      background: "radial-gradient(ellipse at 30% 20%, rgba(124,58,237,0.12) 0%, transparent 60%)",
-                      animation: "enterprise-drift 8s ease-in-out infinite alternate",
+                      borderRadius: 20,
+                      background: "radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.18) 0%, transparent 70%)",
+                      animation: "enterprise-card-glow 8s ease-in-out infinite alternate",
                     }}
                   />
                 )}
@@ -594,16 +598,17 @@ const Pricing = () => {
                   <div
                     className="absolute z-10"
                     style={{
-                      top: -14,
+                      top: -15,
                       left: "50%",
                       transform: "translateX(-50%)",
                       backgroundColor: "#7C3AED",
                       color: "#FFFFFF",
-                      fontSize: 11,
+                      fontSize: 12,
                       fontWeight: 700,
-                      padding: "4px 14px",
+                      padding: "5px 16px",
                       borderRadius: 999,
                       letterSpacing: "0.05em",
+                      boxShadow: "0 4px 12px rgba(124,58,237,0.4)",
                     }}
                   >
                     Most Popular
@@ -611,7 +616,7 @@ const Pricing = () => {
                 )}
 
                 {/* Zone A — Header */}
-                <div style={{ padding: "28px 28px 24px" }}>
+                <div style={{ padding: "32px 32px 28px" }}>
                   <div
                     style={{
                       fontSize: 11,
@@ -687,7 +692,7 @@ const Pricing = () => {
                 </div>
 
                 {/* Zone B — CTA */}
-                <div style={{ padding: "0 28px 24px" }}>
+                <div style={{ padding: "0 32px 28px" }}>
                   <Link to={plan.ctaLink} className="block">
                     <button
                       className="w-full transition-all duration-200"
@@ -726,7 +731,7 @@ const Pricing = () => {
                 <div
                   className="flex-1"
                   style={{
-                    padding: "0 28px 28px",
+                    padding: "0 32px 32px",
                     borderTop: `1px solid ${isDark ? "rgba(255,255,255,0.1)" : "#F3F4F6"}`,
                     paddingTop: 20,
                   }}
@@ -837,13 +842,10 @@ const Pricing = () => {
             >
               HOW OUR PRICING WORKS
             </span>
-            <h2
-              className="mt-3"
-              style={{ fontSize: 36, fontWeight: 700, color: "#0A0010", lineHeight: 1.15 }}
-            >
+            <h2 className="mt-3 text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               The more you grow, the less we take.
             </h2>
-            <p className="mt-4" style={{ fontSize: 16, color: "#6B7280", lineHeight: 1.75 }}>
+            <p className="mt-4 text-base" style={{ color: "#6B7280", lineHeight: 1.75 }}>
               Komisi charges a platform commission on every affiliate payout — a percentage of what you pay your creators. As your program scales, upgrading directly reduces our cut. On Scale, it reaches zero.
             </p>
 
@@ -958,10 +960,10 @@ const Pricing = () => {
             transition={anim}
             className="text-center"
           >
-            <h2 style={{ fontSize: 40, fontWeight: 700, color: "#0A0010" }}>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               Everything ambitious apps need, all yours.
             </h2>
-            <p className="mt-3" style={{ fontSize: 17, color: "#6B7280" }}>
+            <p className="mt-3 text-base" style={{ color: "#6B7280" }}>
               Every feature included in your plan. No feature gating within tiers.
             </p>
           </motion.div>
@@ -976,23 +978,32 @@ const Pricing = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ ...anim, delay: ci * 0.05 }}
-                  className="grid grid-cols-1 lg:grid-cols-4 gap-8 py-10"
-                  style={{ borderTop: ci > 0 ? "1px solid #F3F4F6" : "none" }}
+                  className="grid grid-cols-1 lg:grid-cols-[22%_1fr] gap-8"
+                  style={{ borderTop: ci > 0 ? "1px solid #F3F4F6" : "none", padding: "52px 0" }}
                 >
-                  <div>
+                  <div style={{ borderRight: "1px solid #F3F4F6", paddingRight: 24 }} className="hidden lg:block">
                     <Icon size={32} style={{ color: "#7C3AED" }} />
-                    <h3 className="mt-3" style={{ fontSize: 18, fontWeight: 700, color: "#0A0010" }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#0A0010", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
                       {cat.description}
                     </p>
                   </div>
-                  <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
+                  <div className="lg:hidden">
+                    <Icon size={32} style={{ color: "#7C3AED" }} />
+                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#0A0010", marginTop: 14 }}>
+                      {cat.name}
+                    </h3>
+                    <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
+                      {cat.description}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-1">
                     {cat.bullets.map((b, bi) => (
-                      <div key={bi} className="flex items-start gap-2 py-1.5">
-                        <span style={{ color: "#7C3AED", fontWeight: 700, fontSize: 14 }} className="flex-shrink-0 mt-0.5">✓</span>
-                        <span style={{ fontSize: 14, color: "#374151", lineHeight: 1.8 }}>{b}</span>
+                      <div key={bi} className="flex items-start gap-2.5 py-1.5">
+                        <Check size={14} strokeWidth={2.5} className="flex-shrink-0 mt-1" style={{ color: "#7C3AED" }} />
+                        <span style={{ fontSize: 14, color: "#374151", lineHeight: 2.0 }}>{b}</span>
                       </div>
                     ))}
                   </div>
@@ -1002,7 +1013,7 @@ const Pricing = () => {
           </div>
 
           {/* CTA */}
-          <div className="mt-12 text-center">
+          <div className="mt-16 text-center">
             <Link to="/signup">
               <button
                 className="transition-colors duration-200"
@@ -1050,13 +1061,10 @@ const Pricing = () => {
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.1em", color: "#A78BFA" }}>
                 ENTERPRISE
               </span>
-              <h2
-                className="mt-3"
-                style={{ fontSize: 34, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.2 }}
-              >
+              <h2 className="mt-3 text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight">
                 Built for volume, velocity, and compliance.
               </h2>
-              <p className="mt-4" style={{ fontSize: 16, color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>
+              <p className="mt-4 text-base" style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.7 }}>
                 Handle complex affiliate programs at massive scale with infrastructure designed for the world's largest app companies. Get priority access to our team and total control over your data.
               </p>
               <div className="mt-7 flex items-center gap-4">
@@ -1140,8 +1148,8 @@ const Pricing = () => {
             transition={anim}
             className="text-center"
           >
-            <h2 style={{ fontSize: 38, fontWeight: 700, color: "#0A0010" }}>Everything, compared.</h2>
-            <p className="mt-2.5" style={{ fontSize: 16, color: "#6B7280" }}>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>Everything, compared.</h2>
+            <p className="mt-2.5 text-base" style={{ color: "#6B7280" }}>
               Every feature, every plan, side by side.
             </p>
           </motion.div>
@@ -1160,8 +1168,8 @@ const Pricing = () => {
                     position: "sticky",
                     top: 64,
                     backgroundColor: "#FAFAFA",
-                    borderBottom: "2px solid #F3F4F6",
-                    zIndex: 10,
+                    zIndex: 20,
+                    boxShadow: "0 1px 0 #F3F4F6",
                   }}
                 >
                   <th className="text-left py-3 px-4" style={{ width: "38%", fontSize: 11, fontWeight: 600, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.06em" }}>
@@ -1177,6 +1185,9 @@ const Pricing = () => {
                         color: h === "Scale" ? "#7C3AED" : "#9CA3AF",
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",
+                        backgroundColor: h === "Scale" ? "rgba(124,58,237,0.08)" : "transparent",
+                        borderTop: h === "Scale" ? "3px solid #7C3AED" : "none",
+                        borderBottom: h === "Scale" ? "2px solid #7C3AED" : "none",
                       }}
                     >
                       {h}
@@ -1191,13 +1202,13 @@ const Pricing = () => {
                       <td
                         colSpan={5}
                         style={{
-                          backgroundColor: "#F5F0FF",
+                          backgroundColor: "#EDE9FE",
                           padding: "10px 16px",
                           fontSize: 11,
-                          fontWeight: 700,
+                          fontWeight: 800,
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
-                          color: "#7C3AED",
+                          color: "#5B21B6",
                         }}
                       >
                         {group.label}
@@ -1206,8 +1217,11 @@ const Pricing = () => {
                     {group.rows.map((row, ri) => (
                       <tr
                         key={ri}
-                        className="transition-colors hover:bg-[#F9FAFB]"
-                        style={{ borderBottom: "1px solid #F3F4F6" }}
+                        className="transition-colors hover:bg-[#F3F4F6]"
+                        style={{
+                          borderBottom: "1px solid #F3F4F6",
+                          backgroundColor: ri % 2 === 1 ? "#FAFAFA" : "#FFFFFF",
+                        }}
                       >
                         <td className="py-3.5 px-4" style={{ color: "#374151", fontWeight: 500 }}>
                           {row[0]}
@@ -1217,7 +1231,7 @@ const Pricing = () => {
                             key={ci}
                             className="text-center py-3.5 px-4"
                             style={{
-                              backgroundColor: ci === 3 ? "rgba(124,58,237,0.03)" : "transparent",
+                              backgroundColor: ci === 3 ? "rgba(124,58,237,0.04)" : "transparent",
                             }}
                           >
                             <CellValue val={row[ci]} isScaleCol={ci === 3} />
@@ -1245,10 +1259,10 @@ const Pricing = () => {
             transition={anim}
             className="text-center mb-12"
           >
-            <h2 style={{ fontSize: 38, fontWeight: 700, color: "#0A0010" }}>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               Frequently asked questions.
             </h2>
-            <p className="mt-2.5" style={{ fontSize: 16, color: "#6B7280" }}>
+            <p className="mt-2.5 text-base" style={{ color: "#6B7280" }}>
               Still unsure? We've answered the most common questions below.
             </p>
           </motion.div>
@@ -1302,7 +1316,7 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={anim}
-            style={{ fontSize: 44, fontWeight: 700, color: "#FFFFFF", lineHeight: 1.15 }}
+            className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight"
           >
             Start for free or schedule a demo for your personal onboarding.
           </motion.h2>
@@ -1311,7 +1325,7 @@ const Pricing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ ...anim, delay: 0.08 }}
-            className="mt-4"
+            className="mt-4 text-base"
             style={{ fontSize: 17, color: "rgba(255,255,255,0.5)" }}
           >
             No credit card required. Your first 5 affiliates are always free.
@@ -1403,6 +1417,10 @@ const Pricing = () => {
         @keyframes enterprise-drift {
           0% { transform: translate(0, 0); }
           100% { transform: translate(20px, 10px); }
+        }
+        @keyframes enterprise-card-glow {
+          0% { background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.18) 0%, transparent 70%); }
+          100% { background: radial-gradient(ellipse at 70% 50%, rgba(124,58,237,0.18) 0%, transparent 70%); }
         }
       `}</style>
     </div>
