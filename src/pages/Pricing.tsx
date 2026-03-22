@@ -839,7 +839,7 @@ const Pricing = () => {
             <span
               style={{
                 fontSize: 11,
-                fontWeight: 700,
+                fontWeight: 600,
                 letterSpacing: "0.1em",
                 color: "#7C3AED",
               }}
