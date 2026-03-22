@@ -423,7 +423,7 @@ const Pricing = () => {
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login"><span className="text-sm cursor-pointer" style={{ color: "#374151" }}>Login</span></Link>
             <Link to="/signup">
-              <Button size="sm" style={{ backgroundColor: "#0891B2", color: "#FFFFFF" }} className="hover:opacity-90">
+              <Button size="sm" style={{ backgroundColor: "#09090B", color: "#FFFFFF" }} className="hover:opacity-90">
                 Get Started <ArrowRight size={14} />
               </Button>
             </Link>
