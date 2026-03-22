@@ -1261,10 +1261,10 @@ const Pricing = () => {
             transition={anim}
             className="text-center mb-12"
           >
-            <h2 style={{ fontSize: 38, fontWeight: 700, color: "#0A0010" }}>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>
               Frequently asked questions.
             </h2>
-            <p className="mt-2.5" style={{ fontSize: 16, color: "#6B7280" }}>
+            <p className="mt-2.5 text-base" style={{ color: "#6B7280" }}>
               Still unsure? We've answered the most common questions below.
             </p>
           </motion.div>
