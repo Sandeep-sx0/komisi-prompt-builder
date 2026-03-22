@@ -918,7 +918,7 @@ const Pricing = () => {
                 style={{
                   padding: "16px 20px",
                   borderBottom: "1px solid #F3F4F6",
-                  backgroundColor: row.highlight ? "rgba(124,58,237,0.04)" : "transparent",
+                  backgroundColor: row.highlight ? "rgba(124,58,237,0.06)" : "transparent",
                 }}
               >
                 <span style={{ fontSize: 14, color: "#374151", fontWeight: row.highlight ? 700 : 400 }}>
