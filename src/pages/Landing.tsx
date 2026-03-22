@@ -266,7 +266,7 @@ const Landing = () => {
             <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
           </div>
           <button className="md:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
-            <motion.span animate={{ color: isPastHero ? '#1E0A3C' : '#FFFFFF' }} transition={{ duration: 0.3 }}>
+            <motion.span animate={{ color: isPastHero ? '#0a0010' : '#FFFFFF' }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
               {mobileMenu ? <X size={24} /> : <Menu size={24} />}
             </motion.span>
           </button>
