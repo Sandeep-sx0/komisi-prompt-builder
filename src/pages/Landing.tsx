@@ -242,12 +242,12 @@ const Landing = () => {
               <motion.a
                 key={l}
                 href={`#${l.toLowerCase()}`}
-                animate={{ color: isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)' }}
-                transition={{ duration: 0.3 }}
-                className="text-sm transition-colors"
+                animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' }}
+                transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                className="text-sm"
                 style={{ cursor: 'pointer' }}
-                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#1E0A3C' : '#FFFFFF'; }}
-                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#4B5563' : 'rgba(255,255,255,0.75)'; }}
+                onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
+                onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
               >
                 {l}
               </motion.a>
