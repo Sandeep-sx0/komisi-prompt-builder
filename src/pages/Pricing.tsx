@@ -791,7 +791,7 @@ const Pricing = () => {
         style={{
           backgroundColor: "#0A0010",
           borderTop: "1px solid rgba(255,255,255,0.06)",
-          padding: "40px 0",
+          padding: "56px 0",
         }}
       >
         <p
