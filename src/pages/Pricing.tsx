@@ -499,6 +499,7 @@ const Pricing = () => {
               backgroundColor: "rgba(255,255,255,0.07)",
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: 999,
+              overflow: "visible",
             }}
           >
             <button
@@ -516,7 +517,7 @@ const Pricing = () => {
             </button>
             <button
               onClick={() => setIsYearly(true)}
-              className="text-sm transition-all duration-200 flex items-center gap-2"
+              className="text-sm transition-all duration-200 inline-flex items-center gap-1.5"
               style={{
                 padding: "9px 28px",
                 borderRadius: 999,
@@ -528,12 +529,16 @@ const Pricing = () => {
               Yearly
               {isYearly && (
                 <span
-                  className="text-[11px] font-semibold"
                   style={{
+                    display: "inline-flex",
+                    alignItems: "center",
                     backgroundColor: "rgba(74,222,128,0.15)",
                     color: "#4ADE80",
                     borderRadius: 999,
                     padding: "2px 8px",
+                    fontSize: 11,
+                    fontWeight: 700,
+                    marginLeft: 6,
                   }}
                 >
                   Save 20%
