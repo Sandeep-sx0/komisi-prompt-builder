@@ -280,3 +280,8 @@ html {
   50% { border-left-color: rgba(245,158,11,0.4); }
   100% { border-left-color: rgba(245,158,11,1); }
 }
+
+@keyframes tile-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
