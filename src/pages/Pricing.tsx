@@ -1150,8 +1150,8 @@ const Pricing = () => {
             transition={anim}
             className="text-center"
           >
-            <h2 style={{ fontSize: 38, fontWeight: 700, color: "#0A0010" }}>Everything, compared.</h2>
-            <p className="mt-2.5" style={{ fontSize: 16, color: "#6B7280" }}>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight leading-tight" style={{ color: "#0A0010" }}>Everything, compared.</h2>
+            <p className="mt-2.5 text-base" style={{ color: "#6B7280" }}>
               Every feature, every plan, side by side.
             </p>
           </motion.div>
