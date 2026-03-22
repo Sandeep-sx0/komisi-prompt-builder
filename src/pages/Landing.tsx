@@ -8,7 +8,7 @@ import {
   ArrowRight, Menu, X, Twitter, Github, Linkedin,
   Link2, Download, Fingerprint, CircleDollarSign,
   Shield, Zap, CheckCircle, Copy, Check,
-  Code, BarChart3, Wallet, ChevronLeft, ChevronRight,
+  Code, BarChart3, Wallet,
   AlertTriangle, ExternalLink, TrendingUp, Globe,
 } from "lucide-react";
 import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
