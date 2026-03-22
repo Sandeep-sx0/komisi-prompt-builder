@@ -26,6 +26,7 @@ import CreatorSettings from "./pages/CreatorSettings";
 import Landing from "./pages/Landing";
 import Apps from "./pages/Apps";
 import UtmTracking from "./pages/UtmTracking";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
