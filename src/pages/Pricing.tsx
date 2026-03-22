@@ -625,7 +625,7 @@ const Pricing = () => {
                   <div
                     style={{
                       fontSize: 11,
-                      fontWeight: 700,
+                      fontWeight: 600,
                       letterSpacing: "0.1em",
                       color: isDark ? "#A78BFA" : "#7C3AED",
                     }}
