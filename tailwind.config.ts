@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       letterSpacing: {
         'tighter': '-0.02em',
