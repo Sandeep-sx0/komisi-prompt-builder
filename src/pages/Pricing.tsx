@@ -1175,7 +1175,7 @@ const Pricing = () => {
                     top: 64,
                     backgroundColor: "#FAFAFA",
                     zIndex: 20,
-                    boxShadow: "0 1px 0 #F3F4F6",
+                    boxShadow: "0 1px 0 rgba(0,0,0,0.06)",
                   }}
                 >
                   <th className="text-left py-3 px-4" style={{ width: "38%", fontSize: 11, fontWeight: 600, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.06em" }}>
