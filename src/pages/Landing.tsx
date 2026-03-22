@@ -174,6 +174,26 @@ const SyntaxLine = ({ line, num }: { line: string; num: number }) => {
 const Landing = () => {
   const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroEl = heroRef.current;
+      if (heroEl) {
+        const heroHeight = heroEl.offsetHeight;
+        setIsPastHero(window.scrollY >= heroHeight - 80);
+      } else {
+        setIsPastHero(window.scrollY >= window.innerHeight - 80);
+      }
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
   const [activeCodeTab, setActiveCodeTab] = useState("Swift");
   const [copied, setCopied] = useState(false);
 
