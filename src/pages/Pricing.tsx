@@ -617,7 +617,7 @@ const Pricing = () => {
                 )}
 
                 {/* Zone A — Header */}
-                <div style={{ padding: "28px 28px 24px" }}>
+                <div style={{ padding: "32px 32px 28px" }}>
                   <div
                     style={{
                       fontSize: 11,
