@@ -128,24 +128,26 @@ const AnalyticsAnimation = () => {
                       {isVisible && (
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                           transition={{ duration: 0.6, ease: "easeInOut" }}
-                          className="grid grid-cols-5 px-5 py-2.5 text-[11px] items-center"
+                          className="px-5 py-2.5 text-[11px] items-center"
                           style={{
+                            display: "grid",
+                            gridTemplateColumns: "minmax(160px, 1fr) minmax(120px, 1fr) 1fr 1fr 1fr",
                             borderTop: "1px solid #F3F4F6",
                             backgroundColor: isSpotlit ? "rgba(124,58,237,0.06)" : "transparent",
                             transition: "background-color 800ms ease-in-out",
                           }}>
-                          <span className="flex items-center gap-1" style={{ color: "#111827" }}>
-                            {row.creator}
+                          <span className="flex items-center gap-1 min-w-0" style={{ color: "#111827" }}>
+                            <span className="truncate">{row.creator}</span>
                             <AnimatePresence>
                               {isSpotlit && showBadge && (
                                 <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                                  transition={{ duration: 0.5 }} className="text-[8px] px-1.5 py-0.5 whitespace-nowrap"
+                                  transition={{ duration: 0.5 }} className="text-[8px] px-1.5 py-0.5 whitespace-nowrap flex-shrink-0"
                                   style={{ backgroundColor: "#7C3AED", color: "#FFFFFF", borderRadius: "4px" }}>🏆 Top</motion.span>
                               )}
                             </AnimatePresence>
                           </span>
-                          <span>
-                            <span className="text-[9px] px-1.5 py-0.5" style={{ backgroundColor: row.platformColor, color: "#FFFFFF", borderRadius: "4px" }}>{row.platform}</span>
+                          <span className="flex items-center">
+                            <img src={platformLogos[row.platform]} alt={row.platform} width={24} height={24} style={{ borderRadius: "6px", objectFit: "cover" }} />
                           </span>
                           <span className="text-right" style={{ color: "#111827" }}>
                             {rowCounters[i] ? <CountingNumber number={row.installs} decimalPlaces={0} inView transition={{ stiffness: 80, damping: 20 }} /> : "0"}
