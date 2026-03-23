@@ -81,7 +81,7 @@ const FraudDetectionAnimation = () => {
                 </span>
               </div>
 
-              <div className="grid grid-cols-3 px-4 py-2 text-[10px] uppercase tracking-wider" style={{ color: "#6B7280", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+              <div className="grid grid-cols-3 px-4 py-2 text-[10px] uppercase tracking-wider" style={{ color: "#6B7280", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                 <span>IP Address</span>
                 <span>Time</span>
                 <span className="text-right">Status</span>
