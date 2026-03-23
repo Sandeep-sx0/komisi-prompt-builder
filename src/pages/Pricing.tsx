@@ -6,6 +6,7 @@ import {
   ArrowRight, Check, X as XIcon, Menu, X, Twitter, Github, Linkedin,
   Target, Shield, BarChart2, Zap, Code2,
 } from "lucide-react";
+import { StickyBottomBar } from "@/components/komisi/StickyBottomBar";
 
 import {
   Accordion,
