@@ -634,24 +634,24 @@ const Landing = () => {
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
               <div>
-                <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
+                <h3 className="text-2xl md:text-3xl font-normal tracking-tight leading-tight mb-4" style={{ color: '#FFFFFF' }}>
                   AI fraud detection that protects your program automatically.
                 </h3>
-                <p className="text-base text-text-secondary mb-6">
+                <p className="text-base mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>
                   Every conversion is scored in real time. Komisi flags suspicious install patterns — same IP clusters, abnormal velocity, emulator installs — before they cost you money.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#000000' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: 'rgba(255,255,255,0.7)' }}>
                   See how fraud detection works <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.15)' }}>
-                  <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <p className="text-sm mb-3 leading-relaxed italic" style={{ color: 'rgba(255,255,255,0.6)' }}>
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
                   <div className="flex items-center gap-3">
                     <img src="/avatars/user-5.jpg" alt="David Park" className="w-7 h-7 rounded-full object-cover" />
                     <div>
-                      <p className="text-xs text-foreground">David Park</p>
-                      <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
+                      <p className="text-xs" style={{ color: 'rgba(255,255,255,0.9)' }}>David Park</p>
+                      <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.4)' }}>Founder, FocusTimer</p>
                     </div>
                   </div>
                 </div>
