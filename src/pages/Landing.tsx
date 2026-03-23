@@ -18,7 +18,6 @@ import FraudDetectionAnimation from "@/components/komisi/FraudDetectionAnimation
 import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
-import { StickyBottomBar } from "@/components/komisi/StickyBottomBar";
 import HeroVisual from "@/components/komisi/HeroVisual";
 
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
@@ -900,8 +899,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 12 — FOOTER
       ═══════════════════════════════════════════ */}
-      <StickyBottomBar />
-      <footer className="bg-foreground text-primary-foreground px-6 pt-16 pb-24">
+      <footer className="bg-foreground text-primary-foreground px-6 pt-16 pb-8">
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
             <div className="col-span-2">
