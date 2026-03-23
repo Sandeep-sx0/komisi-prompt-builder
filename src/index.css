@@ -8,111 +8,126 @@ html {
 
 @layer base {
   :root {
+    /* === BACKGROUNDS === */
     --background: 0 0% 100%;
-    --background-subtle: 210 20% 98%;
+    --background-subtle: 0 0% 97%;
     --surface: 0 0% 100%;
-    --foreground: 222 47% 11%;
-    --border: 220 13% 91%;
-    --border-hover: 216 12% 84%;
-    --input: 220 13% 91%;
-    --ring: 222 47% 11%;
+    --foreground: 0 0% 0%;
+
+    /* === BORDERS === */
+    --border: 0 0% 91%;
+    --border-hover: 0 0% 80%;
+    --input: 0 0% 91%;
+    --ring: 0 0% 0%;
     --radius: 0px;
 
-    --text-primary: 222 47% 11%;
-    --text-secondary: 215 16% 47%;
-    --text-tertiary: 215 16% 60%;
+    /* === TEXT SCALE === */
+    --text-primary: 0 0% 0%;
+    --text-secondary: 0 0% 40%;
+    --text-tertiary: 0 0% 60%;
 
-    --primary: 222 47% 11%;
-    --primary-foreground: 210 40% 98%;
-    --btn-primary-hover: 222 47% 18%;
+    /* === PRIMARY — Black === */
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --btn-primary-hover: 0 0% 17%;
 
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
+    /* === SECONDARY === */
+    --secondary: 0 0% 97%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    /* === MUTED === */
+    --muted: 0 0% 97%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
+    /* === ACCENT — Ice Blue === */
+    --accent: 209 100% 96%;
+    --accent-foreground: 0 0% 0%;
 
+    /* === CARD === */
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 0 0% 0%;
 
+    /* === POPOVER === */
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 0 0% 0%;
 
+    /* === DESTRUCTIVE === */
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --success: 160 84% 39%;
-    --success-light: 152 81% 96%;
+    /* === STATUS === */
+    --success: 158 64% 52%;
+    --success-light: 152 76% 90%;
     --warning: 38 92% 50%;
-    --warning-light: 48 96% 89%;
+    --warning-light: 48 100% 88%;
     --error: 0 84% 60%;
     --error-light: 0 86% 97%;
-    --info: 217 91% 60%;
-    --info-light: 214 95% 93%;
+    --info: 209 100% 96%;
+    --info-light: 209 100% 96%;
 
-    --chart-purple: 258 90% 66%;
-    --chart-pink: 330 81% 60%;
-    --chart-blue: 217 91% 60%;
-    --chart-green: 160 84% 39%;
+    /* === CHARTS === */
+    --chart-purple: 0 0% 0%;
+    --chart-pink: 38 92% 50%;
+    --chart-blue: 0 0% 0%;
+    --chart-green: 158 64% 52%;
     --chart-amber: 38 92% 50%;
 
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 215 16% 47%;
-    --sidebar-primary: 222 47% 11%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 222 47% 11%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 222 47% 11%;
+    /* === SIDEBAR === */
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 60%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 7%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 0 0% 100%;
   }
 
   .dark {
-    --background: 222 47% 7%;
-    --background-subtle: 222 47% 11%;
-    --surface: 217 33% 17%;
-    --foreground: 210 40% 98%;
-    --border: 217 33% 28%;
-    --border-hover: 215 19% 35%;
-    --input: 217 33% 28%;
-    --ring: 210 40% 98%;
+    --background: 0 0% 7%;
+    --background-subtle: 0 0% 0%;
+    --surface: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --text-primary: 210 40% 98%;
-    --text-secondary: 215 16% 60%;
-    --text-tertiary: 215 16% 47%;
+    --border: 0 0% 15%;
+    --border-hover: 0 0% 25%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 100%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222 47% 11%;
-    --btn-primary-hover: 210 25% 90%;
+    --text-primary: 0 0% 100%;
+    --text-secondary: 0 0% 65%;
+    --text-tertiary: 0 0% 45%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --btn-primary-hover: 0 0% 90%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 16% 60%;
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 0% 100%;
 
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
+    --muted: 0 0% 7%;
+    --muted-foreground: 0 0% 55%;
 
-    --card: 217 33% 17%;
-    --card-foreground: 210 40% 98%;
+    --accent: 0 0% 6%;
+    --accent-foreground: 0 0% 100%;
 
-    --popover: 217 33% 17%;
-    --popover-foreground: 210 40% 98%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 100%;
 
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 100%;
 
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 215 16% 60%;
-    --sidebar-primary: 210 40% 98%;
-    --sidebar-primary-foreground: 222 47% 11%;
-    --sidebar-accent: 217 33% 17%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217 33% 28%;
-    --sidebar-ring: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 60%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 7%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 0 0% 100%;
   }
 }
 
@@ -120,106 +135,192 @@ html {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Instrument Sans', system-ui, sans-serif;
-    font-weight: 100;
+    font-weight: 400;
     transition: background-color 200ms ease, color 200ms ease;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1, h2 {
     font-family: 'Instrument Sans', system-ui, sans-serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  h3, h4, h5, h6 {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    font-weight: 500;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
     font-weight: 400;
   }
-  code, pre, .font-mono {
-    font-family: 'Instrument Sans', system-ui, sans-serif;
-  }
+
   *, *::before, *::after {
     border-radius: 0 !important;
   }
-  * {
-    font-weight: inherit;
-  }
-  .font-bold, .font-semibold, .font-extrabold, .font-black, strong, b {
-    font-weight: 400 !important;
-  }
 }
 
+/* ============================================================
+   VALLEY DOT GRID
+   ============================================================ */
+.dot-grid {
+  background-color: #FFFFFF;
+  background-image: radial-gradient(rgba(0,0,0,0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.dark .dot-grid {
+  background-color: #111111;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* ============================================================
+   VALLEY WARM ORANGE GLOW
+   ============================================================ */
+.valley-glow-hover:hover {
+  box-shadow:
+    rgba(217, 119, 87, 0.51) 0px 0px 10px 0px inset,
+    rgba(217, 119, 87, 0.31) 0px 0px 20px 0px inset,
+    rgba(217, 119, 87, 0.10) 0px 0px 30px 0px inset;
+}
+.valley-glow-outer {
+  box-shadow:
+    rgba(217, 119, 87, 0.24) 0px 40px 80px 0px,
+    rgba(217, 119, 87, 0.24) 0px 4px 14px 0px;
+}
+
+/* ============================================================
+   VALLEY WATERCOLOR CARD BACKGROUNDS
+   ============================================================ */
 .watercolor-blue {
   background: radial-gradient(ellipse at 30% 50%, #BFDBFE 0%, #E0F2FE 40%, #F0F9FF 100%);
 }
-.dark .watercolor-blue {
-  background: radial-gradient(ellipse at 30% 50%, #1E3A5F 0%, #172554 40%, hsl(222 47% 7%) 100%);
+.watercolor-peach {
+  background: radial-gradient(ellipse at 60% 30%, #FDBA74 0%, #FED7AA 35%, #FFF7ED 70%, #FEF3C7 100%);
 }
-.watercolor-pink {
-  background: radial-gradient(ellipse at 70% 30%, #FBCFE8 0%, #FCE7F3 40%, #FDF2F8 100%);
-}
-.dark .watercolor-pink {
-  background: radial-gradient(ellipse at 70% 30%, #4C1D3D 0%, #3B0E2E 40%, hsl(222 47% 7%) 100%);
-}
-.watercolor-green {
-  background: radial-gradient(ellipse at 40% 60%, #A7F3D0 0%, #D1FAE5 40%, #ECFDF5 100%);
-}
-.dark .watercolor-green {
-  background: radial-gradient(ellipse at 40% 60%, #064E3B 0%, #065F46 40%, hsl(222 47% 7%) 100%);
-}
-.watercolor-yellow {
-  background: radial-gradient(ellipse at 60% 40%, #FDE68A 0%, #FEF3C7 40%, #FFFBEB 100%);
-}
-.dark .watercolor-yellow {
-  background: radial-gradient(ellipse at 60% 40%, #78350F 0%, #92400E 40%, hsl(222 47% 7%) 100%);
-}
-.watercolor-purple {
-  background: radial-gradient(ellipse at 50% 50%, #C4B5FD 0%, #DDD6FE 40%, #EDE9FE 100%);
-}
-.dark .watercolor-purple {
-  background: radial-gradient(ellipse at 50% 50%, #4C1D95 0%, #3B0764 40%, hsl(222 47% 7%) 100%);
+.watercolor-teal {
+  background: radial-gradient(ellipse at 40% 60%, #6EE7B7 0%, #A7F3D0 40%, #ECFDF5 100%);
 }
 .watercolor-mixed {
-  background: radial-gradient(ellipse at 20% 30%, #BFDBFE 0%, #FBCFE8 30%, #DDD6FE 60%, #FDE68A 100%);
+  background: radial-gradient(ellipse at 20% 30%, #BFDBFE 0%, #FDE8D8 30%, #D8F3DC 60%, #FEF9C3 100%);
 }
-.dark .watercolor-mixed {
-  background: radial-gradient(ellipse at 20% 30%, #1E3A5F 0%, #4C1D3D 30%, #2E1065 60%, #422006 100%);
+.watercolor-lavender {
+  background: radial-gradient(ellipse at 50% 40%, #E0D7FF 0%, #EDE9FE 40%, #F5F3FF 100%);
 }
-
-.gradient-ai {
-  background: linear-gradient(135deg, #A78BFA, #EC4899, #F59E0B);
-}
-.gradient-ai-subtle {
-  background: linear-gradient(135deg, #EDE9FE, #FCE7F3, #FEF3C7);
-}
-.dark .gradient-ai-subtle {
-  background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(236,72,153,0.15), rgba(245,158,11,0.15));
-}
-.gradient-ai-text {
-  background: linear-gradient(135deg, #A78BFA, #EC4899, #F59E0B);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.watercolor-warm {
+  background: radial-gradient(ellipse at 60% 40%, #FCA5A5 0%, #FBCFE8 35%, #FFF1F2 70%, #FEF3C7 100%);
 }
 
-/* Shimmer gradient text */
-.shimmer-text {
-  background: linear-gradient(
-    90deg,
-    #A78BFA 0%,
-    #EC4899 25%,
-    #F59E0B 50%,
-    #EC4899 75%,
-    #A78BFA 100%
-  );
+/* ============================================================
+   VALLEY IRIDESCENT GRADIENT TEXT
+   ============================================================ */
+.iridescent-text {
+  background: linear-gradient(135deg, #60A5FA 0%, #34D399 25%, #A78BFA 50%, #F472B6 75%, #FBBF24 100%);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: shimmer 3s linear infinite;
+  animation: shimmer 4s linear infinite;
 }
 
-@keyframes shimmer {
-  0% { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
+/* ============================================================
+   VALLEY SECTION BADGES
+   ============================================================ */
+.badge-ice {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #E9F5FF;
+  color: #000000;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+.badge-ice::before {
+  content: "■";
+  font-size: 8px;
+  color: #000000;
 }
 
-/* Marquee */
+.badge-black {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #000000;
+  color: #FFFFFF;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+.badge-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid rgba(0,0,0,0.4);
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+.dark .badge-ice {
+  background-color: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.9);
+}
+.dark .badge-outline {
+  border-color: rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.75);
+}
+
+/* ============================================================
+   VALLEY DARK GRID CELL
+   ============================================================ */
+.dark-grid-cell {
+  background-color: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 24px;
+}
+
+/* ============================================================
+   MONETARY VALUE
+   ============================================================ */
+.money {
+  color: #F59E0B;
+  font-weight: 500;
+}
+
+/* ============================================================
+   CODE BLOCK
+   ============================================================ */
+.code-block {
+  background: #111111;
+  color: #F9FAFB;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
 .marquee-track {
   display: flex;
   width: max-content;
@@ -229,6 +330,25 @@ html {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+/* ============================================================
+   UTILITY ANIMATIONS
+   ============================================================ */
+.press-effect:active { transform: scale(0.98); }
+.ai-spin { animation: ai-spin 1.5s linear infinite; }
+.stagger-fade { animation: stagger-fade 0.4s ease-out forwards; opacity: 0; }
+.animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
+.animate-slide-left { animation: slide-left 0.3s ease-out; }
+.animate-confetti { animation: confetti-burst 1s ease-out forwards; }
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-25%); }
@@ -238,42 +358,27 @@ html {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-.ai-spin { animation: ai-spin 1.5s linear infinite; }
 
 @keyframes stagger-fade {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
-}
-.stagger-fade { animation: stagger-fade 0.4s ease-out forwards; opacity: 0; }
-
-.press-effect:active { transform: scale(0.98); }
-
-.code-block {
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-  font-family: 'Instrument Sans', system-ui, sans-serif;
-  font-size: 13px;
-  line-height: 1.6;
 }
 
 @keyframes slide-in-right {
   from { transform: translateX(100%); }
   to { transform: translateX(0); }
 }
-.animate-slide-in-right { animation: slide-in-right 0.3s ease-out; }
 
 @keyframes slide-left {
   from { opacity: 0; transform: translateX(20px); }
   to { opacity: 1; transform: translateX(0); }
 }
-.animate-slide-left { animation: slide-left 0.3s ease-out; }
 
 @keyframes confetti-burst {
   0% { opacity: 1; transform: scale(0.5); }
   50% { opacity: 1; transform: scale(1.2); }
   100% { opacity: 0; transform: scale(1.5); }
 }
-.animate-confetti { animation: confetti-burst 1s ease-out forwards; }
 
 @keyframes fraudPulse {
   0% { border-left-color: rgba(245,158,11,1); }
