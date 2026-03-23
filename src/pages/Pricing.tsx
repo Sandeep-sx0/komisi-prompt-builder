@@ -957,7 +957,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 5 — FEATURES BY JOB-TO-BE-DONE
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#FFFFFF" }} className="py-20 px-6">
+      <section className="py-20 px-6 dot-grid">
         <div className="max-w-[1100px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
