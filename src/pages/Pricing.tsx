@@ -552,7 +552,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — PRICING CARDS
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#000000", paddingBottom: 80 }} className="px-6">
+      <section style={{ backgroundColor: "#000000", paddingBottom: 80 }} className="px-6 dark dot-grid">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           {plans.map((plan, i) => {
             const isDark = plan.dark;
@@ -1044,7 +1044,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 6 — ENTERPRISE DEEP DIVE (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 px-6" style={{ backgroundColor: "#111111" }}>
+      <section className="relative overflow-hidden py-20 px-6 dark dot-grid" style={{ backgroundColor: "#111111" }}>
         {/* Animated bg */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -1272,7 +1272,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 8 — FAQ
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#FFFFFF" }} className="py-20 px-6">
+      <section className="py-20 px-6 dot-grid" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[720px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}

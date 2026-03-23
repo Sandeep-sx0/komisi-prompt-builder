@@ -426,7 +426,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 5 — STATS BAR (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#000000" }}>
+      <section className="py-20 px-6 dark dot-grid" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { value: 2, prefix: "$", suffix: "M+", label: "Creator commissions tracked" },
@@ -466,7 +466,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 6 — SDK CODE BLOCK (Dark, continues)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 px-6 dark dot-grid" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -568,7 +568,7 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
 
       {/* Feature 1 — Attribution flow (white bg) */}
-      <section className="w-full" style={{ backgroundColor: "#FFFFFF" }}>
+      <section className="w-full dot-grid" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -614,7 +614,7 @@ const Landing = () => {
       </section>
 
       {/* Feature 2 — Fraud detection (lavender bg) */}
-      <section className="w-full" style={{ backgroundColor: "#F8F8F8" }}>
+      <section className="w-full dark dot-grid" style={{ backgroundColor: "#111111" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -634,24 +634,24 @@ const Landing = () => {
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
               <div>
-                <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
+                <h3 className="text-2xl md:text-3xl font-normal tracking-tight leading-tight mb-4" style={{ color: '#FFFFFF' }}>
                   AI fraud detection that protects your program automatically.
                 </h3>
-                <p className="text-base text-text-secondary mb-6">
+                <p className="text-base mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>
                   Every conversion is scored in real time. Komisi flags suspicious install patterns — same IP clusters, abnormal velocity, emulator installs — before they cost you money.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#000000' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: 'rgba(255,255,255,0.7)' }}>
                   See how fraud detection works <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.15)' }}>
-                  <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <p className="text-sm mb-3 leading-relaxed italic" style={{ color: 'rgba(255,255,255,0.6)' }}>
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
                   <div className="flex items-center gap-3">
                     <img src="/avatars/user-5.jpg" alt="David Park" className="w-7 h-7 rounded-full object-cover" />
                     <div>
-                      <p className="text-xs text-foreground">David Park</p>
-                      <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
+                      <p className="text-xs" style={{ color: 'rgba(255,255,255,0.9)' }}>David Park</p>
+                      <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.4)' }}>Founder, FocusTimer</p>
                     </div>
                   </div>
                 </div>
@@ -662,7 +662,7 @@ const Landing = () => {
       </section>
 
       {/* Feature 3 — Analytics (white bg) */}
-      <section className="w-full" style={{ backgroundColor: "#FFFFFF" }}>
+      <section className="w-full dot-grid" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -708,7 +708,7 @@ const Landing = () => {
       </section>
 
       {/* Feature 4 — Payouts (lavender bg) */}
-      <section className="w-full" style={{ backgroundColor: "#F8F8F8" }}>
+      <section className="w-full dark dot-grid" style={{ backgroundColor: "#111111" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -728,24 +728,24 @@ const Landing = () => {
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
               <div>
-                <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
+                <h3 className="text-2xl md:text-3xl font-normal tracking-tight leading-tight mb-4" style={{ color: '#FFFFFF' }}>
                   Pay every creator automatically. No invoices, no chasing.
                 </h3>
-                <p className="text-base text-text-secondary mb-6">
+                <p className="text-base mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>
                   Creators connect their Stripe account during onboarding. Komisi calculates commissions against net revenue after store fees and queues payouts automatically on your chosen schedule — weekly, bi-weekly, or monthly.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#000000' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: 'rgba(255,255,255,0.7)' }}>
                   Learn about payouts <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.15)' }}>
-                  <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <p className="text-sm mb-3 leading-relaxed italic" style={{ color: 'rgba(255,255,255,0.6)' }}>
                     "Creators love that they just get paid. No back-and-forth, no invoices. It's made recruiting affiliates so much easier."
                   </p>
                   <div className="flex items-center gap-3">
                     <img src="/avatars/user-4.jpg" alt="Priya Nair" className="w-7 h-7 rounded-full object-cover" />
                     <div>
-                      <p className="text-xs text-foreground">Priya Nair</p>
-                      <p className="text-[10px] text-text-tertiary">Founder, MindfulApp</p>
+                      <p className="text-xs" style={{ color: 'rgba(255,255,255,0.9)' }}>Priya Nair</p>
+                      <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.4)' }}>Founder, MindfulApp</p>
                     </div>
                   </div>
                 </div>
