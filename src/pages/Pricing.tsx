@@ -1145,7 +1145,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 7 — COMPARISON TABLE
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#FAFAFA" }} className="py-20 px-6">
+      <section className="py-20 px-6 dot-grid">
         <div className="max-w-[1100px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
