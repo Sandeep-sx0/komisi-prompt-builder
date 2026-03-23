@@ -1110,7 +1110,7 @@ const Pricing = () => {
               <div className="space-y-1">
                 {enterpriseFeatures.map((f, fi) => (
                   <div key={fi} className="flex items-start gap-2.5 py-1.5">
-                    <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#000000" }} />
+                    <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#FFFFFF" }} />
                     <span style={{ fontSize: 14, color: "rgba(255,255,255,0.85)" }}>{f}</span>
                   </div>
                 ))}
