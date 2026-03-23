@@ -1301,7 +1301,7 @@ const Pricing = () => {
                 <AccordionItem value={`faq-${i}`} style={{ borderBottom: "1px solid #F3F4F6", borderTop: "none" }}>
                   <AccordionTrigger
                     className="py-5 hover:no-underline"
-                    style={{ fontSize: 16, fontWeight: 500, color: "#111827" }}
+                    style={{ fontSize: 16, fontWeight: 500, color: "#111111" }}
                   >
                     {faq.q}
                   </AccordionTrigger>
