@@ -283,9 +283,9 @@ const Landing = () => {
             <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#000000', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
           </div>
           <button className="md:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
-            <motion.span animate={{ color: isPastHero ? '#000000' : '#FFFFFF' }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
+            <span style={{ color: '#000000' }}>
               {mobileMenu ? <X size={24} /> : <Menu size={24} />}
-            </motion.span>
+            </span>
           </button>
         </div>
         <AnimatePresence>
