@@ -6,7 +6,7 @@ import {
   ArrowRight, Check, X as XIcon, Menu, X, Twitter, Github, Linkedin,
   Target, Shield, BarChart2, Zap, Code2,
 } from "lucide-react";
-import DarkVeil from "@/components/Backgrounds/DarkVeil";
+
 import {
   Accordion,
   AccordionContent,
