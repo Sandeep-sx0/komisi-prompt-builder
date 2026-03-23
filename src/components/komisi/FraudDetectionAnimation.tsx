@@ -68,7 +68,7 @@ const FraudDetectionAnimation = () => {
           >
             <div
               className="w-full max-w-[360px] overflow-hidden"
-              style={{ backgroundColor: "#000000", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.15)" }}
+              style={{ backgroundColor: "#000000", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.08)" }}
             >
               <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
                 <span className="text-sm text-white" style={{ fontWeight: 400 }}>Live Install Feed</span>
