@@ -229,13 +229,9 @@ const Landing = () => {
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <motion.span
-              animate={{ color: isPastHero ? '#000000' : '#FFFFFF' }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="text-lg tracking-tight font-normal"
-            >
+            <span className="text-lg tracking-tight font-normal" style={{ color: '#000000' }}>
               komisi
-            </motion.span>
+            </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => {
