@@ -1390,7 +1390,8 @@ const Pricing = () => {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer className="bg-foreground text-primary-foreground px-6 pt-16 pb-8">
+      <StickyBottomBar />
+      <footer className="bg-foreground text-primary-foreground px-6 pt-16 pb-24">
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-6 gap-8 mb-12">
             <div className="col-span-2">
