@@ -142,7 +142,7 @@ const FraudDetectionAnimation = () => {
                   <motion.div key="anomaly" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                     className="px-4 py-3 flex items-center gap-2 text-xs"
-                    style={{ color: "#F59E0B", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+                    style={{ color: "#F59E0B", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                     ⚠ Anomaly detected — confidence 94%
                   </motion.div>
                 )}
