@@ -248,9 +248,9 @@ const Landing = () => {
                   };
               if (isLink) {
                 return (
-                  <Link key={l} to="/pricing" className="text-sm" style={{ cursor: 'pointer', color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)', transition: 'color 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
-                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#000000' : '#FFFFFF'; }}
-                    onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
+                  <Link key={l} to="/pricing" className="text-sm" style={{ cursor: 'pointer', color: isPastHero ? 'rgba(0,0,0,0.65)' : '#000000', transition: 'color 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
+                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#000000'; }}
+                    onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? 'rgba(0,0,0,0.65)' : '#000000'; }}
                   >{l}</Link>
                 );
               }
