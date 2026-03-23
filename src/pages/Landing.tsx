@@ -708,7 +708,7 @@ const Landing = () => {
       </section>
 
       {/* Feature 4 — Payouts (lavender bg) */}
-      <section className="w-full" style={{ backgroundColor: "#F8F8F8" }}>
+      <section className="w-full dark dot-grid" style={{ backgroundColor: "#111111" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
