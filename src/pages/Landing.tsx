@@ -358,9 +358,9 @@ const Landing = () => {
                 transition={{ duration: 0.6, delay: 0.9 }}
                 className="flex flex-col sm:flex-row gap-3 mb-4"
               >
-                <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+                <Input placeholder="Enter your email" className="h-12 max-w-[280px] border" style={{ backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(0,0,0,0.15)', color: '#000000' }} />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 bg-white text-[#111111] hover:bg-white/90 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
+                  <Button size="lg" className="h-12 px-6 border-none" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Get Started Free <ArrowRight size={16} /></Button>
                 </Link>
               </motion.div>
 
