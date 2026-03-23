@@ -394,7 +394,7 @@ const PersonaCard = ({ label, chips, visual, delay = 0 }: PersonaCardProps) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -6, boxShadow: "0 24px 48px rgba(0,0,0,0.12)" }}
+      whileHover={{ y: -6 }}
       className="bg-card h-full flex flex-col cursor-default group"
       style={{
         border: "1px solid #E5E7EB",
