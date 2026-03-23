@@ -841,7 +841,7 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#111111" }}>
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <DarkVeil speed={1.8} warpAmount={1.2} noiseIntensity={0.0} scanlineIntensity={0} scanlineFrequency={0} hueShift={0} resolutionScale={1} />
+          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover opacity-30" />
         </div>
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <motion.h2
