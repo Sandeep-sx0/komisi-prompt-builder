@@ -627,7 +627,7 @@ const Pricing = () => {
                       fontSize: 11,
                       fontWeight: 600,
                       letterSpacing: "0.1em",
-                      color: isDark ? "#000000" : "#000000",
+                      color: isDark ? "rgba(255,255,255,0.7)" : "#000000",
                     }}
                   >
                     {plan.name}
