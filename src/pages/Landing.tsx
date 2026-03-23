@@ -368,7 +368,7 @@ const Landing = () => {
                 <Link to="/demo" className="text-sm transition-colors" style={{ color: 'rgba(0,0,0,0.5)' }}>Book a Demo →</Link>
               </motion.div>
 
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.3 }} className="text-xs text-white/40 mt-4">
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.3 }} className="text-xs mt-4" style={{ color: 'rgba(0,0,0,0.4)' }}>
                 Trusted by 200+ indie app developers · No credit card required
               </motion.p>
             </div>
