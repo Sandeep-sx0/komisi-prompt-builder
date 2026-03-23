@@ -334,7 +334,8 @@ const Landing = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 + i * 0.15 }}
-                    className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-white leading-[1.05]"
+                    className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05]"
+                    style={{ color: '#000000' }}
                   >
                     {line}
                   </motion.div>
