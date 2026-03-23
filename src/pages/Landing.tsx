@@ -793,7 +793,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 9 — TESTIMONIALS (SCROLLING COLUMNS)
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#E9F5FF", padding: '80px 0' }}>
+      <section className="dot-grid" style={{ padding: '80px 0' }}>
         <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 24px' }}>
 
           {/* Header */}
