@@ -166,7 +166,7 @@ const FraudDetectionAnimation = () => {
                 }}>
                 <div className="flex items-center gap-2 mb-5">
                   <span style={{ color: "#F59E0B" }}>⚠</span>
-                  <span className="text-sm" style={{ color: "#111827", fontWeight: 400 }}>Fraud Alert Detected</span>
+                  <span className="text-sm" style={{ color: "#111111", fontWeight: 400 }}>Fraud Alert Detected</span>
                 </div>
                 <div className="space-y-3 mb-5">
                   {[
@@ -176,12 +176,12 @@ const FraudDetectionAnimation = () => {
                   ].map((d) => (
                     <div key={d.label} className="flex justify-between text-xs">
                       <span style={{ color: "#6B7280" }}>{d.label}</span>
-                      <span style={{ color: "#111827" }}>{d.value}</span>
+                      <span style={{ color: "#111111" }}>{d.value}</span>
                     </div>
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-1 py-2 text-xs text-center" style={{ color: "#111827", border: "1px solid #E5E7EB", borderRadius: "8px" }}>Review Details</div>
+                  <div className="flex-1 py-2 text-xs text-center" style={{ color: "#111111", border: "1px solid #E5E7EB", borderRadius: "8px" }}>Review Details</div>
                   <div className="flex-1 py-2 text-xs text-center" style={{ color: "#6B7280" }}>Dismiss</div>
                 </div>
               </div>

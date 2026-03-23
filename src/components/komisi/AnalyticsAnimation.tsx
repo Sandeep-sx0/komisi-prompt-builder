@@ -86,7 +86,7 @@ const AnalyticsAnimation = () => {
                 {showHeaders && (
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
                     <div className="flex items-center justify-between px-5 pt-5 pb-3">
-                      <span className="text-sm" style={{ color: "#111827", fontWeight: 400 }}>Creator Performance</span>
+                      <span className="text-sm" style={{ color: "#111111", fontWeight: 400 }}>Creator Performance</span>
                       <span className="text-[10px] px-2 py-1 flex items-center gap-1.5" style={{ color: "#6B7280", border: "1px solid #E5E7EB", borderRadius: "6px" }}>
                         <AnimatePresence mode="wait">
                           {isLive ? (
@@ -136,7 +136,7 @@ const AnalyticsAnimation = () => {
                             backgroundColor: isSpotlit ? "rgba(0,0,0,0.06)" : "transparent",
                             transition: "background-color 800ms ease-in-out",
                           }}>
-                          <span className="flex items-center gap-1 min-w-0" style={{ color: "#111827" }}>
+                          <span className="flex items-center gap-1 min-w-0" style={{ color: "#111111" }}>
                             <span className="truncate">{row.creator}</span>
                             <AnimatePresence>
                               {isSpotlit && showBadge && (
@@ -149,13 +149,13 @@ const AnalyticsAnimation = () => {
                           <span className="flex items-center">
                             <img src={platformLogos[row.platform]} alt={row.platform} width={24} height={24} style={{ borderRadius: "6px", objectFit: "cover" }} />
                           </span>
-                          <span className="text-right" style={{ color: "#111827" }}>
+                          <span className="text-right" style={{ color: "#111111" }}>
                             {rowCounters[i] ? <CountingNumber number={row.installs} decimalPlaces={0} inView transition={{ stiffness: 80, damping: 20 }} /> : "0"}
                           </span>
-                          <span className="text-right" style={{ color: "#111827" }}>
+                          <span className="text-right" style={{ color: "#111111" }}>
                             {rowCounters[i] ? <CountingNumber number={row.revenue} prefix="$" decimalPlaces={0} inView transition={{ stiffness: 80, damping: 20 }} /> : "$0"}
                           </span>
-                          <span className="text-right" style={{ color: "#111827" }}>
+                          <span className="text-right" style={{ color: "#111111" }}>
                             {rowCounters[i] ? <CountingNumber number={row.commission} prefix="$" decimalPlaces={0} inView transition={{ stiffness: 80, damping: 20 }} /> : "$0"}
                           </span>
                         </motion.div>
