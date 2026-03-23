@@ -1134,7 +1134,7 @@ const Pricing = () => {
               { num: "150+", label: "Payout countries" },
             ].map(s => (
               <div key={s.num}>
-                <div style={{ fontSize: 36, fontWeight: 700, color: "#FFFFFF" }}>{s.num}</div>
+                <div style={{ fontSize: 36, fontWeight: 500, color: "#FFFFFF" }}>{s.num}</div>
                 <div className="mt-1" style={{ fontSize: 13, color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
               </div>
             ))}
