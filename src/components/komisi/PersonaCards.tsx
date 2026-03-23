@@ -434,7 +434,7 @@ const PersonaCard = ({ label, chips, visual, delay = 0 }: PersonaCardProps) => {
    ═══════════════════════════════════════════ */
 const PersonaCards = () => {
   return (
-    <section className="py-24 px-6" style={{ backgroundColor: "#E9F5FF" }}>
+    <section className="py-24 px-6 dot-grid">
       <div className="max-w-[1200px] mx-auto">
         <motion.div
           className="text-center mb-16"
