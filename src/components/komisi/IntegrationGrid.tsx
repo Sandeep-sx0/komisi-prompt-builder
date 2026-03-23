@@ -60,12 +60,11 @@ export const IntegrationGrid = ({ integrations }: { integrations: Integration[] 
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.4, delay: i * 0.04 }}
-          whileHover={{ scale: 1.06, boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}
-          className="border bg-card rounded-xl p-5 text-center cursor-default relative overflow-hidden"
+          className="border bg-card p-5 text-center cursor-default relative overflow-hidden valley-glow-hover"
           style={{
             borderColor: shimmeringTiles.has(i) ? '#000000' : undefined,
             boxShadow: shimmeringTiles.has(i)
-              ? '0 0 0 1px #000000, 0 0 12px rgba(0,0,0,0.3)'
+              ? '0 0 0 1px #000000, 0 0 12px rgba(0,0,0,0.15)'
               : undefined,
             transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
           }}
@@ -82,7 +81,7 @@ export const IntegrationGrid = ({ integrations }: { integrations: Integration[] 
           <img
             src={item.logo}
             alt={item.name}
-            className="w-12 h-12 mx-auto mb-3 object-contain rounded-xl"
+            className="w-12 h-12 mx-auto mb-3 object-contain"
           />
           <span className="text-sm font-medium text-text-secondary">{item.name}</span>
         </motion.div>
