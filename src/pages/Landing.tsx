@@ -316,9 +316,9 @@ const Landing = () => {
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
       <section ref={heroRef} className="relative min-h-screen overflow-hidden" id="product">
-        {/* DarkVeil background */}
+        {/* Hero watercolor background */}
         <div className="absolute inset-0 z-0">
-          <DarkVeil speed={1.8} warpAmount={1.2} noiseIntensity={0.0} scanlineIntensity={0} scanlineFrequency={0} hueShift={0} resolutionScale={1} />
+          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover" />
         </div>
 
         {/* Hero content */}
