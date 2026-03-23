@@ -70,7 +70,7 @@ const DeveloperVisual = () => {
       return (
         <>
           <span className="text-white">{sdk}</span>
-          <span style={{ color: "#000000" }}>{configure}</span>
+           <span style={{ color: "rgba(255,255,255,0.6)" }}>{configure}</span>
           <span style={{ color: "#81C784" }}>{rest2}</span>
         </>
       );
