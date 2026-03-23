@@ -61,7 +61,7 @@ const DeveloperVisual = () => {
       return (
         <>
           <span className="text-white">{sdk}</span>
-          <span style={{ color: "#000000" }}>{rest1}</span>
+          <span style={{ color: "#FFFFFF" }}>{rest1}</span>
         </>
       );
     }
