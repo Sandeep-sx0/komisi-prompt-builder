@@ -827,7 +827,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 4 — COMMISSION EXPLAINER
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#E9F5FF" }} className="py-20 px-6">
+      <section className="py-20 px-6 dot-grid">
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Left */}
           <motion.div
