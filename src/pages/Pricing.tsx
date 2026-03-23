@@ -1044,7 +1044,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 6 — ENTERPRISE DEEP DIVE (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-20 px-6" style={{ backgroundColor: "#111111" }}>
+      <section className="relative overflow-hidden py-20 px-6 dark dot-grid" style={{ backgroundColor: "#111111" }}>
         {/* Animated bg */}
         <div
           className="absolute inset-0 pointer-events-none"
