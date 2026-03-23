@@ -112,7 +112,7 @@ const HeroDashboard: React.FC = () => {
   return (
     <div
       className="w-full rounded-2xl overflow-hidden relative"
-      style={{ backgroundColor: '#1E0A3C', minHeight: 380 }}
+      style={{ backgroundColor: '#111111', minHeight: 380 }}
     >
       {/* Amber overlay for fraud scene */}
       <div
@@ -124,7 +124,7 @@ const HeroDashboard: React.FC = () => {
       />
 
       {/* Top bar */}
-      <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: '1px solid #2D1B69' }}>
+      <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: '1px solid #111111' }}>
         <span className="text-[10px] text-white/80 tracking-[0.1em] font-semibold uppercase">Komisi Dashboard</span>
         <div className="flex items-center gap-3">
           <span className="text-[10px] text-white/40 px-2 py-0.5 rounded-full" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>MindfulApp ▾</span>
@@ -142,7 +142,7 @@ const HeroDashboard: React.FC = () => {
             key={m.key}
             className="rounded-lg px-2 py-2 text-center relative overflow-hidden"
             style={{
-              backgroundColor: installBump && m.key === 'installs' ? 'rgba(74,222,128,0.1)' : '#1A0B2E',
+              backgroundColor: installBump && m.key === 'installs' ? 'rgba(74,222,128,0.1)' : '#111111',
               transition: 'background-color 500ms ease',
             }}
           >
@@ -166,7 +166,7 @@ const HeroDashboard: React.FC = () => {
       </div>
 
       {/* Divider */}
-      <div className="mx-3" style={{ height: 1, backgroundColor: '#2D1B69' }} />
+      <div className="mx-3" style={{ height: 1, backgroundColor: '#111111' }} />
 
       {/* Scene area */}
       <div className="relative px-3 py-2.5" style={{ minHeight: 220 }}>
@@ -247,7 +247,7 @@ const HeroDashboard: React.FC = () => {
                   <div
                     key={i}
                     className="rounded-lg px-2.5 py-2 flex items-start gap-2"
-                    style={{ backgroundColor: '#1A0B2E', ...fade(visibleActivity > i) }}
+                    style={{ backgroundColor: '#111111', ...fade(visibleActivity > i) }}
                   >
                     <span className="text-sm leading-none mt-0.5">{row.icon}</span>
                     <div className="flex-1 min-w-0">
@@ -268,7 +268,7 @@ const HeroDashboard: React.FC = () => {
             <div className="relative">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[10px] text-white/80 font-medium">Top Affiliates</span>
-                <span className="text-[9px]" style={{ color: '#A78BFA' }}>View All →</span>
+                <span className="text-[9px]" style={{ color: '#000000' }}>View All →</span>
               </div>
               <div className="grid grid-cols-[24px_1fr_60px_60px_50px] gap-1 mb-1.5 px-2">
                 {['#', 'Affiliate', 'Installs', 'Revenue', 'Conv'].map(h => (
@@ -293,7 +293,7 @@ const HeroDashboard: React.FC = () => {
               ))}
               <div
                 className="absolute left-1/2 top-1 -translate-x-1/2 rounded-lg px-3 py-2 z-10 text-center"
-                style={{ backgroundColor: '#2D1B69', ...fade(showTooltip) }}
+                style={{ backgroundColor: '#111111', ...fade(showTooltip) }}
               >
                 <p className="text-[9px] text-white">✦ Top performer this month</p>
                 <p className="text-[8px]" style={{ color: '#9CA3AF' }}>Drove 38% of total revenue</p>
@@ -357,7 +357,7 @@ const HeroDashboard: React.FC = () => {
             style={{
               width: scene === s ? 6 : 4,
               height: scene === s ? 6 : 4,
-              backgroundColor: scene === s ? '#FFFFFF' : '#4C1D95',
+              backgroundColor: scene === s ? '#FFFFFF' : '#111111',
               transition: 'all 400ms ease',
             }}
           />

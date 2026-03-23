@@ -230,7 +230,7 @@ const Landing = () => {
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <motion.span
-              animate={{ color: isPastHero ? '#0a0010' : '#FFFFFF' }}
+              animate={{ color: isPastHero ? '#000000' : '#FFFFFF' }}
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="text-lg tracking-tight font-normal"
             >
@@ -247,13 +247,13 @@ const Landing = () => {
                     href: `#${l.toLowerCase()}`,
                     animate: { color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' },
                     transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
-                    onMouseEnter: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; },
+                    onMouseEnter: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#000000' : '#FFFFFF'; },
                     onMouseLeave: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; },
                   };
               if (isLink) {
                 return (
                   <Link key={l} to="/pricing" className="text-sm" style={{ cursor: 'pointer', color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)', transition: 'color 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
-                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
+                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#000000' : '#FFFFFF'; }}
                     onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
                   >{l}</Link>
                 );
@@ -266,7 +266,7 @@ const Landing = () => {
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   className="text-sm"
                   style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#0a0010' : '#FFFFFF'; }}
+                  onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#000000' : '#FFFFFF'; }}
                   onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
                 >
                   {l}
@@ -284,10 +284,10 @@ const Landing = () => {
                 Login
               </motion.span>
             </Link>
-            <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
+            <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#000000', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
           </div>
           <button className="md:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
-            <motion.span animate={{ color: isPastHero ? '#0a0010' : '#FFFFFF' }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
+            <motion.span animate={{ color: isPastHero ? '#000000' : '#FFFFFF' }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
               {mobileMenu ? <X size={24} /> : <Menu size={24} />}
             </motion.span>
           </button>
@@ -306,7 +306,7 @@ const Landing = () => {
                   : <a key={l} href={`#${l.toLowerCase()}`} className="block text-sm py-2 text-text-secondary">{l}</a>
               ))}
               <Link to="/login"><Button variant="secondary" className="w-full mt-2">Login</Button></Link>
-              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: '#7C3AED', color: '#FFFFFF' }}>Get Started</Button></Link>
+              <Link to="/signup"><Button className="w-full" style={{ backgroundColor: '#000000', color: '#FFFFFF' }}>Get Started</Button></Link>
             </motion.div>
           )}
         </AnimatePresence>
@@ -362,7 +362,7 @@ const Landing = () => {
               >
                 <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/10 border-white/20 text-white placeholder:text-white/40" />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 bg-white text-[#1E0A3C] hover:bg-white/90 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
+                  <Button size="lg" className="h-12 px-6 bg-white text-[#111111] hover:bg-white/90 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
                 </Link>
               </motion.div>
 
@@ -428,7 +428,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 5 — STATS BAR (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6" style={{ backgroundColor: "#0D0023" }}>
+      <section className="py-20 px-6" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { value: 2, prefix: "$", suffix: "M+", label: "Creator commissions tracked" },
@@ -468,7 +468,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 6 — SDK CODE BLOCK (Dark, continues)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#0D0023" }}>
+      <section className="py-24 px-6" style={{ backgroundColor: "#000000" }}>
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -483,7 +483,7 @@ const Landing = () => {
               <p className="text-base mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
                 One SDK. Works on iOS, Android, Flutter, and React Native. Drop in 3 lines of code and Komisi handles attribution, fraud detection, and payouts automatically. No server coding required.
               </p>
-              <a href="#" className="text-sm hover:text-white transition-colors inline-flex items-center gap-1 mb-10" style={{ color: '#A78BFA' }}>
+              <a href="#" className="text-sm hover:text-white transition-colors inline-flex items-center gap-1 mb-10" style={{ color: '#000000' }}>
                 Read the docs <ArrowRight size={14} />
               </a>
 
@@ -586,10 +586,10 @@ const Landing = () => {
                 <p className="text-base text-text-secondary mb-6">
                   Komisi's SDK uses privacy-safe fingerprint matching on iOS and the Play Install Referrer API on Android. 100% deterministic on Android. 0.60–0.95 confidence scoring on iOS. No ATT prompt. No impact on your App Store privacy label.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#7C3AED' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#000000' }}>
                   Learn how attribution works <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(124,58,237,0.15)' }}>
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.15)' }}>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "We finally know which creators are actually driving installs. Komisi's attribution is the most accurate we've tested."
                   </p>
@@ -616,7 +616,7 @@ const Landing = () => {
       </section>
 
       {/* Feature 2 — Fraud detection (lavender bg) */}
-      <section className="w-full" style={{ backgroundColor: "#F5F0FF" }}>
+      <section className="w-full" style={{ backgroundColor: "#E9F5FF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -642,10 +642,10 @@ const Landing = () => {
                 <p className="text-base text-text-secondary mb-6">
                   Every conversion is scored in real time. Komisi flags suspicious install patterns — same IP clusters, abnormal velocity, emulator installs — before they cost you money.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#7C3AED' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#000000' }}>
                   See how fraud detection works <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(124,58,237,0.15)' }}>
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.15)' }}>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
@@ -680,10 +680,10 @@ const Landing = () => {
                 <p className="text-base text-text-secondary mb-6">
                   Real-time analytics broken down by creator, campaign, platform, and content. See install volume, trial starts, subscription conversions, and revenue attributed — all in one dashboard.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#7C3AED' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#000000' }}>
                   Explore the analytics dashboard <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(124,58,237,0.15)' }}>
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.15)' }}>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "I can see exactly which TikTok video drove the most subscriptions. That changes how we brief creators entirely."
                   </p>
@@ -710,7 +710,7 @@ const Landing = () => {
       </section>
 
       {/* Feature 4 — Payouts (lavender bg) */}
-      <section className="w-full" style={{ backgroundColor: "#F5F0FF" }}>
+      <section className="w-full" style={{ backgroundColor: "#E9F5FF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -736,10 +736,10 @@ const Landing = () => {
                 <p className="text-base text-text-secondary mb-6">
                   Creators connect their Stripe account during onboarding. Komisi calculates commissions against net revenue after store fees and queues payouts automatically on your chosen schedule — weekly, bi-weekly, or monthly.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#7C3AED' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#000000' }}>
                   Learn about payouts <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(124,58,237,0.15)' }}>
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.15)' }}>
                   <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                     "Creators love that they just get paid. No back-and-forth, no invoices. It's made recruiting affiliates so much easier."
                   </p>
@@ -760,7 +760,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 8 — INTEGRATIONS GRID
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#EDE5FF" }}>
+      <section className="py-24 px-6" style={{ backgroundColor: "#E9F5FF" }}>
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
@@ -774,7 +774,7 @@ const Landing = () => {
           <IntegrationGrid integrations={integrations} />
 
           <Reveal className="mt-12">
-            <div className="p-6 max-w-2xl mx-auto" style={{ borderLeft: '2px solid #7C3AED' }}>
+            <div className="p-6 max-w-2xl mx-auto" style={{ borderLeft: '2px solid #000000' }}>
               <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
                 "The RevenueCat integration saved us weeks. Komisi just reads our existing webhook events — zero additional engineering."
               </p>
@@ -793,7 +793,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 9 — TESTIMONIALS (SCROLLING COLUMNS)
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#F5F0FF", padding: '80px 0' }}>
+      <section style={{ backgroundColor: "#E9F5FF", padding: '80px 0' }}>
         <div className="mx-auto" style={{ maxWidth: '1200px', padding: '0 24px' }}>
 
           {/* Header */}
@@ -839,7 +839,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 11 — FINAL CTA (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#1E0A3C" }}>
+      <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#111111" }}>
         <div className="absolute inset-0 z-0 pointer-events-none">
           <DarkVeil speed={1.8} warpAmount={1.2} noiseIntensity={0.0} scanlineIntensity={0} scanlineFrequency={0} hueShift={0} resolutionScale={1} />
         </div>

@@ -61,7 +61,7 @@ const DeveloperVisual = () => {
       return (
         <>
           <span className="text-white">{sdk}</span>
-          <span style={{ color: "#A78BFA" }}>{rest1}</span>
+          <span style={{ color: "#000000" }}>{rest1}</span>
         </>
       );
     }
@@ -70,7 +70,7 @@ const DeveloperVisual = () => {
       return (
         <>
           <span className="text-white">{sdk}</span>
-          <span style={{ color: "#A78BFA" }}>{configure}</span>
+          <span style={{ color: "#000000" }}>{configure}</span>
           <span style={{ color: "#81C784" }}>{rest2}</span>
         </>
       );
@@ -78,9 +78,9 @@ const DeveloperVisual = () => {
     return (
       <>
         <span className="text-white">{sdk}</span>
-        <span style={{ color: "#A78BFA" }}>{configure}</span>
+        <span style={{ color: "#000000" }}>{configure}</span>
         <span style={{ color: "#81C784" }}>{key}</span>
-        <span style={{ color: "#A78BFA" }}>{rest2.slice(key.length)}</span>
+        <span style={{ color: "#000000" }}>{rest2.slice(key.length)}</span>
       </>
     );
   };
@@ -97,7 +97,7 @@ const DeveloperVisual = () => {
         <span
           className="w-6 h-6 shrink-0 flex items-center justify-center text-[10px]"
           style={{
-            backgroundColor: phase >= 1 ? "rgba(124,58,237,0.3)" : "rgba(255,255,255,0.05)",
+            backgroundColor: phase >= 1 ? "rgba(0,0,0,0.3)" : "rgba(255,255,255,0.05)",
             color: "rgba(255,255,255,0.8)",
             borderRadius: "50%",
           }}
@@ -121,7 +121,7 @@ const DeveloperVisual = () => {
           <span
             className="w-6 h-6 shrink-0 flex items-center justify-center text-[10px]"
             style={{
-              backgroundColor: phase >= 2 ? "rgba(124,58,237,0.4)" : "rgba(255,255,255,0.05)",
+              backgroundColor: phase >= 2 ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.05)",
               color: "white",
               borderRadius: "50%",
             }}
@@ -401,13 +401,13 @@ const PersonaCard = ({ label, chips, visual, delay = 0 }: PersonaCardProps) => {
         transition: "border-color 300ms ease",
       }}
       onMouseEnter={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "#7C3AED";
+        (e.currentTarget as HTMLElement).style.borderColor = "#000000";
       }}
       onMouseLeave={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = "#E5E7EB";
       }}
     >
-      <div className="h-[240px]" style={{ backgroundColor: "#1E0A3C" }}>
+      <div className="h-[240px]" style={{ backgroundColor: "#111111" }}>
         {visual}
       </div>
       <div className="p-6 flex-1 flex flex-col">
@@ -434,7 +434,7 @@ const PersonaCard = ({ label, chips, visual, delay = 0 }: PersonaCardProps) => {
    ═══════════════════════════════════════════ */
 const PersonaCards = () => {
   return (
-    <section className="py-24 px-6" style={{ backgroundColor: "#F5F0FF" }}>
+    <section className="py-24 px-6" style={{ backgroundColor: "#E9F5FF" }}>
       <div className="max-w-[1200px] mx-auto">
         <motion.div
           className="text-center mb-16"

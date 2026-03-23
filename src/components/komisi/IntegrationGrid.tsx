@@ -60,12 +60,12 @@ export const IntegrationGrid = ({ integrations }: { integrations: Integration[] 
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.4, delay: i * 0.04 }}
-          whileHover={{ scale: 1.06, boxShadow: "0 8px 24px rgba(124,58,237,0.15)" }}
+          whileHover={{ scale: 1.06, boxShadow: "0 8px 24px rgba(0,0,0,0.15)" }}
           className="border bg-card rounded-xl p-5 text-center cursor-default relative overflow-hidden"
           style={{
-            borderColor: shimmeringTiles.has(i) ? '#7C3AED' : undefined,
+            borderColor: shimmeringTiles.has(i) ? '#000000' : undefined,
             boxShadow: shimmeringTiles.has(i)
-              ? '0 0 0 1px #7C3AED, 0 0 12px rgba(124,58,237,0.3)'
+              ? '0 0 0 1px #000000, 0 0 12px rgba(0,0,0,0.3)'
               : undefined,
             transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
           }}
