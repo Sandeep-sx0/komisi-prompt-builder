@@ -568,7 +568,7 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
 
       {/* Feature 1 — Attribution flow (white bg) */}
-      <section className="w-full" style={{ backgroundColor: "#FFFFFF" }}>
+      <section className="w-full dot-grid" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
