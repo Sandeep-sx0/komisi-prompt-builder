@@ -241,10 +241,10 @@ const Landing = () => {
                 ? { to: "/pricing" as string }
                 : {
                     href: `#${l.toLowerCase()}`,
-                    animate: { color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' },
+                    animate: { color: isPastHero ? 'rgba(0,0,0,0.65)' : '#000000' },
                     transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
-                    onMouseEnter: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#000000' : '#FFFFFF'; },
-                    onMouseLeave: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; },
+                    onMouseEnter: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = '#000000'; },
+                    onMouseLeave: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? 'rgba(0,0,0,0.65)' : '#000000'; },
                   };
               if (isLink) {
                 return (
