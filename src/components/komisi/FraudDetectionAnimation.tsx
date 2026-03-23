@@ -157,7 +157,7 @@ const FraudDetectionAnimation = () => {
           <motion.div key="alert" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0 flex items-center justify-center p-6"
-            style={{ backgroundColor: "rgba(30, 10, 60, 0.85)" }}>
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.85)" }}>
             <div className="w-full max-w-[340px] shadow-2xl" style={{ backgroundColor: "#FFFFFF", borderRadius: "16px", overflow: "hidden" }}>
               <div className="p-5"
                 style={{
