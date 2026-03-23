@@ -80,7 +80,7 @@ const DeveloperVisual = () => {
         <span className="text-white">{sdk}</span>
         <span style={{ color: "#000000" }}>{configure}</span>
         <span style={{ color: "#81C784" }}>{key}</span>
-        <span style={{ color: "#000000" }}>{rest2.slice(key.length)}</span>
+        <span style={{ color: "rgba(255,255,255,0.6)" }}>{rest2.slice(key.length)}</span>
       </>
     );
   };
