@@ -891,55 +891,8 @@ const Landing = () => {
           </motion.p>
         </div>
       </section>
-        <div className="max-w-3xl mx-auto text-center relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4"
-          >
-            Your next 1,000 installs<br />
-            are one affiliate program away.
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base mb-10" style={{ color: "#9CA3AF" }}
-          >
-            Get started today or book a demo for a personal walkthrough.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex items-center justify-center gap-4 mb-6"
-          >
-            <Link to="/signup">
-              <Button size="lg" className="h-12 px-8 bg-white text-foreground hover:bg-white/90 border border-transparent">
-                Get Started Free <ArrowRight size={16} />
-              </Button>
-            </Link>
-            <Link to="/demo">
-              <Button variant="outline" size="lg" className="h-12 px-8 border-white/20 text-white hover:bg-white/10 bg-transparent">
-                Book a Demo
-              </Button>
-            </Link>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-xs" style={{ color: "#6B7280" }}
-          >
-            200+ app developers · No credit card required · Setup in 30 minutes
-          </motion.p>
-        </div>
-      </section>
+
+
 
       {/* ═══════════════════════════════════════════
           SECTION 12 — FOOTER
