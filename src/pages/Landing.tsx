@@ -229,13 +229,9 @@ const Landing = () => {
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <motion.span
-              animate={{ color: isPastHero ? '#000000' : '#FFFFFF' }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="text-lg tracking-tight font-normal"
-            >
+            <span className="text-lg tracking-tight font-normal" style={{ color: '#000000' }}>
               komisi
-            </motion.span>
+            </span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             {["Product", "Pricing", "Docs", "Marketplace"].map(l => {
@@ -245,16 +241,16 @@ const Landing = () => {
                 ? { to: "/pricing" as string }
                 : {
                     href: `#${l.toLowerCase()}`,
-                    animate: { color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' },
+                    animate: { color: isPastHero ? 'rgba(0,0,0,0.65)' : '#000000' },
                     transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] },
-                    onMouseEnter: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#000000' : '#FFFFFF'; },
-                    onMouseLeave: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; },
+                    onMouseEnter: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = '#000000'; },
+                    onMouseLeave: (e: React.MouseEvent) => { (e.target as HTMLElement).style.color = isPastHero ? 'rgba(0,0,0,0.65)' : '#000000'; },
                   };
               if (isLink) {
                 return (
-                  <Link key={l} to="/pricing" className="text-sm" style={{ cursor: 'pointer', color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)', transition: 'color 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
-                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#000000' : '#FFFFFF'; }}
-                    onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
+                  <Link key={l} to="/pricing" className="text-sm" style={{ cursor: 'pointer', color: isPastHero ? 'rgba(0,0,0,0.65)' : '#000000', transition: 'color 0.35s cubic-bezier(0.16, 1, 0.3, 1)' }}
+                    onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#000000'; }}
+                    onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? 'rgba(0,0,0,0.65)' : '#000000'; }}
                   >{l}</Link>
                 );
               }
@@ -262,12 +258,12 @@ const Landing = () => {
                 <motion.a
                   key={l}
                   href={`#${l.toLowerCase()}`}
-                  animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.85)' }}
+                  animate={{ color: isPastHero ? 'rgba(0,0,0,0.65)' : '#000000' }}
                   transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   className="text-sm"
                   style={{ cursor: 'pointer' }}
-                  onMouseEnter={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#000000' : '#FFFFFF'; }}
-                  onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? '#374151' : 'rgba(255,255,255,0.85)'; }}
+                  onMouseEnter={(e) => { (e.target as HTMLElement).style.color = '#000000'; }}
+                  onMouseLeave={(e) => { (e.target as HTMLElement).style.color = isPastHero ? 'rgba(0,0,0,0.65)' : '#000000'; }}
                 >
                   {l}
                 </motion.a>
@@ -277,7 +273,7 @@ const Landing = () => {
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login">
               <motion.span
-                animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.75)' }}
+                animate={{ color: isPastHero ? 'rgba(0,0,0,0.65)' : 'rgba(0,0,0,0.7)' }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="text-sm cursor-pointer"
               >
@@ -287,9 +283,9 @@ const Landing = () => {
             <Link to="/signup"><Button size="sm" style={{ backgroundColor: '#000000', color: '#FFFFFF' }} className="hover:opacity-90">Get Started <ArrowRight size={14} /></Button></Link>
           </div>
           <button className="md:hidden" onClick={() => setMobileMenu(!mobileMenu)}>
-            <motion.span animate={{ color: isPastHero ? '#000000' : '#FFFFFF' }} transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}>
+            <span style={{ color: '#000000' }}>
               {mobileMenu ? <X size={24} /> : <Menu size={24} />}
-            </motion.span>
+            </span>
           </button>
         </div>
         <AnimatePresence>
@@ -326,7 +322,7 @@ const Landing = () => {
           <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-white/60 border border-white/20 px-3 py-1.5 mb-6">
+                <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] px-3 py-1.5 mb-6" style={{ color: 'rgba(0,0,0,0.5)', border: '1px solid rgba(0,0,0,0.15)' }}>
                   ✦ Built for mobile app developers
                 </span>
               </motion.div>
@@ -338,7 +334,8 @@ const Landing = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 + i * 0.15 }}
-                    className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tighter text-white leading-[1.05]"
+                    className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05]"
+                    style={{ color: '#000000' }}
                   >
                     {line}
                   </motion.div>
@@ -349,7 +346,8 @@ const Landing = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-base text-white/60 mb-8 max-w-[480px]"
+                className="text-base mb-8 max-w-[480px]"
+                style={{ color: 'rgba(0,0,0,0.6)' }}
               >
                 Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
               </motion.p>
@@ -360,17 +358,17 @@ const Landing = () => {
                 transition={{ duration: 0.6, delay: 0.9 }}
                 className="flex flex-col sm:flex-row gap-3 mb-4"
               >
-                <Input placeholder="Enter your email" className="h-12 max-w-[280px] bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+                <Input placeholder="Enter your email" className="h-12 max-w-[280px] border" style={{ backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(0,0,0,0.15)', color: '#000000' }} />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 bg-white text-[#111111] hover:bg-white/90 border border-transparent">Get Started Free <ArrowRight size={16} /></Button>
+                  <Button size="lg" className="h-12 px-6 border-none" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Get Started Free <ArrowRight size={16} /></Button>
                 </Link>
               </motion.div>
 
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 1.1 }} className="flex items-center gap-4 mb-2">
-                <Link to="/demo" className="text-sm text-white/60 hover:text-white transition-colors">Book a Demo →</Link>
+                <Link to="/demo" className="text-sm transition-colors" style={{ color: 'rgba(0,0,0,0.5)' }}>Book a Demo →</Link>
               </motion.div>
 
-              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.3 }} className="text-xs text-white/40 mt-4">
+              <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.3 }} className="text-xs mt-4" style={{ color: 'rgba(0,0,0,0.4)' }}>
                 Trusted by 200+ indie app developers · No credit card required
               </motion.p>
             </div>
