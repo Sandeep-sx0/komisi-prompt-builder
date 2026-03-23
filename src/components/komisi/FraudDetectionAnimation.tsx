@@ -101,7 +101,7 @@ const FraudDetectionAnimation = () => {
                           transition={{ duration: 0.6, ease: "easeInOut" }}
                           className="grid grid-cols-3 px-4 py-2.5 font-mono text-[11px]"
                           style={{
-                            borderBottom: "1px solid rgba(0,0,0,0.04)",
+                            borderBottom: "1px solid rgba(255,255,255,0.04)",
                             backgroundColor: isHighlighted ? "rgba(245, 158, 11, 0.08)" : "transparent",
                             transition: "background-color 800ms ease-in-out",
                           }}
