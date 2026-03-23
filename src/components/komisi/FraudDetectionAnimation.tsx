@@ -133,7 +133,7 @@ const FraudDetectionAnimation = () => {
                   <motion.div key="scanning" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                     className="px-4 py-3 flex items-center gap-2 text-xs"
-                    style={{ color: "#9CA3AF", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+                    style={{ color: "#9CA3AF", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                     <motion.span animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="inline-block">◌</motion.span>
                     AI scoring pattern... 47 installs · Same IP range
                   </motion.div>
