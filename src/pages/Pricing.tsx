@@ -461,9 +461,9 @@ const Pricing = () => {
             transition={anim}
             className="inline-block text-[13px] font-medium px-4 py-1.5"
             style={{
-              color: "#000000",
-              backgroundColor: "rgba(0,0,0,0.15)",
-              border: "1px solid rgba(0,0,0,0.3)",
+              color: "rgba(255,255,255,0.7)",
+              backgroundColor: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.15)",
               borderRadius: 999,
             }}
           >
