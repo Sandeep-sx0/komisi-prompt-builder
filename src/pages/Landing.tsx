@@ -728,24 +728,24 @@ const Landing = () => {
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
               <div>
-                <h3 className="text-2xl md:text-3xl font-normal text-foreground tracking-tight leading-tight mb-4">
+                <h3 className="text-2xl md:text-3xl font-normal tracking-tight leading-tight mb-4" style={{ color: '#FFFFFF' }}>
                   Pay every creator automatically. No invoices, no chasing.
                 </h3>
-                <p className="text-base text-text-secondary mb-6">
+                <p className="text-base mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>
                   Creators connect their Stripe account during onboarding. Komisi calculates commissions against net revenue after store fees and queues payouts automatically on your chosen schedule — weekly, bi-weekly, or monthly.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: '#000000' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: 'rgba(255,255,255,0.7)' }}>
                   Learn about payouts <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.15)' }}>
-                  <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
+                  <p className="text-sm mb-3 leading-relaxed italic" style={{ color: 'rgba(255,255,255,0.6)' }}>
                     "Creators love that they just get paid. No back-and-forth, no invoices. It's made recruiting affiliates so much easier."
                   </p>
                   <div className="flex items-center gap-3">
                     <img src="/avatars/user-4.jpg" alt="Priya Nair" className="w-7 h-7 rounded-full object-cover" />
                     <div>
-                      <p className="text-xs text-foreground">Priya Nair</p>
-                      <p className="text-[10px] text-text-tertiary">Founder, MindfulApp</p>
+                      <p className="text-xs" style={{ color: 'rgba(255,255,255,0.9)' }}>Priya Nair</p>
+                      <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.4)' }}>Founder, MindfulApp</p>
                     </div>
                   </div>
                 </div>
