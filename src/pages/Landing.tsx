@@ -837,9 +837,9 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 11 — FINAL CTA (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#111111" }}>
+      <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#FFF8EE" }}>
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover opacity-30" />
+          <img src="/images/cta-bg.jpg" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <motion.h2
@@ -847,7 +847,8 @@ const Landing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="text-4xl md:text-5xl font-normal text-white tracking-tight leading-tight mb-4"
+            className="text-4xl md:text-5xl font-normal tracking-tight leading-tight mb-4"
+            style={{ color: "#000000" }}
           >
             Your next 1,000 installs<br />
             are one affiliate program away.
@@ -857,7 +858,7 @@ const Landing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base mb-10" style={{ color: "#9CA3AF" }}
+            className="text-base mb-10" style={{ color: "rgba(0,0,0,0.5)" }}
           >
             Get started today or book a demo for a personal walkthrough.
           </motion.p>
@@ -869,12 +870,12 @@ const Landing = () => {
             className="flex items-center justify-center gap-4 mb-6"
           >
             <Link to="/signup">
-              <Button size="lg" className="h-12 px-8 bg-white text-foreground hover:bg-white/90 border border-transparent">
+              <Button size="lg" className="h-12 px-8 bg-foreground text-background hover:bg-foreground/90 border border-transparent">
                 Get Started Free <ArrowRight size={16} />
               </Button>
             </Link>
             <Link to="/demo">
-              <Button variant="outline" size="lg" className="h-12 px-8 border-white/20 text-white hover:bg-white/10 bg-transparent">
+              <Button variant="outline" size="lg" className="h-12 px-8 border-foreground/30 text-foreground hover:bg-foreground/5 bg-transparent">
                 Book a Demo
               </Button>
             </Link>
@@ -884,12 +885,14 @@ const Landing = () => {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-xs" style={{ color: "#6B7280" }}
+            className="text-xs" style={{ color: "rgba(0,0,0,0.4)" }}
           >
             200+ app developers · No credit card required · Setup in 30 minutes
           </motion.p>
         </div>
       </section>
+
+
 
       {/* ═══════════════════════════════════════════
           SECTION 12 — FOOTER
