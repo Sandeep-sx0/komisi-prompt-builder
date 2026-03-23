@@ -466,7 +466,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 6 — SDK CODE BLOCK (Dark, continues)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 dark dot-grid" style={{ backgroundColor: "#000000" }}>
+      <section className="py-24 px-6 dark dot-grid">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
