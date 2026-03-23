@@ -273,7 +273,7 @@ const Landing = () => {
           <div className="hidden md:flex items-center gap-3">
             <Link to="/login">
               <motion.span
-                animate={{ color: isPastHero ? '#374151' : 'rgba(255,255,255,0.75)' }}
+                animate={{ color: isPastHero ? 'rgba(0,0,0,0.65)' : 'rgba(0,0,0,0.7)' }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="text-sm cursor-pointer"
               >
