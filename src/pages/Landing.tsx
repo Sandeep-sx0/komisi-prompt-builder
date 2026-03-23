@@ -18,6 +18,7 @@ import FraudDetectionAnimation from "@/components/komisi/FraudDetectionAnimation
 import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
+import { StickyBottomBar } from "@/components/komisi/StickyBottomBar";
 import HeroVisual from "@/components/komisi/HeroVisual";
 
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
