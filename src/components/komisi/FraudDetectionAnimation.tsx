@@ -68,9 +68,9 @@ const FraudDetectionAnimation = () => {
           >
             <div
               className="w-full max-w-[360px] overflow-hidden"
-              style={{ backgroundColor: "#000000", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.15)" }}
+              style={{ backgroundColor: "#000000", borderRadius: "12px", border: "1px solid rgba(255,255,255,0.08)" }}
             >
-              <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(0,0,0,0.1)" }}>
+              <div className="flex items-center justify-between px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                 <span className="text-sm text-white" style={{ fontWeight: 400 }}>Live Install Feed</span>
                 <span className="flex items-center gap-1.5 text-[11px]" style={{ color: "#4ADE80" }}>
                   <span className="relative flex h-2 w-2">
@@ -81,7 +81,7 @@ const FraudDetectionAnimation = () => {
                 </span>
               </div>
 
-              <div className="grid grid-cols-3 px-4 py-2 text-[10px] uppercase tracking-wider" style={{ color: "#6B7280", borderBottom: "1px solid rgba(0,0,0,0.06)" }}>
+              <div className="grid grid-cols-3 px-4 py-2 text-[10px] uppercase tracking-wider" style={{ color: "#6B7280", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                 <span>IP Address</span>
                 <span>Time</span>
                 <span className="text-right">Status</span>
@@ -101,7 +101,7 @@ const FraudDetectionAnimation = () => {
                           transition={{ duration: 0.6, ease: "easeInOut" }}
                           className="grid grid-cols-3 px-4 py-2.5 font-mono text-[11px]"
                           style={{
-                            borderBottom: "1px solid rgba(0,0,0,0.04)",
+                            borderBottom: "1px solid rgba(255,255,255,0.04)",
                             backgroundColor: isHighlighted ? "rgba(245, 158, 11, 0.08)" : "transparent",
                             transition: "background-color 800ms ease-in-out",
                           }}
@@ -133,7 +133,7 @@ const FraudDetectionAnimation = () => {
                   <motion.div key="scanning" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                     className="px-4 py-3 flex items-center gap-2 text-xs"
-                    style={{ color: "#9CA3AF", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+                    style={{ color: "#9CA3AF", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                     <motion.span animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="inline-block">◌</motion.span>
                     AI scoring pattern... 47 installs · Same IP range
                   </motion.div>
@@ -142,7 +142,7 @@ const FraudDetectionAnimation = () => {
                   <motion.div key="anomaly" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
                     transition={{ duration: 0.6, ease: "easeInOut" }}
                     className="px-4 py-3 flex items-center gap-2 text-xs"
-                    style={{ color: "#F59E0B", borderTop: "1px solid rgba(0,0,0,0.06)" }}>
+                    style={{ color: "#F59E0B", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                     ⚠ Anomaly detected — confidence 94%
                   </motion.div>
                 )}
@@ -157,7 +157,7 @@ const FraudDetectionAnimation = () => {
           <motion.div key="alert" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0 flex items-center justify-center p-6"
-            style={{ backgroundColor: "rgba(30, 10, 60, 0.85)" }}>
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.85)" }}>
             <div className="w-full max-w-[340px] shadow-2xl" style={{ backgroundColor: "#FFFFFF", borderRadius: "16px", overflow: "hidden" }}>
               <div className="p-5"
                 style={{
@@ -166,7 +166,7 @@ const FraudDetectionAnimation = () => {
                 }}>
                 <div className="flex items-center gap-2 mb-5">
                   <span style={{ color: "#F59E0B" }}>⚠</span>
-                  <span className="text-sm" style={{ color: "#111827", fontWeight: 400 }}>Fraud Alert Detected</span>
+                  <span className="text-sm" style={{ color: "#111111", fontWeight: 400 }}>Fraud Alert Detected</span>
                 </div>
                 <div className="space-y-3 mb-5">
                   {[
@@ -176,12 +176,12 @@ const FraudDetectionAnimation = () => {
                   ].map((d) => (
                     <div key={d.label} className="flex justify-between text-xs">
                       <span style={{ color: "#6B7280" }}>{d.label}</span>
-                      <span style={{ color: "#111827" }}>{d.value}</span>
+                      <span style={{ color: "#111111" }}>{d.value}</span>
                     </div>
                   ))}
                 </div>
                 <div className="flex gap-3">
-                  <div className="flex-1 py-2 text-xs text-center" style={{ color: "#111827", border: "1px solid #E5E7EB", borderRadius: "8px" }}>Review Details</div>
+                  <div className="flex-1 py-2 text-xs text-center" style={{ color: "#111111", border: "1px solid #E5E7EB", borderRadius: "8px" }}>Review Details</div>
                   <div className="flex-1 py-2 text-xs text-center" style={{ color: "#6B7280" }}>Dismiss</div>
                 </div>
               </div>

@@ -113,7 +113,7 @@ const PayoutsAnimation = () => {
                 transition: "box-shadow 800ms ease-in-out",
               }}>
               <div className="flex items-center justify-between px-5 pt-4 pb-3" style={{ borderBottom: "1px solid #F3F4F6" }}>
-                <span className="text-sm" style={{ color: "#111827", fontWeight: 400 }}>Upcoming Payouts</span>
+                <span className="text-sm" style={{ color: "#111111", fontWeight: 400 }}>Upcoming Payouts</span>
                 <span className="text-[10px]" style={{ color: "#9CA3AF" }}>Mar 15</span>
               </div>
 
@@ -129,10 +129,10 @@ const PayoutsAnimation = () => {
                         }}>
                         <div className="flex items-center gap-3">
                           <img src={creator.avatar} alt={creator.name} className="w-7 h-7 object-cover" style={{ borderRadius: "50%" }} />
-                          <span className="text-xs" style={{ color: "#111827" }}>{creator.name}</span>
+                          <span className="text-xs" style={{ color: "#111111" }}>{creator.name}</span>
                         </div>
                         <div className="flex items-center gap-3">
-                          <span className="text-xs" style={{ color: "#111827" }}>${creator.amount.toFixed(2)}</span>
+                          <span className="text-xs" style={{ color: "#111111" }}>${creator.amount.toFixed(2)}</span>
                           <AnimatePresence mode="wait">
                             {paidRows[i] ? (
                               <motion.span key="paid" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -152,7 +152,7 @@ const PayoutsAnimation = () => {
               </AnimatePresence>
 
               <div className="flex items-center justify-between px-5 py-3">
-                <span className="text-xs" style={{ color: "#111827", fontWeight: 400 }}>
+                <span className="text-xs" style={{ color: "#111111", fontWeight: 400 }}>
                   Total: $<CountingNumber key={remaining} number={remaining} decimalPlaces={2} inView transition={{ stiffness: 80, damping: 25 }} />
                 </span>
                 <AnimatePresence mode="wait">

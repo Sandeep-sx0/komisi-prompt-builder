@@ -482,7 +482,7 @@ const Landing = () => {
               <p className="text-base mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
                 One SDK. Works on iOS, Android, Flutter, and React Native. Drop in 3 lines of code and Komisi handles attribution, fraud detection, and payouts automatically. No server coding required.
               </p>
-              <a href="#" className="text-sm hover:text-white transition-colors inline-flex items-center gap-1 mb-10" style={{ color: '#000000' }}>
+              <a href="#" className="text-sm hover:text-white transition-colors inline-flex items-center gap-1 mb-10" style={{ color: 'rgba(255,255,255,0.7)' }}>
                 Read the docs <ArrowRight size={14} />
               </a>
 

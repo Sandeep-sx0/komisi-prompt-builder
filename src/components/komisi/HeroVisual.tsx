@@ -66,7 +66,7 @@ const HeroVisual: React.FC = () => {
             className="w-10 h-10 rounded-full object-cover"
           />
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold" style={{ color: '#111827' }}>@sarahcreates</p>
+            <p className="text-sm font-semibold" style={{ color: '#111111' }}>@sarahcreates</p>
             <p className="text-xs" style={{ color: '#6B7280' }}>12.4K followers</p>
           </div>
           <div className="flex items-center gap-1 shrink-0">
@@ -85,7 +85,7 @@ const HeroVisual: React.FC = () => {
             { value: 5.2, label: 'Conv Rate', prefix: '', suffix: '%', decimals: 1 },
           ].map((s) => (
             <div key={s.label}>
-              <p className="text-base font-bold" style={{ color: '#111827' }}>
+              <p className="text-base font-bold" style={{ color: '#111111' }}>
                 {inView ? (
                   <CountingNumber
                     number={s.value}

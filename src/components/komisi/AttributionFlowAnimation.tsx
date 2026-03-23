@@ -73,7 +73,7 @@ const AttributionFlowAnimation = () => {
     { text: "KomisiSDK.resolve()", color: "#FFFFFF" },
     { text: "> Checking fingerprint...", color: "#6A737D" },
     { text: "> ✔ Match found", color: "#4ADE80" },
-    { text: "> Confidence score: 0.94", color: "#000000" },
+    { text: "> Confidence score: 0.94", color: "#F59E0B" },
     { text: "> ✔ Attributed to @sarah_creates", color: "#4ADE80" },
   ];
   const visibleLineCount = useFadingLines(terminalLines, step === 4, 600);

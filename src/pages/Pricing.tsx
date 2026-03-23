@@ -461,9 +461,9 @@ const Pricing = () => {
             transition={anim}
             className="inline-block text-[13px] font-medium px-4 py-1.5"
             style={{
-              color: "#000000",
-              backgroundColor: "rgba(0,0,0,0.15)",
-              border: "1px solid rgba(0,0,0,0.3)",
+              color: "rgba(255,255,255,0.7)",
+              backgroundColor: "rgba(255,255,255,0.08)",
+              border: "1px solid rgba(255,255,255,0.15)",
               borderRadius: 999,
             }}
           >
@@ -532,8 +532,8 @@ const Pricing = () => {
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    backgroundColor: "rgba(74,222,128,0.15)",
-                    color: "#4ADE80",
+                    backgroundColor: "rgba(245,158,11,0.15)",
+                    color: "#F59E0B",
                     borderRadius: 999,
                     padding: "2px 8px",
                     fontSize: 11,
@@ -627,7 +627,7 @@ const Pricing = () => {
                       fontSize: 11,
                       fontWeight: 600,
                       letterSpacing: "0.1em",
-                      color: isDark ? "#000000" : "#000000",
+                      color: isDark ? "rgba(255,255,255,0.7)" : "#000000",
                     }}
                   >
                     {plan.name}
@@ -652,7 +652,7 @@ const Pricing = () => {
                             transition={{ duration: 0.12 }}
                             style={{
                               fontSize: 52,
-                              fontWeight: 700,
+                              fontWeight: 500,
                               lineHeight: 1,
                               color: isDark ? "#FFFFFF" : "#000000",
                             }}
@@ -674,7 +674,7 @@ const Pricing = () => {
                       <span
                         style={{
                           fontSize: 52,
-                          fontWeight: 700,
+                          fontWeight: 500,
                           lineHeight: 1,
                           color: "#FFFFFF",
                         }}
@@ -755,7 +755,7 @@ const Pricing = () => {
                     {plan.features.map((f, fi) => (
                       <div key={fi} className="flex items-start gap-2.5" style={{ padding: "6px 0" }}>
                         {f.included ? (
-                          <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#000000" }} />
+                          <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: isDark ? "#FFFFFF" : "#000000" }} />
                         ) : (
                           <XIcon size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#D1D5DB" }} />
                         )}
@@ -936,8 +936,8 @@ const Pricing = () => {
                       style={{
                         display: "inline-flex",
                         alignItems: "center",
-                        backgroundColor: "rgba(74,222,128,0.12)",
-                        color: "#4ADE80",
+                        backgroundColor: "rgba(245,158,11,0.12)",
+                        color: "#F59E0B",
                         borderRadius: 999,
                         padding: "3px 10px",
                         fontSize: 11,
@@ -989,7 +989,7 @@ const Pricing = () => {
                 >
                   <div style={{ borderRight: "1px solid #F3F4F6", paddingRight: 24 }} className="hidden lg:block">
                     <Icon size={32} style={{ color: "#000000" }} />
-                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#000000", marginTop: 14 }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 500, color: "#000000", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
@@ -998,7 +998,7 @@ const Pricing = () => {
                   </div>
                   <div className="lg:hidden">
                     <Icon size={32} style={{ color: "#000000" }} />
-                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#000000", marginTop: 14 }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 500, color: "#000000", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
@@ -1064,7 +1064,7 @@ const Pricing = () => {
               viewport={{ once: true }}
               transition={anim}
             >
-              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "#000000" }}>
+              <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.1em", color: "rgba(255,255,255,0.5)" }}>
                 ENTERPRISE
               </span>
               <h2 className="mt-3 text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight">
@@ -1077,8 +1077,8 @@ const Pricing = () => {
                 <Link to="/demo">
                   <button
                     style={{
-                      backgroundColor: "#000000",
-                      color: "#FFFFFF",
+                      backgroundColor: "#FFFFFF",
+                      color: "#000000",
                       padding: "12px 28px",
                       borderRadius: 10,
                       fontWeight: 600,
@@ -1110,7 +1110,7 @@ const Pricing = () => {
               <div className="space-y-1">
                 {enterpriseFeatures.map((f, fi) => (
                   <div key={fi} className="flex items-start gap-2.5 py-1.5">
-                    <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#000000" }} />
+                    <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#FFFFFF" }} />
                     <span style={{ fontSize: 14, color: "rgba(255,255,255,0.85)" }}>{f}</span>
                   </div>
                 ))}
@@ -1134,7 +1134,7 @@ const Pricing = () => {
               { num: "150+", label: "Payout countries" },
             ].map(s => (
               <div key={s.num}>
-                <div style={{ fontSize: 36, fontWeight: 700, color: "#FFFFFF" }}>{s.num}</div>
+                <div style={{ fontSize: 36, fontWeight: 500, color: "#FFFFFF" }}>{s.num}</div>
                 <div className="mt-1" style={{ fontSize: 13, color: "rgba(255,255,255,0.45)" }}>{s.label}</div>
               </div>
             ))}
@@ -1301,7 +1301,7 @@ const Pricing = () => {
                 <AccordionItem value={`faq-${i}`} style={{ borderBottom: "1px solid #F3F4F6", borderTop: "none" }}>
                   <AccordionTrigger
                     className="py-5 hover:no-underline"
-                    style={{ fontSize: 16, fontWeight: 500, color: "#111827" }}
+                    style={{ fontSize: 16, fontWeight: 500, color: "#111111" }}
                   >
                     {faq.q}
                   </AccordionTrigger>
