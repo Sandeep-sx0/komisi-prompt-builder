@@ -552,7 +552,7 @@ const Pricing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — PRICING CARDS
       ═══════════════════════════════════════════ */}
-      <section style={{ backgroundColor: "#000000", paddingBottom: 80 }} className="px-6">
+      <section style={{ backgroundColor: "#000000", paddingBottom: 80 }} className="px-6 dark dot-grid">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
           {plans.map((plan, i) => {
             const isDark = plan.dark;
