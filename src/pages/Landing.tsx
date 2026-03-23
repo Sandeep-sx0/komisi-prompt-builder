@@ -563,6 +563,7 @@ const Landing = () => {
           </motion.div>
         </div>
       </section>
+      </div>
 
       {/* ═══════════════════════════════════════════
           SECTION 7 — FEATURE ALTERNATING SECTIONS
