@@ -424,9 +424,10 @@ const Landing = () => {
       <PersonaCards />
 
       {/* ═══════════════════════════════════════════
-          SECTION 5 — STATS BAR (Dark)
+          SECTIONS 5+6 — STATS BAR + SDK (shared dark bg)
       ═══════════════════════════════════════════ */}
-      <section className="py-20 px-6 dark dot-grid">
+      <div className="relative w-full dark" style={{ backgroundColor: '#111111', backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+      <section className="py-20 px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { value: 2, prefix: "$", suffix: "M+", label: "Creator commissions tracked" },
