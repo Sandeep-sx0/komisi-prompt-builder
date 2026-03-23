@@ -532,8 +532,8 @@ const Pricing = () => {
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
-                    backgroundColor: "rgba(74,222,128,0.15)",
-                    color: "#4ADE80",
+                    backgroundColor: "rgba(245,158,11,0.15)",
+                    color: "#F59E0B",
                     borderRadius: 999,
                     padding: "2px 8px",
                     fontSize: 11,
