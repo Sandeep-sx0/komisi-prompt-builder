@@ -989,7 +989,7 @@ const Pricing = () => {
                 >
                   <div style={{ borderRight: "1px solid #F3F4F6", paddingRight: 24 }} className="hidden lg:block">
                     <Icon size={32} style={{ color: "#000000" }} />
-                    <h3 style={{ fontSize: 20, fontWeight: 700, color: "#000000", marginTop: 14 }}>
+                    <h3 style={{ fontSize: 20, fontWeight: 500, color: "#000000", marginTop: 14 }}>
                       {cat.name}
                     </h3>
                     <p className="mt-2" style={{ fontSize: 14, color: "#6B7280", lineHeight: 1.6 }}>
