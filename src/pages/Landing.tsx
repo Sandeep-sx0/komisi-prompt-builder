@@ -760,7 +760,7 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 8 — INTEGRATIONS GRID
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#E9F5FF" }}>
+      <section className="py-24 px-6 dot-grid">
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-6">
             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
