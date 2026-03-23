@@ -755,7 +755,7 @@ const Pricing = () => {
                     {plan.features.map((f, fi) => (
                       <div key={fi} className="flex items-start gap-2.5" style={{ padding: "6px 0" }}>
                         {f.included ? (
-                          <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#000000" }} />
+                          <Check size={15} className="mt-0.5 flex-shrink-0" style={{ color: isDark ? "#FFFFFF" : "#000000" }} />
                         ) : (
                           <XIcon size={15} className="mt-0.5 flex-shrink-0" style={{ color: "#D1D5DB" }} />
                         )}
