@@ -614,8 +614,11 @@ const Landing = () => {
       </section>
 
       {/* Feature 2 — Fraud detection (lavender bg) */}
-      <section className="w-full dark dot-grid" style={{ backgroundColor: "#111111" }}>
-        <div className="max-w-[1200px] mx-auto px-6 py-24">
+      <section className="w-full relative overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img src="/images/fraud-bg.jpg" alt="" className="w-full h-full object-cover" />
+        </div>
+        <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               className="order-2 lg:order-1"
@@ -634,24 +637,24 @@ const Landing = () => {
               transition={{ duration: 0.7, ease: "easeOut" }}
             >
               <div>
-                <h3 className="text-2xl md:text-3xl font-normal tracking-tight leading-tight mb-4" style={{ color: '#FFFFFF' }}>
+                <h3 className="text-2xl md:text-3xl font-normal tracking-tight leading-tight mb-4" style={{ color: '#000000' }}>
                   AI fraud detection that protects your program automatically.
                 </h3>
-                <p className="text-base mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                <p className="text-base mb-6" style={{ color: 'rgba(0,0,0,0.6)' }}>
                   Every conversion is scored in real time. Komisi flags suspicious install patterns — same IP clusters, abnormal velocity, emulator installs — before they cost you money.
                 </p>
-                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: 'rgba(255,255,255,0.7)' }}>
+                <a href="#" className="text-sm transition-colors inline-flex items-center gap-1 mb-8" style={{ color: 'rgba(0,0,0,0.5)' }}>
                   See how fraud detection works <ArrowRight size={14} />
                 </a>
-                <div className="p-5 mt-4" style={{ border: '1px solid rgba(255,255,255,0.1)' }}>
-                  <p className="text-sm mb-3 leading-relaxed italic" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                <div className="p-5 mt-4" style={{ border: '1px solid rgba(0,0,0,0.12)', backgroundColor: 'rgba(255,255,255,0.5)' }}>
+                  <p className="text-sm mb-3 leading-relaxed italic" style={{ color: 'rgba(0,0,0,0.6)' }}>
                     "We caught a creator sending fake installs within 24 hours. Komisi flagged it automatically — we would have paid out hundreds without it."
                   </p>
                   <div className="flex items-center gap-3">
                     <img src="/avatars/user-5.jpg" alt="David Park" className="w-7 h-7 rounded-full object-cover" />
                     <div>
-                      <p className="text-xs" style={{ color: 'rgba(255,255,255,0.9)' }}>David Park</p>
-                      <p className="text-[10px]" style={{ color: 'rgba(255,255,255,0.4)' }}>Founder, FocusTimer</p>
+                      <p className="text-xs" style={{ color: '#000000' }}>David Park</p>
+                      <p className="text-[10px]" style={{ color: 'rgba(0,0,0,0.45)' }}>Founder, FocusTimer</p>
                     </div>
                   </div>
                 </div>
