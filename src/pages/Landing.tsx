@@ -19,6 +19,7 @@ import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
 import HeroVisual from "@/components/komisi/HeroVisual";
+import FaultyTerminal from "@/components/Backgrounds/FaultyTerminal";
 
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 import { IntegrationGrid } from "@/components/komisi/IntegrationGrid";
