@@ -537,7 +537,7 @@ const PersonaCards = () => {
             label="For Growth Teams →"
             chips={["Campaign tracking", "Creator analytics", "CAC dashboard", "Commission tiers"]}
             visual={<GrowthVisual />}
-            backgroundImage="/backgrounds/BG 3.png"
+            backgroundImage="/backgrounds/BG 3.webp"
             delay={0.08}
           >
             {null}
