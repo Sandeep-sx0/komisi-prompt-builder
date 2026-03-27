@@ -35,6 +35,8 @@ const features = [
 const AttributionVisual = () => {
   const [phase, setPhase] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const bgRef = useRef(null);
+  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
 
   useEffect(() => {
     const delays = [800, 1200, 800, 800, 800];
@@ -67,7 +69,7 @@ const AttributionVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 16.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div ref={bgRef} className="w-full h-full flex items-center justify-center" style={{ backgroundImage: bgInView ? "url('/backgrounds/BG 16.webp')" : "none", backgroundColor: "#F8F8F8", backgroundSize: "cover", backgroundPosition: "center" }}>
       <div style={{ width: 420, backgroundColor: "#0D1117", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center gap-1.5 px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
