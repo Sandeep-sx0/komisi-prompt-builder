@@ -222,7 +222,6 @@ const GrowthVisual = () => {
               key={`pct-${animKey}`}
               number={11.4}
               decimalPlaces={1}
-              inView
               transition={{ stiffness: 40, damping: 25 }}
             />%
           </motion.span>
