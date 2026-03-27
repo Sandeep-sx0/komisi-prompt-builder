@@ -207,7 +207,6 @@ const GrowthVisual = () => {
                 prefix="$"
                 suffix=""
                 decimalPlaces={0}
-                inView
                 transition={{ stiffness: 40, damping: 25 }}
               />
             ) : (
@@ -223,7 +222,6 @@ const GrowthVisual = () => {
               key={`pct-${animKey}`}
               number={11.4}
               decimalPlaces={1}
-              inView
               transition={{ stiffness: 40, damping: 25 }}
             />%
           </motion.span>
@@ -402,7 +400,6 @@ const CreatorVisual = () => {
               prefix="$"
               suffix=""
               decimalPlaces={0}
-              inView
               transition={{ stiffness: 40, damping: 25 }}
             />
           ) : (
