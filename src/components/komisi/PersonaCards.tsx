@@ -222,7 +222,7 @@ const GrowthVisual = () => {
           </span>
           <motion.span
             className="text-[10px] px-1.5 py-0.5"
-            style={{ color: "#10B981", backgroundColor: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.2)" }}
+            style={{ color: "#10B981", backgroundColor: "rgba(255,255,255,0.85)", border: "1px solid rgba(16,185,129,0.3)" }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={showBadge ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
