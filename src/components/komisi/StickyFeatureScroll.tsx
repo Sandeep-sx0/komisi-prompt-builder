@@ -135,22 +135,30 @@ const AnalyticsVisual = () => {
 };
 
 /* ── Fraud Visual wrapper ── */
-const FraudVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 3.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
-    <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
-      <FraudDetectionAnimation />
+const FraudVisual = () => {
+  const bgRef = useRef(null);
+  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
+  return (
+    <div ref={bgRef} className="w-full h-full flex items-center justify-center" style={{ backgroundImage: bgInView ? "url('/backgrounds/BG 3.webp')" : "none", backgroundColor: "#F8F8F8", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
+        <FraudDetectionAnimation />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 /* ── Payouts Visual wrapper ── */
-const PayoutsVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 18.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
-    <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
-      <PayoutsAnimation />
+const PayoutsVisual = () => {
+  const bgRef = useRef(null);
+  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
+  return (
+    <div ref={bgRef} className="w-full h-full flex items-center justify-center" style={{ backgroundImage: bgInView ? "url('/backgrounds/BG 18.webp')" : "none", backgroundColor: "#F8F8F8", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
+        <PayoutsAnimation />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const visuals = [AttributionVisual, FraudVisual, AnalyticsVisual, PayoutsVisual];
 
