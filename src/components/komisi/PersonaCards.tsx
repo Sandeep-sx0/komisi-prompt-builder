@@ -307,8 +307,8 @@ const CreatorVisual = () => {
     <div ref={ref} className="h-full flex items-center justify-center p-6 relative overflow-hidden">
       {/* Back card — floating */}
       <motion.div
-        className="absolute left-4 top-6 w-[180px] p-4 shadow-md z-0"
-        style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)" }}
+        className="absolute left-4 top-6 w-[180px] p-4 z-0"
+        style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
         animate={{ y: [-4, 4, -4] }}
         transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
       >
