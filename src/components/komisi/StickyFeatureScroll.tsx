@@ -180,7 +180,7 @@ const StickyFeatureScroll: React.FC = () => {
             <div style={{ flexGrow: 1 }}>
               {/* Badge */}
               <div className="flex items-center gap-2 mb-6">
-                <span className="text-[10px] uppercase tracking-[0.15em]" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <span className="text-[10px] uppercase tracking-[0.15em] px-2.5 py-1" style={{ color: "#000000", backgroundColor: "#E0F2FE", borderRadius: 4 }}>
                   ■ FEATURES
                 </span>
               </div>
