@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, useInView } from "motion/react";
 import { Target, Shield, BarChart2, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
