@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Link } from "react-router-dom";
@@ -176,6 +176,8 @@ const Landing = () => {
   const [isPastHero, setIsPastHero] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
+  const darkBlockRef = useRef<HTMLDivElement>(null);
+  const isDarkBlockInView = useInView(darkBlockRef, { margin: "400px 0px" });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -426,11 +428,19 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTIONS 5+6 — STATS BAR + SDK (shared dark bg)
       ═══════════════════════════════════════════ */}
-      <div className="relative w-full dark" style={{ backgroundColor: '#111111', backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+      <div ref={darkBlockRef} className="relative w-full dark" style={{ backgroundColor: '#111111', backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
         {/* FaultyTerminal overlay */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.035, width: '250%', height: '250%', transform: 'scale(0.4)', transformOrigin: 'top left' }}>
-          <FaultyTerminal tint="#ffffff" />
-        </div>
+        {isDarkBlockInView ? (
+          <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.035 }}>
+            <FaultyTerminal
+              tint="#ffffff"
+              scale={2.5}
+              dpr={1}
+              mouseReact={false}
+              pageLoadAnimation={false}
+            />
+          </div>
+        ) : null}
       <div style={{ position: 'relative', zIndex: 1 }}>
       <section className="py-20 px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
