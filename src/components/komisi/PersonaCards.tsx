@@ -437,8 +437,11 @@ interface PersonaCardProps {
 }
 
 const PersonaCard = ({ label, chips, visual, backgroundImage, delay = 0 }: PersonaCardProps) => {
+  const bgRef = useRef(null);
+  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
   return (
     <motion.div
+      ref={bgRef}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
@@ -448,7 +451,8 @@ const PersonaCard = ({ label, chips, visual, backgroundImage, delay = 0 }: Perso
       style={{
         border: "1px solid rgba(0,0,0,0.08)",
         transition: "border-color 300ms ease",
-        backgroundImage: `url('${backgroundImage}')`,
+        backgroundImage: bgInView ? `url('${backgroundImage}')` : "none",
+        backgroundColor: "#F8F8F8",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
