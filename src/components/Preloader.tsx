@@ -6,7 +6,7 @@ const IMAGES_TO_PRELOAD = [
   "/backgrounds/BG 3.png",
   "/backgrounds/BG 10.png",
   "/backgrounds/BG 18.webp",
-  "/backgrounds/BG 14.webp",
+  "/backgrounds/BG 14.jpg.jpeg",
 ]
 
 const Preloader = () => {
