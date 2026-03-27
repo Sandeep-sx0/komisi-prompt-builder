@@ -558,7 +558,7 @@ const Landing = () => {
 
               <div className="flex items-center justify-between px-4 py-3 border-t border-white/5" style={{ backgroundColor: "#1a1b26" }}>
                 <div className="flex items-center gap-3">
-                  <img src="/logos/github.webp" alt="GitHub" style={{ width: 32, height: 32, borderRadius: 8 }} />
+                  <img src="/logos/github-lockup-white.svg" alt="GitHub" style={{ height: 20 }} />
                   <span className="text-xs text-white/40">100% Open Source</span>
                 </div>
                 <a href="#" className="text-xs text-white/40 hover:text-white/60 transition-colors inline-flex items-center gap-1">
