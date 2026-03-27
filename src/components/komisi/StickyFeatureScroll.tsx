@@ -172,7 +172,7 @@ const StickyFeatureScroll: React.FC = () => {
       {/* 400vh scroll container */}
       <div ref={sectionRef} style={{ height: "400vh", position: "relative" }}>
         {/* Sticky viewport */}
-        <div style={{ position: "sticky", top: 0, height: "100vh", display: "flex", backgroundColor: "#FFFFFF", overflow: "hidden" }}>
+        <div style={{ position: "sticky", top: 64, height: "calc(100vh - 64px)", display: "flex", backgroundColor: "#FFFFFF", overflow: "hidden" }}>
 
           {/* ── Left Panel ── */}
           <div style={{ width: "38%", height: "100vh", display: "flex", flexDirection: "column", padding: "56px 48px", position: "relative" }}>
