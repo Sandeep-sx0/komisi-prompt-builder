@@ -404,6 +404,7 @@ const PersonaCard = ({ label, chips, visual, backgroundImage, delay = 0 }: Perso
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        position: "relative",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = "#000000";
@@ -412,23 +413,35 @@ const PersonaCard = ({ label, chips, visual, backgroundImage, delay = 0 }: Perso
         (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,0,0,0.08)";
       }}
     >
-      <div className="h-[240px]">
-        {visual}
-      </div>
-      <div className="p-6 flex-1 flex flex-col">
-        <p className="text-xl mb-3" style={{ fontWeight: 500, color: "#000000" }}>
-          {label}
-        </p>
-        <div className="flex flex-wrap gap-2 mt-auto">
-          {chips.map((f) => (
-            <span
-              key={f}
-              className="text-[10px] px-2 py-1"
-              style={{ backgroundColor: "rgba(255,255,255,0.7)", border: "1px solid rgba(0,0,0,0.1)", color: "#000000" }}
-            >
-              {f}
-            </span>
-          ))}
+      {/* White overlay — watercolor bleeds through softly */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "rgba(255,255,255,0.45)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", height: "100%" }}>
+        <div className="h-[240px]">
+          {visual}
+        </div>
+        <div className="p-6 flex-1 flex flex-col">
+          <p className="text-xl mb-3" style={{ fontWeight: 500, color: "#000000" }}>
+            {label}
+          </p>
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {chips.map((f) => (
+              <span
+                key={f}
+                className="text-[10px] px-2 py-1"
+                style={{ backgroundColor: "rgba(255,255,255,0.7)", border: "1px solid rgba(0,0,0,0.1)", color: "#000000" }}
+              >
+                {f}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>
