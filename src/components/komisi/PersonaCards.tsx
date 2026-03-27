@@ -330,8 +330,8 @@ const CreatorVisual = () => {
 
       {/* Front card — floating at different phase */}
       <motion.div
-        className="absolute right-4 bottom-6 w-[180px] p-4 shadow-lg z-10"
-        style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)" }}
+        className="absolute right-4 bottom-6 w-[180px] p-4 z-10"
+        style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
         animate={{ y: [-6, 2, -6] }}
         transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
       >
