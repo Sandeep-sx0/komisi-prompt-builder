@@ -559,7 +559,7 @@ const Landing = () => {
 
               <div className="grid grid-cols-3 gap-3 mt-6">
                 {sdkPlatforms.map(p => (
-                  <div key={p.name} className="border border-white/10 p-3 text-center hover:border-white/25 transition-colors flex flex-col items-center gap-2" style={{ backgroundColor: "rgba(255,255,255,0.02)" }}>
+                  <div key={p.name} className="border border-white/10 p-3 text-center hover:border-white/25 transition-colors flex flex-col items-center gap-2" style={{ backgroundColor: "#1a1a1a" }}>
                     {p.logo ? (
                       <img src={p.logo} alt={p.name} className="w-10 h-10 object-contain" />
                     ) : (
