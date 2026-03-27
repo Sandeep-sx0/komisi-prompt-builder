@@ -245,7 +245,7 @@ const StickyFeatureScroll: React.FC = () => {
             {/* Bottom CTA */}
             <div style={{ paddingTop: 32 }}>
               <Link to="/signup">
-                <Button size="lg" className="h-12 px-8 border-none" style={{ backgroundColor: "#FFFFFF", color: "#000000", fontWeight: 500 }}>
+                <Button size="lg" className="h-12 px-8 border-none" style={{ backgroundColor: "#000000", color: "#FFFFFF", fontWeight: 500 }}>
                   Try Komisi → 
                 </Button>
               </Link>
