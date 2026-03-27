@@ -186,7 +186,7 @@ const StickyFeatureScroll: React.FC = () => {
               </div>
 
               {/* Headline */}
-              <h2 className="text-3xl font-medium tracking-tight leading-tight mb-12" style={{ color: "#FFFFFF" }}>
+              <h2 className="text-3xl font-medium tracking-tight leading-tight mb-12" style={{ color: "#000000" }}>
                 Everything your affiliate program needs.
               </h2>
 
