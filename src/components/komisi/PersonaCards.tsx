@@ -232,7 +232,7 @@ const GrowthVisual = () => {
         </div>
       </div>
 
-      <div className="flex items-end gap-1.5 h-28" style={{ backgroundColor: "rgba(255,255,255,0.85)", border: "1px solid rgba(0,0,0,0.08)", padding: "8px" }}>
+      <div className="flex items-end gap-1.5 h-28" style={{ padding: "8px" }}>
         {barHeights.map((h, i) => (
           <div key={`${animKey}-${i}`} className="flex-1 flex flex-col justify-end h-full">
             <motion.div
