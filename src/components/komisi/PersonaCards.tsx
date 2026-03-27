@@ -7,11 +7,15 @@ import { CountingNumber } from "@/components/animate-ui/primitives/texts/countin
    CARD 1 — Developer Terminal Animation
    ═══════════════════════════════════════════ */
 const DeveloperVisual = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: false, margin: "-50px" });
   const [phase, setPhase] = useState(0);
   const [typedChars, setTypedChars] = useState(0);
   const codeStr = 'KomisiSDK.configure(apiKey: "YOUR_KEY")';
 
   useEffect(() => {
+    if (!inView) return;
+
     const cycle = () => {
       setPhase(0);
       setTypedChars(0);
@@ -32,10 +36,10 @@ const DeveloperVisual = () => {
       timers.forEach(clearTimeout);
       clearInterval(interval);
     };
-  }, []);
+  }, [inView]);
 
   useEffect(() => {
-    if (phase !== 2) return;
+    if (!inView || phase !== 2) return;
     setTypedChars(0);
     let i = 0;
     const timer = setInterval(() => {
@@ -44,7 +48,7 @@ const DeveloperVisual = () => {
       if (i >= codeStr.length) clearInterval(timer);
     }, 40);
     return () => clearInterval(timer);
-  }, [phase]);
+  }, [inView, phase]);
 
   const typed = codeStr.slice(0, typedChars);
 
@@ -86,7 +90,7 @@ const DeveloperVisual = () => {
   };
 
   return (
-    <div className="h-full flex flex-col justify-center px-6 py-5 space-y-3">
+    <div ref={ref} className="h-full flex flex-col justify-center px-6 py-5 space-y-3">
       {/* Step 1 */}
       <motion.div
         className="flex items-center gap-3"
@@ -354,8 +358,8 @@ const CreatorVisual = () => {
       <motion.div
         className="absolute left-4 top-6 w-[180px] p-4 z-0"
         style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
-        animate={{ y: [-4, 4, -4] }}
-        transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
+        animate={inView ? { y: [-4, 4, -4] } : { y: 0 }}
+        transition={inView ? { duration: 3, ease: "easeInOut", repeat: Infinity } : { duration: 0 }}
       >
         <p className="text-[11px] mb-2" style={{ fontWeight: 400, color: "#000000" }}>
           Earn from every install
@@ -377,8 +381,8 @@ const CreatorVisual = () => {
       <motion.div
         className="absolute right-4 bottom-6 w-[180px] p-4 z-10"
         style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
-        animate={{ y: [-6, 2, -6] }}
-        transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
+        animate={inView ? { y: [-6, 2, -6] } : { y: 0 }}
+        transition={inView ? { duration: 4, ease: "easeInOut", repeat: Infinity } : { duration: 0 }}
       >
         <div className="flex items-center justify-between mb-2">
           <span className="text-[10px]" style={{ color: "rgba(0,0,0,0.55)" }}>
