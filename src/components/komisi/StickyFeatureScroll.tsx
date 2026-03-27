@@ -67,7 +67,7 @@ const AttributionVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#111111", backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
       <div style={{ width: 420, backgroundColor: "#0D1117", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}>
         <div className="flex items-center gap-1.5 px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
@@ -102,7 +102,7 @@ const AnalyticsVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#111111", backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
       <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
         <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid #F3F4F6" }}>
           <span className="text-sm font-medium" style={{ color: "#111111" }}>Creator Performance</span>
@@ -132,7 +132,7 @@ const AnalyticsVisual = () => {
 
 /* ── Fraud Visual wrapper ── */
 const FraudVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#111111", backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
     <div style={{ width: "100%", maxWidth: 520 }}>
       <FraudDetectionAnimation />
     </div>
@@ -141,7 +141,7 @@ const FraudVisual = () => (
 
 /* ── Payouts Visual wrapper ── */
 const PayoutsVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#111111", backgroundImage: "radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
     <div style={{ width: "100%", maxWidth: 520 }}>
       <PayoutsAnimation />
     </div>
@@ -172,7 +172,7 @@ const StickyFeatureScroll: React.FC = () => {
       {/* 400vh scroll container */}
       <div ref={sectionRef} style={{ height: "400vh", position: "relative" }}>
         {/* Sticky viewport */}
-        <div style={{ position: "sticky", top: 0, height: "100vh", display: "flex", backgroundColor: "#000000", overflow: "hidden" }}>
+        <div style={{ position: "sticky", top: 0, height: "100vh", display: "flex", backgroundColor: "#FFFFFF", overflow: "hidden" }}>
 
           {/* ── Left Panel ── */}
           <div style={{ width: "38%", height: "100vh", display: "flex", flexDirection: "column", padding: "56px 48px", position: "relative" }}>
@@ -180,13 +180,13 @@ const StickyFeatureScroll: React.FC = () => {
             <div style={{ flexGrow: 1 }}>
               {/* Badge */}
               <div className="flex items-center gap-2 mb-6">
-                <span className="text-[10px] uppercase tracking-[0.15em]" style={{ color: "rgba(255,255,255,0.4)" }}>
+                <span className="text-[10px] uppercase tracking-[0.15em] px-2.5 py-1" style={{ color: "#000000", backgroundColor: "#E0F2FE", borderRadius: 4 }}>
                   ■ FEATURES
                 </span>
               </div>
 
               {/* Headline */}
-              <h2 className="text-3xl font-medium tracking-tight leading-tight mb-12" style={{ color: "#FFFFFF" }}>
+              <h2 className="text-3xl font-medium tracking-tight leading-tight mb-12" style={{ color: "#000000" }}>
                 Everything your affiliate program needs.
               </h2>
 
@@ -197,11 +197,11 @@ const StickyFeatureScroll: React.FC = () => {
                   const Icon = feat.icon;
 
                   return (
-                    <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(255,255,255,0.08)" : "none", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                    <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(0,0,0,0.08)" : "none", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
                       {/* Icon + Label */}
                       <div className="flex items-start gap-3 py-4" style={{ cursor: "default" }}>
-                        <Icon size={16} style={{ color: isActive ? "#FFFFFF" : "rgba(255,255,255,0.25)", marginTop: 2, flexShrink: 0, transition: "color 0.3s" }} />
-                        <span className="text-sm leading-snug" style={{ color: isActive ? "#FFFFFF" : "rgba(255,255,255,0.35)", transition: "color 0.3s" }}>
+                        <Icon size={16} style={{ color: isActive ? "#000000" : "rgba(0,0,0,0.25)", marginTop: 2, flexShrink: 0, transition: "color 0.3s" }} />
+                        <span className="text-sm leading-snug" style={{ color: isActive ? "#000000" : "rgba(0,0,0,0.3)", transition: "color 0.3s" }}>
                           {feat.label}
                         </span>
                       </div>
@@ -216,7 +216,7 @@ const StickyFeatureScroll: React.FC = () => {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             style={{ overflow: "hidden" }}
                           >
-                            <p className="text-xs leading-relaxed pb-4 pl-7" style={{ color: "rgba(255,255,255,0.5)" }}>
+                            <p className="text-xs leading-relaxed pb-4 pl-7" style={{ color: "rgba(0,0,0,0.55)" }}>
                               {feat.description}
                             </p>
                           </motion.div>
@@ -224,7 +224,7 @@ const StickyFeatureScroll: React.FC = () => {
                       </AnimatePresence>
 
                       {/* Progress underline */}
-                      <div style={{ height: 2, backgroundColor: "rgba(255,255,255,0.06)", position: "relative" }}>
+                      <div style={{ height: 2, backgroundColor: "rgba(0,0,0,0.06)", position: "relative" }}>
                         {isActive && (
                           <motion.div
                             style={{
@@ -245,7 +245,7 @@ const StickyFeatureScroll: React.FC = () => {
             {/* Bottom CTA */}
             <div style={{ paddingTop: 32 }}>
               <Link to="/signup">
-                <Button size="lg" className="h-12 px-8 border-none" style={{ backgroundColor: "#FFFFFF", color: "#000000", fontWeight: 500 }}>
+                <Button size="lg" className="h-12 px-8 border-none" style={{ backgroundColor: "#000000", color: "#FFFFFF", fontWeight: 500 }}>
                   Try Komisi → 
                 </Button>
               </Link>
