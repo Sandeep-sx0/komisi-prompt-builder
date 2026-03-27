@@ -503,7 +503,7 @@ const Landing = () => {
                   "Setup was faster than I expected. The RevenueCat integration just worked — I had my first affiliate attributed within the hour."
                 </p>
                 <div className="flex items-center gap-3">
-                  <img src="/avatars/user-2.jpg" alt="James Park" className="w-8 h-8 rounded-full object-cover" />
+                  <img src="/avatars/user-2.jpg" alt="James Park" className="w-8 h-8 rounded-full object-cover" loading="lazy" />
                   <div>
                     <p className="text-xs text-white/80 font-medium">James Park</p>
                     <p className="text-[10px] text-white/40">Founder, FocusTimer</p>
