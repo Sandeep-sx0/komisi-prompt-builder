@@ -64,6 +64,7 @@ const HeroVisual: React.FC = () => {
             src="/avatars/user-1.jpg"
             alt="Sarah"
             className="w-10 h-10 rounded-full object-cover"
+            loading="lazy"
           />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold" style={{ color: '#111111' }}>@sarahcreates</p>

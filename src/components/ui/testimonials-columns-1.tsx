@@ -31,6 +31,7 @@ export const TestimonialsColumn = (props: {
                     src={image}
                     alt={name}
                     className="h-10 w-10 object-cover"
+                    loading="lazy"
                   />
                   <div className="flex flex-col">
                     <div className="text-sm tracking-tight leading-5 text-foreground" style={{ fontWeight: 500 }}>{name}</div>

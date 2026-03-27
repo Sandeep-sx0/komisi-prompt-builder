@@ -147,7 +147,7 @@ const AnalyticsAnimation = () => {
                             </AnimatePresence>
                           </span>
                           <span className="flex items-center">
-                            <img src={platformLogos[row.platform]} alt={row.platform} width={24} height={24} style={{ borderRadius: "6px", objectFit: "cover" }} />
+                            <img src={platformLogos[row.platform]} alt={row.platform} width={24} height={24} style={{ borderRadius: "6px", objectFit: "cover" }} loading="lazy" />
                           </span>
                           <span className="text-right" style={{ color: "#111111" }}>
                             {rowCounters[i] ? <CountingNumber number={row.installs} decimalPlaces={0} inView transition={{ stiffness: 80, damping: 20 }} /> : "0"}

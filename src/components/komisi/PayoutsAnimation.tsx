@@ -128,7 +128,7 @@ const PayoutsAnimation = () => {
                           transition: "background-color 600ms ease-in-out",
                         }}>
                         <div className="flex items-center gap-3">
-                          <img src={creator.avatar} alt={creator.name} className="w-7 h-7 object-cover" style={{ borderRadius: "50%" }} />
+                          <img src={creator.avatar} alt={creator.name} className="w-7 h-7 object-cover" style={{ borderRadius: "50%" }} loading="lazy" />
                           <span className="text-xs" style={{ color: "#111111" }}>{creator.name}</span>
                         </div>
                         <div className="flex items-center gap-3">

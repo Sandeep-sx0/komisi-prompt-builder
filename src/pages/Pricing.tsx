@@ -813,6 +813,7 @@ const Pricing = () => {
                     alt={logo.name}
                     className="h-6 w-6 object-contain"
                     style={{ filter: "brightness(0) invert(1)", opacity: 0.7 }}
+                    loading="lazy"
                   />
                   <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", whiteSpace: "nowrap" }}>
                     {logo.name}
@@ -1322,7 +1323,7 @@ const Pricing = () => {
       ═══════════════════════════════════════════ */}
       <section className="relative overflow-hidden" style={{ backgroundColor: "#111111", padding: "100px 24px" }}>
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover opacity-30" />
+          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover opacity-30" loading="lazy" />
         </div>
         <div className="max-w-[680px] mx-auto text-center relative z-10">
           <motion.h2

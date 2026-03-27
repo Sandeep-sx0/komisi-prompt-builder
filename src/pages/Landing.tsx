@@ -175,6 +175,8 @@ const Landing = () => {
   const heroRef = useRef<HTMLElement>(null);
   const darkBlockRef = useRef<HTMLDivElement>(null);
   const isDarkBlockInView = useInView(darkBlockRef, { margin: "400px 0px" });
+  const ctaBgRef = useRef<HTMLElement>(null);
+  const ctaBgInView = useInView(ctaBgRef, { once: true, margin: "200px" });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -313,7 +315,7 @@ const Landing = () => {
       <section ref={heroRef} className="relative min-h-screen overflow-hidden" id="product">
         {/* Hero watercolor background */}
         <div className="absolute inset-0 z-0">
-          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover" />
+          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover" fetchPriority="high" />
         </div>
 
         {/* Hero content */}
@@ -404,7 +406,7 @@ const Landing = () => {
           >
             {[...socialProofLogos, ...socialProofLogos, ...socialProofLogos, ...socialProofLogos].map((logo, i) => (
               <div key={`${logo.name}-${i}`} className="shrink-0 flex items-center gap-2">
-                <img src={logo.src} alt={logo.name} className="h-6 w-6 object-contain" />
+                <img src={logo.src} alt={logo.name} className="h-6 w-6 object-contain" loading="lazy" />
                 <span className="text-sm text-text-secondary whitespace-nowrap" style={{ fontWeight: 400 }}>{logo.name}</span>
               </div>
             ))}
@@ -503,7 +505,7 @@ const Landing = () => {
                   "Setup was faster than I expected. The RevenueCat integration just worked — I had my first affiliate attributed within the hour."
                 </p>
                 <div className="flex items-center gap-3">
-                  <img src="/avatars/user-2.jpg" alt="James Park" className="w-8 h-8 rounded-full object-cover" />
+                  <img src="/avatars/user-2.jpg" alt="James Park" className="w-8 h-8 rounded-full object-cover" loading="lazy" />
                   <div>
                     <p className="text-xs text-white/80 font-medium">James Park</p>
                     <p className="text-[10px] text-white/40">Founder, FocusTimer</p>
@@ -555,7 +557,7 @@ const Landing = () => {
 
               <div className="flex items-center justify-between px-4 py-3 border-t border-white/5" style={{ backgroundColor: "#1a1b26" }}>
                 <div className="flex items-center gap-3">
-                  <img src="/logos/github-lockup-white.svg" alt="GitHub" style={{ height: 14 }} />
+                  <img src="/logos/github-lockup-white.svg" alt="GitHub" style={{ height: 14 }} loading="lazy" />
                   <span className="text-xs text-white/40">100% Open Source</span>
                 </div>
                 <a href="#" className="text-xs text-white/40 hover:text-white/60 transition-colors inline-flex items-center gap-1">
@@ -567,7 +569,7 @@ const Landing = () => {
                 {sdkPlatforms.map(p => (
                   <div key={p.name} className="border border-white/10 p-3 text-center hover:border-white/25 transition-colors flex flex-col items-center gap-2" style={{ backgroundColor: "#1a1a1a" }}>
                     {p.logo ? (
-                      <img src={p.logo} alt={p.name} className="w-10 h-10 object-contain" />
+                      <img src={p.logo} alt={p.name} className="w-10 h-10 object-contain" loading="lazy" />
                     ) : (
                       <Globe size={24} className="text-white/50" />
                     )}
@@ -609,7 +611,7 @@ const Landing = () => {
                 "The RevenueCat integration saved us weeks. Komisi just reads our existing webhook events — zero additional engineering."
               </p>
               <div className="flex items-center gap-3">
-                <img src="/avatars/user-2.jpg" alt="James Park" className="w-7 h-7 rounded-full object-cover" />
+                <img src="/avatars/user-2.jpg" alt="James Park" className="w-7 h-7 rounded-full object-cover" loading="lazy" />
                 <div>
                   <p className="text-xs text-foreground font-medium">James Park</p>
                   <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
@@ -669,8 +671,8 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 11 — FINAL CTA (Dark)
       ═══════════════════════════════════════════ */}
-      <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#FFF8EE" }}>
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ backgroundImage: "url('/backgrounds/BG 14.webp')", backgroundSize: "cover", backgroundPosition: "center" }} />
+      <section ref={ctaBgRef} className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#FFF8EE" }}>
+        <div className="absolute inset-0 z-0 pointer-events-none" style={{ backgroundImage: ctaBgInView ? "url('/backgrounds/BG 14.webp')" : "none", backgroundColor: "#FFF8EE", backgroundSize: "cover", backgroundPosition: "center" }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}
