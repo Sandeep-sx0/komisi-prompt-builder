@@ -603,20 +603,6 @@ const Landing = () => {
 
           <IntegrationGrid integrations={integrations} />
 
-          <Reveal className="mt-12">
-            <div className="p-6 max-w-2xl mx-auto" style={{ borderLeft: '2px solid #000000' }}>
-              <p className="text-sm text-text-secondary mb-3 leading-relaxed italic">
-                "The RevenueCat integration saved us weeks. Komisi just reads our existing webhook events — zero additional engineering."
-              </p>
-              <div className="flex items-center gap-3">
-                <img src="/avatars/user-2.jpg" alt="James Park" className="w-7 h-7 rounded-full object-cover" />
-                <div>
-                  <p className="text-xs text-foreground font-medium">James Park</p>
-                  <p className="text-[10px] text-text-tertiary">Founder, FocusTimer</p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </div>
       </section>
 
