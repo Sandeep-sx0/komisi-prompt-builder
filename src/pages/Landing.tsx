@@ -404,7 +404,7 @@ const Landing = () => {
           >
             {[...socialProofLogos, ...socialProofLogos, ...socialProofLogos, ...socialProofLogos].map((logo, i) => (
               <div key={`${logo.name}-${i}`} className="shrink-0 flex items-center gap-2">
-                <img src={logo.src} alt={logo.name} className="h-6 w-6 object-contain" />
+                <img src={logo.src} alt={logo.name} className="h-6 w-6 object-contain" loading="lazy" />
                 <span className="text-sm text-text-secondary whitespace-nowrap" style={{ fontWeight: 400 }}>{logo.name}</span>
               </div>
             ))}
