@@ -313,7 +313,7 @@ const Landing = () => {
       <section ref={heroRef} className="relative min-h-screen overflow-hidden" id="product">
         {/* Hero watercolor background */}
         <div className="absolute inset-0 z-0">
-          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover" />
+          <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover" fetchPriority="high" />
         </div>
 
         {/* Hero content */}
