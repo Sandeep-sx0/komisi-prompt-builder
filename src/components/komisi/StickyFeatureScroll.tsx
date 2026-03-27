@@ -67,8 +67,8 @@ const AttributionVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
-      <div style={{ width: 420, backgroundColor: "#0D1117", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 16.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div style={{ width: 420, backgroundColor: "#0D1117", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center gap-1.5 px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FEBC2E" }} />
@@ -102,8 +102,8 @@ const AnalyticsVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
-      <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 10.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid #F3F4F6" }}>
           <span className="text-sm font-medium" style={{ color: "#111111" }}>Creator Performance</span>
           <span className="text-[10px]" style={{ color: "#9CA3AF" }}>Last 30 days</span>
@@ -132,8 +132,8 @@ const AnalyticsVisual = () => {
 
 /* ── Fraud Visual wrapper ── */
 const FraudVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
-    <div style={{ width: "100%", maxWidth: 520 }}>
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 3.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
       <FraudDetectionAnimation />
     </div>
   </div>
@@ -141,8 +141,8 @@ const FraudVisual = () => (
 
 /* ── Payouts Visual wrapper ── */
 const PayoutsVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
-    <div style={{ width: "100%", maxWidth: 520 }}>
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 18.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
       <PayoutsAnimation />
     </div>
   </div>
@@ -172,10 +172,10 @@ const StickyFeatureScroll: React.FC = () => {
       {/* 400vh scroll container */}
       <div ref={sectionRef} style={{ height: "400vh", position: "relative" }}>
         {/* Sticky viewport */}
-        <div style={{ position: "sticky", top: 0, height: "100vh", display: "flex", backgroundColor: "#FFFFFF", overflow: "hidden" }}>
+        <div style={{ position: "sticky", top: 64, height: "calc(100vh - 64px)", display: "flex", backgroundColor: "#FFFFFF", overflow: "hidden" }}>
 
           {/* ── Left Panel ── */}
-          <div style={{ width: "38%", height: "100vh", display: "flex", flexDirection: "column", padding: "56px 48px", position: "relative" }}>
+          <div style={{ width: "38%", height: "100%", display: "flex", flexDirection: "column", padding: "80px 48px 56px", position: "relative" }}>
             {/* Top area */}
             <div style={{ flexGrow: 1 }}>
               {/* Badge */}
@@ -201,7 +201,7 @@ const StickyFeatureScroll: React.FC = () => {
                       {/* Icon + Label */}
                       <div className="flex items-start gap-3 py-4" style={{ cursor: "default" }}>
                         <Icon size={16} style={{ color: isActive ? "#000000" : "rgba(0,0,0,0.25)", marginTop: 2, flexShrink: 0, transition: "color 0.3s" }} />
-                        <span className="text-sm leading-snug" style={{ color: isActive ? "#000000" : "rgba(0,0,0,0.3)", transition: "color 0.3s" }}>
+                        <span style={{ fontSize: 17, lineHeight: 1.4, fontWeight: isActive ? 500 : 400, color: isActive ? "#000000" : "rgba(0,0,0,0.3)", transition: "color 0.3s, font-weight 0.3s" }}>
                           {feat.label}
                         </span>
                       </div>
@@ -216,7 +216,7 @@ const StickyFeatureScroll: React.FC = () => {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             style={{ overflow: "hidden" }}
                           >
-                            <p className="text-xs leading-relaxed pb-4 pl-7" style={{ color: "rgba(0,0,0,0.55)" }}>
+                            <p className="pb-4 pl-7" style={{ fontSize: 14, lineHeight: 1.7, color: "rgba(0,0,0,0.55)" }}>
                               {feat.description}
                             </p>
                           </motion.div>
