@@ -222,7 +222,7 @@ const GrowthVisual = () => {
           </span>
           <motion.span
             className="text-[10px] px-1.5 py-0.5"
-            style={{ color: "#10B981", backgroundColor: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.2)" }}
+            style={{ color: "#10B981", backgroundColor: "rgba(255,255,255,0.85)", border: "1px solid rgba(16,185,129,0.3)" }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={showBadge ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
@@ -232,12 +232,12 @@ const GrowthVisual = () => {
         </div>
       </div>
 
-      <div className="flex items-end gap-1.5 h-28" style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)", padding: "8px" }}>
+      <div className="flex items-end gap-1.5 h-28" style={{ backgroundColor: "rgba(255,255,255,0.85)", border: "1px solid rgba(0,0,0,0.08)", padding: "8px" }}>
         {barHeights.map((h, i) => (
           <div key={`${animKey}-${i}`} className="flex-1 flex flex-col justify-end h-full">
             <motion.div
               className="w-full"
-              style={{ backgroundColor: "#000000", minHeight: "4px" }}
+              style={{ backgroundColor: "rgba(0,0,0,0.65)", minHeight: "4px" }}
               initial={{ height: 0 }}
               animate={inView ? { height: `${h}%` } : { height: 0 }}
               transition={{
@@ -265,9 +265,9 @@ const GrowthVisual = () => {
         transition={{ duration: 0.3 }}
       >
         {[
-          { c: "#000000", l: "Campaign 1" },
-          { c: "rgba(0,0,0,0.5)", l: "Campaign 2" },
-          { c: "rgba(0,0,0,0.25)", l: "Campaign 3" },
+          { c: "rgba(0,0,0,0.7)", l: "Campaign 1" },
+          { c: "rgba(0,0,0,0.4)", l: "Campaign 2" },
+          { c: "rgba(0,0,0,0.2)", l: "Campaign 3" },
         ].map((d) => (
           <div key={d.l} className="flex items-center gap-1">
             <span className="w-2 h-2" style={{ backgroundColor: d.c, borderRadius: "50%" }} />
@@ -404,6 +404,7 @@ const PersonaCard = ({ label, chips, visual, backgroundImage, delay = 0 }: Perso
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        position: "relative",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = "#000000";
@@ -412,23 +413,35 @@ const PersonaCard = ({ label, chips, visual, backgroundImage, delay = 0 }: Perso
         (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,0,0,0.08)";
       }}
     >
-      <div className="h-[240px]">
-        {visual}
-      </div>
-      <div className="p-6 flex-1 flex flex-col">
-        <p className="text-xl mb-3" style={{ fontWeight: 500, color: "#000000" }}>
-          {label}
-        </p>
-        <div className="flex flex-wrap gap-2 mt-auto">
-          {chips.map((f) => (
-            <span
-              key={f}
-              className="text-[10px] px-2 py-1"
-              style={{ backgroundColor: "rgba(255,255,255,0.7)", border: "1px solid rgba(0,0,0,0.1)", color: "#000000" }}
-            >
-              {f}
-            </span>
-          ))}
+      {/* White overlay — watercolor bleeds through softly */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "rgba(255,255,255,0.45)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", height: "100%" }}>
+        <div className="h-[240px]">
+          {visual}
+        </div>
+        <div className="p-6 flex-1 flex flex-col">
+          <p className="text-xl mb-3" style={{ fontWeight: 500, color: "#000000" }}>
+            {label}
+          </p>
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {chips.map((f) => (
+              <span
+                key={f}
+                className="text-[10px] px-2 py-1"
+                style={{ backgroundColor: "rgba(255,255,255,0.7)", border: "1px solid rgba(0,0,0,0.1)", color: "#000000" }}
+              >
+                {f}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </motion.div>
