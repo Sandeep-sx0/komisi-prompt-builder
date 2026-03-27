@@ -205,7 +205,7 @@ const GrowthVisual = () => {
           Installs
         </span>
         <div className="flex items-center gap-2">
-          <span className="text-lg tracking-tight" style={{ fontWeight: 400, color: "#F59E0B" }}>
+          <span className="text-lg tracking-tight" style={{ fontWeight: 400, color: "#000000" }}>
             {inView ? (
               <CountingNumber
                 key={animKey}
