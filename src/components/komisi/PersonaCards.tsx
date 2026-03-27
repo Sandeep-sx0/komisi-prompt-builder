@@ -283,25 +283,76 @@ const GrowthVisual = () => {
 const CreatorVisual = () => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: false, margin: "-50px" });
+  const [phase, setPhase] = useState(0);
   const [progressWidth, setProgressWidth] = useState(0);
+  const [countKey, setCountKey] = useState(0);
+  const [showNotif, setShowNotif] = useState(false);
 
   useEffect(() => {
     if (!inView) return;
-    setProgressWidth(0);
-    const t = setTimeout(() => setProgressWidth(68), 500);
-    const loop = setInterval(() => {
+
+    const runCycle = () => {
+      // Phase 0 — reset
+      setPhase(0);
       setProgressWidth(0);
-      setTimeout(() => setProgressWidth(68), 500);
-    }, 6000);
+      setShowNotif(false);
+      setCountKey((k) => k + 1);
+
+      // Phase 1 — progress bar fills + number counts up
+      const t1 = setTimeout(() => {
+        setPhase(1);
+        setProgressWidth(68);
+        setCountKey((k) => k + 1);
+      }, 800);
+
+      // Phase 2 — notification slides in
+      const t2 = setTimeout(() => {
+        setShowNotif(true);
+      }, 3200);
+
+      // Phase 3 — reset everything
+      const t3 = setTimeout(() => {
+        setShowNotif(false);
+      }, 5500);
+
+      return [t1, t2, t3];
+    };
+
+    let timers = runCycle();
+    const interval = setInterval(() => {
+      timers?.forEach(clearTimeout);
+      timers = runCycle();
+    }, 7000);
+
     return () => {
-      clearTimeout(t);
-      clearInterval(loop);
+      timers?.forEach(clearTimeout);
+      clearInterval(interval);
     };
   }, [inView]);
 
   return (
     <div ref={ref} className="h-full flex items-center justify-center p-6 relative overflow-hidden">
-      {/* Back card — floating */}
+      {/* Notification pill — slides in from top */}
+      <motion.div
+        className="absolute top-3 left-1/2 z-20 flex items-center gap-2 px-3 py-1.5 whitespace-nowrap"
+        style={{
+          backgroundColor: "#FFFFFF",
+          border: "1px solid rgba(16,185,129,0.2)",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+          x: "-50%",
+        }}
+        initial={{ y: -40, opacity: 0 }}
+        animate={showNotif ? { y: 0, opacity: 1 } : { y: -40, opacity: 0 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        <span style={{ color: "#10B981", fontSize: "10px" }}>●</span>
+        <span className="text-[10px]" style={{ color: "rgba(0,0,0,0.7)" }}>
+          MindfulApp just paid you{" "}
+          <span style={{ fontWeight: 500, color: "#000000" }}>$156.00</span>
+        </span>
+      </motion.div>
+
+      {/* Back card — progress */}
       <motion.div
         className="absolute left-4 top-6 w-[180px] p-4 z-0"
         style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
@@ -324,7 +375,7 @@ const CreatorVisual = () => {
         </p>
       </motion.div>
 
-      {/* Front card — floating at different phase */}
+      {/* Front card — earnings */}
       <motion.div
         className="absolute right-4 bottom-6 w-[180px] p-4 z-10"
         style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
@@ -333,7 +384,7 @@ const CreatorVisual = () => {
       >
         <div className="flex items-center justify-between mb-2">
           <span className="text-[10px]" style={{ color: "rgba(0,0,0,0.55)" }}>
-            @creator
+            @sarahcreates
           </span>
           <span className="text-[9px] px-1.5 py-0.5 flex items-center gap-1" style={{ color: "#10B981", backgroundColor: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.15)" }}>
             <span className="relative flex h-2 w-2">
@@ -343,15 +394,15 @@ const CreatorVisual = () => {
             Active
           </span>
         </div>
-        <p className="text-xl tracking-tight" style={{ fontWeight: 400, color: "#F59E0B" }}>
-          {inView ? (
+        <p className="text-xl tracking-tight" style={{ fontWeight: 400, color: "#000000" }}>
+          {phase >= 1 ? (
             <CountingNumber
+              key={countKey}
               number={3562}
               prefix="$"
               suffix=""
               decimalPlaces={0}
               inView
-              inViewOnce
               transition={{ stiffness: 40, damping: 25 }}
             />
           ) : (
