@@ -200,8 +200,8 @@ const StickyFeatureScroll: React.FC = () => {
                     <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(0,0,0,0.08)" : "none", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
                       {/* Icon + Label */}
                       <div className="flex items-start gap-3 py-4" style={{ cursor: "default" }}>
-                        <Icon size={16} style={{ color: isActive ? "#FFFFFF" : "rgba(255,255,255,0.25)", marginTop: 2, flexShrink: 0, transition: "color 0.3s" }} />
-                        <span className="text-sm leading-snug" style={{ color: isActive ? "#FFFFFF" : "rgba(255,255,255,0.35)", transition: "color 0.3s" }}>
+                        <Icon size={16} style={{ color: isActive ? "#000000" : "rgba(0,0,0,0.25)", marginTop: 2, flexShrink: 0, transition: "color 0.3s" }} />
+                        <span className="text-sm leading-snug" style={{ color: isActive ? "#000000" : "rgba(0,0,0,0.3)", transition: "color 0.3s" }}>
                           {feat.label}
                         </span>
                       </div>
