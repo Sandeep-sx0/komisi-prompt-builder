@@ -205,7 +205,7 @@ const GrowthVisual = () => {
           Installs
         </span>
         <div className="flex items-center gap-2">
-          <span className="text-lg tracking-tight" style={{ fontWeight: 400, color: "#F59E0B" }}>
+          <span className="text-lg tracking-tight" style={{ fontWeight: 400, color: "#000000" }}>
             {inView ? (
               <CountingNumber
                 key={animKey}
@@ -232,7 +232,7 @@ const GrowthVisual = () => {
         </div>
       </div>
 
-      <div className="flex items-end gap-1.5 h-28" style={{ backgroundColor: "rgba(255,255,255,0.85)", border: "1px solid rgba(0,0,0,0.08)", padding: "8px" }}>
+      <div className="flex items-end gap-1.5 h-28" style={{ padding: "8px" }}>
         {barHeights.map((h, i) => (
           <div key={`${animKey}-${i}`} className="flex-1 flex flex-col justify-end h-full">
             <motion.div
@@ -307,8 +307,8 @@ const CreatorVisual = () => {
     <div ref={ref} className="h-full flex items-center justify-center p-6 relative overflow-hidden">
       {/* Back card — floating */}
       <motion.div
-        className="absolute left-4 top-6 w-[180px] p-4 shadow-md z-0"
-        style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)" }}
+        className="absolute left-4 top-6 w-[180px] p-4 z-0"
+        style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
         animate={{ y: [-4, 4, -4] }}
         transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
       >
@@ -330,8 +330,8 @@ const CreatorVisual = () => {
 
       {/* Front card — floating at different phase */}
       <motion.div
-        className="absolute right-4 bottom-6 w-[180px] p-4 shadow-lg z-10"
-        style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)" }}
+        className="absolute right-4 bottom-6 w-[180px] p-4 z-10"
+        style={{ backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 2px 12px rgba(0,0,0,0.08)" }}
         animate={{ y: [-6, 2, -6] }}
         transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
       >
