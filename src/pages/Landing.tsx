@@ -492,7 +492,7 @@ const Landing = () => {
                 Read the docs <ArrowRight size={14} />
               </a>
 
-              <div className="bg-white/5 border border-white/10 p-6 mt-8">
+              <div className="border border-white/10 p-6 mt-8" style={{ backgroundColor: "#1a1a1a" }}>
                 <p className="text-sm text-white/70 mb-4 leading-relaxed italic">
                   "Setup was faster than I expected. The RevenueCat integration just worked — I had my first affiliate attributed within the hour."
                 </p>
