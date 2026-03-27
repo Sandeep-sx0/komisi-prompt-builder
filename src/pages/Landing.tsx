@@ -175,6 +175,8 @@ const Landing = () => {
   const heroRef = useRef<HTMLElement>(null);
   const darkBlockRef = useRef<HTMLDivElement>(null);
   const isDarkBlockInView = useInView(darkBlockRef, { margin: "400px 0px" });
+  const ctaBgRef = useRef<HTMLElement>(null);
+  const ctaBgInView = useInView(ctaBgRef, { once: true, margin: "200px" });
 
   useEffect(() => {
     const handleScroll = () => {
