@@ -429,22 +429,8 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <div className="relative w-full dark" style={{ backgroundColor: '#111111', backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
         {/* FaultyTerminal overlay */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.06, pointerEvents: 'none' }}>
-          <FaultyTerminal
-            scale={1}
-            gridMul={[2, 1]}
-            digitSize={1.5}
-            timeScale={0.2}
-            scanlineIntensity={0.2}
-            glitchAmount={0.5}
-            flickerAmount={0.3}
-            noiseAmp={0.5}
-            curvature={0}
-            tint="#ffffff"
-            mouseReact={false}
-            pageLoadAnimation={false}
-            brightness={1}
-          />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', opacity: 0.035, width: '250%', height: '250%', transform: 'scale(0.4)', transformOrigin: 'top left' }}>
+          <FaultyTerminal tint="#ffffff" />
         </div>
       <div style={{ position: 'relative', zIndex: 1 }}>
       <section className="py-20 px-6">
