@@ -207,7 +207,6 @@ const GrowthVisual = () => {
                 prefix="$"
                 suffix=""
                 decimalPlaces={0}
-                inView
                 transition={{ stiffness: 40, damping: 25 }}
               />
             ) : (
