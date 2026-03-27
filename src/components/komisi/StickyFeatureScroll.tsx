@@ -97,6 +97,8 @@ const AttributionVisual = () => {
 
 /* ── Analytics Visual ── */
 const AnalyticsVisual = () => {
+  const bgRef = useRef(null);
+  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
   const rows = [
     { handle: "@sarahcreates", platform: "TikTok", installs: 234, revenue: 2100 },
     { handle: "@techreviewer", platform: "YouTube", installs: 89, revenue: 445 },
@@ -104,7 +106,7 @@ const AnalyticsVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 10.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div ref={bgRef} className="w-full h-full flex items-center justify-center" style={{ backgroundImage: bgInView ? "url('/backgrounds/BG 10.webp')" : "none", backgroundColor: "#F8F8F8", backgroundSize: "cover", backgroundPosition: "center" }}>
       <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid #F3F4F6" }}>
           <span className="text-sm font-medium" style={{ color: "#111111" }}>Creator Performance</span>
