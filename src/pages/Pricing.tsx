@@ -813,6 +813,7 @@ const Pricing = () => {
                     alt={logo.name}
                     className="h-6 w-6 object-contain"
                     style={{ filter: "brightness(0) invert(1)", opacity: 0.7 }}
+                    loading="lazy"
                   />
                   <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", whiteSpace: "nowrap" }}>
                     {logo.name}
