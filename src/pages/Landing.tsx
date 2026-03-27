@@ -588,6 +588,7 @@ const Landing = () => {
         </div>
       </section>
       </div>
+      </div>
 
       {/* ═══════════════════════════════════════════
           SECTION 7 — FEATURE ALTERNATING SECTIONS
