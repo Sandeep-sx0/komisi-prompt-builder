@@ -427,6 +427,24 @@ const Landing = () => {
           SECTIONS 5+6 — STATS BAR + SDK (shared dark bg)
       ═══════════════════════════════════════════ */}
       <div className="relative w-full dark" style={{ backgroundColor: '#111111', backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+        {/* FaultyTerminal overlay */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.06, pointerEvents: 'none' }}>
+          <FaultyTerminal
+            scale={1}
+            gridMul={[2, 1]}
+            digitSize={1.5}
+            timeScale={0.2}
+            scanlineIntensity={0.2}
+            glitchAmount={0.5}
+            flickerAmount={0.3}
+            noiseAmp={0.5}
+            curvature={0}
+            tint="#ffffff"
+            mouseReact={false}
+            pageLoadAnimation={false}
+            brightness={1}
+          />
+        </div>
       <section className="py-20 px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
