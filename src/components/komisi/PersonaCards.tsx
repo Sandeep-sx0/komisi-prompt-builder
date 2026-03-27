@@ -237,7 +237,7 @@ const GrowthVisual = () => {
           <div key={`${animKey}-${i}`} className="flex-1 flex flex-col justify-end h-full">
             <motion.div
               className="w-full"
-              style={{ backgroundColor: "#000000", minHeight: "4px" }}
+              style={{ backgroundColor: "rgba(0,0,0,0.65)", minHeight: "4px" }}
               initial={{ height: 0 }}
               animate={inView ? { height: `${h}%` } : { height: 0 }}
               transition={{
