@@ -19,6 +19,7 @@ import AnalyticsAnimation from "@/components/komisi/AnalyticsAnimation";
 import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 import HeroDashboard from "@/components/komisi/HeroDashboard";
 import HeroVisual from "@/components/komisi/HeroVisual";
+import FaultyTerminal from "@/components/Backgrounds/FaultyTerminal";
 
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 import { IntegrationGrid } from "@/components/komisi/IntegrationGrid";
@@ -427,6 +428,25 @@ const Landing = () => {
           SECTIONS 5+6 — STATS BAR + SDK (shared dark bg)
       ═══════════════════════════════════════════ */}
       <div className="relative w-full dark" style={{ backgroundColor: '#111111', backgroundImage: 'radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '20px 20px' }}>
+        {/* FaultyTerminal overlay */}
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, opacity: 0.06, pointerEvents: 'none' }}>
+          <FaultyTerminal
+            scale={1}
+            gridMul={[2, 1]}
+            digitSize={1.5}
+            timeScale={0.2}
+            scanlineIntensity={0.2}
+            glitchAmount={0.5}
+            flickerAmount={0.3}
+            noiseAmp={0.5}
+            curvature={0}
+            tint="#ffffff"
+            mouseReact={false}
+            pageLoadAnimation={false}
+            brightness={1}
+          />
+        </div>
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <section className="py-20 px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
@@ -508,15 +528,19 @@ const Landing = () => {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
             <div>
-              <div className="flex" style={{ backgroundColor: "#1a1b26" }}>
+              <div className="flex" style={{ backgroundColor: "rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "4px", gap: "2px" }}>
                 {Object.keys(codeExamples).map(tab => (
                   <button
                     key={tab}
                     onClick={() => setActiveCodeTab(tab)}
-                    className={cn(
-                      "px-4 py-2.5 text-xs transition-colors",
-                      activeCodeTab === tab ? "bg-white text-foreground" : "text-white/40 hover:text-white/60"
-                    )}
+                    className="text-xs transition-colors"
+                    style={{
+                      padding: "6px 14px",
+                      borderRadius: "4px",
+                      fontWeight: activeCodeTab === tab ? 500 : 400,
+                      backgroundColor: activeCodeTab === tab ? "#FFFFFF" : "transparent",
+                      color: activeCodeTab === tab ? "#000000" : "rgba(255,255,255,0.45)",
+                    }}
                   >
                     {tab}
                   </button>
@@ -563,6 +587,7 @@ const Landing = () => {
           </motion.div>
         </div>
       </section>
+      </div>
       </div>
 
       {/* ═══════════════════════════════════════════
