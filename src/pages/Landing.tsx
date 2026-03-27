@@ -224,8 +224,7 @@ const Landing = () => {
           left: 0,
           right: 0,
           zIndex: 100,
-          backdropFilter: isPastHero ? 'blur(16px) saturate(180%)' : 'none',
-          WebkitBackdropFilter: isPastHero ? 'blur(16px) saturate(180%)' : 'none',
+          backgroundColor: isPastHero ? 'rgba(255,255,255,0.85)' : 'transparent',
         }}
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
