@@ -181,19 +181,13 @@ const GrowthVisual = () => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: false, margin: "-50px" });
   const [animKey, setAnimKey] = useState(0);
-  const [showBadge, setShowBadge] = useState(false);
 
   useEffect(() => {
     if (!inView) return;
-    setShowBadge(false);
-    const timer = setTimeout(() => setShowBadge(true), 1600);
     const loop = setInterval(() => {
       setAnimKey((k) => k + 1);
-      setShowBadge(false);
-      setTimeout(() => setShowBadge(true), 1600);
     }, 5000);
     return () => {
-      clearTimeout(timer);
       clearInterval(loop);
     };
   }, [inView]);
@@ -209,7 +203,7 @@ const GrowthVisual = () => {
             {inView ? (
               <CountingNumber
                 key={animKey}
-                number={56823}
+                number={56659}
                 prefix="$"
                 suffix=""
                 decimalPlaces={0}
@@ -223,11 +217,15 @@ const GrowthVisual = () => {
           <motion.span
             className="text-[10px] px-1.5 py-0.5"
             style={{ color: "#10B981", backgroundColor: "rgba(255,255,255,0.85)", border: "1px solid rgba(16,185,129,0.3)" }}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={showBadge ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.3 }}
+            animate={{ opacity: 1 }}
           >
-            +11.4%
+            +<CountingNumber
+              key={`pct-${animKey}`}
+              number={11.4}
+              decimalPlaces={1}
+              inView
+              transition={{ stiffness: 40, damping: 25 }}
+            />%
           </motion.span>
         </div>
       </div>
@@ -260,9 +258,7 @@ const GrowthVisual = () => {
 
       <motion.div
         className="flex gap-3 mt-3"
-        initial={{ opacity: 0 }}
-        animate={showBadge ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.3 }}
+        animate={{ opacity: 1 }}
       >
         {[
           { c: "rgba(0,0,0,0.7)", l: "Campaign 1" },
