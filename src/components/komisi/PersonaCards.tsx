@@ -265,9 +265,9 @@ const GrowthVisual = () => {
         transition={{ duration: 0.3 }}
       >
         {[
-          { c: "#000000", l: "Campaign 1" },
-          { c: "rgba(0,0,0,0.5)", l: "Campaign 2" },
-          { c: "rgba(0,0,0,0.25)", l: "Campaign 3" },
+          { c: "rgba(0,0,0,0.7)", l: "Campaign 1" },
+          { c: "rgba(0,0,0,0.4)", l: "Campaign 2" },
+          { c: "rgba(0,0,0,0.2)", l: "Campaign 3" },
         ].map((d) => (
           <div key={d.l} className="flex items-center gap-1">
             <span className="w-2 h-2" style={{ backgroundColor: d.c, borderRadius: "50%" }} />
