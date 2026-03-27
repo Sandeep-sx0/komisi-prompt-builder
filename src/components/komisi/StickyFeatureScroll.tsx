@@ -132,8 +132,8 @@ const AnalyticsVisual = () => {
 
 /* ── Fraud Visual wrapper ── */
 const FraudVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
-    <div style={{ width: "100%", maxWidth: 520 }}>
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 3.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
       <FraudDetectionAnimation />
     </div>
   </div>
