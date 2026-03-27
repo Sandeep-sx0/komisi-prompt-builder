@@ -417,13 +417,16 @@ const PersonaCard = ({ label, chips, visual, backgroundImage, delay = 0 }: Perso
       <div
         style={{
           position: "absolute",
-          inset: 0,
-          backgroundColor: "rgba(255,255,255,0.45)",
+          top: "10px",
+          right: "10px",
+          bottom: "10px",
+          left: "10px",
+          backgroundColor: "rgba(255,255,255,0.55)",
           pointerEvents: "none",
           zIndex: 0,
         }}
       />
-      <div style={{ position: "relative", zIndex: 1, display: "flex", flexDirection: "column", height: "100%" }}>
+      <div style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", height: "100%" }}>
         <div className="h-[240px]">
           {visual}
         </div>
