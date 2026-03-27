@@ -102,8 +102,8 @@ const AnalyticsVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundColor: "#F8F8F8", backgroundImage: "radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px)", backgroundSize: "20px 20px" }}>
-      <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 10.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+      <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid #F3F4F6" }}>
           <span className="text-sm font-medium" style={{ color: "#111111" }}>Creator Performance</span>
           <span className="text-[10px]" style={{ color: "#9CA3AF" }}>Last 30 days</span>
