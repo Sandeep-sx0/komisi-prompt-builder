@@ -54,14 +54,14 @@ const DeveloperVisual = () => {
     const key = '"YOUR_KEY"';
 
     if (typed.length <= sdk.length) {
-      return <span className="text-white">{typed}</span>;
+      return <span style={{ color: "#000000" }}>{typed}</span>;
     }
     const rest1 = typed.slice(sdk.length);
     if (rest1.length <= configure.length) {
       return (
         <>
-          <span className="text-white">{sdk}</span>
-          <span style={{ color: "#FFFFFF" }}>{rest1}</span>
+          <span style={{ color: "#000000" }}>{sdk}</span>
+          <span style={{ color: "rgba(0,0,0,0.55)" }}>{rest1}</span>
         </>
       );
     }
@@ -69,18 +69,18 @@ const DeveloperVisual = () => {
     if (rest2.length <= key.length) {
       return (
         <>
-          <span className="text-white">{sdk}</span>
-           <span style={{ color: "rgba(255,255,255,0.6)" }}>{configure}</span>
-          <span style={{ color: "#81C784" }}>{rest2}</span>
+          <span style={{ color: "#000000" }}>{sdk}</span>
+          <span style={{ color: "rgba(0,0,0,0.55)" }}>{configure}</span>
+          <span style={{ color: "#2E7D32" }}>{rest2}</span>
         </>
       );
     }
     return (
       <>
-        <span className="text-white">{sdk}</span>
-        <span style={{ color: "#000000" }}>{configure}</span>
-        <span style={{ color: "#81C784" }}>{key}</span>
-        <span style={{ color: "rgba(255,255,255,0.6)" }}>{rest2.slice(key.length)}</span>
+        <span style={{ color: "#000000" }}>{sdk}</span>
+        <span style={{ color: "rgba(0,0,0,0.55)" }}>{configure}</span>
+        <span style={{ color: "#2E7D32" }}>{key}</span>
+        <span style={{ color: "rgba(0,0,0,0.55)" }}>{rest2.slice(key.length)}</span>
       </>
     );
   };
@@ -97,14 +97,14 @@ const DeveloperVisual = () => {
         <span
           className="w-6 h-6 shrink-0 flex items-center justify-center text-[10px]"
           style={{
-            backgroundColor: phase >= 1 ? "rgba(0,0,0,0.3)" : "rgba(255,255,255,0.05)",
-            color: "rgba(255,255,255,0.8)",
+            backgroundColor: phase >= 1 ? "rgba(0,0,0,0.15)" : "rgba(0,0,0,0.05)",
+            color: "#000000",
             borderRadius: "50%",
           }}
         >
           ①
         </span>
-        <span className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+        <span className="text-sm" style={{ color: "rgba(0,0,0,0.55)" }}>
           Configure your app
         </span>
       </motion.div>
@@ -112,7 +112,7 @@ const DeveloperVisual = () => {
       {/* Step 2 */}
       <motion.div
         className="ml-2 p-3"
-        style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
+        style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)" }}
         initial={{ opacity: 0, x: 20 }}
         animate={phase >= 2 ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
         transition={{ duration: 0.4 }}
@@ -121,21 +121,21 @@ const DeveloperVisual = () => {
           <span
             className="w-6 h-6 shrink-0 flex items-center justify-center text-[10px]"
             style={{
-              backgroundColor: phase >= 2 ? "rgba(0,0,0,0.4)" : "rgba(255,255,255,0.05)",
-              color: "white",
+              backgroundColor: phase >= 2 ? "rgba(0,0,0,0.2)" : "rgba(0,0,0,0.05)",
+              color: "#000000",
               borderRadius: "50%",
             }}
           >
             ②
           </span>
-          <span className="text-sm text-white" style={{ fontWeight: 400 }}>
+          <span className="text-sm" style={{ fontWeight: 400, color: "#000000" }}>
             Install Komisi SDK
           </span>
         </div>
         <pre className="text-[11px] font-mono ml-9 leading-relaxed whitespace-pre-wrap">
           {renderCode()}
           {phase === 2 && typedChars < codeStr.length && (
-            <span className="animate-pulse text-white">▌</span>
+            <span className="animate-pulse" style={{ color: "#000000" }}>▌</span>
           )}
         </pre>
       </motion.div>
@@ -150,14 +150,14 @@ const DeveloperVisual = () => {
         <span
           className="w-6 h-6 shrink-0 flex items-center justify-center text-[10px]"
           style={{
-            backgroundColor: phase >= 3 ? "rgba(74,222,128,0.2)" : "rgba(255,255,255,0.05)",
-            color: phase >= 3 ? "#4ADE80" : "rgba(255,255,255,0.5)",
+            backgroundColor: phase >= 3 ? "rgba(16,185,129,0.2)" : "rgba(0,0,0,0.05)",
+            color: phase >= 3 ? "#10B981" : "rgba(0,0,0,0.4)",
             borderRadius: "50%",
           }}
         >
           ③
         </span>
-        <span className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+        <span className="text-sm" style={{ color: "rgba(0,0,0,0.55)" }}>
           Attribution active
         </span>
         <motion.div
@@ -165,7 +165,7 @@ const DeveloperVisual = () => {
           animate={phase >= 3 ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
           transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
         >
-          <CheckCircle size={14} style={{ color: "#4ADE80" }} />
+          <CheckCircle size={14} style={{ color: "#10B981" }} />
         </motion.div>
       </motion.div>
     </div>
@@ -201,11 +201,11 @@ const GrowthVisual = () => {
   return (
     <div ref={ref} className="h-full flex flex-col justify-center px-6 py-5">
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[10px] uppercase tracking-wider" style={{ color: "#9CA3AF" }}>
+        <span className="text-[10px] uppercase tracking-wider" style={{ color: "rgba(0,0,0,0.45)" }}>
           Installs
         </span>
         <div className="flex items-center gap-2">
-          <span className="text-lg text-white tracking-tight" style={{ fontWeight: 400 }}>
+          <span className="text-lg tracking-tight" style={{ fontWeight: 400, color: "#F59E0B" }}>
             {inView ? (
               <CountingNumber
                 key={animKey}
@@ -222,7 +222,7 @@ const GrowthVisual = () => {
           </span>
           <motion.span
             className="text-[10px] px-1.5 py-0.5"
-            style={{ color: "#4ADE80", backgroundColor: "rgba(74,222,128,0.1)", border: "1px solid rgba(74,222,128,0.2)" }}
+            style={{ color: "#10B981", backgroundColor: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.2)" }}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={showBadge ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
@@ -232,12 +232,12 @@ const GrowthVisual = () => {
         </div>
       </div>
 
-      <div className="flex items-end gap-1.5 h-28">
+      <div className="flex items-end gap-1.5 h-28" style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)", padding: "8px" }}>
         {barHeights.map((h, i) => (
           <div key={`${animKey}-${i}`} className="flex-1 flex flex-col justify-end h-full">
             <motion.div
               className="w-full"
-              style={{ backgroundColor: "#FFFFFF", minHeight: "4px" }}
+              style={{ backgroundColor: "#000000", minHeight: "4px" }}
               initial={{ height: 0 }}
               animate={inView ? { height: `${h}%` } : { height: 0 }}
               transition={{
@@ -252,7 +252,7 @@ const GrowthVisual = () => {
 
       <div className="flex justify-between mt-2">
         {["Aug 12", "Aug 19", "Aug 26", "Sep 02", "Sep 09"].map((m) => (
-          <span key={m} className="text-[7px]" style={{ color: "#9CA3AF" }}>
+          <span key={m} className="text-[7px]" style={{ color: "rgba(0,0,0,0.4)" }}>
             {m}
           </span>
         ))}
@@ -265,13 +265,13 @@ const GrowthVisual = () => {
         transition={{ duration: 0.3 }}
       >
         {[
-          { c: "#FFFFFF", l: "Campaign 1" },
-          { c: "#9CA3AF", l: "Campaign 2" },
-          { c: "#4B5563", l: "Campaign 3" },
+          { c: "#000000", l: "Campaign 1" },
+          { c: "rgba(0,0,0,0.5)", l: "Campaign 2" },
+          { c: "rgba(0,0,0,0.25)", l: "Campaign 3" },
         ].map((d) => (
           <div key={d.l} className="flex items-center gap-1">
             <span className="w-2 h-2" style={{ backgroundColor: d.c, borderRadius: "50%" }} />
-            <span className="text-[8px]" style={{ color: "#9CA3AF" }}>
+            <span className="text-[8px]" style={{ color: "rgba(0,0,0,0.45)" }}>
               {d.l}
             </span>
           </div>
@@ -308,22 +308,22 @@ const CreatorVisual = () => {
       {/* Back card — floating */}
       <motion.div
         className="absolute left-4 top-6 w-[180px] p-4 shadow-md z-0"
-        style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.08)" }}
+        style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)" }}
         animate={{ y: [-4, 4, -4] }}
         transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
       >
-        <p className="text-[11px] text-white/90 mb-2" style={{ fontWeight: 400 }}>
+        <p className="text-[11px] mb-2" style={{ fontWeight: 400, color: "#000000" }}>
           Earn from every install
         </p>
-        <div className="w-full h-1.5 overflow-hidden" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}>
+        <div className="w-full h-1.5 overflow-hidden" style={{ backgroundColor: "rgba(0,0,0,0.08)" }}>
           <motion.div
             className="h-full"
-            style={{ backgroundColor: "#4ADE80" }}
+            style={{ backgroundColor: "#10B981" }}
             animate={{ width: `${progressWidth}%` }}
             transition={{ duration: 1.2, ease: "easeOut" }}
           />
         </div>
-        <p className="text-[9px] mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>
+        <p className="text-[9px] mt-1" style={{ color: "rgba(0,0,0,0.45)" }}>
           68% of monthly goal
         </p>
       </motion.div>
@@ -331,23 +331,23 @@ const CreatorVisual = () => {
       {/* Front card — floating at different phase */}
       <motion.div
         className="absolute right-4 bottom-6 w-[180px] p-4 shadow-lg z-10"
-        style={{ backgroundColor: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.12)" }}
+        style={{ backgroundColor: "rgba(255,255,255,0.75)", border: "1px solid rgba(0,0,0,0.08)" }}
         animate={{ y: [-6, 2, -6] }}
         transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
       >
         <div className="flex items-center justify-between mb-2">
-          <span className="text-[10px]" style={{ color: "rgba(255,255,255,0.5)" }}>
+          <span className="text-[10px]" style={{ color: "rgba(0,0,0,0.55)" }}>
             @creator
           </span>
-          <span className="text-[9px] px-1.5 py-0.5 flex items-center gap-1" style={{ color: "#4ADE80", backgroundColor: "rgba(74,222,128,0.1)", border: "1px solid rgba(74,222,128,0.15)" }}>
+          <span className="text-[9px] px-1.5 py-0.5 flex items-center gap-1" style={{ color: "#10B981", backgroundColor: "rgba(16,185,129,0.1)", border: "1px solid rgba(16,185,129,0.15)" }}>
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full opacity-75" style={{ backgroundColor: "#4ADE80", borderRadius: "50%" }} />
-              <span className="relative inline-flex h-2 w-2" style={{ backgroundColor: "#4ADE80", borderRadius: "50%" }} />
+              <span className="animate-ping absolute inline-flex h-full w-full opacity-75" style={{ backgroundColor: "#10B981", borderRadius: "50%" }} />
+              <span className="relative inline-flex h-2 w-2" style={{ backgroundColor: "#10B981", borderRadius: "50%" }} />
             </span>
             Active
           </span>
         </div>
-        <p className="text-xl text-white tracking-tight" style={{ fontWeight: 400 }}>
+        <p className="text-xl tracking-tight" style={{ fontWeight: 400, color: "#F59E0B" }}>
           {inView ? (
             <CountingNumber
               number={3562}
@@ -362,12 +362,12 @@ const CreatorVisual = () => {
             "$0"
           )}
         </p>
-        <p className="text-[9px] mb-3" style={{ color: "rgba(255,255,255,0.4)" }}>
+        <p className="text-[9px] mb-3" style={{ color: "rgba(0,0,0,0.45)" }}>
           earned this month
         </p>
         <div
-          className="text-[10px] text-white/70 px-2 py-1 text-center"
-          style={{ border: "1px solid rgba(255,255,255,0.12)" }}
+          className="text-[10px] px-2 py-1 text-center"
+          style={{ border: "1px solid rgba(0,0,0,0.12)", color: "#000000" }}
         >
           View Links →
         </div>
@@ -384,10 +384,11 @@ interface PersonaCardProps {
   label: string;
   chips: string[];
   visual: React.ReactNode;
+  backgroundImage: string;
   delay?: number;
 }
 
-const PersonaCard = ({ label, chips, visual, delay = 0 }: PersonaCardProps) => {
+const PersonaCard = ({ label, chips, visual, backgroundImage, delay = 0 }: PersonaCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -395,30 +396,35 @@ const PersonaCard = ({ label, chips, visual, delay = 0 }: PersonaCardProps) => {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ y: -6 }}
-      className="bg-card h-full flex flex-col cursor-default group valley-glow-hover"
+      className="h-full flex flex-col cursor-default group valley-glow-hover overflow-hidden"
       style={{
-        border: "1px solid #E5E7EB",
+        border: "1px solid rgba(0,0,0,0.08)",
         transition: "border-color 300ms ease",
+        backgroundImage: `url('${backgroundImage}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
       onMouseEnter={(e) => {
         (e.currentTarget as HTMLElement).style.borderColor = "#000000";
       }}
       onMouseLeave={(e) => {
-        (e.currentTarget as HTMLElement).style.borderColor = "#E5E7EB";
+        (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,0,0,0.08)";
       }}
     >
-      <div className="h-[240px]" style={{ backgroundColor: "#111111" }}>
+      <div className="h-[240px]">
         {visual}
       </div>
       <div className="p-6 flex-1 flex flex-col">
-        <p className="text-xl text-foreground mb-3" style={{ fontWeight: 400 }}>
+        <p className="text-xl mb-3" style={{ fontWeight: 500, color: "#000000" }}>
           {label}
         </p>
         <div className="flex flex-wrap gap-2 mt-auto">
           {chips.map((f) => (
             <span
               key={f}
-              className="text-[10px] text-text-secondary border border-border px-2 py-1"
+              className="text-[10px] px-2 py-1"
+              style={{ backgroundColor: "rgba(255,255,255,0.7)", border: "1px solid rgba(0,0,0,0.1)", color: "#000000" }}
             >
               {f}
             </span>
@@ -453,6 +459,7 @@ const PersonaCards = () => {
             label="For Developers →"
             chips={["Lightweight SDK", "No IDFA", "RevenueCat integration", "Privacy-safe"]}
             visual={<DeveloperVisual />}
+            backgroundImage="/backgrounds/BG 16.webp"
             delay={0}
           >
             {null}
@@ -462,6 +469,7 @@ const PersonaCards = () => {
             label="For Growth Teams →"
             chips={["Campaign tracking", "Creator analytics", "CAC dashboard", "Commission tiers"]}
             visual={<GrowthVisual />}
+            backgroundImage="/backgrounds/BG 3.png"
             delay={0.08}
           >
             {null}
@@ -471,6 +479,7 @@ const PersonaCards = () => {
             label="For Creators →"
             chips={["Tracking links", "Real-time earnings", "Auto payouts", "Content analytics"]}
             visual={<CreatorVisual />}
+            backgroundImage="/backgrounds/BG 18.webp"
             delay={0.16}
           >
             {null}
