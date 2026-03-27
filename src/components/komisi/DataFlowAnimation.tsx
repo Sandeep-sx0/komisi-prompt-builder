@@ -15,7 +15,7 @@ const LogoNode = ({
     style={{ background: bg }}
     animate={glowControls}
   >
-    <img src={src} alt="" className="w-7 h-7 object-contain" loading="lazy" />
+    <img src={src} alt="" className="w-7 h-7 object-contain" />
   </motion.div>
 );
 

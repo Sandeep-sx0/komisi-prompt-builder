@@ -82,7 +82,6 @@ export const IntegrationGrid = ({ integrations }: { integrations: Integration[] 
             src={item.logo}
             alt={item.name}
             className="w-12 h-12 mx-auto mb-3 object-contain"
-            loading="lazy"
           />
           <span className="text-sm font-medium text-text-secondary">{item.name}</span>
         </motion.div>

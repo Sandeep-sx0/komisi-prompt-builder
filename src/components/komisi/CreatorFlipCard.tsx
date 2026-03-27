@@ -48,7 +48,7 @@ export const CreatorFlipCard: React.FC = () => {
         {/* Profile */}
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-full overflow-hidden shrink-0">
-            <img src={creatorAvatar} alt="Creator avatar" className="w-full h-full object-cover" loading="lazy" />
+            <img src={creatorAvatar} alt="Creator avatar" className="w-full h-full object-cover" />
           </div>
           <div>
             <div className="text-sm font-medium text-foreground">@creator</div>

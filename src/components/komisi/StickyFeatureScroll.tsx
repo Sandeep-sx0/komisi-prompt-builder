@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent, useInView } from "motion/react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
 import { Target, Shield, BarChart2, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -35,8 +35,6 @@ const features = [
 const AttributionVisual = () => {
   const [phase, setPhase] = useState(0);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const bgRef = useRef(null);
-  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
 
   useEffect(() => {
     const delays = [800, 1200, 800, 800, 800];
@@ -69,7 +67,7 @@ const AttributionVisual = () => {
   ];
 
   return (
-    <div ref={bgRef} className="w-full h-full flex items-center justify-center" style={{ backgroundImage: bgInView ? "url('/backgrounds/BG 16.webp')" : "none", backgroundColor: "#F8F8F8", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 16.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
       <div style={{ width: 420, backgroundColor: "#0D1117", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center gap-1.5 px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
@@ -97,8 +95,6 @@ const AttributionVisual = () => {
 
 /* ── Analytics Visual ── */
 const AnalyticsVisual = () => {
-  const bgRef = useRef(null);
-  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
   const rows = [
     { handle: "@sarahcreates", platform: "TikTok", installs: 234, revenue: 2100 },
     { handle: "@techreviewer", platform: "YouTube", installs: 89, revenue: 445 },
@@ -106,7 +102,7 @@ const AnalyticsVisual = () => {
   ];
 
   return (
-    <div ref={bgRef} className="w-full h-full flex items-center justify-center" style={{ backgroundImage: bgInView ? "url('/backgrounds/BG 10.webp')" : "none", backgroundColor: "#F8F8F8", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 10.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
       <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid #F3F4F6" }}>
           <span className="text-sm font-medium" style={{ color: "#111111" }}>Creator Performance</span>
@@ -135,30 +131,22 @@ const AnalyticsVisual = () => {
 };
 
 /* ── Fraud Visual wrapper ── */
-const FraudVisual = () => {
-  const bgRef = useRef(null);
-  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
-  return (
-    <div ref={bgRef} className="w-full h-full flex items-center justify-center" style={{ backgroundImage: bgInView ? "url('/backgrounds/BG 3.webp')" : "none", backgroundColor: "#F8F8F8", backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
-        <FraudDetectionAnimation />
-      </div>
+const FraudVisual = () => (
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 3.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
+      <FraudDetectionAnimation />
     </div>
-  );
-};
+  </div>
+);
 
 /* ── Payouts Visual wrapper ── */
-const PayoutsVisual = () => {
-  const bgRef = useRef(null);
-  const bgInView = useInView(bgRef, { once: true, margin: "200px" });
-  return (
-    <div ref={bgRef} className="w-full h-full flex items-center justify-center" style={{ backgroundImage: bgInView ? "url('/backgrounds/BG 18.webp')" : "none", backgroundColor: "#F8F8F8", backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
-        <PayoutsAnimation />
-      </div>
+const PayoutsVisual = () => (
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 18.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
+      <PayoutsAnimation />
     </div>
-  );
-};
+  </div>
+);
 
 const visuals = [AttributionVisual, FraudVisual, AnalyticsVisual, PayoutsVisual];
 
@@ -296,7 +284,7 @@ const StickyFeatureScroll: React.FC = () => {
                 "{t.quote}"
               </p>
               <div className="flex items-center gap-3">
-                <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover" loading="lazy" />
+                <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover" />
                 <div>
                   <p className="text-xs" style={{ color: "rgba(255,255,255,0.8)" }}>{t.name}</p>
                   <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{t.role}</p>
