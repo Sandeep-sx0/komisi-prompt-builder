@@ -296,7 +296,7 @@ const StickyFeatureScroll: React.FC = () => {
                 "{t.quote}"
               </p>
               <div className="flex items-center gap-3">
-                <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover" />
+                <img src={t.avatar} alt={t.name} className="w-8 h-8 rounded-full object-cover" loading="lazy" />
                 <div>
                   <p className="text-xs" style={{ color: "rgba(255,255,255,0.8)" }}>{t.name}</p>
                   <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{t.role}</p>
