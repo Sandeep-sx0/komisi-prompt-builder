@@ -527,15 +527,19 @@ const Landing = () => {
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           >
             <div>
-              <div className="flex" style={{ backgroundColor: "#1a1b26" }}>
+              <div className="flex" style={{ backgroundColor: "rgba(255,255,255,0.06)", borderBottom: "1px solid rgba(255,255,255,0.08)", padding: "4px", gap: "2px" }}>
                 {Object.keys(codeExamples).map(tab => (
                   <button
                     key={tab}
                     onClick={() => setActiveCodeTab(tab)}
-                    className={cn(
-                      "px-4 py-2.5 text-xs transition-colors",
-                      activeCodeTab === tab ? "bg-white text-foreground" : "text-white/40 hover:text-white/60"
-                    )}
+                    className="text-xs transition-colors"
+                    style={{
+                      padding: "6px 14px",
+                      borderRadius: "4px",
+                      fontWeight: activeCodeTab === tab ? 500 : 400,
+                      backgroundColor: activeCodeTab === tab ? "#FFFFFF" : "transparent",
+                      color: activeCodeTab === tab ? "#000000" : "rgba(255,255,255,0.45)",
+                    }}
                   >
                     {tab}
                   </button>
