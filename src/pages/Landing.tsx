@@ -446,6 +446,7 @@ const Landing = () => {
             brightness={1}
           />
         </div>
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <section className="py-20 px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
