@@ -216,7 +216,7 @@ const StickyFeatureScroll: React.FC = () => {
                             transition={{ duration: 0.3, ease: "easeInOut" }}
                             style={{ overflow: "hidden" }}
                           >
-                            <p className="text-xs leading-relaxed pb-4 pl-7" style={{ color: "rgba(255,255,255,0.5)" }}>
+                            <p className="text-xs leading-relaxed pb-4 pl-7" style={{ color: "rgba(0,0,0,0.55)" }}>
                               {feat.description}
                             </p>
                           </motion.div>
