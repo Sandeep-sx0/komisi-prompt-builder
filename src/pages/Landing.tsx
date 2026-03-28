@@ -413,7 +413,7 @@ const Landing = () => {
                 right: 0,
                 top: '50%',
                 transform: 'translateY(-50%)',
-                width: '58%',
+                width: 'clamp(520px, 58vw, 900px)',
                 transformOrigin: 'top right',
               }}
             >
