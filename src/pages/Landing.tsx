@@ -672,7 +672,7 @@ const Landing = () => {
             style={{ color: "#000000" }}
           >
             Your next 1,000 installs<br />
-            are one affiliate program away.
+            are one creator partnership away.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
