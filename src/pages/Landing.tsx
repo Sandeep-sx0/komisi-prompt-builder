@@ -323,7 +323,13 @@ const Landing = () => {
               padding: 100px 24px 64px 24px !important;
             }
             #hero-right { display: none !important; }
-            #hero-left { width: 100% !important; max-width: none !important; }
+            #hero-left { width: 100% !important; max-width: none !important; padding-left: 0 !important; }
+          }
+          @media (min-width: 1024px) and (max-width: 1279px) {
+            #hero-left { padding-left: clamp(48px, 6vw, 80px) !important; }
+          }
+          @media (min-width: 1280px) {
+            #hero-left { padding-left: clamp(80px, 8vw, 160px) !important; }
           }
         `}</style>
 
