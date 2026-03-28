@@ -371,7 +371,7 @@ const Landing = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 + i * 0.15 }}
                     className="font-medium tracking-tighter leading-[1.05]"
-                    style={{ color: '#000000', fontSize: 'clamp(32px, 5vw, 72px)', overflowWrap: 'break-word' }}
+                    style={{ color: '#000000', fontSize: 'clamp(36px, 4vw, 56px)', overflowWrap: 'break-word' }}
                   >
                     {line}
                   </motion.div>
