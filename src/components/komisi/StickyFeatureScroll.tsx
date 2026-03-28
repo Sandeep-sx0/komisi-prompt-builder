@@ -67,7 +67,7 @@ const AttributionVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 16.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/bg-16.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
       <div style={{ width: 420, backgroundColor: "#0D1117", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center gap-1.5 px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
@@ -102,7 +102,7 @@ const AnalyticsVisual = () => {
   ];
 
   return (
-    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 10.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+    <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/bg-10.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
       <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid #F3F4F6" }}>
           <span className="text-sm font-medium" style={{ color: "#111111" }}>Creator Performance</span>
@@ -132,7 +132,7 @@ const AnalyticsVisual = () => {
 
 /* ── Fraud Visual wrapper ── */
 const FraudVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 3.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/bg-3.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
     <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
       <FraudDetectionAnimation />
     </div>
@@ -141,7 +141,7 @@ const FraudVisual = () => (
 
 /* ── Payouts Visual wrapper ── */
 const PayoutsVisual = () => (
-  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/BG 18.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
+  <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/bg-18.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
     <div style={{ width: "100%", maxWidth: 520, position: "relative", zIndex: 1 }}>
       <PayoutsAnimation />
     </div>
