@@ -78,7 +78,7 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
 
   return (
     <aside className={cn(
-      "h-screen bg-background-subtle border-r border-border flex flex-col shrink-0 transition-all duration-200 sticky top-0",
+      "h-screen bg-card border-r border-border/60 flex flex-col shrink-0 transition-all duration-200 sticky top-0",
       collapsed ? "w-16" : "w-64"
     )}>
       {/* Logo + App Switcher */}

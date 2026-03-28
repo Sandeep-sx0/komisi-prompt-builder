@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { DashboardLayout } from "@/components/komisi/DashboardLayout";
-import { MetricCard } from "@/components/komisi/Cards";
 import { BadgeStatus, StatusDot } from "@/components/komisi/BadgeStatus";
 import { PlatformFilter } from "@/components/komisi/PlatformFilter";
 import { useAppScope } from "@/hooks/use-app-scope";
@@ -52,12 +51,12 @@ const ChartTooltip = ({ active, payload, label }: any) => {
   );
 };
 
-const metricCards = [
-  { icon: <Users size={20} />, value: "12", label: "Active Affiliates", trend: { value: "3 new", positive: true } },
-  { icon: <Download size={20} />, value: "847", label: "Installs This Week", trend: { value: "12%", positive: true } },
-  { icon: <DollarSign size={20} />, value: "$2,340", label: "Affiliate Revenue", trend: { value: "23%", positive: true } },
-  { icon: <Target size={20} />, value: "8", label: "Active Campaigns" },
-  { icon: <DollarSign size={20} />, value: "$1,230", label: "Commissions Paid", trend: { value: "18%", positive: true } },
+const metrics = [
+  { icon: <Users size={18} />, value: "12", label: "Active Affiliates", trend: { value: "3 new", positive: true } },
+  { icon: <Download size={18} />, value: "847", label: "Installs This Week", trend: { value: "12%", positive: true } },
+  { icon: <DollarSign size={18} />, value: "$2,340", label: "Affiliate Revenue", trend: { value: "23%", positive: true } },
+  { icon: <Target size={18} />, value: "8", label: "Active Campaigns", trend: null },
+  { icon: <DollarSign size={18} />, value: "$1,230", label: "Commissions Paid", trend: { value: "18%", positive: true } },
 ];
 
 const Dashboard = () => {
@@ -126,38 +125,54 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
-              {metricCards.map((card, i) => (
-                <motion.div
-                  key={card.label}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.35, delay: i * 0.07, ease: "easeOut" }}
-                >
-                  <MetricCard icon={card.icon} value={card.value} label={card.label} trend={card.trend} />
-                </motion.div>
-              ))}
+            {/* Metrics Strip */}
+            <div className="bg-card border border-border mb-8">
+              <div className="grid grid-cols-5 divide-x divide-border">
+                {metrics.map((metric) => (
+                  <div key={metric.label} className="px-5 py-5">
+                    <div className="flex items-center gap-2 text-text-tertiary mb-3">
+                      {metric.icon}
+                      <span className="text-[13px] text-text-secondary">{metric.label}</span>
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-[28px] font-semibold text-foreground tracking-tight leading-none tabular-nums">
+                        {metric.value}
+                      </span>
+                      {metric.trend && (
+                        <span className={cn("text-xs font-medium", metric.trend.positive ? "text-success" : "text-error")}>
+                          ↑ {metric.trend.value}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Chart */}
-            <div className="bg-card border border-border p-6 mb-8">
+            <div className="bg-card border border-border p-6 pb-4 mb-8">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-base font-semibold text-foreground">Revenue from Affiliates</h2>
-                <div className="flex items-center gap-4 text-sm">
-                  <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-chart-blue" /> <span className="text-sm text-text-secondary">Installs</span></span>
-                  <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-chart-purple" /> <span className="text-sm text-text-secondary">Revenue</span></span>
+                <div className="flex items-center gap-5 text-[13px] text-text-secondary">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#3B82F6]" />
+                    Installs
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-[#8B5CF6]" />
+                    Revenue
+                  </span>
                 </div>
               </div>
-              <ResponsiveContainer width="100%" height={320}>
+              <ResponsiveContainer width="100%" height={300}>
                 <AreaChart data={chartData}>
                   <defs>
                     <linearGradient id="gradInstalls" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3B82F6" stopOpacity={0.15} /><stop offset="100%" stopColor="#3B82F6" stopOpacity={0} /></linearGradient>
                     <linearGradient id="gradRevenue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.15} /><stop offset="100%" stopColor="#8B5CF6" stopOpacity={0} /></linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" horizontal={true} vertical={false} />
-                  <XAxis dataKey="date" tick={{ fontSize: 12, fill: "#94A3B8" }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fontSize: 12, fill: "#94A3B8" }} axisLine={false} tickLine={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#F1F1F1" horizontal vertical={false} />
+                  <XAxis dataKey="date" tick={{ fontSize: 12, fill: "#B0B0B0" }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fontSize: 12, fill: "#B0B0B0" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<ChartTooltip />} />
                   <Area type="monotone" dataKey="installs" stroke="#3B82F6" strokeWidth={2.5} fill="url(#gradInstalls)" dot={false} />
                   <Area type="monotone" dataKey="revenue" stroke="#8B5CF6" strokeWidth={2.5} fill="url(#gradRevenue)" dot={false} />
@@ -175,11 +190,13 @@ const Dashboard = () => {
                 </div>
                 <div className="bg-card border border-border overflow-hidden">
                   <table className="w-full">
-                    <thead><tr>
-                      {["#", "Affiliate", "Installs", "Revenue", "Conv Rate"].map((h) => (
-                        <th key={h} className="text-left text-xs uppercase tracking-wider font-medium text-text-tertiary h-10 px-4">{h}</th>
-                      ))}
-                    </tr></thead>
+                    <thead>
+                      <tr className="border-b border-border">
+                        {["#", "Affiliate", "Installs", "Revenue", "Conv Rate"].map((h) => (
+                          <th key={h} className="text-left text-[11px] uppercase tracking-[0.08em] font-medium text-text-tertiary h-10 px-4">{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
                     <tbody>
                       {affiliates.map((a, i) => (
                         <tr key={a.name} className="border-b border-muted last:border-0 hover:bg-background-subtle cursor-pointer transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring">
@@ -209,10 +226,13 @@ const Dashboard = () => {
                 <h2 className="text-base font-semibold text-foreground mb-3">Recent Activity</h2>
                 <div className="bg-card border border-border p-5">
                   {activities.map((a, i) => (
-                    <div key={i} className={cn("flex items-start gap-3 py-3.5", i < activities.length - 1 && "border-b border-muted")}>
-                      <span className={cn("w-2 h-2 rounded-full mt-1.5 shrink-0", a.color)} />
-                      <p className="text-sm text-foreground flex-1 leading-relaxed">{a.text}</p>
-                      <p className="text-xs text-text-tertiary whitespace-nowrap ml-3 mt-0.5">{a.time}</p>
+                    <div key={i} className={cn(
+                      "flex items-start gap-3 py-3",
+                      i < activities.length - 1 && "border-b border-border/50"
+                    )}>
+                      <span className={cn("w-1.5 h-1.5 rounded-full mt-2 shrink-0", a.color)} />
+                      <p className="text-[13px] text-foreground flex-1 leading-relaxed">{a.text}</p>
+                      <p className="text-[11px] text-text-tertiary whitespace-nowrap ml-3 mt-0.5">{a.time}</p>
                     </div>
                   ))}
                 </div>
@@ -222,18 +242,16 @@ const Dashboard = () => {
             {/* Quick Actions */}
             <div>
               <h2 className="text-base font-semibold text-foreground mb-3">Quick Actions</h2>
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-4 gap-3">
                 {[
                   { icon: Plus, label: "Create Campaign" },
                   { icon: Users, label: "Invite Affiliate" },
                   { icon: Link2, label: "Get Links" },
                   { icon: BarChart3, label: "View Reports" },
                 ].map((a) => (
-                  <button key={a.label} className="group bg-card border border-border p-5 flex flex-col items-center gap-3 hover:border-[hsl(var(--border-hover))] hover:shadow-[0_1px_3px_0_rgba(0,0,0,0.04)] transition-all cursor-pointer">
-                    <div className="w-10 h-10 flex items-center justify-center bg-background-subtle text-text-secondary group-hover:text-foreground transition-colors">
-                      <a.icon size={18} />
-                    </div>
-                    <span className="text-sm font-medium text-foreground">{a.label}</span>
+                  <button key={a.label} className="group bg-card border border-border p-4 flex items-center gap-3 hover:border-[hsl(var(--border-hover))] transition-colors cursor-pointer">
+                    <a.icon size={16} className="text-text-tertiary group-hover:text-foreground transition-colors" />
+                    <span className="text-[13px] font-medium text-foreground">{a.label}</span>
                   </button>
                 ))}
               </div>

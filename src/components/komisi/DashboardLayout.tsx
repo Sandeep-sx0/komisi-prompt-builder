@@ -19,7 +19,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, acti
         onToggleCollapse={() => setCollapsed(!collapsed)}
         activeItem={activeItem}
       />
-      <main className="flex-1 overflow-y-auto bg-background-subtle">
+      <main className="flex-1 overflow-y-auto bg-background-subtle grain-subtle">
         {children}
       </main>
       <DemoModeSwitcher />
