@@ -700,7 +700,7 @@ const Pricing = () => {
                       className="w-full transition-all duration-200"
                       style={{
                         height: 46,
-                        borderRadius: 10,
+                        borderRadius: 0,
                         fontSize: 14,
                         fontWeight: 600,
                         cursor: "pointer",
