@@ -196,25 +196,80 @@ html {
 }
 
 /* ============================================================
-   VALLEY WATERCOLOR CARD BACKGROUNDS
+   WATERCOLOR CARD BACKGROUNDS — Multi-layer organic blobs
    ============================================================ */
 .watercolor-blue {
-  background: radial-gradient(ellipse at 30% 50%, #BFDBFE 0%, #E0F2FE 40%, #F0F9FF 100%);
+  background:
+    radial-gradient(ellipse at 25% 40%, rgba(191,219,254,0.8) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(147,197,253,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 20%, rgba(224,242,254,0.6) 0%, transparent 55%),
+    #F8FAFF;
+}
+.watercolor-pink {
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(252,165,165,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 65% 30%, rgba(251,207,232,0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 45% 75%, rgba(254,205,211,0.4) 0%, transparent 40%),
+    #FFFBFC;
 }
 .watercolor-peach {
-  background: radial-gradient(ellipse at 60% 30%, #FDBA74 0%, #FED7AA 35%, #FFF7ED 70%, #FEF3C7 100%);
+  background:
+    radial-gradient(ellipse at 55% 35%, rgba(253,186,116,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 30% 65%, rgba(254,215,170,0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 55%, rgba(254,243,199,0.4) 0%, transparent 40%),
+    #FFFCF5;
 }
 .watercolor-teal {
-  background: radial-gradient(ellipse at 40% 60%, #6EE7B7 0%, #A7F3D0 40%, #ECFDF5 100%);
+  background:
+    radial-gradient(ellipse at 35% 55%, rgba(110,231,183,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 65% 35%, rgba(167,243,208,0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(209,250,229,0.4) 0%, transparent 40%),
+    #F7FDFB;
+}
+.watercolor-green {
+  background:
+    radial-gradient(ellipse at 40% 45%, rgba(134,239,172,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 65%, rgba(187,247,208,0.4) 0%, transparent 50%),
+    radial-gradient(ellipse at 25% 70%, rgba(220,252,231,0.5) 0%, transparent 40%),
+    #F8FDF9;
+}
+.watercolor-yellow {
+  background:
+    radial-gradient(ellipse at 45% 40%, rgba(253,224,71,0.4) 0%, transparent 45%),
+    radial-gradient(ellipse at 25% 60%, rgba(254,240,138,0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 55%, rgba(254,249,195,0.4) 0%, transparent 40%),
+    #FFFEF5;
+}
+.watercolor-purple {
+  background:
+    radial-gradient(ellipse at 40% 35%, rgba(196,181,253,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 65% 60%, rgba(221,214,254,0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 70%, rgba(237,233,254,0.4) 0%, transparent 40%),
+    #FBFAFF;
 }
 .watercolor-mixed {
-  background: radial-gradient(ellipse at 20% 30%, #BFDBFE 0%, #FDE8D8 30%, #D8F3DC 60%, #FEF9C3 100%);
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(191,219,254,0.6) 0%, transparent 40%),
+    radial-gradient(ellipse at 70% 25%, rgba(253,186,116,0.45) 0%, transparent 35%),
+    radial-gradient(ellipse at 50% 65%, rgba(167,243,208,0.5) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 70%, rgba(251,207,232,0.4) 0%, transparent 35%),
+    radial-gradient(ellipse at 35% 80%, rgba(254,240,138,0.3) 0%, transparent 30%),
+    #FAFAFA;
 }
 .watercolor-lavender {
-  background: radial-gradient(ellipse at 50% 40%, #E0D7FF 0%, #EDE9FE 40%, #F5F3FF 100%);
+  background:
+    radial-gradient(ellipse at 45% 35%, rgba(224,215,255,0.6) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 55%, rgba(237,233,254,0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 25% 65%, rgba(245,243,255,0.6) 0%, transparent 40%),
+    #FCFBFF;
 }
 .watercolor-warm {
-  background: radial-gradient(ellipse at 60% 40%, #FCA5A5 0%, #FBCFE8 35%, #FFF1F2 70%, #FEF3C7 100%);
+  background:
+    radial-gradient(ellipse at 55% 35%, rgba(252,165,165,0.45) 0%, transparent 40%),
+    radial-gradient(ellipse at 30% 55%, rgba(251,207,232,0.5) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 65%, rgba(254,243,199,0.4) 0%, transparent 35%),
+    radial-gradient(ellipse at 45% 80%, rgba(253,186,116,0.3) 0%, transparent 30%),
+    #FFFBFA;
 }
 
 /* ============================================================
