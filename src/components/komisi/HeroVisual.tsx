@@ -15,29 +15,29 @@ const HeroVisual: React.FC = () => {
   }, []);
 
   return (
-    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 600, overflowX: 'hidden' }}>
-      {/* Dashboard preview — edge-bleed, flush right */}
+    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 520 }}>
+      {/* Dashboard iframe — floating */}
       <motion.div
-        className="absolute top-0"
+        className="absolute top-0 overflow-hidden"
         style={{
-          right: 0,
-          width: '130%',
+          left: 0,
+          right: '-120px',
+          height: '100%',
           borderRadius: '16px 0 0 16px',
-          boxShadow: 'none',
-          filter: 'none',
-          transform: 'scale(0.85)',
-          transformOrigin: 'top right',
+          boxShadow: '0 32px 80px rgba(0,0,0,0.18)',
         }}
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
       >
-        <img
-          src="/dashboard-preview.png"
-          alt="Komisi Dashboard Preview"
+        <iframe
+          src="/dashboard"
+          title="Komisi Dashboard Preview"
           style={{
-            width: '100%',
-            height: 'auto',
-            display: 'block',
+            width: '1456px',
+            height: '900px',
+            transform: 'scale(0.618)',
+            transformOrigin: 'top left',
+            border: 'none',
             pointerEvents: 'none',
           }}
         />
