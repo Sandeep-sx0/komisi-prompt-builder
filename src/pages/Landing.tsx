@@ -112,8 +112,6 @@ const integrations = [
   { name: "Google Play", logo: "/logos/google.webp" },
   { name: "Amplitude", logo: "/logos/amplitude.webp" },
   { name: "Mixpanel", logo: "/logos/mixpanel.webp" },
-  { name: "AppsFlyer", logo: "/logos/appsflyer.webp" },
-  { name: "Adjust", logo: "/logos/adjust.webp" },
   { name: "Firebase", logo: "/logos/firebase.webp" },
   { name: "Braze", logo: "/logos/braze.webp" },
   { name: "Slack", logo: "/logos/slack.webp" },
@@ -330,7 +328,7 @@ const Landing = () => {
               </motion.div>
 
               <div className="mb-6">
-                {["Affiliate marketing", "infrastructure for", "mobile apps."].map((line, i) => (
+                {["Your app. 1,000 new", "installs. One creator", "campaign."].map((line, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 30 }}
@@ -351,7 +349,7 @@ const Landing = () => {
                 className="text-base mb-8 max-w-[480px]"
                 style={{ color: 'rgba(0,0,0,0.6)' }}
               >
-                Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
+                Set up in under an hour. Connect creators on TikTok, YouTube, or Instagram. See exactly which post drove which install and which in-app purchase. Privacy-safe on iOS and Android.
               </motion.p>
 
               <motion.div
@@ -362,7 +360,7 @@ const Landing = () => {
               >
                 <Input placeholder="Enter your email" className="h-12 max-w-[280px] border" style={{ backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(0,0,0,0.15)', color: '#000000' }} />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 border-none" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Get Started Free <ArrowRight size={16} /></Button>
+                  <Button size="lg" className="h-12 px-6 border-none" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Start Free — No Credit Card <ArrowRight size={16} /></Button>
                 </Link>
               </motion.div>
 
@@ -371,7 +369,7 @@ const Landing = () => {
               </motion.div>
 
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.3 }} className="text-xs mt-4" style={{ color: 'rgba(0,0,0,0.4)' }}>
-                Trusted by 200+ indie app developers · No credit card required
+                Used by 200+ app developers on iOS and Android · No credit card required
               </motion.p>
             </div>
 
@@ -395,7 +393,7 @@ const Landing = () => {
       <section className="py-10 border-y border-border overflow-hidden">
         <Reveal>
           <p className="text-xs text-text-tertiary text-center mb-8 uppercase tracking-[0.15em]">
-            DEVELOPERS BUILDING WITH KOMISI
+            WORKS WITH YOUR EXISTING MOBILE STACK
           </p>
         </Reveal>
         <div className="relative overflow-hidden w-full">
@@ -491,8 +489,9 @@ const Landing = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-6">
-                Integrate in under<br />30 minutes.
+              <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-6" style={{ overflowWrap: 'break-word', wordBreak: 'break-word' }}>
+                <span className="md:hidden" style={{ fontSize: 22 }}>Integrate in under 30 minutes.</span>
+                <span className="hidden md:inline">Integrate in under<br />30 minutes.</span>
               </h2>
               <p className="text-base mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
                 One SDK. Works on iOS, Android, Flutter, and React Native. Drop in 3 lines of code and Komisi handles attribution, fraud detection, and payouts automatically. No server coding required.
@@ -531,7 +530,7 @@ const Landing = () => {
                     className="text-xs transition-colors"
                     style={{
                       padding: "6px 14px",
-                      borderRadius: "4px",
+                      borderRadius: 0,
                       fontWeight: activeCodeTab === tab ? 500 : 400,
                       backgroundColor: activeCodeTab === tab ? "#FFFFFF" : "transparent",
                       color: activeCodeTab === tab ? "#000000" : "rgba(255,255,255,0.45)",
@@ -596,11 +595,13 @@ const Landing = () => {
       <section className="py-24 px-6 dot-grid">
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
-              Works with your existing stack.
+             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
+              Works with your existing stack. No rip-and-replace.
             </h2>
             <p className="text-base text-text-secondary">
-              Komisi plugs into the tools you already use. No ripping and replacing.
+              Komisi layers creator attribution on top of RevenueCat and Adapty. Your existing analytics setup stays exactly as it is. Replaces AppsFlyer and Adjust for creator campaigns.
+            </p>
+            <p className="mx-auto mt-3" style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', fontWeight: 400, maxWidth: 560 }}>
             </p>
           </Reveal>
 
@@ -652,8 +653,42 @@ const Landing = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTION 10 — TRUST / ENTERPRISE BAR
+          SECTION 10 — TRUST BAR
       ═══════════════════════════════════════════ */}
+      <section className="py-16 px-6 dot-grid">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            {
+              icon: Fingerprint,
+              label: "Privacy-Safe",
+              qualifier: "No personal identifiers collected or stored.",
+            },
+            {
+              icon: Shield,
+              label: "No IDFA Required",
+              qualifier: "No ATT prompt. Works on iOS 14.5+ out of the box.",
+            },
+            {
+              icon: Code,
+              label: "10 Lines of Code",
+              qualifier: "RevenueCat or Adapty required. Tracks installs from day one.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <Reveal key={i} delay={i * 0.1}>
+                <div className="text-center">
+                  <Icon size={28} style={{ color: '#000000', margin: '0 auto 12px' }} />
+                  <p className="text-lg font-medium" style={{ color: '#000000' }}>{item.label}</p>
+                  <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.45)', fontWeight: 400, marginTop: 6 }}>
+                    {item.qualifier}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
 
       {/* ═══════════════════════════════════════════
           SECTION 11 — FINAL CTA (Dark)
@@ -670,16 +705,16 @@ const Landing = () => {
             style={{ color: "#000000" }}
           >
             Your next 1,000 installs<br />
-            are one affiliate program away.
+            are one creator partnership away.
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base mb-10" style={{ color: "rgba(0,0,0,0.5)" }}
+            className="text-base mb-10" style={{ color: "rgba(0,0,0,0.5)", fontSize: 16, fontWeight: 400 }}
           >
-            Get started today or book a demo for a personal walkthrough.
+            No commitment. Cancel anytime. Integrate in under an hour.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -11,22 +11,22 @@ import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 const features = [
   {
     icon: Target,
-    label: "Attribute every install without IDFA or cookies.",
+    label: "Know which creator drove every install.",
     description: "Privacy-safe fingerprint matching on iOS. Play Install Referrer on Android. 0.60–0.95 confidence scoring. No ATT prompt.",
   },
   {
     icon: Shield,
-    label: "AI fraud detection that protects your program automatically.",
+    label: "Block fake installs before they cost you.",
     description: "Every conversion scored in real time. Komisi flags IP clusters, velocity anomalies, and emulator installs before they cost you money.",
   },
   {
     icon: BarChart2,
-    label: "Know exactly which creator drove every install and subscription.",
+    label: "See what's working before you scale.",
     description: "Real-time analytics by creator, campaign, platform, and content. Install volume, trial starts, conversions, and revenue attributed.",
   },
   {
     icon: Zap,
-    label: "Pay every creator automatically. No invoices, no chasing.",
+    label: "Pay every creator automatically. Never manually.",
     description: "Creators connect Stripe during onboarding. Komisi calculates commissions against net revenue and queues payouts automatically.",
   },
 ];
@@ -68,7 +68,7 @@ const AttributionVisual = () => {
 
   return (
     <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/bg-16.webp')", backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div style={{ width: 420, backgroundColor: "#0D1117", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", position: "relative", zIndex: 1 }}>
+      <div style={{ width: 420, backgroundColor: "#0D1117", borderRadius: 0, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center gap-1.5 px-4 py-3" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FF5F57" }} />
           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#FEBC2E" }} />
@@ -103,7 +103,7 @@ const AnalyticsVisual = () => {
 
   return (
     <div className="w-full h-full flex items-center justify-center" style={{ backgroundImage: "url('/backgrounds/bg-10.png')", backgroundSize: "cover", backgroundPosition: "center" }}>
-      <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 12, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", position: "relative", zIndex: 1 }}>
+      <div style={{ width: 520, backgroundColor: "#FFFFFF", borderRadius: 0, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", position: "relative", zIndex: 1 }}>
         <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: "1px solid #F3F4F6" }}>
           <span className="text-sm font-medium" style={{ color: "#111111" }}>Creator Performance</span>
           <span className="text-[10px]" style={{ color: "#9CA3AF" }}>Last 30 days</span>
@@ -201,7 +201,7 @@ const StickyFeatureScroll: React.FC = () => {
           <div style={{ width: "38%", height: "100%", display: "flex", flexDirection: "column", padding: "80px 48px 56px", position: "relative" }}>
             <div style={{ flexGrow: 1 }}>
               <div className="flex items-center gap-2 mb-6">
-                <span className="text-[10px] uppercase tracking-[0.15em] px-2.5 py-1" style={{ color: "#000000", backgroundColor: "#E0F2FE", borderRadius: 4 }}>
+                <span className="text-[10px] uppercase tracking-[0.15em] px-2.5 py-1" style={{ color: "#000000", backgroundColor: "#E0F2FE", borderRadius: 0 }}>
                   ■ FEATURES
                 </span>
               </div>
@@ -291,7 +291,7 @@ const StickyFeatureScroll: React.FC = () => {
         {/* Header */}
         <div style={{ padding: "48px 24px 32px" }}>
           <div className="flex items-center gap-2 mb-6">
-            <span className="text-[10px] uppercase tracking-[0.15em] px-2.5 py-1" style={{ color: "#000000", backgroundColor: "#E0F2FE", borderRadius: 4 }}>
+            <span className="text-[10px] uppercase tracking-[0.15em] px-2.5 py-1" style={{ color: "#000000", backgroundColor: "#E0F2FE", borderRadius: 0 }}>
               ■ FEATURES
             </span>
           </div>

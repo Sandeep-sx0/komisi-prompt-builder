@@ -41,7 +41,7 @@ const plans = [
     monthlyPrice: 0,
     yearlyPrice: 0,
     yearlyTotal: 0,
-    cta: "Get Started Free →",
+    cta: "Start Free — No Credit Card →",
     ctaLink: "/signup",
     ctaStyle: "outlined" as const,
     noCcNote: true,
@@ -278,6 +278,22 @@ const faqs = [
     q: "What happens if I exceed my affiliate limit on the Free plan?",
     a: "You'll receive an email notification when you're approaching your limit. You can upgrade at any time to unlock more slots. Existing affiliates are never deactivated — you just can't approve new ones until you upgrade or free up a slot.",
   },
+  {
+    q: "What happens if I exceed my install limit?",
+    a: "You'll receive an email before you hit the limit. Overages are billed at $2 per 1,000 additional installs.",
+  },
+  {
+    q: "Can I downgrade or cancel anytime?",
+    a: "Yes. No contracts, no cancellation fees. Downgrade or cancel from your dashboard settings.",
+  },
+  {
+    q: "Do I need a credit card to start?",
+    a: "No. The free plan requires no payment information.",
+  },
+  {
+    q: "Does Komisi replace AppsFlyer or Adjust?",
+    a: "Yes. For creator and affiliate campaign attribution, Komisi is a full replacement. Your RevenueCat or Adapty integration stays exactly as is.",
+  },
 ];
 
 /* ── Features by job-to-be-done ── */
@@ -459,12 +475,11 @@ const Pricing = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={anim}
-            className="inline-block text-[13px] font-medium px-4 py-1.5"
+             className="inline-block text-[13px] font-medium px-4 py-1.5"
             style={{
               color: "rgba(255,255,255,0.7)",
               backgroundColor: "rgba(255,255,255,0.08)",
               border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: 999,
             }}
           >
             Simple, transparent pricing
@@ -498,7 +513,6 @@ const Pricing = () => {
             style={{
               backgroundColor: "rgba(255,255,255,0.07)",
               border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: 999,
               overflow: "visible",
             }}
           >
@@ -507,7 +521,6 @@ const Pricing = () => {
               className="text-sm transition-all duration-200"
               style={{
                 padding: "9px 28px",
-                borderRadius: 999,
                 backgroundColor: !isYearly ? "#000000" : "transparent",
                 color: !isYearly ? "#FFFFFF" : "rgba(255,255,255,0.45)",
                 fontWeight: !isYearly ? 600 : 400,
@@ -520,7 +533,6 @@ const Pricing = () => {
               className="text-sm transition-all duration-200 inline-flex items-center gap-1.5"
               style={{
                 padding: "9px 28px",
-                borderRadius: 999,
                 backgroundColor: isYearly ? "#000000" : "transparent",
                 color: isYearly ? "#FFFFFF" : "rgba(255,255,255,0.45)",
                 fontWeight: isYearly ? 600 : 400,
@@ -534,7 +546,7 @@ const Pricing = () => {
                     alignItems: "center",
                     backgroundColor: "rgba(245,158,11,0.15)",
                     color: "#F59E0B",
-                    borderRadius: 999,
+                    borderRadius: 0,
                     padding: "2px 8px",
                     fontSize: 11,
                     fontWeight: 700,
@@ -568,7 +580,7 @@ const Pricing = () => {
                 transition={{ ...anim, delay: 0.1 + i * 0.08 }}
                 className="relative flex flex-col"
                 style={{
-                  borderRadius: 20,
+                  borderRadius: 0,
                   minHeight: 580,
                   backgroundColor: isDark ? "#111111" : "#FFFFFF",
                   border: isPopular
@@ -591,7 +603,7 @@ const Pricing = () => {
                   <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                      borderRadius: 20,
+                      borderRadius: 0,
                       background: "radial-gradient(ellipse at 30% 50%, rgba(0,0,0,0.18) 0%, transparent 70%)",
                       animation: "enterprise-card-glow 8s ease-in-out infinite alternate",
                     }}
@@ -609,10 +621,12 @@ const Pricing = () => {
                       backgroundColor: "#000000",
                       color: "#FFFFFF",
                       fontSize: 12,
+                      fontFamily: "'JetBrains Mono', monospace",
                       fontWeight: 700,
                       padding: "5px 16px",
-                      borderRadius: 999,
+                      borderRadius: 0,
                       letterSpacing: "0.05em",
+                      textTransform: "uppercase" as const,
                       boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
                     }}
                   >
@@ -694,6 +708,13 @@ const Pricing = () => {
                       billed ${plan.yearlyTotal}/year
                     </div>
                   )}
+                  {/* Billing unit */}
+                  <div className="mt-2" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)", textTransform: "uppercase" as const, letterSpacing: "0.05em" }}>
+                    {plan.id === "free" && "Up to 500 tracked installs/month"}
+                    {plan.id === "growth" && "Up to 5,000 tracked installs/month"}
+                    {plan.id === "scale" && "Up to 25,000 tracked installs/month"}
+                    {plan.id === "enterprise" && "Custom volume — talk to us"}
+                  </div>
                 </div>
 
                 {/* Zone B — CTA */}
@@ -703,7 +724,7 @@ const Pricing = () => {
                       className="w-full transition-all duration-200"
                       style={{
                         height: 46,
-                        borderRadius: 10,
+                        borderRadius: 0,
                         fontSize: 14,
                         fontWeight: 600,
                         cursor: "pointer",
@@ -938,7 +959,7 @@ const Pricing = () => {
                         alignItems: "center",
                         backgroundColor: "rgba(245,158,11,0.12)",
                         color: "#F59E0B",
-                        borderRadius: 999,
+                        borderRadius: 0,
                         padding: "3px 10px",
                         fontSize: 11,
                         fontWeight: 700,
@@ -1027,7 +1048,7 @@ const Pricing = () => {
                   backgroundColor: "#000000",
                   color: "#FFFFFF",
                   padding: "14px 36px",
-                  borderRadius: 10,
+                  borderRadius: 0,
                   fontWeight: 600,
                   fontSize: 16,
                   border: "none",
@@ -1080,7 +1101,7 @@ const Pricing = () => {
                       backgroundColor: "#FFFFFF",
                       color: "#000000",
                       padding: "12px 28px",
-                      borderRadius: 10,
+                      borderRadius: 0,
                       fontWeight: 600,
                       fontSize: 14,
                       border: "none",
@@ -1357,7 +1378,7 @@ const Pricing = () => {
                   backgroundColor: "#000000",
                   color: "#FFFFFF",
                   padding: "14px 36px",
-                  borderRadius: 10,
+                  borderRadius: 0,
                   fontWeight: 600,
                   fontSize: 16,
                   border: "none",
@@ -1374,7 +1395,7 @@ const Pricing = () => {
                   backgroundColor: "transparent",
                   color: "rgba(255,255,255,0.8)",
                   padding: "14px 36px",
-                  borderRadius: 10,
+                  borderRadius: 0,
                   fontWeight: 600,
                   fontSize: 16,
                   border: "1.5px solid rgba(255,255,255,0.3)",
