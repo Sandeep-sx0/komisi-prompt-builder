@@ -342,8 +342,9 @@ const Landing = () => {
         <div
           className="relative z-10 w-full"
           style={{
-            paddingLeft: 'clamp(24px, 5vw, 80px)',
             paddingRight: 'clamp(24px, 5vw, 80px)',
+            paddingBottom: 'clamp(48px, 6vh, 80px)',
+            paddingTop: '80px',
           }}
         >
           <div className="relative">
