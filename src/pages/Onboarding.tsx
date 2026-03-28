@@ -109,8 +109,6 @@ const Onboarding = () => {
                 {[
                   { name: "RevenueCat", desc: "Most popular. Works with iOS, Android, and web.", recommended: true },
                   { name: "Adapty", desc: "Alternative subscription platform.", recommended: false },
-                  { name: "Direct Store APIs", desc: "Requires server-side setup.", recommended: false },
-                  { name: "Stripe Billing", desc: "For web-based subscriptions.", recommended: false },
                 ].map((p) => (
                   <div key={p.name} className="border border-border rounded-xl p-5 bg-card flex items-center gap-4">
                     <div className="w-8 h-8 rounded-lg bg-background-subtle border border-border shrink-0" />
@@ -138,7 +136,7 @@ const Onboarding = () => {
                   </div>
                 ))}
               </div>
-              <div className="mt-6 bg-background-subtle rounded-lg p-4 text-sm text-text-secondary">💡 Not sure? RevenueCat works with 90% of subscription apps. You can add more later.</div>
+              <div className="mt-6 bg-background-subtle rounded-lg p-4 text-sm text-text-secondary">💡 Not sure? RevenueCat works with 90% of subscription apps. You can add Adapty later.</div>
             </div>
           )}
 
