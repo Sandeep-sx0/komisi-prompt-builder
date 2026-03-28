@@ -325,7 +325,7 @@ html {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 25s linear infinite;
+  animation: marquee 39s linear infinite;
   will-change: transform;
 }
 .marquee-track:hover {

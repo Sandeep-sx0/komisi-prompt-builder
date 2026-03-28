@@ -112,8 +112,6 @@ const integrations = [
   { name: "Google Play", logo: "/logos/google.webp" },
   { name: "Amplitude", logo: "/logos/amplitude.webp" },
   { name: "Mixpanel", logo: "/logos/mixpanel.webp" },
-  { name: "AppsFlyer", logo: "/logos/appsflyer.webp" },
-  { name: "Adjust", logo: "/logos/adjust.webp" },
   { name: "Firebase", logo: "/logos/firebase.webp" },
   { name: "Braze", logo: "/logos/braze.webp" },
   { name: "Slack", logo: "/logos/slack.webp" },
