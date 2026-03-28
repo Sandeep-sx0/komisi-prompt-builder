@@ -311,16 +311,37 @@ const Landing = () => {
       {/* ═══════════════════════════════════════════
           SECTION 2 — HERO
       ═══════════════════════════════════════════ */}
-      <section ref={heroRef} className="relative min-h-screen overflow-hidden" id="product">
+      <section
+        ref={heroRef}
+        className="relative overflow-hidden md:min-h-screen"
+        id="product"
+        style={{ paddingBottom: 'clamp(48px, 8vh, 120px)' }}
+      >
         {/* Hero watercolor background */}
         <div className="absolute inset-0 z-0">
           <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover" />
         </div>
 
         {/* Hero content */}
-        <div className="relative z-10 pt-32 pb-20 px-6">
-          <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+        <div
+          className="relative z-10"
+          style={{
+            paddingLeft: 'clamp(24px, 5vw, 80px)',
+            paddingRight: 'clamp(24px, 5vw, 80px)',
+            paddingTop: '128px',
+          }}
+        >
+          {/* Mobile: pt-80px pb-64px, no min-h */}
+          <style>{`
+            @media (max-width: 767px) {
+              #product { min-height: auto !important; padding-top: 0 !important; }
+              #product > .relative.z-10 { padding-top: 80px !important; padding-bottom: 64px !important; }
+            }
+          `}</style>
+
+          <div className="relative">
+            {/* Left content column */}
+            <div className="w-full md:w-1/2 lg:w-[45%]">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] px-3 py-1.5 mb-6" style={{ color: 'rgba(0,0,0,0.5)', border: '1px solid rgba(0,0,0,0.15)' }}>
                   ✦ Built for mobile app developers
@@ -334,8 +355,8 @@ const Landing = () => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 + i * 0.15 }}
-                    className="text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05]"
-                    style={{ color: '#000000' }}
+                    className="font-medium tracking-tighter leading-[1.05]"
+                    style={{ color: '#000000', fontSize: 'clamp(32px, 5vw, 72px)', overflowWrap: 'break-word' }}
                   >
                     {line}
                   </motion.div>
@@ -346,8 +367,8 @@ const Landing = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="text-base mb-8 max-w-[480px]"
-                style={{ color: 'rgba(0,0,0,0.6)' }}
+                className="mb-8 max-w-[480px]"
+                style={{ color: 'rgba(0,0,0,0.6)', fontSize: 'clamp(15px, 1.8vw, 18px)' }}
               >
                 Set up in under an hour. Connect creators on TikTok, YouTube, or Instagram. See exactly which post drove which install and which in-app purchase. Privacy-safe on iOS and Android.
               </motion.p>
@@ -356,11 +377,11 @@ const Landing = () => {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.9 }}
-                className="flex flex-col sm:flex-row gap-3 mb-4"
+                className="flex flex-col sm:flex-row gap-3 mb-4 w-full"
               >
-                <Input placeholder="Enter your email" className="h-12 max-w-[280px] border" style={{ backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(0,0,0,0.15)', color: '#000000' }} />
+                <Input placeholder="Enter your email" className="h-12 flex-1 border" style={{ backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(0,0,0,0.15)', color: '#000000' }} />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 border-none" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Start Free — No Credit Card <ArrowRight size={16} /></Button>
+                  <Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Start Free — No Credit Card <ArrowRight size={16} /></Button>
                 </Link>
               </motion.div>
 
@@ -378,10 +399,21 @@ const Landing = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative hidden lg:block"
-              style={{ minHeight: 480 }}
+              className="absolute top-0 right-0 hidden md:block"
+              style={{
+                width: '55%',
+                height: '100%',
+                transformOrigin: 'top right',
+              }}
             >
-              <HeroVisual />
+              <style>{`
+                @media (min-width: 768px) and (max-width: 1024px) {
+                  #hero-visual-container { width: 50vw !important; }
+                }
+              `}</style>
+              <div id="hero-visual-container" style={{ width: '100%', height: '100%', position: 'relative' }}>
+                <HeroVisual />
+              </div>
             </motion.div>
           </div>
         </div>
