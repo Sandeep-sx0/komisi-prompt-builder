@@ -27,6 +27,7 @@ const Preloader = () => {
 
     IMAGES_TO_PRELOAD.forEach((src) => {
       const img = new Image()
+      ;(img as any).fetchPriority = "high"
       img.onload = onLoad
       img.onerror = onLoad
       img.src = src
