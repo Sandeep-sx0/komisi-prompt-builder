@@ -21,7 +21,7 @@ import CreatorMarketplace from "./pages/CreatorMarketplace";
 import CreatorLinks from "./pages/CreatorLinks";
 import CreatorEarnings from "./pages/CreatorEarnings";
 import CreatorPrograms from "./pages/CreatorPrograms";
-import CreatorContent from "./pages/CreatorContent";
+
 import CreatorSettings from "./pages/CreatorSettings";
 import Landing from "./pages/Landing";
 import Apps from "./pages/Apps";
