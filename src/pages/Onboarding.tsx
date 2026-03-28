@@ -176,15 +176,44 @@ const Onboarding = () => {
               <h1 className="text-3xl font-bold tracking-tighter text-foreground">Install the Komisi SDK</h1>
               <p className="text-base text-text-secondary mt-2">One lightweight SDK. Five minutes. Full attribution.</p>
 
-              <div className="mt-6"><ChipSelector options={[{label:"iOS",value:"ios"},{label:"Android",value:"android"},{label:"Flutter",value:"flutter"},{label:"React Native",value:"rn"},{label:"Unity",value:"unity"}]} value={sdkPlatform} onChange={setSdkPlatform} /></div>
+              <div className="mt-6"><ChipSelector options={[{label:"Swift",value:"ios"},{label:"Kotlin",value:"android"},{label:"Flutter",value:"flutter"},{label:"React Native",value:"rn"}]} value={sdkPlatform} onChange={setSdkPlatform} /></div>
 
               <div className="mt-4 rounded-xl bg-primary text-primary-foreground p-6 font-mono text-[13px] leading-relaxed overflow-x-auto">
-                <div className="text-text-tertiary mb-2">// 1. Add the package</div>
-                <div className="text-chart-blue">{sdkPlatform === "ios" ? '.package(url: "https://github.com/komisi/sdk-ios", from: "1.0.0")' : sdkPlatform === "android" ? 'implementation "io.komisi:sdk:1.0.0"' : 'komisi_sdk: ^1.0.0'}</div>
-                <div className="text-text-tertiary mt-4 mb-2">// 2. Initialize</div>
-                <div><span className="text-chart-purple">Komisi</span>.configure(apiKey: <span className="text-chart-amber">"YOUR_API_KEY"</span>)</div>
-                <div className="text-text-tertiary mt-4 mb-2">// 3. Set subscriber attribute</div>
-                <div><span className="text-chart-purple">Purchases</span>.shared.setAttributes([<span className="text-chart-amber">"komisi_ref"</span>: refCode])</div>
+                {sdkPlatform === "ios" && (<>
+                  <div className="text-text-tertiary mb-2">// 1. Add the package</div>
+                  <div className="text-chart-blue">.package(url: "https://github.com/komisi/sdk-ios", from: "1.0.0")</div>
+                  <div className="text-text-tertiary mt-4 mb-2">// 2. Initialize in AppDelegate</div>
+                  <div><span className="text-chart-purple">import</span> KomisiSDK</div>
+                  <div><span className="text-chart-purple">Komisi</span>.configure(apiKey: <span className="text-chart-amber">"YOUR_API_KEY"</span>)</div>
+                  <div className="text-text-tertiary mt-4 mb-2">// 3. Set subscriber attribute for RevenueCat</div>
+                  <div><span className="text-chart-purple">Purchases</span>.shared.attribution.setAttributes([<span className="text-chart-amber">"komisi_ref"</span>: refCode])</div>
+                </>)}
+                {sdkPlatform === "android" && (<>
+                  <div className="text-text-tertiary mb-2">// 1. Add dependency</div>
+                  <div className="text-chart-blue">implementation "io.komisi:sdk-android:1.0.0"</div>
+                  <div className="text-text-tertiary mt-4 mb-2">// 2. Initialize in Application</div>
+                  <div><span className="text-chart-purple">KomisiSDK</span>.configure(this, apiKey = <span className="text-chart-amber">"YOUR_API_KEY"</span>)</div>
+                  <div className="text-text-tertiary mt-4 mb-2">// 3. Handle Install Referrer (automatic with SDK)</div>
+                  <div className="text-text-tertiary">// Attribution via Play Install Referrer API — no code needed</div>
+                </>)}
+                {sdkPlatform === "flutter" && (<>
+                  <div className="text-text-tertiary mb-2">// 1. Add to pubspec.yaml</div>
+                  <div className="text-chart-blue">dependencies:</div>
+                  <div className="text-chart-blue">  komisi_sdk: ^1.0.0</div>
+                  <div className="text-text-tertiary mt-4 mb-2">// 2. Initialize</div>
+                  <div><span className="text-chart-purple">await</span> KomisiSDK.configure(apiKey: <span className="text-chart-amber">'YOUR_API_KEY'</span>);</div>
+                  <div className="text-text-tertiary mt-4 mb-2">// 3. Set subscriber attribute</div>
+                  <div><span className="text-chart-purple">Purchases</span>.setAttributes({'{'}  <span className="text-chart-amber">'komisi_ref'</span>: refCode {'}'});</div>
+                </>)}
+                {sdkPlatform === "rn" && (<>
+                  <div className="text-text-tertiary mb-2">// 1. Install</div>
+                  <div className="text-chart-blue">npm install @komisi/react-native-sdk</div>
+                  <div className="text-text-tertiary mt-4 mb-2">// 2. Initialize</div>
+                  <div><span className="text-chart-purple">import</span> Komisi <span className="text-chart-purple">from</span> <span className="text-chart-amber">'@komisi/react-native-sdk'</span>;</div>
+                  <div><span className="text-chart-purple">Komisi</span>.configure({'{'} apiKey: <span className="text-chart-amber">'YOUR_API_KEY'</span> {'}'});</div>
+                  <div className="text-text-tertiary mt-4 mb-2">// 3. Set subscriber attribute</div>
+                  <div><span className="text-chart-purple">Purchases</span>.setAttributes({'{'} <span className="text-chart-amber">komisi_ref</span>: refCode {'}'});</div>
+                </>)}
               </div>
 
               <div className="mt-6">
