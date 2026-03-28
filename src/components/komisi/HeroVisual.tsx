@@ -16,7 +16,7 @@ const HeroVisual: React.FC = () => {
 
   return (
     <div ref={ref} className="relative w-full h-full" style={{ minHeight: 520 }}>
-      {/* Dashboard iframe — floating */}
+      {/* Dashboard screenshot — floating */}
       <motion.div
         className="absolute top-0 overflow-hidden"
         style={{
@@ -29,23 +29,21 @@ const HeroVisual: React.FC = () => {
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
       >
-        <iframe
-          src="/dashboard"
-          title="Komisi Dashboard Preview"
+        <img
+          src="/images/dashboard-preview.png"
+          alt="Komisi Dashboard Preview"
           style={{
-            width: '1456px',
-            height: '900px',
-            transform: 'scale(0.618)',
-            transformOrigin: 'top left',
-            border: 'none',
-            pointerEvents: 'none',
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'top left',
           }}
         />
       </motion.div>
 
       {/* Creator card — floating at different phase */}
       <motion.div
-        className="absolute z-10 rounded-2xl"
+        className="absolute z-10"
         style={{
           left: '-20px',
           bottom: '12%',
@@ -63,14 +61,14 @@ const HeroVisual: React.FC = () => {
           <img
             src="/avatars/user-1.jpg"
             alt="Sarah"
-            className="w-10 h-10 rounded-full object-cover"
+            className="w-10 h-10 object-cover"
           />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold" style={{ color: '#111111' }}>@sarahcreates</p>
             <p className="text-xs" style={{ color: '#6B7280' }}>12.4K followers</p>
           </div>
           <div className="flex items-center gap-1 shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: '#4ADE80' }} />
+            <span className="w-1.5 h-1.5 animate-pulse" style={{ backgroundColor: '#4ADE80' }} />
             <span className="text-xs" style={{ color: '#4ADE80' }}>Active</span>
           </div>
         </div>
@@ -105,9 +103,8 @@ const HeroVisual: React.FC = () => {
 
         {/* Progress bar */}
         <div className="mb-2">
-          <div className="w-full rounded-full" style={{ height: 6, backgroundColor: '#F3F4F6' }}>
+          <div className="w-full" style={{ height: 6, backgroundColor: '#F3F4F6' }}>
             <div
-              className="rounded-full"
               style={{
                 height: 6,
                 backgroundColor: '#4ADE80',
