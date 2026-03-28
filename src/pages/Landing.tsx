@@ -356,7 +356,7 @@ const Landing = () => {
         >
           <div className="relative">
             {/* Left content column */}
-            <div id="hero-left" style={{ width: '45%', maxWidth: 460, paddingRight: 32, flexShrink: 0 }}>
+            <div id="hero-left" style={{ width: '45%', maxWidth: 520, paddingRight: 32, flexShrink: 0 }}>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] px-3 py-1.5 mb-6" style={{ color: 'rgba(0,0,0,0.5)', border: '1px solid rgba(0,0,0,0.15)' }}>
                   ✦ Built for mobile app developers
@@ -371,7 +371,7 @@ const Landing = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.15 + i * 0.15 }}
                     className="font-medium tracking-tighter leading-[1.05]"
-                    style={{ color: '#000000', fontSize: 'clamp(32px, 5vw, 72px)', overflowWrap: 'break-word' }}
+                    style={{ color: '#000000', fontSize: 'clamp(36px, 4vw, 56px)', overflowWrap: 'break-word' }}
                   >
                     {line}
                   </motion.div>
@@ -396,7 +396,7 @@ const Landing = () => {
               >
                 <Input placeholder="Enter your email" className="h-12 flex-1 border" style={{ backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(0,0,0,0.15)', color: '#000000' }} />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}><Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Get Started <ArrowRight size={16} /></Button></Button>
+                  <Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Get Started <ArrowRight size={16} /></Button>
                 </Link>
               </motion.div>
 
