@@ -14,7 +14,7 @@ import Campaigns from "./pages/Campaigns";
 import CampaignCreate from "./pages/CampaignCreate";
 import Affiliates from "./pages/Affiliates";
 import Analytics from "./pages/Analytics";
-
+import Collaborators from "./pages/Collaborators";
 import Payouts from "./pages/Payouts";
 import Settings from "./pages/Settings";
 import CreatorDashboard from "./pages/CreatorDashboard";
@@ -54,6 +54,7 @@ const App = () => (
             <Route path="/analytics" element={<Analytics />} />
             <Route path="/payouts" element={<Payouts />} />
             <Route path="/apps" element={<Apps />} />
+            <Route path="/collaborators" element={<Collaborators />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/creator/dashboard" element={<CreatorDashboard />} />
             <Route path="/creator/marketplace" element={<CreatorMarketplace />} />
