@@ -20,6 +20,7 @@ import FaultyTerminal from "@/components/Backgrounds/FaultyTerminal";
 
 import { TestimonialsColumn } from "@/components/ui/testimonials-columns-1";
 import { IntegrationGrid } from "@/components/komisi/IntegrationGrid";
+import Preloader from "@/components/Preloader";
 
 /* ── Scroll-reveal wrapper ── */
 const Reveal = ({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) => (
