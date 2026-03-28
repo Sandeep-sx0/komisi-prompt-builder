@@ -313,10 +313,20 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden md:min-h-screen"
+        className="relative overflow-hidden min-h-screen flex items-center"
         id="product"
-        style={{ paddingBottom: 'clamp(48px, 8vh, 120px)' }}
       >
+        <style>{`
+          @media (max-width: 1023px) {
+            #product {
+              min-height: auto !important;
+              padding: 100px 24px 64px 24px !important;
+            }
+            #hero-right { display: none !important; }
+            #hero-left { width: 100% !important; max-width: none !important; }
+          }
+        `}</style>
+
         {/* Hero watercolor background */}
         <div className="absolute inset-0 z-0">
           <img src="/images/hero-bg.jpg" alt="" className="w-full h-full object-cover" />
@@ -324,24 +334,15 @@ const Landing = () => {
 
         {/* Hero content */}
         <div
-          className="relative z-10"
+          className="relative z-10 w-full"
           style={{
             paddingLeft: 'clamp(24px, 5vw, 80px)',
             paddingRight: 'clamp(24px, 5vw, 80px)',
-            paddingTop: '128px',
           }}
         >
-          {/* Mobile: pt-80px pb-64px, no min-h */}
-          <style>{`
-            @media (max-width: 767px) {
-              #product { min-height: auto !important; padding-top: 0 !important; }
-              #product > .relative.z-10 { padding-top: 80px !important; padding-bottom: 64px !important; }
-            }
-          `}</style>
-
           <div className="relative">
             {/* Left content column */}
-            <div className="w-full md:w-1/2 lg:w-[45%]">
+            <div id="hero-left" style={{ width: '45%', maxWidth: 520 }}>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] px-3 py-1.5 mb-6" style={{ color: 'rgba(0,0,0,0.5)', border: '1px solid rgba(0,0,0,0.15)' }}>
                   ✦ Built for mobile app developers
@@ -396,22 +397,20 @@ const Landing = () => {
 
             {/* Right — bleeding dashboard + creator card */}
             <motion.div
+              id="hero-right"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="absolute top-0 right-0 hidden md:block"
               style={{
-                width: '55%',
-                height: '100%',
+                position: 'absolute',
+                right: 0,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: '58%',
                 transformOrigin: 'top right',
               }}
             >
-              <style>{`
-                @media (min-width: 768px) and (max-width: 1024px) {
-                  #hero-visual-container { width: 50vw !important; }
-                }
-              `}</style>
-              <div id="hero-visual-container" style={{ width: '100%', height: '100%', position: 'relative' }}>
+              <div style={{ width: '100%', position: 'relative' }}>
                 <HeroVisual />
               </div>
             </motion.div>
