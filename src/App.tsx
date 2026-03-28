@@ -13,7 +13,7 @@ import Campaigns from "./pages/Campaigns";
 import CampaignCreate from "./pages/CampaignCreate";
 import Affiliates from "./pages/Affiliates";
 import Analytics from "./pages/Analytics";
-import Content from "./pages/Content";
+
 import Payouts from "./pages/Payouts";
 import Settings from "./pages/Settings";
 import CreatorDashboard from "./pages/CreatorDashboard";
@@ -21,11 +21,11 @@ import CreatorMarketplace from "./pages/CreatorMarketplace";
 import CreatorLinks from "./pages/CreatorLinks";
 import CreatorEarnings from "./pages/CreatorEarnings";
 import CreatorPrograms from "./pages/CreatorPrograms";
-import CreatorContent from "./pages/CreatorContent";
+
 import CreatorSettings from "./pages/CreatorSettings";
 import Landing from "./pages/Landing";
 import Apps from "./pages/Apps";
-import UtmTracking from "./pages/UtmTracking";
+
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
@@ -50,17 +50,17 @@ const App = () => (
           <Route path="/campaigns/create" element={<CampaignCreate />} />
           <Route path="/affiliates" element={<Affiliates />} />
           <Route path="/analytics" element={<Analytics />} />
-          <Route path="/content" element={<Content />} />
+          
           <Route path="/payouts" element={<Payouts />} />
           <Route path="/apps" element={<Apps />} />
-          <Route path="/utm-tracking" element={<UtmTracking />} />
+          
           <Route path="/settings" element={<Settings />} />
           <Route path="/creator/dashboard" element={<CreatorDashboard />} />
           <Route path="/creator/marketplace" element={<CreatorMarketplace />} />
           <Route path="/creator/links" element={<CreatorLinks />} />
           <Route path="/creator/earnings" element={<CreatorEarnings />} />
           <Route path="/creator/programs" element={<CreatorPrograms />} />
-          <Route path="/creator/content" element={<CreatorContent />} />
+          
           <Route path="/creator/settings" element={<CreatorSettings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
