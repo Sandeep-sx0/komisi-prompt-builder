@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { DashboardLayout } from "@/components/komisi/DashboardLayout";
 import { MetricCard } from "@/components/komisi/Cards";
 import { BadgeStatus, StatusDot } from "@/components/komisi/BadgeStatus";
+import { PlatformFilter } from "@/components/komisi/PlatformFilter";
+import { useAppScope } from "@/hooks/use-app-scope";
 import { Button } from "@/components/ui/button";
 import {
   Users, Download, DollarSign, Target, TrendingUp,
@@ -52,6 +54,8 @@ const ChartTooltip = ({ active, payload, label }: any) => {
 const Dashboard = () => {
   const [showFraud, setShowFraud] = useState(true);
   const [showEmpty, setShowEmpty] = useState(false);
+  const [platform, setPlatform] = useState<"all" | "ios" | "android">("all");
+  const { appName } = useAppScope();
 
   return (
     <DashboardLayout activeItem="Dashboard">
@@ -103,8 +107,14 @@ const Dashboard = () => {
 
             {/* Welcome */}
             <div className="flex items-center justify-between mb-6">
-              <h1 className="text-2xl font-bold tracking-tighter text-foreground">Welcome back, Sandeep 👋</h1>
-              <Button variant="secondary" size="sm"><span>Last 7 days</span> <ChevronDown size={14} /></Button>
+              <div>
+                <h1 className="text-2xl font-bold tracking-tighter text-foreground">Welcome back, Sandeep 👋</h1>
+                <p className="text-sm text-text-secondary mt-0.5">Viewing: {appName}</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <PlatformFilter value={platform} onChange={setPlatform} />
+                <Button variant="secondary" size="sm"><span>Last 7 days</span> <ChevronDown size={14} /></Button>
+              </div>
             </div>
 
             {/* Metrics */}
@@ -113,7 +123,7 @@ const Dashboard = () => {
               <MetricCard icon={<Download size={20} />} value="847" label="Installs This Week" trend={{ value: "12%", positive: true }} />
               <MetricCard icon={<DollarSign size={20} />} value="$2,340" label="Affiliate Revenue" trend={{ value: "23%", positive: true }} />
               <MetricCard icon={<Target size={20} />} value="8" label="Active Campaigns" />
-              <MetricCard icon={<TrendingUp size={20} />} value="4.2%" label="Conversion Rate" trend={{ value: "0.8%", positive: true }} />
+              <MetricCard icon={<DollarSign size={20} />} value="$1,230" label="Commissions Paid" trend={{ value: "18%", positive: true }} />
             </div>
 
             {/* Chart */}
