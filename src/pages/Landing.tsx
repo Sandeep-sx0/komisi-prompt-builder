@@ -330,7 +330,7 @@ const Landing = () => {
               </motion.div>
 
               <div className="mb-6">
-                {["Affiliate marketing", "infrastructure for", "mobile apps."].map((line, i) => (
+                {["Your app. 1,000 new", "installs. One creator", "campaign."].map((line, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 30 }}
