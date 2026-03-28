@@ -313,18 +313,25 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden min-h-screen flex items-center"
+        className="relative overflow-hidden flex items-center"
         id="product"
-        style={{ paddingTop: '80px' }}
+        style={{ paddingTop: 'clamp(100px, 12vh, 160px)', paddingBottom: 'clamp(64px, 10vh, 120px)' }}
       >
         <style>{`
           @media (max-width: 1023px) {
             #product {
               min-height: auto !important;
               padding: 100px 24px 64px 24px !important;
+              border: none !important;
+              outline: none !important;
+              margin: 0 !important;
+            }
+            #product > .relative.z-10 {
+              padding-right: 0 !important;
+              padding-bottom: 0 !important;
             }
             #hero-right { display: none !important; }
-            #hero-left { width: 100% !important; max-width: none !important; padding-left: 0 !important; }
+            #hero-left { width: 100% !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
           }
           @media (min-width: 1024px) and (max-width: 1279px) {
             #hero-left { padding-left: clamp(48px, 6vw, 80px) !important; }
@@ -349,7 +356,7 @@ const Landing = () => {
         >
           <div className="relative">
             {/* Left content column */}
-            <div id="hero-left" style={{ width: '45%', maxWidth: 640 }}>
+            <div id="hero-left" style={{ width: '45%', maxWidth: 460, paddingRight: 32, flexShrink: 0 }}>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] px-3 py-1.5 mb-6" style={{ color: 'rgba(0,0,0,0.5)', border: '1px solid rgba(0,0,0,0.15)' }}>
                   ✦ Built for mobile app developers
@@ -389,7 +396,7 @@ const Landing = () => {
               >
                 <Input placeholder="Enter your email" className="h-12 flex-1 border" style={{ backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(0,0,0,0.15)', color: '#000000' }} />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Start Free — No Credit Card <ArrowRight size={16} /></Button>
+                  <Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}><Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Get Started <ArrowRight size={16} /></Button></Button>
                 </Link>
               </motion.div>
 
@@ -411,9 +418,9 @@ const Landing = () => {
               style={{
                 position: 'absolute',
                 right: 0,
+                left: '42%',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                width: 'clamp(520px, 58vw, 900px)',
                 transformOrigin: 'top right',
               }}
             >
