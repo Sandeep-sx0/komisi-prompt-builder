@@ -459,12 +459,12 @@ const Pricing = () => {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={anim}
-            className="inline-block text-[13px] font-medium px-4 py-1.5"
+             className="inline-block text-[13px] font-medium px-4 py-1.5"
             style={{
               color: "rgba(255,255,255,0.7)",
               backgroundColor: "rgba(255,255,255,0.08)",
               border: "1px solid rgba(255,255,255,0.15)",
-              borderRadius: 999,
+            }}
             }}
           >
             Simple, transparent pricing
