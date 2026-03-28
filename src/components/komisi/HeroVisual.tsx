@@ -29,15 +29,14 @@ const HeroVisual: React.FC = () => {
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
       >
-        <iframe
-          src="/dashboard"
-          title="Komisi Dashboard Preview"
+        <img
+          src="/dashboard-preview.png"
+          alt="Komisi Dashboard Preview"
           style={{
             width: '1456px',
             height: '900px',
             transform: 'scale(0.618)',
             transformOrigin: 'top left',
-            border: 'none',
             pointerEvents: 'none',
           }}
         />
