@@ -351,7 +351,7 @@ const Landing = () => {
                 className="text-base mb-8 max-w-[480px]"
                 style={{ color: 'rgba(0,0,0,0.6)' }}
               >
-                Turn creators into your most profitable growth channel. Attribute every install, automate every payout.
+                Set up in under an hour. Connect creators on TikTok, YouTube, or Instagram. See exactly which post drove which install and which in-app purchase. Privacy-safe on iOS and Android.
               </motion.p>
 
               <motion.div
