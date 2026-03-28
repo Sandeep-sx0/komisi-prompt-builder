@@ -411,9 +411,9 @@ const Landing = () => {
               style={{
                 position: 'absolute',
                 right: 0,
+                left: '42%',
                 top: '50%',
                 transform: 'translateY(-50%)',
-                width: 'clamp(520px, 58vw, 900px)',
                 transformOrigin: 'top right',
               }}
             >
