@@ -96,10 +96,16 @@ export const AppSidebar: React.FC<AppSidebarProps> = ({
             </button>
             {appSwitcherOpen && (
               <div className="absolute top-full left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-lg z-50 py-1">
-                {["MindfulApp", "FocusTimer Pro"].map((app) => (
-                  <button key={app} className="w-full px-3 py-2 text-sm text-left hover:bg-background-subtle flex items-center justify-between" onClick={() => setAppSwitcherOpen(false)}>
-                    {app}
-                    {app === "MindfulApp" && <Check size={14} className="text-success" />}
+                {[
+                  { name: "MindfulApp", role: "Owner" },
+                  { name: "FocusTimer Pro", role: "Admin" },
+                ].map((app) => (
+                  <button key={app.name} className="w-full px-3 py-2 text-sm text-left hover:bg-background-subtle flex items-center justify-between" onClick={() => setAppSwitcherOpen(false)}>
+                    <span>{app.name}</span>
+                    <span className="flex items-center gap-2">
+                      <span className="text-[10px] uppercase tracking-wider font-medium text-text-tertiary bg-background-subtle px-1.5 py-0.5 border border-border">{app.role}</span>
+                      {app.name === "MindfulApp" && <Check size={14} className="text-success" />}
+                    </span>
                   </button>
                 ))}
                 <div className="border-t border-border mt-1 pt-1">
