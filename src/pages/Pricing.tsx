@@ -565,7 +565,7 @@ const Pricing = () => {
                 transition={{ ...anim, delay: 0.1 + i * 0.08 }}
                 className="relative flex flex-col"
                 style={{
-                  borderRadius: 20,
+                  borderRadius: 0,
                   minHeight: 580,
                   backgroundColor: isDark ? "#111111" : "#FFFFFF",
                   border: isPopular
