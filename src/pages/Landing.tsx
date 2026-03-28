@@ -349,7 +349,7 @@ const Landing = () => {
         >
           <div className="relative">
             {/* Left content column */}
-            <div id="hero-left" style={{ width: '45%', maxWidth: 520 }}>
+            <div id="hero-left" style={{ width: '45%', maxWidth: 640 }}>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
                 <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] px-3 py-1.5 mb-6" style={{ color: 'rgba(0,0,0,0.5)', border: '1px solid rgba(0,0,0,0.15)' }}>
                   ✦ Built for mobile app developers
