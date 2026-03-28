@@ -15,13 +15,13 @@ const HeroVisual: React.FC = () => {
   }, []);
 
   return (
-    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 520 }}>
+    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 600 }}>
       {/* Dashboard preview — floating */}
       <motion.div
         className="absolute top-0 overflow-hidden"
         style={{
-          left: 0,
-          right: '-120px',
+          left: '-40px',
+          right: '-160px',
           borderRadius: '16px 0 0 16px',
           boxShadow: '0 32px 80px rgba(0,0,0,0.18)',
         }}
