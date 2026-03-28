@@ -395,7 +395,7 @@ const Landing = () => {
       <section className="py-10 border-y border-border overflow-hidden">
         <Reveal>
           <p className="text-xs text-text-tertiary text-center mb-8 uppercase tracking-[0.15em]">
-            DEVELOPERS BUILDING WITH KOMISI
+            WORKS WITH YOUR EXISTING MOBILE STACK
           </p>
         </Reveal>
         <div className="relative overflow-hidden w-full">
