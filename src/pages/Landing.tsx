@@ -205,6 +205,8 @@ const Landing = () => {
   };
 
   return (
+    <>
+    <Preloader />
     <div className="min-h-screen bg-background">
 
       {/* ═══════════════════════════════════════════

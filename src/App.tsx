@@ -28,14 +28,12 @@ import Apps from "./pages/Apps";
 import UtmTracking from "./pages/UtmTracking";
 import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
-import Preloader from "@/components/Preloader";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Preloader />
       <Toaster />
       <Sonner />
       <BrowserRouter>
