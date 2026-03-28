@@ -60,7 +60,7 @@ const App = () => (
           <Route path="/creator/links" element={<CreatorLinks />} />
           <Route path="/creator/earnings" element={<CreatorEarnings />} />
           <Route path="/creator/programs" element={<CreatorPrograms />} />
-          <Route path="/creator/content" element={<CreatorContent />} />
+          
           <Route path="/creator/settings" element={<CreatorSettings />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
