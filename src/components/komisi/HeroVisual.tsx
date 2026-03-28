@@ -15,14 +15,12 @@ const HeroVisual: React.FC = () => {
   }, []);
 
   return (
-    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 520 }}>
+    <div ref={ref} className="relative w-full" style={{ minHeight: 520 }}>
       {/* Dashboard screenshot — floating */}
       <motion.div
-        className="absolute top-0 overflow-hidden"
+        className="overflow-hidden"
         style={{
-          left: 0,
-          right: '-120px',
-          height: '100%',
+          marginRight: '-120px',
           borderRadius: '16px 0 0 16px',
           boxShadow: '0 32px 80px rgba(0,0,0,0.18)',
         }}
@@ -34,9 +32,8 @@ const HeroVisual: React.FC = () => {
           alt="Komisi Dashboard Preview"
           style={{
             width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'top left',
+            height: 'auto',
+            display: 'block',
           }}
         />
       </motion.div>
