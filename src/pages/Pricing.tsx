@@ -506,7 +506,6 @@ const Pricing = () => {
               className="text-sm transition-all duration-200"
               style={{
                 padding: "9px 28px",
-                borderRadius: 999,
                 backgroundColor: !isYearly ? "#000000" : "transparent",
                 color: !isYearly ? "#FFFFFF" : "rgba(255,255,255,0.45)",
                 fontWeight: !isYearly ? 600 : 400,
