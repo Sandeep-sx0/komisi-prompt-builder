@@ -193,48 +193,38 @@ const StickyFeatureScroll: React.FC = () => {
 
   return (
     <>
-      {/* 2800px scroll container */}
-      <div ref={sectionRef} style={{ height: 2800, position: "relative" }}>
-        {/* Sticky viewport */}
+      {/* ══════ DESKTOP: sticky scroll-driven layout (≥768px) ══════ */}
+      <div ref={sectionRef} className="hidden md:block" style={{ height: 2800, position: "relative" }}>
         <div style={{ position: "sticky", top: 64, height: "calc(100vh - 64px)", display: "flex", backgroundColor: "#FFFFFF", overflow: "clip" }}>
 
-          {/* ── Left Panel ── */}
+          {/* Left Panel */}
           <div style={{ width: "38%", height: "100%", display: "flex", flexDirection: "column", padding: "80px 48px 56px", position: "relative" }}>
-            {/* Top area */}
             <div style={{ flexGrow: 1 }}>
-              {/* Badge */}
               <div className="flex items-center gap-2 mb-6">
                 <span className="text-[10px] uppercase tracking-[0.15em] px-2.5 py-1" style={{ color: "#000000", backgroundColor: "#E0F2FE", borderRadius: 4 }}>
                   ■ FEATURES
                 </span>
               </div>
-
-              {/* Headline */}
               <h2 className="text-3xl font-medium tracking-tight leading-tight mb-12" style={{ color: "#000000" }}>
                 Everything your affiliate program needs.
               </h2>
 
-              {/* Accordion */}
               <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
                 {features.map((feat, i) => {
                   const isActive = activeStep === i;
                   const Icon = feat.icon;
-
                   return (
                     <div
                       key={i}
                       onClick={() => handleStepClick(i)}
                       style={{ borderTop: i === 0 ? "1px solid rgba(0,0,0,0.08)" : "none", borderBottom: "1px solid rgba(0,0,0,0.08)", cursor: "pointer" }}
                     >
-                      {/* Icon + Label */}
                       <div className="flex items-start gap-3 py-4">
                         <Icon size={16} style={{ color: isActive ? "#000000" : "rgba(0,0,0,0.25)", marginTop: 2, flexShrink: 0, transition: "color 0.3s" }} />
                         <span style={{ fontSize: 17, lineHeight: 1.4, fontWeight: isActive ? 500 : 400, color: isActive ? "#000000" : "rgba(0,0,0,0.3)", transition: "color 0.3s, font-weight 0.3s" }}>
                           {feat.label}
                         </span>
                       </div>
-
-                      {/* Description — active only */}
                       <AnimatePresence>
                         {isActive && (
                           <motion.div
@@ -250,8 +240,6 @@ const StickyFeatureScroll: React.FC = () => {
                           </motion.div>
                         )}
                       </AnimatePresence>
-
-                      {/* Progress underline */}
                       <div style={{ height: 2, backgroundColor: "rgba(0,0,0,0.06)", position: "relative" }}>
                         {isActive && (
                           <motion.div
@@ -270,7 +258,6 @@ const StickyFeatureScroll: React.FC = () => {
               </div>
             </div>
 
-            {/* Bottom CTA */}
             <div style={{ paddingTop: 32 }}>
               <Link to="/signup">
                 <Button size="lg" className="h-12 px-8 border-none" style={{ backgroundColor: "#000000", color: "#FFFFFF", fontWeight: 500 }}>
@@ -280,7 +267,7 @@ const StickyFeatureScroll: React.FC = () => {
             </div>
           </div>
 
-          {/* ── Right Clip Window ── */}
+          {/* Right Clip Window */}
           <div style={{ width: "62%", height: "100%", position: "relative", overflow: "hidden" }}>
             <motion.div
               style={{
@@ -290,18 +277,62 @@ const StickyFeatureScroll: React.FC = () => {
               }}
             >
               {stepVisuals.map((Visual, i) => (
-                <div
-                  key={i}
-                  style={{
-                    height: `calc(100vh - 64px)`,
-                    width: "100%",
-                  }}
-                >
+                <div key={i} style={{ height: "calc(100vh - 64px)", width: "100%" }}>
                   <Visual />
                 </div>
               ))}
             </motion.div>
           </div>
+        </div>
+      </div>
+
+      {/* ══════ MOBILE: stacked layout (<768px) ══════ */}
+      <div className="block md:hidden" style={{ backgroundColor: "#FFFFFF" }}>
+        {/* Header */}
+        <div style={{ padding: "48px 24px 32px" }}>
+          <div className="flex items-center gap-2 mb-6">
+            <span className="text-[10px] uppercase tracking-[0.15em] px-2.5 py-1" style={{ color: "#000000", backgroundColor: "#E0F2FE", borderRadius: 4 }}>
+              ■ FEATURES
+            </span>
+          </div>
+          <h2 className="text-2xl font-medium tracking-tight leading-tight" style={{ color: "#000000" }}>
+            Everything your affiliate program needs.
+          </h2>
+        </div>
+
+        {/* Feature blocks */}
+        <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
+          {features.map((feat, i) => {
+            const Icon = feat.icon;
+            const Visual = stepVisuals[i];
+            return (
+              <div key={i}>
+                {/* Text */}
+                <div style={{ padding: "0 24px" }}>
+                  <Icon size={20} style={{ color: "#000000" }} />
+                  <p style={{ fontSize: 16, fontWeight: 500, color: "#000000", marginTop: 8 }}>
+                    {feat.label}
+                  </p>
+                  <p style={{ fontSize: 14, color: "rgba(0,0,0,0.55)", lineHeight: 1.7, marginTop: 8 }}>
+                    {feat.description}
+                  </p>
+                </div>
+                {/* Visual */}
+                <div style={{ marginTop: 24, width: "100%", height: 360 }}>
+                  <Visual />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* CTA */}
+        <div style={{ padding: "40px 24px" }}>
+          <Link to="/signup" className="block">
+            <Button size="lg" className="h-12 w-full border-none" style={{ backgroundColor: "#000000", color: "#FFFFFF", fontWeight: 500 }}>
+              Try Komisi →
+            </Button>
+          </Link>
         </div>
       </div>
 
