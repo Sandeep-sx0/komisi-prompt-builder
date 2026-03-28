@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { DashboardLayout } from "@/components/komisi/DashboardLayout";
 import { MetricCard } from "@/components/komisi/Cards";
 import { BadgeStatus, StatusDot } from "@/components/komisi/BadgeStatus";
+import { PlatformFilter } from "@/components/komisi/PlatformFilter";
+import { useAppScope } from "@/hooks/use-app-scope";
 import { Button } from "@/components/ui/button";
 import {
   Users, Download, DollarSign, Target, TrendingUp,
