@@ -315,6 +315,7 @@ const Landing = () => {
         ref={heroRef}
         className="relative overflow-hidden min-h-screen flex items-center"
         id="product"
+        style={{ paddingTop: '80px' }}
       >
         <style>{`
           @media (max-width: 1023px) {
@@ -344,7 +345,6 @@ const Landing = () => {
           style={{
             paddingRight: 'clamp(24px, 5vw, 80px)',
             paddingBottom: 'clamp(48px, 6vh, 80px)',
-            paddingTop: '80px',
           }}
         >
           <div className="relative">
