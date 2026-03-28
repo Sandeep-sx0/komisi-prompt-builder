@@ -1,5 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
+import { TrendingUp, TrendingDown } from "lucide-react";
 
 interface MetricCardProps {
   icon: React.ReactNode;
@@ -13,11 +14,11 @@ export const MetricCard: React.FC<MetricCardProps> = ({ icon, value, label, tren
   return (
     <div className={cn("bg-card border border-border rounded-xl p-6 transition-all duration-200 hover:shadow-sm hover:-translate-y-px hover:border-[hsl(var(--border-hover))]", className)}>
       <div className="text-text-tertiary mb-3">{icon}</div>
-      <div className="text-2xl font-bold text-foreground tracking-tighter">{value}</div>
-      <div className="text-sm text-text-secondary mt-1">{label}</div>
+      <div className="text-2xl font-semibold text-foreground tracking-tighter tabular-nums">{value}</div>
+      <div className="text-sm text-text-secondary mt-1 leading-snug">{label}</div>
       {trend && (
         <div className={cn("text-xs font-medium mt-2 inline-flex items-center gap-1", trend.positive ? "text-success" : "text-error")}>
-          {trend.positive ? "↑" : "↓"} {trend.value}
+          {trend.positive ? <TrendingUp size={12} /> : <TrendingDown size={12} />} {trend.value}
         </div>
       )}
     </div>
