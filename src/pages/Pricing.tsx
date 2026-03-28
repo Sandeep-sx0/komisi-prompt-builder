@@ -41,7 +41,7 @@ const plans = [
     monthlyPrice: 0,
     yearlyPrice: 0,
     yearlyTotal: 0,
-    cta: "Get Started Free →",
+    cta: "Start Free — No Credit Card →",
     ctaLink: "/signup",
     ctaStyle: "outlined" as const,
     noCcNote: true,
