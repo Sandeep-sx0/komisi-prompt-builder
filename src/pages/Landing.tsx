@@ -313,9 +313,9 @@ const Landing = () => {
       ═══════════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="relative overflow-hidden min-h-screen flex items-center"
+        className="relative overflow-hidden flex items-center"
         id="product"
-        style={{ paddingTop: '80px' }}
+        style={{ paddingTop: 'clamp(100px, 12vh, 160px)', paddingBottom: 'clamp(64px, 10vh, 120px)' }}
       >
         <style>{`
           @media (max-width: 1023px) {
