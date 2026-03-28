@@ -322,9 +322,16 @@ const Landing = () => {
             #product {
               min-height: auto !important;
               padding: 100px 24px 64px 24px !important;
+              border: none !important;
+              outline: none !important;
+              margin: 0 !important;
+            }
+            #product > .relative.z-10 {
+              padding-right: 0 !important;
+              padding-bottom: 0 !important;
             }
             #hero-right { display: none !important; }
-            #hero-left { width: 100% !important; max-width: none !important; padding-left: 0 !important; }
+            #hero-left { width: 100% !important; max-width: none !important; padding-left: 0 !important; padding-right: 0 !important; }
           }
           @media (min-width: 1024px) and (max-width: 1279px) {
             #hero-left { padding-left: clamp(48px, 6vw, 80px) !important; }
