@@ -621,10 +621,12 @@ const Pricing = () => {
                       backgroundColor: "#000000",
                       color: "#FFFFFF",
                       fontSize: 12,
+                      fontFamily: "'JetBrains Mono', monospace",
                       fontWeight: 700,
                       padding: "5px 16px",
                       borderRadius: 0,
                       letterSpacing: "0.05em",
+                      textTransform: "uppercase" as const,
                       boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
                     }}
                   >
