@@ -653,8 +653,42 @@ const Landing = () => {
       </section>
 
       {/* ═══════════════════════════════════════════
-          SECTION 10 — TRUST / ENTERPRISE BAR
+          SECTION 10 — TRUST BAR
       ═══════════════════════════════════════════ */}
+      <section className="py-16 px-6 dot-grid">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            {
+              icon: Fingerprint,
+              label: "Privacy-Safe",
+              qualifier: "No personal identifiers collected or stored.",
+            },
+            {
+              icon: Shield,
+              label: "No IDFA Required",
+              qualifier: "No ATT prompt. Works on iOS 14.5+ out of the box.",
+            },
+            {
+              icon: Code,
+              label: "10 Lines of Code",
+              qualifier: "RevenueCat or Adapty required. Tracks installs from day one.",
+            },
+          ].map((item, i) => {
+            const Icon = item.icon;
+            return (
+              <Reveal key={i} delay={i * 0.1}>
+                <div className="text-center">
+                  <Icon size={28} style={{ color: '#000000', margin: '0 auto 12px' }} />
+                  <p className="text-lg font-medium" style={{ color: '#000000' }}>{item.label}</p>
+                  <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.45)', fontWeight: 400, marginTop: 6 }}>
+                    {item.qualifier}
+                  </p>
+                </div>
+              </Reveal>
+            );
+          })}
+        </div>
+      </section>
 
       {/* ═══════════════════════════════════════════
           SECTION 11 — FINAL CTA (Dark)
