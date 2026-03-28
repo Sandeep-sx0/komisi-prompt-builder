@@ -690,6 +690,13 @@ const Pricing = () => {
                       billed ${plan.yearlyTotal}/year
                     </div>
                   )}
+                  {/* Billing unit */}
+                  <div className="mt-2" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: isDark ? "rgba(255,255,255,0.45)" : "rgba(0,0,0,0.45)", textTransform: "uppercase" as const, letterSpacing: "0.05em" }}>
+                    {plan.id === "free" && "Up to 500 tracked installs/month"}
+                    {plan.id === "growth" && "Up to 5,000 tracked installs/month"}
+                    {plan.id === "scale" && "Up to 25,000 tracked installs/month"}
+                    {plan.id === "enterprise" && "Custom volume — talk to us"}
+                  </div>
                 </div>
 
                 {/* Zone B — CTA */}
