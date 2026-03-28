@@ -11,22 +11,22 @@ import PayoutsAnimation from "@/components/komisi/PayoutsAnimation";
 const features = [
   {
     icon: Target,
-    label: "Attribute every install without IDFA or cookies.",
+    label: "Know which creator drove every install.",
     description: "Privacy-safe fingerprint matching on iOS. Play Install Referrer on Android. 0.60–0.95 confidence scoring. No ATT prompt.",
   },
   {
     icon: Shield,
-    label: "AI fraud detection that protects your program automatically.",
+    label: "Block fake installs before they cost you.",
     description: "Every conversion scored in real time. Komisi flags IP clusters, velocity anomalies, and emulator installs before they cost you money.",
   },
   {
     icon: BarChart2,
-    label: "Know exactly which creator drove every install and subscription.",
+    label: "See what's working before you scale.",
     description: "Real-time analytics by creator, campaign, platform, and content. Install volume, trial starts, conversions, and revenue attributed.",
   },
   {
     icon: Zap,
-    label: "Pay every creator automatically. No invoices, no chasing.",
+    label: "Pay every creator automatically. Never manually.",
     description: "Creators connect Stripe during onboarding. Komisi calculates commissions against net revenue and queues payouts automatically.",
   },
 ];

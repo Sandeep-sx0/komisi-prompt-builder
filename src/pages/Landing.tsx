@@ -679,9 +679,9 @@ const Landing = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-base mb-10" style={{ color: "rgba(0,0,0,0.5)" }}
+            className="text-base mb-10" style={{ color: "rgba(0,0,0,0.5)", fontSize: 16, fontWeight: 400 }}
           >
-            Get started today or book a demo for a personal walkthrough.
+            No commitment. Cancel anytime. Integrate in under an hour.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
