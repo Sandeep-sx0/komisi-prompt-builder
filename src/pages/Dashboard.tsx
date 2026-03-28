@@ -44,7 +44,7 @@ const activities = [
 const ChartTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-card rounded-lg shadow-lg border border-border p-3 text-sm">
+    <div className="bg-card shadow-lg border border-border p-3 text-sm">
       <p className="font-medium text-foreground mb-1">{label}</p>
       <p className="text-chart-blue">Installs: {payload[0]?.value}</p>
       <p className="text-chart-purple">Revenue: ${payload[1]?.value}</p>
@@ -68,7 +68,7 @@ const Dashboard = () => {
 
   return (
     <DashboardLayout activeItem="Dashboard">
-      <div className="px-8 py-6 max-w-[1200px]">
+      <div className="px-8 py-8 max-w-[1200px]">
         {/* Toggle */}
         <div className="flex justify-end mb-2">
           <button onClick={() => setShowEmpty(!showEmpty)} className="text-xs text-text-tertiary hover:text-foreground underline">
@@ -104,7 +104,7 @@ const Dashboard = () => {
           <>
             {/* Fraud banner */}
             {showFraud && (
-              <div className="mb-4 bg-warning-light border border-warning/30 rounded-lg px-4 py-3 flex items-center gap-3 text-sm">
+              <div className="mb-4 bg-warning-light border border-warning/30 px-4 py-3 flex items-center gap-3 text-sm">
                 <AlertTriangle size={16} className="text-warning shrink-0" />
                 <span className="flex-1 text-foreground">
                   <strong>Fraud Alert:</strong> Unusual install pattern from @user892 — 47 installs from same IP range.
@@ -117,7 +117,7 @@ const Dashboard = () => {
             {/* Welcome */}
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h1 className="text-2xl font-semibold tracking-tighter text-foreground">Welcome back, Sandeep</h1>
+                <h1 className="text-2xl font-semibold tracking-tight text-foreground">Welcome back, Sandeep</h1>
                 <p className="text-sm text-text-secondary mt-0.5">Viewing: {appName}</p>
               </div>
               <div className="flex items-center gap-3">
@@ -127,7 +127,7 @@ const Dashboard = () => {
             </div>
 
             {/* Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
               {metricCards.map((card, i) => (
                 <motion.div
                   key={card.label}
@@ -141,15 +141,15 @@ const Dashboard = () => {
             </div>
 
             {/* Chart */}
-            <div className="bg-card border border-border rounded-xl p-6 mb-8">
-              <div className="flex items-center justify-between mb-4">
-                <h2 className="text-lg font-semibold text-foreground">Revenue from Affiliates</h2>
+            <div className="bg-card border border-border p-6 mb-8">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-base font-semibold text-foreground">Revenue from Affiliates</h2>
                 <div className="flex items-center gap-4 text-sm">
-                  <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-chart-blue" /> Installs</span>
-                  <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-chart-purple" /> Revenue</span>
+                  <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-chart-blue" /> <span className="text-sm text-text-secondary">Installs</span></span>
+                  <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-chart-purple" /> <span className="text-sm text-text-secondary">Revenue</span></span>
                 </div>
               </div>
-              <ResponsiveContainer width="100%" height={300}>
+              <ResponsiveContainer width="100%" height={320}>
                 <AreaChart data={chartData}>
                   <defs>
                     <linearGradient id="gradInstalls" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3B82F6" stopOpacity={0.15} /><stop offset="100%" stopColor="#3B82F6" stopOpacity={0} /></linearGradient>
@@ -170,29 +170,29 @@ const Dashboard = () => {
               {/* Affiliates */}
               <div className="col-span-3">
                 <div className="flex items-center justify-between mb-3">
-                  <h2 className="text-lg font-semibold text-foreground">Top Performing Affiliates</h2>
+                  <h2 className="text-base font-semibold text-foreground">Top Performing Affiliates</h2>
                   <button className="text-sm text-text-secondary hover:text-foreground">View All →</button>
                 </div>
-                <div className="bg-card border border-border rounded-xl overflow-hidden">
+                <div className="bg-card border border-border overflow-hidden">
                   <table className="w-full">
-                    <thead><tr className="bg-background-subtle">
+                    <thead><tr>
                       {["#", "Affiliate", "Installs", "Revenue", "Conv Rate"].map((h) => (
-                        <th key={h} className="text-left text-xs uppercase tracking-wider font-semibold text-text-secondary h-11 px-4">{h}</th>
+                        <th key={h} className="text-left text-xs uppercase tracking-wider font-medium text-text-tertiary h-10 px-4">{h}</th>
                       ))}
                     </tr></thead>
                     <tbody>
                       {affiliates.map((a, i) => (
                         <tr key={a.name} className="border-b border-muted last:border-0 hover:bg-background-subtle cursor-pointer transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring">
-                          <td className="px-4 h-14 text-sm text-text-secondary">{i + 1}</td>
-                          <td className="px-4 h-14">
+                          <td className="px-4 h-[52px] text-sm text-text-secondary">{i + 1}</td>
+                          <td className="px-4 h-[52px]">
                             <div className="flex items-center gap-2">
                               <div className={`w-8 h-8 rounded-full ${a.watercolor} flex items-center justify-center text-xs font-semibold text-foreground`}>{a.initials}</div>
                               <div><div className="text-sm font-medium text-foreground">{a.name}</div><div className="text-xs text-text-tertiary">{a.platforms}</div></div>
                             </div>
                           </td>
-                          <td className="px-4 h-14 text-sm font-medium text-foreground tabular-nums">{a.installs}</td>
-                          <td className="px-4 h-14 text-sm font-medium text-foreground tabular-nums">{a.revenue}</td>
-                          <td className="px-4 h-14">
+                          <td className="px-4 h-[52px] text-sm font-medium text-foreground tabular-nums">{a.installs}</td>
+                          <td className="px-4 h-[52px] text-sm font-medium text-foreground tabular-nums">{a.revenue}</td>
+                          <td className="px-4 h-[52px]">
                             <BadgeStatus variant={parseFloat(a.rate) > 5 ? "success" : "neutral"} dot>
                               {a.rate}
                             </BadgeStatus>
@@ -206,13 +206,13 @@ const Dashboard = () => {
 
               {/* Activity */}
               <div className="col-span-2">
-                <h2 className="text-lg font-semibold text-foreground mb-3">Recent Activity</h2>
-                <div className="bg-card border border-border rounded-xl p-4">
+                <h2 className="text-base font-semibold text-foreground mb-3">Recent Activity</h2>
+                <div className="bg-card border border-border p-5">
                   {activities.map((a, i) => (
-                    <div key={i} className={cn("flex items-start gap-3 py-3", i < activities.length - 1 && "border-b border-muted")}>
-                      <span className={cn("w-3 h-3 rounded-full mt-1 shrink-0", a.color)} />
-                      <p className="text-sm text-foreground flex-1">{a.text}</p>
-                      <p className="text-xs text-text-tertiary shrink-0 mt-0.5">{a.time}</p>
+                    <div key={i} className={cn("flex items-start gap-3 py-3.5", i < activities.length - 1 && "border-b border-muted")}>
+                      <span className={cn("w-2 h-2 rounded-full mt-1.5 shrink-0", a.color)} />
+                      <p className="text-sm text-foreground flex-1 leading-relaxed">{a.text}</p>
+                      <p className="text-xs text-text-tertiary whitespace-nowrap ml-3 mt-0.5">{a.time}</p>
                     </div>
                   ))}
                 </div>
@@ -221,7 +221,7 @@ const Dashboard = () => {
 
             {/* Quick Actions */}
             <div>
-              <h2 className="text-lg font-semibold text-foreground mb-3">Quick Actions</h2>
+              <h2 className="text-base font-semibold text-foreground mb-3">Quick Actions</h2>
               <div className="grid grid-cols-4 gap-4">
                 {[
                   { icon: Plus, label: "Create Campaign" },
@@ -229,9 +229,9 @@ const Dashboard = () => {
                   { icon: Link2, label: "Get Links" },
                   { icon: BarChart3, label: "View Reports" },
                 ].map((a) => (
-                  <button key={a.label} className="group bg-card border border-border rounded-xl p-4 flex flex-col items-center gap-3 hover:shadow-md hover:-translate-y-0.5 hover:border-[hsl(var(--border-hover))] transition-all cursor-pointer">
-                    <div className="w-10 h-10 bg-background-subtle flex items-center justify-center">
-                      <a.icon size={20} className="text-text-secondary group-hover:text-foreground transition-colors" />
+                  <button key={a.label} className="group bg-card border border-border p-5 flex flex-col items-center gap-3 hover:border-[hsl(var(--border-hover))] hover:shadow-[0_1px_3px_0_rgba(0,0,0,0.04)] transition-all cursor-pointer">
+                    <div className="w-10 h-10 flex items-center justify-center bg-background-subtle text-text-secondary group-hover:text-foreground transition-colors">
+                      <a.icon size={18} />
                     </div>
                     <span className="text-sm font-medium text-foreground">{a.label}</span>
                   </button>

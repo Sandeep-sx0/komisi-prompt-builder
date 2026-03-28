@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { TrendingUp, TrendingDown } from "lucide-react";
+
 
 interface MetricCardProps {
   icon: React.ReactNode;
@@ -12,15 +12,26 @@ interface MetricCardProps {
 
 export const MetricCard: React.FC<MetricCardProps> = ({ icon, value, label, trend, className }) => {
   return (
-    <div className={cn("bg-card border border-border rounded-xl p-6 transition-all duration-200 hover:shadow-sm hover:-translate-y-px hover:border-[hsl(var(--border-hover))]", className)}>
-      <div className="text-text-tertiary mb-3">{icon}</div>
-      <div className="text-2xl font-semibold text-foreground tracking-tighter tabular-nums">{value}</div>
-      <div className="text-sm text-text-secondary mt-1 leading-snug">{label}</div>
-      {trend && (
-        <div className={cn("text-xs font-medium mt-2 inline-flex items-center gap-1", trend.positive ? "text-success" : "text-error")}>
-          {trend.positive ? <TrendingUp size={12} /> : <TrendingDown size={12} />} {trend.value}
-        </div>
-      )}
+    <div className={cn(
+      "bg-card border border-border p-5 transition-all duration-200",
+      "hover:border-[hsl(var(--border-hover))] hover:shadow-[0_1px_3px_0_rgba(0,0,0,0.04)]",
+      className
+    )}>
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-text-tertiary">{icon}</span>
+        {trend && (
+          <span className={cn(
+            "text-xs font-medium inline-flex items-center gap-0.5",
+            trend.positive ? "text-success" : "text-error"
+          )}>
+            {trend.positive ? "↑" : "↓"} {trend.value}
+          </span>
+        )}
+      </div>
+      <div className="text-[28px] font-semibold text-foreground tracking-tight leading-none tabular-nums">
+        {value}
+      </div>
+      <div className="text-[13px] text-text-secondary mt-1.5 leading-snug">{label}</div>
     </div>
   );
 };
