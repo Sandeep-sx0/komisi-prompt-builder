@@ -8,7 +8,7 @@ import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogDescription,
 } from "@/components/ui/dialog";
 import {
-  Home, BarChart3, Smartphone, Target, Users, FileText,
+  Home, BarChart3, Smartphone, Target, Users, UserPlus,
   Wallet, Link2, Settings, BookOpen, MessageCircle, Plus,
   ChevronsLeft, Store, Sparkles, ChevronDown, Check, LogOut
 } from "lucide-react";
