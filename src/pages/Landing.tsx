@@ -529,7 +529,7 @@ const Landing = () => {
                     className="text-xs transition-colors"
                     style={{
                       padding: "6px 14px",
-                      borderRadius: "4px",
+                      borderRadius: 0,
                       fontWeight: activeCodeTab === tab ? 500 : 400,
                       backgroundColor: activeCodeTab === tab ? "#FFFFFF" : "transparent",
                       color: activeCodeTab === tab ? "#000000" : "rgba(255,255,255,0.45)",
