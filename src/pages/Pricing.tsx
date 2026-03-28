@@ -608,7 +608,7 @@ const Pricing = () => {
                       fontSize: 12,
                       fontWeight: 700,
                       padding: "5px 16px",
-                      borderRadius: 999,
+                      borderRadius: 0,
                       letterSpacing: "0.05em",
                       boxShadow: "0 4px 12px rgba(0,0,0,0.4)",
                     }}
