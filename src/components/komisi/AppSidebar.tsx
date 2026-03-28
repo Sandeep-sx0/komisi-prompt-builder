@@ -26,11 +26,10 @@ const devNav: NavGroup[] = [
     { icon: Smartphone, label: "Apps", href: "/apps" },
     { icon: Target, label: "Campaigns", href: "/campaigns" },
     { icon: Users, label: "Affiliates", badge: "3", href: "/affiliates" },
-    { icon: FileText, label: "Content", href: "/content" },
+    { icon: UserPlus, label: "Collaborators", href: "/collaborators" },
   ]},
   { section: "REVENUE", items: [
     { icon: Wallet, label: "Payouts", badge: "2", href: "/payouts" },
-    { icon: Link2, label: "UTM Tracking", href: "/utm-tracking" },
   ]},
 ];
 
@@ -43,9 +42,6 @@ const creatorNav: NavGroup[] = [
     { icon: Store, label: "Marketplace", href: "/creator/marketplace" },
     { icon: Smartphone, label: "My Programs", badge: "4", href: "/creator/programs" },
     { icon: Link2, label: "My Links", href: "/creator/links" },
-  ]},
-  { section: "CONTENT", items: [
-    { icon: FileText, label: "Content Tracker", href: "/creator/content" },
   ]},
 ];
 
