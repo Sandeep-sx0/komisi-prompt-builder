@@ -80,7 +80,8 @@ const Preloader = () => {
             <motion.div
               style={{
                 height: "100%",
-                backgroundColor: "#000000",
+              backgroundColor: "#000000",
+
               }}
               initial={{ width: "0%" }}
               animate={{ width: `${progress}%` }}
