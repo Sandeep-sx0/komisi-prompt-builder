@@ -13,7 +13,7 @@ import Campaigns from "./pages/Campaigns";
 import CampaignCreate from "./pages/CampaignCreate";
 import Affiliates from "./pages/Affiliates";
 import Analytics from "./pages/Analytics";
-import Content from "./pages/Content";
+
 import Payouts from "./pages/Payouts";
 import Settings from "./pages/Settings";
 import CreatorDashboard from "./pages/CreatorDashboard";
