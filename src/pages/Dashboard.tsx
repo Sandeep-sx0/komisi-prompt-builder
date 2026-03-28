@@ -107,8 +107,14 @@ const Dashboard = () => {
 
             {/* Welcome */}
             <div className="flex items-center justify-between mb-6">
-              <h1 className="text-2xl font-bold tracking-tighter text-foreground">Welcome back, Sandeep 👋</h1>
-              <Button variant="secondary" size="sm"><span>Last 7 days</span> <ChevronDown size={14} /></Button>
+              <div>
+                <h1 className="text-2xl font-bold tracking-tighter text-foreground">Welcome back, Sandeep 👋</h1>
+                <p className="text-sm text-text-secondary mt-0.5">Viewing: {appName}</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <PlatformFilter value={platform} onChange={setPlatform} />
+                <Button variant="secondary" size="sm"><span>Last 7 days</span> <ChevronDown size={14} /></Button>
+              </div>
             </div>
 
             {/* Metrics */}
