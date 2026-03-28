@@ -389,7 +389,7 @@ const Landing = () => {
               >
                 <Input placeholder="Enter your email" className="h-12 flex-1 border" style={{ backgroundColor: 'rgba(255,255,255,0.7)', borderColor: 'rgba(0,0,0,0.15)', color: '#000000' }} />
                 <Link to="/signup">
-                  <Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Start Free — No Credit Card <ArrowRight size={16} /></Button>
+                  <Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}><Button size="lg" className="h-12 px-6 border-none w-full sm:w-auto" style={{ backgroundColor: '#000000', color: '#FFFFFF', fontWeight: 500 }}>Get Started <ArrowRight size={16} /></Button></Button>
                 </Link>
               </motion.div>
 
