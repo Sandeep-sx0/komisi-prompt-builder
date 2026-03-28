@@ -601,8 +601,6 @@ const Landing = () => {
             <p className="text-base text-text-secondary">
               Komisi layers creator attribution on top of RevenueCat and Adapty. Your existing analytics setup stays exactly as it is. Replaces AppsFlyer and Adjust for creator campaigns.
             </p>
-            <p className="mx-auto mt-3" style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', fontWeight: 400, maxWidth: 560 }}>
-            </p>
           </Reveal>
 
           <IntegrationGrid integrations={integrations} />
