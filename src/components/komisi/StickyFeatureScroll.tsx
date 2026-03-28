@@ -1,6 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "motion/react";
-import { Target, Shield, BarChart2, Zap, ArrowRight } from "lucide-react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, useTransform } from "motion/react";
+import { Target, Shield, BarChart2, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CountingNumber } from "@/components/animate-ui/primitives/texts/counting-number";
@@ -148,7 +148,7 @@ const PayoutsVisual = () => (
   </div>
 );
 
-const visuals = [AttributionVisual, FraudVisual, AnalyticsVisual, PayoutsVisual];
+const stepVisuals = [AttributionVisual, FraudVisual, AnalyticsVisual, PayoutsVisual];
 
 /* ── Main Component ── */
 const StickyFeatureScroll: React.FC = () => {
@@ -157,7 +157,17 @@ const StickyFeatureScroll: React.FC = () => {
 
   const [activeStep, setActiveStep] = useState(0);
   const [stepProgress, setStepProgress] = useState(0);
+  const [stepHeight, setStepHeight] = useState(0);
 
+  // Measure step height on mount and resize
+  useEffect(() => {
+    const update = () => setStepHeight(window.innerHeight - 64);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  // Derive active step + progress from scroll
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     const step = Math.min(3, Math.floor(v * 4));
     const progress = (v * 4) % 1;
@@ -165,14 +175,28 @@ const StickyFeatureScroll: React.FC = () => {
     setStepProgress(step === 3 && v >= 0.99 ? 1 : progress);
   });
 
-  const ActiveVisual = visuals[activeStep];
+  // translateY for the visual stack: 0 → -(3 × stepHeight)
+  const visualTranslateY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, -3 * stepHeight]
+  );
+
+  // Click-to-scroll handler
+  const handleStepClick = useCallback((index: number) => {
+    if (!sectionRef.current) return;
+    const sectionTop = sectionRef.current.offsetTop;
+    const sectionHeight = sectionRef.current.offsetHeight;
+    const scrollTarget = sectionTop + (index / 4) * sectionHeight;
+    window.scrollTo({ top: scrollTarget, behavior: "smooth" });
+  }, []);
 
   return (
     <>
-      {/* 400vh scroll container */}
-      <div ref={sectionRef} style={{ height: "400vh", position: "relative" }}>
+      {/* 2800px scroll container */}
+      <div ref={sectionRef} style={{ height: 2800, position: "relative" }}>
         {/* Sticky viewport */}
-        <div style={{ position: "sticky", top: 64, height: "calc(100vh - 64px)", display: "flex", backgroundColor: "#FFFFFF", overflow: "hidden" }}>
+        <div style={{ position: "sticky", top: 64, height: "calc(100vh - 64px)", display: "flex", backgroundColor: "#FFFFFF", overflow: "clip" }}>
 
           {/* ── Left Panel ── */}
           <div style={{ width: "38%", height: "100%", display: "flex", flexDirection: "column", padding: "80px 48px 56px", position: "relative" }}>
@@ -197,9 +221,13 @@ const StickyFeatureScroll: React.FC = () => {
                   const Icon = feat.icon;
 
                   return (
-                    <div key={i} style={{ borderTop: i === 0 ? "1px solid rgba(0,0,0,0.08)" : "none", borderBottom: "1px solid rgba(0,0,0,0.08)" }}>
+                    <div
+                      key={i}
+                      onClick={() => handleStepClick(i)}
+                      style={{ borderTop: i === 0 ? "1px solid rgba(0,0,0,0.08)" : "none", borderBottom: "1px solid rgba(0,0,0,0.08)", cursor: "pointer" }}
+                    >
                       {/* Icon + Label */}
-                      <div className="flex items-start gap-3 py-4" style={{ cursor: "default" }}>
+                      <div className="flex items-start gap-3 py-4">
                         <Icon size={16} style={{ color: isActive ? "#000000" : "rgba(0,0,0,0.25)", marginTop: 2, flexShrink: 0, transition: "color 0.3s" }} />
                         <span style={{ fontSize: 17, lineHeight: 1.4, fontWeight: isActive ? 500 : 400, color: isActive ? "#000000" : "rgba(0,0,0,0.3)", transition: "color 0.3s, font-weight 0.3s" }}>
                           {feat.label}
@@ -246,26 +274,33 @@ const StickyFeatureScroll: React.FC = () => {
             <div style={{ paddingTop: 32 }}>
               <Link to="/signup">
                 <Button size="lg" className="h-12 px-8 border-none" style={{ backgroundColor: "#000000", color: "#FFFFFF", fontWeight: 500 }}>
-                  Try Komisi → 
+                  Try Komisi →
                 </Button>
               </Link>
             </div>
           </div>
 
-          {/* ── Right Panel ── */}
-          <div style={{ width: "62%", height: "100vh", position: "relative", overflow: "hidden" }}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeStep}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                style={{ position: "absolute", inset: 0 }}
-              >
-                <ActiveVisual />
-              </motion.div>
-            </AnimatePresence>
+          {/* ── Right Clip Window ── */}
+          <div style={{ width: "62%", height: "100%", position: "relative", overflow: "hidden" }}>
+            <motion.div
+              style={{
+                y: visualTranslateY,
+                position: "relative",
+                width: "100%",
+              }}
+            >
+              {stepVisuals.map((Visual, i) => (
+                <div
+                  key={i}
+                  style={{
+                    height: `calc(100vh - 64px)`,
+                    width: "100%",
+                  }}
+                >
+                  <Visual />
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </div>
