@@ -123,7 +123,7 @@ const Dashboard = () => {
               <MetricCard icon={<Download size={20} />} value="847" label="Installs This Week" trend={{ value: "12%", positive: true }} />
               <MetricCard icon={<DollarSign size={20} />} value="$2,340" label="Affiliate Revenue" trend={{ value: "23%", positive: true }} />
               <MetricCard icon={<Target size={20} />} value="8" label="Active Campaigns" />
-              <MetricCard icon={<TrendingUp size={20} />} value="4.2%" label="Conversion Rate" trend={{ value: "0.8%", positive: true }} />
+              <MetricCard icon={<DollarSign size={20} />} value="$1,230" label="Commissions Paid" trend={{ value: "18%", positive: true }} />
             </div>
 
             {/* Chart */}
