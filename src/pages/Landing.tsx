@@ -371,7 +371,7 @@ const Landing = () => {
               </motion.div>
 
               <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 1.3 }} className="text-xs mt-4" style={{ color: 'rgba(0,0,0,0.4)' }}>
-                Trusted by 200+ indie app developers · No credit card required
+                Used by 200+ app developers on iOS and Android · No credit card required
               </motion.p>
             </div>
 
