@@ -16,13 +16,12 @@ const HeroVisual: React.FC = () => {
 
   return (
     <div ref={ref} className="relative w-full h-full" style={{ minHeight: 520 }}>
-      {/* Dashboard iframe — floating */}
+      {/* Dashboard preview — floating */}
       <motion.div
         className="absolute top-0 overflow-hidden"
         style={{
           left: 0,
           right: '-120px',
-          height: '100%',
           borderRadius: '16px 0 0 16px',
           boxShadow: '0 32px 80px rgba(0,0,0,0.18)',
         }}
@@ -33,10 +32,9 @@ const HeroVisual: React.FC = () => {
           src="/dashboard-preview.png"
           alt="Komisi Dashboard Preview"
           style={{
-            width: '1456px',
-            height: '900px',
-            transform: 'scale(0.618)',
-            transformOrigin: 'top left',
+            width: '100%',
+            height: 'auto',
+            display: 'block',
             pointerEvents: 'none',
           }}
         />
