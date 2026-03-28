@@ -15,17 +15,18 @@ const HeroVisual: React.FC = () => {
   }, []);
 
   return (
-    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 600, overflow: 'hidden' }}>
-      {/* Dashboard preview — floating */}
+    <div ref={ref} className="relative w-full h-full" style={{ minHeight: 600, overflowX: 'hidden' }}>
+      {/* Dashboard preview — edge-bleed, flush right */}
       <motion.div
         className="absolute top-0"
         style={{
-          left: 0,
-          right: '-280px',
+          right: 0,
+          width: '130%',
           borderRadius: '16px 0 0 16px',
-          boxShadow: '0 32px 80px rgba(0,0,0,0.18)',
+          boxShadow: 'none',
+          filter: 'none',
           transform: 'scale(0.85)',
-          transformOrigin: 'top left',
+          transformOrigin: 'top right',
         }}
         animate={{ y: [0, -10, 0] }}
         transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
