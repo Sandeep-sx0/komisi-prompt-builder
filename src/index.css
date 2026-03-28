@@ -66,9 +66,9 @@ html {
     --info-light: 209 100% 96%;
 
     /* === CHARTS === */
-    --chart-purple: 0 0% 0%;
+    --chart-purple: 263 70% 58%;
     --chart-pink: 38 92% 50%;
-    --chart-blue: 0 0% 0%;
+    --chart-blue: 217 91% 60%;
     --chart-green: 158 64% 52%;
     --chart-amber: 38 92% 50%;
 
@@ -162,6 +162,7 @@ html {
   *, *::before, *::after {
     border-radius: 0 !important;
   }
+  .rounded-full { border-radius: 9999px !important; }
 }
 
 /* ============================================================

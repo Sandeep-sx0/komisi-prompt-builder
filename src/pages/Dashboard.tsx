@@ -13,6 +13,7 @@ import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from "recharts";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 
 const chartData = [
   { date: "Feb 25", installs: 89, revenue: 245 },
@@ -50,6 +51,14 @@ const ChartTooltip = ({ active, payload, label }: any) => {
     </div>
   );
 };
+
+const metricCards = [
+  { icon: <Users size={20} />, value: "12", label: "Active Affiliates", trend: { value: "3 new", positive: true } },
+  { icon: <Download size={20} />, value: "847", label: "Installs This Week", trend: { value: "12%", positive: true } },
+  { icon: <DollarSign size={20} />, value: "$2,340", label: "Affiliate Revenue", trend: { value: "23%", positive: true } },
+  { icon: <Target size={20} />, value: "8", label: "Active Campaigns" },
+  { icon: <DollarSign size={20} />, value: "$1,230", label: "Commissions Paid", trend: { value: "18%", positive: true } },
+];
 
 const Dashboard = () => {
   const [showFraud, setShowFraud] = useState(true);
@@ -106,9 +115,9 @@ const Dashboard = () => {
             )}
 
             {/* Welcome */}
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-8">
               <div>
-                <h1 className="text-2xl font-bold tracking-tighter text-foreground">Welcome back, Sandeep 👋</h1>
+                <h1 className="text-2xl font-semibold tracking-tighter text-foreground">Welcome back, Sandeep</h1>
                 <p className="text-sm text-text-secondary mt-0.5">Viewing: {appName}</p>
               </div>
               <div className="flex items-center gap-3">
@@ -118,16 +127,21 @@ const Dashboard = () => {
             </div>
 
             {/* Metrics */}
-            <div className="grid grid-cols-5 gap-4 mb-6">
-              <MetricCard icon={<Users size={20} />} value="12" label="Active Affiliates" trend={{ value: "3 new", positive: true }} />
-              <MetricCard icon={<Download size={20} />} value="847" label="Installs This Week" trend={{ value: "12%", positive: true }} />
-              <MetricCard icon={<DollarSign size={20} />} value="$2,340" label="Affiliate Revenue" trend={{ value: "23%", positive: true }} />
-              <MetricCard icon={<Target size={20} />} value="8" label="Active Campaigns" />
-              <MetricCard icon={<DollarSign size={20} />} value="$1,230" label="Commissions Paid" trend={{ value: "18%", positive: true }} />
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+              {metricCards.map((card, i) => (
+                <motion.div
+                  key={card.label}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: i * 0.07, ease: "easeOut" }}
+                >
+                  <MetricCard icon={card.icon} value={card.value} label={card.label} trend={card.trend} />
+                </motion.div>
+              ))}
             </div>
 
             {/* Chart */}
-            <div className="bg-card border border-border rounded-xl p-6 mb-6">
+            <div className="bg-card border border-border rounded-xl p-6 mb-8">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="text-lg font-semibold text-foreground">Revenue from Affiliates</h2>
                 <div className="flex items-center gap-4 text-sm">
@@ -135,24 +149,24 @@ const Dashboard = () => {
                   <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-chart-purple" /> Revenue</span>
                 </div>
               </div>
-              <ResponsiveContainer width="100%" height={280}>
+              <ResponsiveContainer width="100%" height={300}>
                 <AreaChart data={chartData}>
                   <defs>
-                    <linearGradient id="gradInstalls" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3B82F6" stopOpacity={0.1} /><stop offset="100%" stopColor="#3B82F6" stopOpacity={0} /></linearGradient>
-                    <linearGradient id="gradRevenue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.1} /><stop offset="100%" stopColor="#8B5CF6" stopOpacity={0} /></linearGradient>
+                    <linearGradient id="gradInstalls" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#3B82F6" stopOpacity={0.15} /><stop offset="100%" stopColor="#3B82F6" stopOpacity={0} /></linearGradient>
+                    <linearGradient id="gradRevenue" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.15} /><stop offset="100%" stopColor="#8B5CF6" stopOpacity={0} /></linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" horizontal vertical={false} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="#F3F4F6" horizontal={true} vertical={false} />
                   <XAxis dataKey="date" tick={{ fontSize: 12, fill: "#94A3B8" }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fontSize: 12, fill: "#94A3B8" }} axisLine={false} tickLine={false} />
                   <Tooltip content={<ChartTooltip />} />
-                  <Area type="monotone" dataKey="installs" stroke="#3B82F6" strokeWidth={2} fill="url(#gradInstalls)" />
-                  <Area type="monotone" dataKey="revenue" stroke="#8B5CF6" strokeWidth={2} fill="url(#gradRevenue)" />
+                  <Area type="monotone" dataKey="installs" stroke="#3B82F6" strokeWidth={2.5} fill="url(#gradInstalls)" dot={false} />
+                  <Area type="monotone" dataKey="revenue" stroke="#8B5CF6" strokeWidth={2.5} fill="url(#gradRevenue)" dot={false} />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
 
             {/* Two columns */}
-            <div className="grid grid-cols-5 gap-6 mb-6">
+            <div className="grid grid-cols-5 gap-6 mb-8">
               {/* Affiliates */}
               <div className="col-span-3">
                 <div className="flex items-center justify-between mb-3">
@@ -163,12 +177,12 @@ const Dashboard = () => {
                   <table className="w-full">
                     <thead><tr className="bg-background-subtle">
                       {["#", "Affiliate", "Installs", "Revenue", "Conv Rate"].map((h) => (
-                        <th key={h} className="text-left text-xs uppercase tracking-wider font-semibold text-text-secondary h-10 px-4">{h}</th>
+                        <th key={h} className="text-left text-xs uppercase tracking-wider font-semibold text-text-secondary h-11 px-4">{h}</th>
                       ))}
                     </tr></thead>
                     <tbody>
                       {affiliates.map((a, i) => (
-                        <tr key={a.name} className="border-b border-muted last:border-0 hover:bg-background-subtle cursor-pointer transition-colors">
+                        <tr key={a.name} className="border-b border-muted last:border-0 hover:bg-background-subtle cursor-pointer transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-ring">
                           <td className="px-4 h-14 text-sm text-text-secondary">{i + 1}</td>
                           <td className="px-4 h-14">
                             <div className="flex items-center gap-2">
@@ -176,9 +190,13 @@ const Dashboard = () => {
                               <div><div className="text-sm font-medium text-foreground">{a.name}</div><div className="text-xs text-text-tertiary">{a.platforms}</div></div>
                             </div>
                           </td>
-                          <td className="px-4 h-14 text-sm font-medium text-foreground">{a.installs}</td>
-                          <td className="px-4 h-14 text-sm font-medium text-foreground">{a.revenue}</td>
-                          <td className="px-4 h-14"><BadgeStatus variant={parseFloat(a.rate) > 5 ? "success" : "neutral"}>{a.rate}</BadgeStatus></td>
+                          <td className="px-4 h-14 text-sm font-medium text-foreground tabular-nums">{a.installs}</td>
+                          <td className="px-4 h-14 text-sm font-medium text-foreground tabular-nums">{a.revenue}</td>
+                          <td className="px-4 h-14">
+                            <BadgeStatus variant={parseFloat(a.rate) > 5 ? "success" : "neutral"} dot>
+                              {a.rate}
+                            </BadgeStatus>
+                          </td>
                         </tr>
                       ))}
                     </tbody>
@@ -191,9 +209,10 @@ const Dashboard = () => {
                 <h2 className="text-lg font-semibold text-foreground mb-3">Recent Activity</h2>
                 <div className="bg-card border border-border rounded-xl p-4">
                   {activities.map((a, i) => (
-                    <div key={i} className={cn("flex gap-3 py-3", i < activities.length - 1 && "border-b border-muted")}>
+                    <div key={i} className={cn("flex items-start gap-3 py-3", i < activities.length - 1 && "border-b border-muted")}>
                       <span className={cn("w-3 h-3 rounded-full mt-1 shrink-0", a.color)} />
-                      <div><p className="text-sm text-foreground">{a.text}</p><p className="text-xs text-text-tertiary mt-0.5">{a.time}</p></div>
+                      <p className="text-sm text-foreground flex-1">{a.text}</p>
+                      <p className="text-xs text-text-tertiary shrink-0 mt-0.5">{a.time}</p>
                     </div>
                   ))}
                 </div>
@@ -210,8 +229,10 @@ const Dashboard = () => {
                   { icon: Link2, label: "Get Links" },
                   { icon: BarChart3, label: "View Reports" },
                 ].map((a) => (
-                  <button key={a.label} className="bg-card border border-border rounded-xl p-4 flex flex-col items-center gap-2 hover:shadow-sm hover:-translate-y-px hover:border-[hsl(var(--border-hover))] transition-all cursor-pointer">
-                    <a.icon size={24} className="text-text-secondary" />
+                  <button key={a.label} className="group bg-card border border-border rounded-xl p-4 flex flex-col items-center gap-3 hover:shadow-md hover:-translate-y-0.5 hover:border-[hsl(var(--border-hover))] transition-all cursor-pointer">
+                    <div className="w-10 h-10 bg-background-subtle flex items-center justify-center">
+                      <a.icon size={20} className="text-text-secondary group-hover:text-foreground transition-colors" />
+                    </div>
                     <span className="text-sm font-medium text-foreground">{a.label}</span>
                   </button>
                 ))}
