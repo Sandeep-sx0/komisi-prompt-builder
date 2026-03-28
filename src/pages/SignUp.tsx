@@ -15,7 +15,7 @@ const SignUp = () => {
     if (role === "developer") {
       navigate("/onboarding");
     } else if (role === "creator") {
-      navigate("/creator/onboarding");
+      navigate("/creator/dashboard");
     }
   };
 
