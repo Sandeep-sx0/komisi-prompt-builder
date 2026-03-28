@@ -489,8 +489,9 @@ const Landing = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div>
-              <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-6">
-                Integrate in under<br />30 minutes.
+              <h2 className="text-3xl md:text-4xl font-normal text-white tracking-tight leading-tight mb-6" style={{ overflowWrap: 'break-word', wordBreak: 'break-word' }}>
+                <span className="md:hidden" style={{ fontSize: 22 }}>Integrate in under 30 minutes.</span>
+                <span className="hidden md:inline">Integrate in under<br />30 minutes.</span>
               </h2>
               <p className="text-base mb-6 leading-relaxed" style={{ color: "#9CA3AF" }}>
                 One SDK. Works on iOS, Android, Flutter, and React Native. Drop in 3 lines of code and Komisi handles attribution, fraud detection, and payouts automatically. No server coding required.
