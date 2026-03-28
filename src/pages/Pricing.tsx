@@ -465,7 +465,6 @@ const Pricing = () => {
               backgroundColor: "rgba(255,255,255,0.08)",
               border: "1px solid rgba(255,255,255,0.15)",
             }}
-            }}
           >
             Simple, transparent pricing
           </motion.span>
