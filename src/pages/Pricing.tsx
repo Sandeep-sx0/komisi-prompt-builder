@@ -278,6 +278,22 @@ const faqs = [
     q: "What happens if I exceed my affiliate limit on the Free plan?",
     a: "You'll receive an email notification when you're approaching your limit. You can upgrade at any time to unlock more slots. Existing affiliates are never deactivated — you just can't approve new ones until you upgrade or free up a slot.",
   },
+  {
+    q: "What happens if I exceed my install limit?",
+    a: "You'll receive an email before you hit the limit. Overages are billed at $2 per 1,000 additional installs.",
+  },
+  {
+    q: "Can I downgrade or cancel anytime?",
+    a: "Yes. No contracts, no cancellation fees. Downgrade or cancel from your dashboard settings.",
+  },
+  {
+    q: "Do I need a credit card to start?",
+    a: "No. The free plan requires no payment information.",
+  },
+  {
+    q: "Does Komisi replace AppsFlyer or Adjust?",
+    a: "Yes. For creator and affiliate campaign attribution, Komisi is a full replacement. Your RevenueCat or Adapty integration stays exactly as is.",
+  },
 ];
 
 /* ── Features by job-to-be-done ── */
