@@ -531,7 +531,7 @@ const Pricing = () => {
                     alignItems: "center",
                     backgroundColor: "rgba(245,158,11,0.15)",
                     color: "#F59E0B",
-                    borderRadius: 999,
+                    borderRadius: 0,
                     padding: "2px 8px",
                     fontSize: 11,
                     fontWeight: 700,
