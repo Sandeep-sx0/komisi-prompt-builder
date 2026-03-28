@@ -656,7 +656,7 @@ const Landing = () => {
           SECTION 11 — FINAL CTA (Dark)
       ═══════════════════════════════════════════ */}
       <section className="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: "#FFF8EE" }}>
-        <div className="absolute inset-0 z-0 pointer-events-none" style={{ backgroundImage: "url('/backgrounds/BG 14.jpg.jpeg')", backgroundSize: "cover", backgroundPosition: "center" }} />
+        <div className="absolute inset-0 z-0 pointer-events-none" style={{ backgroundImage: "url('/backgrounds/bg-14.jpg.jpeg')", backgroundSize: "cover", backgroundPosition: "center" }} />
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <motion.h2
             initial={{ opacity: 0, y: 40 }}

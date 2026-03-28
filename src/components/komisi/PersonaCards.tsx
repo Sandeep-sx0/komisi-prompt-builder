@@ -523,7 +523,7 @@ const PersonaCards = () => {
             label="For Developers →"
             chips={["Lightweight SDK", "No IDFA", "RevenueCat integration", "Privacy-safe"]}
             visual={<DeveloperVisual />}
-            backgroundImage="/backgrounds/BG 16.webp"
+            backgroundImage="/backgrounds/bg-16.webp"
             delay={0}
           >
             {null}
@@ -533,7 +533,7 @@ const PersonaCards = () => {
             label="For Growth Teams →"
             chips={["Campaign tracking", "Creator analytics", "CAC dashboard", "Commission tiers"]}
             visual={<GrowthVisual />}
-            backgroundImage="/backgrounds/BG 3.png"
+            backgroundImage="/backgrounds/bg-3.png"
             delay={0.08}
           >
             {null}
@@ -543,7 +543,7 @@ const PersonaCards = () => {
             label="For Creators →"
             chips={["Tracking links", "Real-time earnings", "Auto payouts", "Content analytics"]}
             visual={<CreatorVisual />}
-            backgroundImage="/backgrounds/BG 18.webp"
+            backgroundImage="/backgrounds/bg-18.webp"
             delay={0.16}
           >
             {null}

@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 
 const IMAGES_TO_PRELOAD = [
-  "/backgrounds/BG 16.webp",
-  "/backgrounds/BG 3.png",
-  "/backgrounds/BG 10.png",
-  "/backgrounds/BG 18.webp",
-  "/backgrounds/BG 14.jpg.jpeg",
+  "/backgrounds/bg-16.webp",
+  "/backgrounds/bg-3.png",
+  "/backgrounds/bg-10.png",
+  "/backgrounds/bg-18.webp",
+  "/backgrounds/bg-14.jpg.jpeg",
 ]
 
 const Preloader = () => {
