@@ -596,11 +596,13 @@ const Landing = () => {
       <section className="py-24 px-6 dot-grid">
         <div className="max-w-[1200px] mx-auto">
           <Reveal className="text-center mb-6">
-            <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
-              Works with your existing stack.
+             <h2 className="text-3xl md:text-4xl font-normal text-foreground tracking-tight leading-tight mb-3">
+              Works with your existing stack. No rip-and-replace.
             </h2>
             <p className="text-base text-text-secondary">
-              Komisi plugs into the tools you already use. No ripping and replacing.
+              Komisi layers creator attribution on top of RevenueCat and Adapty. Your existing analytics setup stays exactly as it is. Replaces AppsFlyer and Adjust for creator campaigns.
+            </p>
+            <p className="mx-auto mt-3" style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', fontWeight: 400, maxWidth: 560 }}>
             </p>
           </Reveal>
 
