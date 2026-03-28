@@ -54,6 +54,8 @@ const ChartTooltip = ({ active, payload, label }: any) => {
 const Dashboard = () => {
   const [showFraud, setShowFraud] = useState(true);
   const [showEmpty, setShowEmpty] = useState(false);
+  const [platform, setPlatform] = useState<"all" | "ios" | "android">("all");
+  const { appName } = useAppScope();
 
   return (
     <DashboardLayout activeItem="Dashboard">
