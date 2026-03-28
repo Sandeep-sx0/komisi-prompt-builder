@@ -323,7 +323,13 @@ const Landing = () => {
               padding: 100px 24px 64px 24px !important;
             }
             #hero-right { display: none !important; }
-            #hero-left { width: 100% !important; max-width: none !important; }
+            #hero-left { width: 100% !important; max-width: none !important; padding-left: 0 !important; }
+          }
+          @media (min-width: 1024px) and (max-width: 1279px) {
+            #hero-left { padding-left: clamp(48px, 6vw, 80px) !important; }
+          }
+          @media (min-width: 1280px) {
+            #hero-left { padding-left: clamp(80px, 8vw, 160px) !important; }
           }
         `}</style>
 
@@ -336,8 +342,9 @@ const Landing = () => {
         <div
           className="relative z-10 w-full"
           style={{
-            paddingLeft: 'clamp(24px, 5vw, 80px)',
             paddingRight: 'clamp(24px, 5vw, 80px)',
+            paddingBottom: 'clamp(48px, 6vh, 80px)',
+            paddingTop: '80px',
           }}
         >
           <div className="relative">
@@ -406,7 +413,7 @@ const Landing = () => {
                 right: 0,
                 top: '50%',
                 transform: 'translateY(-50%)',
-                width: '58%',
+                width: 'clamp(520px, 58vw, 900px)',
                 transformOrigin: 'top right',
               }}
             >
