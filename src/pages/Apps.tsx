@@ -41,10 +41,10 @@ const Apps: React.FC = () => {
 
   return (
     <DashboardLayout activeItem="Apps">
-      <div className="px-8 py-6 max-w-[1200px]">
+      <div className="px-8 py-8 max-w-[1200px]">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-foreground tracking-tight">Apps</h1>
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Apps</h1>
           <Button onClick={() => setModalOpen(true)}>
             <Plus size={16} /> Add App
           </Button>
@@ -55,7 +55,7 @@ const Apps: React.FC = () => {
           {apps.map((app) => (
             <div
               key={app.name}
-              className="bg-card border border-border rounded-xl p-6 hover:shadow-sm transition-all"
+              className="bg-card border border-border p-5 hover:border-[hsl(var(--border-hover))] transition-colors"
             >
               <div className="flex items-start gap-4">
                 {/* Icon */}
@@ -65,7 +65,7 @@ const Apps: React.FC = () => {
 
                 {/* Info */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-foreground">{app.name}</h3>
+                  <h3 className="text-base font-semibold text-foreground">{app.name}</h3>
                   <p className="text-sm text-text-secondary mt-0.5">{app.subtitle}</p>
 
                   {/* Status Row */}

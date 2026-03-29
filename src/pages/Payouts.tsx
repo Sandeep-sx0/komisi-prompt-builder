@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { DashboardLayout } from "@/components/komisi/DashboardLayout";
-import { MetricCard } from "@/components/komisi/Cards";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -43,54 +42,69 @@ const Payouts = () => {
 
   return (
     <DashboardLayout activeItem="Payouts">
-      <div className="px-8 py-6 max-w-[1200px]">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">Payouts</h1>
+      <div className="px-8 py-8 max-w-[1200px]">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Payouts</h1>
           <div className="flex gap-2">
-            <Button variant="secondary" size="sm" onClick={() => setSettingsOpen(true)}>⚙ Payout Settings</Button>
+            <Button variant="secondary" size="sm" onClick={() => setSettingsOpen(true)}>Payout Settings</Button>
             <Button variant="secondary" size="sm"><Download size={14} /> Export</Button>
           </div>
         </div>
 
-        <div className="flex gap-4 border-b border-border mb-6">
+        <div className="flex gap-4 border-b border-border mb-8">
           {["Overview", "Transactions", "Upcoming", "Tax Documents"].map((t) => (
             <button key={t} onClick={() => setTab(t.toLowerCase())} className={cn("text-sm font-medium pb-3 border-b-2 transition-all", tab === t.toLowerCase() ? "text-foreground border-foreground" : "text-text-secondary border-transparent hover:text-foreground")}>{t}</button>
           ))}
         </div>
 
-        {/* Metrics */}
-        <div className="grid grid-cols-4 gap-4 mb-6">
-          <MetricCard icon={<DollarSign size={20} />} value="$3,450" label="Total Earned" />
-          <MetricCard icon={<DollarSign size={20} />} value="$1,230" label="Paid This Month" trend={{ value: "15%", positive: true }} />
-          <MetricCard icon={<DollarSign size={20} />} value="$890" label="Upcoming Payouts" />
-          <MetricCard icon={<Users size={20} />} value="8" label="Affiliates Enrolled" />
+        {/* Metrics Strip */}
+        <div className="bg-card border border-border mb-8">
+          <div className="grid grid-cols-4 divide-x divide-border">
+            {[
+              { icon: <DollarSign size={18} />, value: "$3,450", label: "Total Earned", trend: null },
+              { icon: <DollarSign size={18} />, value: "$1,230", label: "Paid This Month", trend: "15%" },
+              { icon: <DollarSign size={18} />, value: "$890", label: "Upcoming Payouts", trend: null },
+              { icon: <Users size={18} />, value: "8", label: "Affiliates Enrolled", trend: null },
+            ].map((m) => (
+              <div key={m.label} className="px-5 py-5">
+                <div className="flex items-center gap-2 text-text-tertiary mb-3">
+                  {m.icon}
+                  <span className="text-[13px] text-text-secondary">{m.label}</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-[28px] font-semibold text-foreground tracking-tight leading-none tabular-nums">{m.value}</span>
+                  {m.trend && <span className="text-xs font-medium text-success">↑ {m.trend}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Upcoming Payouts */}
-        <div className="bg-card border border-border rounded-xl overflow-hidden mb-6">
+        <div className="bg-card border border-border overflow-hidden mb-8">
           <div className="flex items-center justify-between p-6 pb-3">
-            <h2 className="text-lg font-semibold text-foreground">Upcoming Payouts</h2>
+            <h2 className="text-base font-semibold text-foreground">Upcoming Payouts</h2>
             <span className="text-sm text-text-secondary">Next payout: March 15, 2026</span>
           </div>
           <table className="w-full">
-            <thead><tr className="bg-background-subtle">
+            <thead><tr className="border-b border-border">
               {["Affiliate", "Earned This Cycle", "Commission Rate", "Net Payout", "Status"].map((h) => (
-                <th key={h} className="text-left text-xs uppercase tracking-wider font-semibold text-text-secondary h-10 px-6">{h}</th>
+                <th key={h} className="text-left text-[11px] uppercase tracking-[0.08em] font-medium text-text-tertiary h-10 px-6">{h}</th>
               ))}
             </tr></thead>
             <tbody>
               {upcomingPayouts.map((p) => (
                 <tr key={p.name} className="border-b border-muted last:border-0">
-                  <td className="px-6 h-14 text-sm font-medium text-foreground">{p.name}</td>
-                  <td className="px-6 h-14 text-sm text-foreground">{p.earned}</td>
-                  <td className="px-6 h-14 text-sm text-text-secondary">{p.rate}</td>
-                  <td className="px-6 h-14 text-sm font-semibold text-foreground">{p.net}</td>
-                  <td className="px-6 h-14"><BadgeStatus variant="warning">○ Pending</BadgeStatus></td>
+                  <td className="px-6 h-[52px] text-sm font-medium text-foreground">{p.name}</td>
+                  <td className="px-6 h-[52px] text-sm text-foreground">{p.earned}</td>
+                  <td className="px-6 h-[52px] text-sm text-text-secondary">{p.rate}</td>
+                  <td className="px-6 h-[52px] text-sm font-semibold text-foreground">{p.net}</td>
+                  <td className="px-6 h-[52px]"><BadgeStatus variant="warning">Pending</BadgeStatus></td>
                 </tr>
               ))}
-              <tr className="bg-background-subtle">
+              <tr className="border-t-2 border-border">
                 <td className="px-6 h-12 text-sm font-semibold text-foreground" colSpan={3}>Total upcoming</td>
-                <td className="px-6 h-12 text-sm font-bold text-foreground">$468.00</td>
+                <td className="px-6 h-12 text-sm font-semibold text-foreground">$468.00</td>
                 <td></td>
               </tr>
             </tbody>
@@ -102,25 +116,25 @@ const Payouts = () => {
         </div>
 
         {/* Recent Transactions */}
-        <div className="bg-card border border-border rounded-xl overflow-hidden">
+        <div className="bg-card border border-border overflow-hidden">
           <div className="flex items-center justify-between p-6 pb-3">
-            <h2 className="text-lg font-semibold text-foreground">Recent Transactions</h2>
+            <h2 className="text-base font-semibold text-foreground">Recent Transactions</h2>
             <button className="text-sm text-text-secondary hover:text-foreground">View All →</button>
           </div>
           <table className="w-full">
-            <thead><tr className="bg-background-subtle">
+            <thead><tr className="border-b border-border">
               {["Date", "Affiliate", "Amount", "Status", "Method"].map((h) => (
-                <th key={h} className="text-left text-xs uppercase tracking-wider font-semibold text-text-secondary h-10 px-6">{h}</th>
+                <th key={h} className="text-left text-[11px] uppercase tracking-[0.08em] font-medium text-text-tertiary h-10 px-6">{h}</th>
               ))}
             </tr></thead>
             <tbody>
               {recentTx.map((t, i) => (
                 <tr key={i} className="border-b border-muted last:border-0 hover:bg-background-subtle transition-colors">
-                  <td className="px-6 h-14 text-sm text-text-secondary">{t.date}</td>
-                  <td className="px-6 h-14 text-sm font-medium text-foreground">{t.affiliate}</td>
-                  <td className="px-6 h-14 text-sm font-medium text-foreground">{t.amount}</td>
-                  <td className="px-6 h-14"><BadgeStatus variant="success">✅ {t.status}</BadgeStatus></td>
-                  <td className="px-6 h-14 text-sm text-text-secondary">{t.method}</td>
+                  <td className="px-6 h-[52px] text-sm text-text-secondary">{t.date}</td>
+                  <td className="px-6 h-[52px] text-sm font-medium text-foreground">{t.affiliate}</td>
+                  <td className="px-6 h-[52px] text-sm font-medium text-foreground">{t.amount}</td>
+                  <td className="px-6 h-[52px]"><BadgeStatus variant="success">{t.status}</BadgeStatus></td>
+                  <td className="px-6 h-[52px] text-sm text-text-secondary">{t.method}</td>
                 </tr>
               ))}
             </tbody>
@@ -132,13 +146,13 @@ const Payouts = () => {
       {confirmOpen && (
         <>
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" onClick={() => setConfirmOpen(false)} />
-          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-card border border-border rounded-xl p-6 shadow-lg z-50 animate-scale-in">
+          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-card border border-border p-6 shadow-lg z-50 animate-scale-in">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-foreground">Process All Payouts?</h2>
+              <h2 className="text-base font-semibold text-foreground">Process All Payouts?</h2>
               <button onClick={() => setConfirmOpen(false)} className="text-text-tertiary hover:text-foreground"><X size={18} /></button>
             </div>
             <p className="text-sm text-text-secondary mb-4">You're about to send $468.00 to 4 affiliates via Stripe Connect. This action cannot be undone.</p>
-            <div className="bg-background-subtle rounded-lg p-3 mb-4 space-y-1 text-sm">
+            <div className="bg-background-subtle p-3 mb-4 space-y-1 text-sm">
               {upcomingPayouts.map(p => <div key={p.name} className="flex justify-between"><span className="text-text-secondary">{p.name}</span><span className="font-medium text-foreground">{p.net}</span></div>)}
               <div className="border-t border-border pt-1 mt-1 flex justify-between font-semibold"><span>Total</span><span>$468.00</span></div>
             </div>

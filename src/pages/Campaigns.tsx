@@ -30,14 +30,14 @@ const Campaigns = () => {
 
   return (
     <DashboardLayout activeItem="Campaigns">
-      <div className="px-8 py-6 max-w-[1200px]">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">Campaigns</h1>
+      <div className="px-8 py-8 max-w-[1200px]">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Campaigns</h1>
           <Button onClick={() => navigate("/campaigns/create")}><Plus size={14} /> Create Campaign</Button>
         </div>
 
         {/* Filter tabs */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-8">
           <div className="flex gap-4 border-b border-border">
             {[
               { value: "all", label: `All (${campaigns.length})` },
@@ -48,21 +48,21 @@ const Campaigns = () => {
               <button key={t.value} onClick={() => setFilter(t.value)} className={cn("text-sm font-medium pb-3 border-b-2 transition-all", filter === t.value ? "text-foreground border-foreground" : "text-text-secondary border-transparent hover:text-foreground")}>{t.label}</button>
             ))}
           </div>
-          <input placeholder="Search campaigns..." className="h-9 w-[280px] px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" />
+          <input placeholder="Search campaigns..." className="h-9 w-[280px] px-3 text-sm bg-card border border-border outline-none focus:border-foreground" />
         </div>
 
         {/* Campaign cards */}
         <div className="space-y-4">
           {filtered.map((c) => (
-            <div key={c.name} className="bg-card border border-border rounded-xl p-6 hover:shadow-sm transition-all">
+            <div key={c.name} className="bg-card border border-border p-5 hover:border-[hsl(var(--border-hover))] transition-colors">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="text-lg font-semibold text-foreground">{c.name}</h3>
+                  <h3 className="text-base font-semibold text-foreground">{c.name}</h3>
                   <p className="text-sm text-text-secondary">{c.app} · Revenue Share {c.commission}</p>
                 </div>
                 <BadgeStatus variant={statusMap[c.status]} dot>{c.status}</BadgeStatus>
               </div>
-              <div className="flex gap-6 mt-4 text-sm">
+              <div className="flex gap-6 mt-4 text-[13px]">
                 {[
                   { icon: Users, value: c.affiliates, label: "affiliates" },
                   { icon: Download, value: c.installs, label: "installs" },

@@ -34,10 +34,10 @@ const CreatorMarketplace = () => {
 
   return (
     <DashboardLayout activeItem="Marketplace" userType="creator">
-      <div className="px-8 py-6 max-w-[1200px]">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold tracking-tighter text-foreground">App Marketplace</h1>
-          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search apps..." className="h-9 w-[320px] px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" />
+      <div className="px-8 py-8 max-w-[1200px]">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">App Marketplace</h1>
+          <input value={search} onChange={e => setSearch(e.target.value)} placeholder="Search apps..." className="h-9 w-[320px] px-3 text-sm bg-card border border-border outline-none focus:border-foreground" />
         </div>
 
         {/* Category chips */}
@@ -59,19 +59,19 @@ const CreatorMarketplace = () => {
         {(category === "all" || category === "recommended") && (
           <div className="mb-8">
             <div className="flex items-center gap-2 mb-4">
-              <h2 className="text-lg font-semibold text-foreground">✦ Recommended for You</h2>
+              <h2 className="text-base font-semibold text-foreground">✦ Recommended for You</h2>
               <span className="text-xs text-text-tertiary">(Based on your profile)</span>
             </div>
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-4 gap-3">
               {recommended.map((a) => (
-                <div key={a.name} onClick={() => { setSelectedApp(a.name); setApplied(false); setShowApplyForm(false); }} className="bg-card border border-border rounded-xl p-5 hover:shadow-md hover:-translate-y-0.5 hover:border-[hsl(var(--border-hover))] transition-all cursor-pointer">
+                <div key={a.name} onClick={() => { setSelectedApp(a.name); setApplied(false); setShowApplyForm(false); }} className="bg-card border border-border p-5 hover:border-[hsl(var(--border-hover))] transition-colors cursor-pointer">
                   <div className="text-4xl mb-3">{a.icon}</div>
                   <h3 className="text-base font-semibold text-foreground">{a.name}</h3>
                   <p className="text-xs text-text-secondary">{a.category}</p>
                   <div className="mt-3 space-y-1">
-                    <div className="text-sm font-medium text-foreground">💰 {a.commission}</div>
+                    <div className="text-sm font-medium text-foreground">{a.commission}</div>
                     <div className="text-xs text-text-secondary flex items-center gap-1"><Star size={12} className="text-warning fill-warning" /> {a.stars} ({a.ratings})</div>
-                    <div className="text-xs text-text-tertiary">👥 {a.affiliates} affiliates</div>
+                    <div className="text-xs text-text-tertiary">{a.affiliates} affiliates</div>
                   </div>
                   <Button variant="secondary" size="sm" className="w-full mt-4">View & Apply →</Button>
                 </div>
@@ -83,17 +83,17 @@ const CreatorMarketplace = () => {
         {/* All Apps */}
         {category !== "recommended" && (
           <div>
-            <h2 className="text-lg font-semibold text-foreground mb-4">All Apps</h2>
-            <div className="grid grid-cols-4 gap-4">
+            <h2 className="text-base font-semibold text-foreground mb-4">All Apps</h2>
+            <div className="grid grid-cols-4 gap-3">
               {filtered.map((a) => (
-                <div key={a.name} onClick={() => { setSelectedApp(a.name); setApplied(false); setShowApplyForm(false); }} className="bg-card border border-border rounded-xl p-5 hover:shadow-md hover:-translate-y-0.5 hover:border-[hsl(var(--border-hover))] transition-all cursor-pointer">
+                <div key={a.name} onClick={() => { setSelectedApp(a.name); setApplied(false); setShowApplyForm(false); }} className="bg-card border border-border p-5 hover:border-[hsl(var(--border-hover))] transition-colors cursor-pointer">
                   <div className="text-4xl mb-3">{a.icon}</div>
                   <h3 className="text-base font-semibold text-foreground">{a.name}</h3>
                   <p className="text-xs text-text-secondary">{a.category}</p>
                   <div className="mt-3 space-y-1">
-                    <div className="text-sm font-medium text-foreground">💰 {a.commission}</div>
+                    <div className="text-sm font-medium text-foreground">{a.commission}</div>
                     <div className="text-xs text-text-secondary flex items-center gap-1"><Star size={12} className="text-warning fill-warning" /> {a.stars} ({a.ratings})</div>
-                    <div className="text-xs text-text-tertiary">👥 {a.affiliates} affiliates</div>
+                    <div className="text-xs text-text-tertiary">{a.affiliates} affiliates</div>
                   </div>
                   <Button variant="secondary" size="sm" className="w-full mt-4">View & Apply →</Button>
                 </div>
@@ -136,8 +136,8 @@ const CreatorMarketplace = () => {
                     { value: "20%", label: "Recurring (12mo)" },
                     { value: "30 days", label: "Attribution Window" },
                   ].map(s => (
-                    <div key={s.label} className="bg-background-subtle rounded-lg p-3 text-center">
-                      <div className="text-lg font-bold text-foreground">{s.value}</div>
+                    <div key={s.label} className="bg-background-subtle p-3 text-center">
+                      <div className="text-lg font-semibold text-foreground">{s.value}</div>
                       <div className="text-xs text-text-secondary">{s.label}</div>
                     </div>
                   ))}
@@ -163,7 +163,7 @@ const CreatorMarketplace = () => {
                 <div className="border-t border-border pt-6">
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-foreground mb-1.5">Why should they pick you? (optional)</label>
-                    <textarea rows={3} placeholder="I have 120K followers focused on wellness..." className="w-full px-3 py-2 text-sm bg-card border border-border rounded-lg outline-none resize-y" />
+                    <textarea rows={3} placeholder="I have 120K followers focused on wellness..." className="w-full px-3 py-2 text-sm bg-card border border-border outline-none resize-y" />
                   </div>
                   <div className="mb-4">
                     <label className="block text-sm font-medium text-foreground mb-1.5">Your primary content platform</label>
@@ -179,7 +179,7 @@ const CreatorMarketplace = () => {
 
               {applied && (
                 <div className="border-t border-border pt-6 text-center">
-                  <div className="text-success text-lg font-semibold">✅ Application submitted!</div>
+                  <div className="text-success text-lg font-semibold">Application submitted!</div>
                   <p className="text-sm text-text-secondary mt-1">You'll hear back within 24-48 hours.</p>
                 </div>
               )}

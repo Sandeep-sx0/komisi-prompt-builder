@@ -37,6 +37,18 @@ const profileChartData = Array.from({ length: 30 }, (_, i) => ({
   earnings: Math.floor(15 + Math.random() * 25 + i * 0.8),
 }));
 
+const ChartTooltip = ({ active, payload, label }: any) => {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="bg-card shadow-lg border border-border p-3 text-[13px]">
+      <p className="font-medium text-foreground mb-1">{label}</p>
+      {payload.map((p: any) => (
+        <p key={p.name} style={{ color: p.color }}>{p.name}: {typeof p.value === 'number' && p.name.toLowerCase().includes('revenue') ? `$${p.value}` : p.value}</p>
+      ))}
+    </div>
+  );
+};
+
 const Affiliates = () => {
   const [filter, setFilter] = useState("all");
   const [profileOpen, setProfileOpen] = useState<string | null>(null);
@@ -56,15 +68,15 @@ const Affiliates = () => {
 
   return (
     <DashboardLayout activeItem="Affiliates">
-      <div className="px-8 py-6 max-w-[1200px]">
+      <div className="px-8 py-8 max-w-[1200px]">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold tracking-tighter text-foreground">Affiliates</h1>
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Affiliates</h1>
           <Button onClick={() => setInviteOpen(true)}><Plus size={14} /> Invite Affiliate</Button>
         </div>
 
         {/* Filter tabs */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-8">
           <div className="flex gap-4 border-b border-border">
             {[
               { value: "all", label: `All (${allCount})` },
@@ -75,14 +87,14 @@ const Affiliates = () => {
               <button key={t.value} onClick={() => setFilter(t.value)} className={cn("text-sm font-medium pb-3 border-b-2 transition-all", filter === t.value ? "text-foreground border-foreground" : "text-text-secondary border-transparent hover:text-foreground")}>{t.label}</button>
             ))}
           </div>
-          <input placeholder="Search affiliates..." className="h-9 w-[280px] px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" />
+          <input placeholder="Search affiliates..." className="h-9 w-[280px] px-3 text-sm bg-card border border-border outline-none focus:border-foreground" />
         </div>
 
         {/* Active affiliate cards */}
         {(filter === "all" || filter === "active") && (
           <div className="space-y-3 mb-4">
             {activeAffiliates.map((a) => (
-              <div key={a.handle} className="bg-card border border-border rounded-xl p-5 hover:shadow-sm transition-all">
+              <div key={a.handle} className="bg-card border border-border p-5 hover:border-[hsl(var(--border-hover))] transition-colors">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full ${a.wc} flex items-center justify-center text-xs font-semibold text-foreground`}>{a.initials}</div>
@@ -96,7 +108,7 @@ const Affiliates = () => {
                   </div>
                   <span className="text-xs text-text-tertiary">Joined {a.joined}</span>
                 </div>
-                <div className="flex gap-6 mt-3 text-sm">
+                <div className="flex gap-6 mt-3 text-[13px]">
                   {[
                     { icon: Download, value: a.installs, label: "installs" },
                     { icon: DollarSign, value: a.earned, label: "earned" },
@@ -105,7 +117,7 @@ const Affiliates = () => {
                   ].map((s) => (
                     <span key={s.label} className="flex items-center gap-1.5"><s.icon size={14} className="text-text-tertiary" /><span className="font-medium text-foreground">{s.value}</span><span className="text-text-secondary">{s.label}</span></span>
                   ))}
-                  <span className="text-text-tertiary text-xs flex items-center">💳 Last paid: {a.lastPaid}</span>
+                  <span className="text-text-tertiary text-xs flex items-center">Last paid: {a.lastPaid}</span>
                 </div>
                 <div className="flex items-center gap-2 mt-3">
                   <Button variant="ghost" size="sm" onClick={() => setProfileOpen(a.handle)}>View Profile →</Button>
@@ -121,7 +133,7 @@ const Affiliates = () => {
         {(filter === "all" || filter === "pending") && (
           <div className="space-y-3 mb-4">
             {pendingAffiliates.map((a) => (
-              <div key={a.email} className="bg-card border border-border border-l-[3px] border-l-warning rounded-xl p-5">
+              <div key={a.email} className="bg-card border border-border border-l-[3px] border-l-warning p-5">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full ${a.wc} flex items-center justify-center text-xs font-semibold text-foreground`}>{a.initials}</div>
@@ -138,8 +150,8 @@ const Affiliates = () => {
                   <p className="text-sm text-text-secondary italic">"{a.message}"</p>
                 </div>
                 <div className="flex items-center gap-2 mt-3 ml-[52px]">
-                  <Button size="sm">✅ Approve</Button>
-                  <Button variant="destructive" size="sm">✕ Reject</Button>
+                  <Button size="sm">Approve</Button>
+                  <Button variant="destructive" size="sm">Reject</Button>
                   <Button variant="ghost" size="sm">View Application</Button>
                 </div>
               </div>
@@ -151,7 +163,7 @@ const Affiliates = () => {
         {(filter === "all" || filter === "blocked") && (
           <div className="space-y-3">
             {blockedAffiliates.map((a) => (
-              <div key={a.handle} className="bg-card border border-border border-l-[3px] border-l-error rounded-xl p-5">
+              <div key={a.handle} className="bg-card border border-border border-l-[3px] border-l-error p-5">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-full ${a.wc} flex items-center justify-center text-xs font-semibold text-foreground`}>{a.initials}</div>
@@ -206,8 +218,8 @@ const Affiliates = () => {
                   { value: selectedAffiliate.cvr, label: "Conv Rate", trend: "" },
                   { value: "$3.80", label: "Avg Rev/Install", trend: "" },
                 ].map((s) => (
-                  <div key={s.label} className="bg-background-subtle rounded-lg p-4">
-                    <div className="text-xl font-bold text-foreground">{s.value}</div>
+                  <div key={s.label} className="bg-background-subtle p-4">
+                    <div className="text-xl font-semibold text-foreground">{s.value}</div>
                     <div className="text-xs text-text-secondary">{s.label}</div>
                     {s.trend && <div className="text-xs text-success mt-1">{s.trend}</div>}
                   </div>
@@ -220,10 +232,10 @@ const Affiliates = () => {
                 <ResponsiveContainer width="100%" height={180}>
                   <AreaChart data={profileChartData}>
                     <defs><linearGradient id="profGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.15} /><stop offset="100%" stopColor="#8B5CF6" stopOpacity={0} /></linearGradient></defs>
-                    <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#94A3B8" }} axisLine={false} tickLine={false} />
-                    <YAxis tick={{ fontSize: 10, fill: "#94A3B8" }} axisLine={false} tickLine={false} />
-                    <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid hsl(var(--border))" }} />
-                    <Area type="monotone" dataKey="earnings" stroke="#8B5CF6" strokeWidth={2} fill="url(#profGrad)" />
+                    <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#B0B0B0" }} axisLine={false} tickLine={false} />
+                    <YAxis tick={{ fontSize: 10, fill: "#B0B0B0" }} axisLine={false} tickLine={false} />
+                    <Tooltip content={<ChartTooltip />} />
+                    <Area type="monotone" dataKey="earnings" stroke="#8B5CF6" strokeWidth={2} fill="url(#profGrad)" dot={false} />
                   </AreaChart>
                 </ResponsiveContainer>
               </div>
@@ -231,7 +243,7 @@ const Affiliates = () => {
               {/* Active Campaigns */}
               <div className="mb-6">
                 <h3 className="text-sm font-semibold text-foreground mb-3">Active Campaigns ({selectedAffiliate.campaigns})</h3>
-                <div className="border border-border rounded-lg divide-y divide-border">
+                <div className="border border-border divide-y divide-border">
                   <div className="p-4 flex items-center justify-between">
                     <div><div className="text-sm font-medium text-foreground">TikTok Q1 Push</div><div className="text-xs text-text-secondary">178 installs · $623 earned</div></div>
                     <span className="text-xs text-text-tertiary">30% rev share</span>
@@ -246,13 +258,13 @@ const Affiliates = () => {
               {/* Top Content */}
               <div className="mb-6">
                 <h3 className="text-sm font-semibold text-foreground mb-3">Top Content</h3>
-                <div className="border border-border rounded-lg divide-y divide-border">
+                <div className="border border-border divide-y divide-border">
                   {[
                     { title: "5 Apps That Changed My...", platform: "TikTok", views: "245K", revenue: "$890" },
                     { title: "Morning Routine with...", platform: "TikTok", views: "89K", revenue: "$334" },
                   ].map((c) => (
                     <div key={c.title} className="p-4">
-                      <div className="text-sm font-medium text-foreground">🎬 "{c.title}"</div>
+                      <div className="text-sm font-medium text-foreground">"{c.title}"</div>
                       <div className="text-xs text-text-secondary mt-1">{c.platform} · {c.views} views · {c.revenue}</div>
                       <button className="text-xs text-text-tertiary hover:text-foreground mt-1 flex items-center gap-1">View on {c.platform} <ExternalLink size={10} /></button>
                     </div>
@@ -266,7 +278,7 @@ const Affiliates = () => {
                   <h3 className="text-sm font-semibold text-foreground">Payout History</h3>
                   <button className="text-xs text-text-secondary hover:text-foreground">View All →</button>
                 </div>
-                <div className="border border-border rounded-lg divide-y divide-border">
+                <div className="border border-border divide-y divide-border">
                   {[
                     { date: "Feb 28", amount: "$156.00", status: "Paid" },
                     { date: "Feb 15", amount: "$134.00", status: "Paid" },
@@ -275,7 +287,7 @@ const Affiliates = () => {
                     <div key={p.date} className="p-3 flex items-center justify-between text-sm">
                       <span className="text-text-secondary">{p.date}</span>
                       <span className="font-medium text-foreground">{p.amount}</span>
-                      <BadgeStatus variant="success">✅ {p.status}</BadgeStatus>
+                      <BadgeStatus variant="success">{p.status}</BadgeStatus>
                       <span className="text-xs text-text-tertiary">Stripe</span>
                     </div>
                   ))}
@@ -290,16 +302,16 @@ const Affiliates = () => {
       {inviteOpen && (
         <>
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" onClick={() => setInviteOpen(false)} />
-          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-card border border-border rounded-xl p-6 shadow-lg z-50 animate-scale-in">
+          <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-card border border-border p-6 shadow-lg z-50 animate-scale-in">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-foreground">Invite Affiliates</h2>
+              <h2 className="text-base font-semibold text-foreground">Invite Affiliates</h2>
               <button onClick={() => setInviteOpen(false)} className="text-text-tertiary hover:text-foreground"><X size={18} /></button>
             </div>
 
             <div className="mb-4">
               <label className="block text-sm font-medium text-foreground mb-1.5">Invite by Email</label>
               <div className="flex gap-2">
-                <input value={emailInput} onChange={(e) => setEmailInput(e.target.value)} placeholder="Enter email address" className="flex-1 h-10 px-3 text-sm bg-card border border-border rounded-lg outline-none focus:border-foreground" onKeyDown={(e) => { if (e.key === "Enter" && emailInput) { setInviteEmails([...inviteEmails, emailInput]); setEmailInput(""); }}} />
+                <input value={emailInput} onChange={(e) => setEmailInput(e.target.value)} placeholder="Enter email address" className="flex-1 h-10 px-3 text-sm bg-card border border-border outline-none focus:border-foreground" onKeyDown={(e) => { if (e.key === "Enter" && emailInput) { setInviteEmails([...inviteEmails, emailInput]); setEmailInput(""); }}} />
                 <Button variant="secondary" size="sm" className="h-10" onClick={() => { if (emailInput) { setInviteEmails([...inviteEmails, emailInput]); setEmailInput(""); } }}>+ Add</Button>
               </div>
               {inviteEmails.length > 0 && (
@@ -317,7 +329,7 @@ const Affiliates = () => {
 
             <div className="mb-4">
               <label className="block text-sm font-medium text-foreground mb-1.5">Personal Message (optional)</label>
-              <textarea placeholder="Hey! We'd love to have you promote MindfulApp..." rows={3} className="w-full px-3 py-2 text-sm bg-card border border-border rounded-lg outline-none resize-y" />
+              <textarea placeholder="Hey! We'd love to have you promote MindfulApp..." rows={3} className="w-full px-3 py-2 text-sm bg-card border border-border outline-none resize-y" />
             </div>
 
             <div className="flex items-center gap-3 my-4">
@@ -328,7 +340,7 @@ const Affiliates = () => {
 
             <div className="mb-6">
               <label className="block text-sm font-medium text-foreground mb-1.5">Share your program link:</label>
-              <div className="flex items-center gap-2 bg-background-subtle rounded-lg px-3 py-2">
+              <div className="flex items-center gap-2 bg-background-subtle px-3 py-2">
                 <span className="font-mono text-sm text-foreground flex-1 truncate">https://komisi.io/join/mindfulapp</span>
                 <Button variant="ghost" size="sm" onClick={() => handleCopy("https://komisi.io/join/mindfulapp")}>
                   {copied ? "Copied!" : <><Copy size={14} /> Copy</>}

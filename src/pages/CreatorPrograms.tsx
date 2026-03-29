@@ -54,14 +54,14 @@ const CreatorPrograms = () => {
 
   return (
     <DashboardLayout activeItem="My Programs" userType="creator">
-      <div className="px-8 py-6 max-w-[1200px]">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">My Programs</h1>
+      <div className="px-8 py-8 max-w-[1200px]">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">My Programs</h1>
           <Button onClick={() => navigate("/creator/marketplace")}>Browse Marketplace →</Button>
         </div>
 
         {/* Filter tabs */}
-        <div className="flex gap-4 border-b border-border mb-6">
+        <div className="flex gap-4 border-b border-border mb-8">
           {([
             { key: "active", label: `Active (${counts.active})` },
             { key: "pending", label: `Pending (${counts.pending})` },
@@ -85,9 +85,9 @@ const CreatorPrograms = () => {
         {/* Program cards */}
         <div className="space-y-4">
           {filtered.map((p) => (
-            <div key={p.name} className="bg-card border border-border rounded-xl p-5 hover:shadow-sm transition-all">
+            <div key={p.name} className="bg-card border border-border p-5 hover:border-[hsl(var(--border-hover))] transition-colors">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-background-subtle flex items-center justify-center text-lg shrink-0">📱</div>
+                <div className="w-12 h-12 bg-background-subtle flex items-center justify-center text-lg shrink-0">📱</div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-base font-semibold text-foreground">{p.name}</h3>
@@ -102,7 +102,7 @@ const CreatorPrograms = () => {
 
                   {p.status === "active" ? (
                     <>
-                      <div className="flex gap-4 mt-3 text-sm">
+                      <div className="flex gap-4 mt-3 text-[13px]">
                         <span className="text-foreground font-medium">{p.installs} installs</span>
                         <span className="text-text-tertiary">·</span>
                         <span className="text-foreground font-medium">{p.earned} earned</span>

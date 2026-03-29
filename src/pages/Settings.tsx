@@ -53,10 +53,10 @@ const Settings = () => {
 
   return (
     <DashboardLayout activeItem="Settings">
-      <div className="px-8 py-6 max-w-[1200px]">
-        <h1 className="text-2xl font-bold tracking-tight text-foreground mb-6">Settings</h1>
+      <div className="px-8 py-8 max-w-[1200px]">
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground mb-8">Settings</h1>
 
-        <div className="flex gap-4 border-b border-border mb-6 overflow-x-auto">
+        <div className="flex gap-4 border-b border-border mb-8 overflow-x-auto">
           {["Profile", "App Config", "Billing", "Integrations", "API Keys"].map((t) => (
             <button key={t} onClick={() => setTab(t.toLowerCase().replace(/ /g, ""))} className={cn("text-sm font-medium pb-3 border-b-2 transition-all whitespace-nowrap", tab === t.toLowerCase().replace(/ /g, "") ? "text-foreground border-foreground" : "text-text-secondary border-transparent hover:text-foreground")}>{t}</button>
           ))}
@@ -65,8 +65,8 @@ const Settings = () => {
         {/* ─── PROFILE ─── */}
         {tab === "profile" && (
           <div className="max-w-2xl space-y-6">
-            <div className="bg-card border border-border rounded-xl p-6 space-y-5">
-              <h2 className="text-lg font-semibold text-foreground">Profile Information</h2>
+            <div className="bg-card border border-border p-6 space-y-5">
+              <h2 className="text-base font-semibold text-foreground">Profile Information</h2>
 
               {/* Avatar */}
               <div className="flex items-center gap-4">
@@ -133,13 +133,13 @@ const Settings = () => {
             </div>
 
             {/* Company Information */}
-            <div className="bg-card border border-border rounded-xl p-6 space-y-5">
-              <h2 className="text-lg font-semibold text-foreground">Company Information</h2>
+            <div className="bg-card border border-border p-6 space-y-5">
+              <h2 className="text-base font-semibold text-foreground">Company Information</h2>
 
               {/* Logo */}
               <div className="space-y-1.5">
                 <Label>Company Logo</Label>
-                <div className="w-[120px] h-[40px] rounded-lg border-2 border-dashed border-border bg-muted flex items-center justify-center cursor-pointer hover:border-[hsl(var(--border-hover))] transition-colors">
+                <div className="w-[120px] h-[40px] border-2 border-dashed border-border bg-muted flex items-center justify-center cursor-pointer hover:border-[hsl(var(--border-hover))] transition-colors">
                   <span className="text-xs text-text-tertiary">Upload</span>
                 </div>
               </div>
@@ -216,8 +216,8 @@ const Settings = () => {
         {tab === "appconfig" && (
           <div className="max-w-2xl space-y-6">
             {/* Commission Defaults */}
-            <div className="bg-card border border-border rounded-xl p-6 space-y-5">
-              <h2 className="text-lg font-semibold text-foreground">Commission Defaults</h2>
+            <div className="bg-card border border-border p-6 space-y-5">
+              <h2 className="text-base font-semibold text-foreground">Commission Defaults</h2>
 
               <div className="space-y-1.5">
                 <Label>Commission Type</Label>
@@ -271,8 +271,8 @@ const Settings = () => {
             </div>
 
             {/* Store Fee Rates */}
-            <div className="bg-card border border-border rounded-xl p-6 space-y-5">
-              <h2 className="text-lg font-semibold text-foreground">Store Fee Rates</h2>
+            <div className="bg-card border border-border p-6 space-y-5">
+              <h2 className="text-base font-semibold text-foreground">Store Fee Rates</h2>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
@@ -295,8 +295,8 @@ const Settings = () => {
             </div>
 
             {/* Smart Links */}
-            <div className="bg-card border border-border rounded-xl p-6 space-y-5">
-              <h2 className="text-lg font-semibold text-foreground">Smart Links</h2>
+            <div className="bg-card border border-border p-6 space-y-5">
+              <h2 className="text-base font-semibold text-foreground">Smart Links</h2>
 
               <div className="space-y-1.5">
                 <Label>Custom Domain</Label>
@@ -310,8 +310,8 @@ const Settings = () => {
             </div>
 
             {/* SDK Status */}
-            <div className="bg-card border border-border rounded-xl p-6 space-y-4">
-              <h2 className="text-lg font-semibold text-foreground">SDK Status</h2>
+            <div className="bg-card border border-border p-6 space-y-4">
+              <h2 className="text-base font-semibold text-foreground">SDK Status</h2>
 
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
@@ -353,10 +353,10 @@ const Settings = () => {
         {tab === "billing" && (
           <div className="grid grid-cols-5 gap-6">
             <div className="col-span-3">
-              <div className="bg-card border border-border rounded-xl p-6">
+              <div className="bg-card border border-border p-6">
                 <div className="flex gap-6">
-                  <div className="w-36 h-36 rounded-xl watercolor-mixed flex items-center justify-center shrink-0">
-                    <span className="text-2xl font-bold text-foreground/80">Free</span>
+                  <div className="w-36 h-36 watercolor-mixed flex items-center justify-center shrink-0">
+                    <span className="text-2xl font-semibold text-foreground/80">Free</span>
                   </div>
                   <div>
                     <h2 className="text-xl font-semibold text-foreground mb-3">Free Plan</h2>
@@ -364,7 +364,7 @@ const Settings = () => {
                       <li>• 5 affiliates</li><li>• 1 app</li><li>• 500 transactions/mo</li><li>• 20% platform commission</li><li>• Basic dashboard</li><li>• Community support</li>
                     </ul>
                     <div className="mt-4">
-                      <span className="text-2xl font-bold text-foreground">$0</span><span className="text-text-secondary">/mo</span>
+                      <span className="text-2xl font-semibold text-foreground">$0</span><span className="text-text-secondary">/mo</span>
                     </div>
                     <Button variant="secondary" size="sm" className="mt-3">Manage Billing</Button>
                   </div>
@@ -372,17 +372,17 @@ const Settings = () => {
               </div>
             </div>
             <div className="col-span-2">
-              <div className="bg-card border border-border rounded-xl p-6">
-                <p className="text-sm text-text-secondary mb-4">Growing fast? Reduce your platform commission and unlock more features. ↓</p>
+              <div className="bg-card border border-border p-6">
+                <p className="text-sm text-text-secondary mb-4">Growing fast? Reduce your platform commission and unlock more features.</p>
                 <div className="space-y-3">
-                  <div className="border border-border rounded-lg p-4 hover:shadow-sm transition-all cursor-pointer">
+                  <div className="border border-border p-4 hover:border-[hsl(var(--border-hover))] transition-colors cursor-pointer">
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-semibold text-foreground">Growth · $49/mo</span>
                       <Button size="sm">Upgrade</Button>
                     </div>
                     <p className="text-xs text-text-secondary">25 affiliates · 10% commission · AI fraud detection</p>
                   </div>
-                  <div className="border border-border rounded-lg p-4 hover:shadow-sm transition-all cursor-pointer">
+                  <div className="border border-border p-4 hover:border-[hsl(var(--border-hover))] transition-colors cursor-pointer">
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-semibold text-foreground">Scale · $149/mo</span>
                       <Button variant="secondary" size="sm">Upgrade</Button>
@@ -400,11 +400,11 @@ const Settings = () => {
         {tab === "integrations" && (
           <div className="space-y-8">
             <div>
-              <h2 className="text-lg font-semibold text-foreground mb-4">Revenue Platforms</h2>
+              <h2 className="text-base font-semibold text-foreground mb-4">Revenue Platforms</h2>
               <div className="space-y-3">
                 {integrations.revenue.map((item) => (
-                  <div key={item.name} className={cn("bg-card border border-border rounded-xl p-5 flex items-center gap-4", item.connected && "border-l-[3px] border-l-[hsl(var(--success))]")}>
-                    <div className="w-10 h-10 rounded-lg bg-background-subtle flex items-center justify-center text-sm font-bold text-text-secondary shrink-0">{item.name[0]}</div>
+                  <div key={item.name} className={cn("bg-card border border-border p-5 flex items-center gap-4", item.connected && "border-l-[3px] border-l-[hsl(var(--success))]")}>
+                    <div className="w-10 h-10 bg-background-subtle flex items-center justify-center text-sm font-semibold text-text-secondary shrink-0">{item.name[0]}</div>
                     <div className="flex-1">
                       <div className="text-sm font-semibold text-foreground">{item.name}</div>
                       <div className="text-xs text-text-secondary">{item.desc}</div>
@@ -433,14 +433,14 @@ const Settings = () => {
         {/* ─── API KEYS ─── */}
         {tab === "apikeys" && (
           <div className="space-y-4">
-            <div className="bg-[hsl(var(--warning-light))] border border-[hsl(var(--warning))]/30 rounded-lg p-4 text-sm flex items-center gap-2">
+            <div className="bg-[hsl(var(--warning-light))] border border-[hsl(var(--warning))]/30 p-4 text-sm flex items-center gap-2">
               <span>⚠️</span> Keep your API keys secret. Do not share them publicly.
             </div>
             {[
               { label: "Live Key", key: "km_live_a1b2c3d4e5f6g7h8i9j0", created: "Feb 1, 2026", lastUsed: "2 minutes ago", show: showLive, setShow: setShowLive },
               { label: "Test Key", key: "km_test_x9y8z7w6v5u4t3s2r1q0", created: "Feb 1, 2026", lastUsed: "Never", show: showTest, setShow: setShowTest },
             ].map((k) => (
-              <div key={k.label} className="bg-card border border-border rounded-xl p-5">
+              <div key={k.label} className="bg-card border border-border p-5">
                 <div className="text-sm font-semibold text-foreground mb-2">{k.label}</div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="font-mono text-sm text-foreground flex-1">{k.show ? k.key : k.key.replace(/./g, "•").slice(0, 20) + "..."}</span>

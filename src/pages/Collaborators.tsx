@@ -44,11 +44,11 @@ const Collaborators: React.FC = () => {
 
   return (
     <DashboardLayout activeItem="Collaborators">
-      <div className="px-8 py-6 max-w-[1200px]">
+      <div className="px-8 py-8 max-w-[1200px]">
         {/* Header */}
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex items-start justify-between mb-8">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">Collaborators</h1>
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground">Collaborators</h1>
             <p className="text-sm text-text-secondary mt-1">Manage who has access to this app.</p>
           </div>
           <RoleGate requiredRole="owner">
@@ -60,7 +60,7 @@ const Collaborators: React.FC = () => {
 
         {/* Access denied banner for non-owners */}
         {!isOwner && (
-          <div className="bg-muted border border-border rounded-none p-4 mb-6 flex items-center gap-3">
+          <div className="bg-muted border border-border p-4 mb-8 flex items-center gap-3">
             <Info size={16} className="text-text-secondary shrink-0" />
             <p className="text-sm text-text-secondary">Only the app owner can manage collaborators. Contact the owner to make changes.</p>
           </div>
@@ -78,11 +78,11 @@ const Collaborators: React.FC = () => {
 
         {showEmpty ? (
           /* Empty State */
-          <div className="bg-card border border-border rounded-none p-12 flex flex-col items-center text-center">
+          <div className="bg-card border border-border p-12 flex flex-col items-center text-center">
             <div className="w-20 h-20 watercolor-mixed flex items-center justify-center mb-4">
               <Users size={32} className="text-text-tertiary" />
             </div>
-            <h3 className="text-lg font-semibold text-foreground">No collaborators yet</h3>
+            <h3 className="text-base font-semibold text-foreground">No collaborators yet</h3>
             <p className="text-sm text-text-secondary mt-1 max-w-xs">Invite developers to help manage this app.</p>
             <RoleGate requiredRole="owner">
               <Button className="mt-4" onClick={() => setInviteOpen(true)}>
@@ -92,12 +92,12 @@ const Collaborators: React.FC = () => {
           </div>
         ) : (
           /* Table */
-          <div className="bg-card border border-border rounded-none overflow-hidden">
+          <div className="bg-card border border-border overflow-hidden">
             <table className="w-full">
               <thead>
-                <tr className="bg-background-subtle">
+                <tr className="border-b border-border">
                   {["Member", "Role", "Status", "Added", "Actions"].map((h) => (
-                    <th key={h} className="text-left text-xs uppercase tracking-wider font-semibold text-text-secondary h-10 px-6">
+                    <th key={h} className="text-left text-[11px] uppercase tracking-[0.08em] font-medium text-text-tertiary h-10 px-6">
                       {h}
                     </th>
                   ))}
@@ -107,9 +107,9 @@ const Collaborators: React.FC = () => {
                 {mockCollaborators.map((collab, idx) => (
                   <tr
                     key={idx}
-                    className="border-b border-muted hover:-translate-y-px hover:shadow-sm transition-all"
+                    className="border-b border-muted hover:bg-background-subtle transition-colors"
                   >
-                    <td className="px-6 h-14">
+                    <td className="px-6 h-[52px]">
                       <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-semibold text-foreground shrink-0">
                           {collab.initials}
@@ -127,18 +127,18 @@ const Collaborators: React.FC = () => {
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 h-14">
+                    <td className="px-6 h-[52px]">
                       <BadgeStatus variant={collab.role === "Owner" ? "active" : "neutral"}>
                         {collab.role}
                       </BadgeStatus>
                     </td>
-                    <td className="px-6 h-14">
+                    <td className="px-6 h-[52px]">
                       <BadgeStatus variant={collab.status === "Active" ? "neutral" : "warning"}>
                         {collab.status}
                       </BadgeStatus>
                     </td>
-                    <td className="px-6 h-14 text-sm text-text-secondary">{collab.added}</td>
-                    <td className="px-6 h-14">
+                    <td className="px-6 h-[52px] text-sm text-text-secondary">{collab.added}</td>
+                    <td className="px-6 h-[52px]">
                       {collab.role === "Owner" ? (
                         <span className="text-sm text-text-tertiary">—</span>
                       ) : isOwner ? (
