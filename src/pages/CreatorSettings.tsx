@@ -51,11 +51,11 @@ const CreatorSettings = () => {
 
   return (
     <DashboardLayout activeItem="Settings" userType="creator">
-      <div className="px-8 py-6 max-w-[900px]">
-        <h1 className="text-2xl font-bold tracking-tight text-foreground mb-6">Creator Settings</h1>
+      <div className="px-8 py-8 max-w-[900px]">
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground mb-8">Creator Settings</h1>
 
         {/* Tabs */}
-        <div className="flex gap-4 border-b border-border mb-6">
+        <div className="flex gap-4 border-b border-border mb-8">
           {tabs.map((t) => (
             <button key={t} onClick={() => setActiveTab(t)} className={cn("text-sm font-medium pb-3 border-b-2 transition-all", activeTab === t ? "text-foreground border-foreground" : "text-text-secondary border-transparent hover:text-foreground")}>{t}</button>
           ))}
@@ -153,9 +153,9 @@ const CreatorSettings = () => {
         {activeTab === "Payout Methods" && (
           <div className="space-y-4">
             {/* Stripe */}
-            <div className="bg-card border border-border rounded-xl p-5 flex items-center justify-between">
+            <div className="bg-card border border-border p-5 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-[hsl(var(--info-light))] flex items-center justify-center"><Wifi size={18} className="text-[hsl(var(--info))]" /></div>
+                <div className="w-10 h-10 bg-[hsl(var(--info-light))] flex items-center justify-center"><Wifi size={18} className="text-[hsl(var(--info))]" /></div>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-foreground">Stripe Connect</span>
@@ -171,9 +171,9 @@ const CreatorSettings = () => {
             </div>
 
             {/* PayPal */}
-            <div className="bg-card border border-border rounded-xl p-5 flex items-center justify-between">
+            <div className="bg-card border border-border p-5 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center"><WifiOff size={18} className="text-text-tertiary" /></div>
+                <div className="w-10 h-10 bg-muted flex items-center justify-center"><WifiOff size={18} className="text-text-tertiary" /></div>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-foreground">PayPal</span>
@@ -185,9 +185,9 @@ const CreatorSettings = () => {
             </div>
 
             {/* Wise */}
-            <div className="bg-card border border-border rounded-xl p-5 flex items-center justify-between">
+            <div className="bg-card border border-border p-5 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center"><WifiOff size={18} className="text-text-tertiary" /></div>
+                <div className="w-10 h-10 bg-muted flex items-center justify-center"><WifiOff size={18} className="text-text-tertiary" /></div>
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-foreground">Wise</span>
@@ -248,7 +248,7 @@ const CreatorSettings = () => {
               </div>
             </div>
 
-            <div className="bg-card border border-border rounded-xl p-5">
+            <div className="bg-card border border-border p-5">
               <p className="text-sm text-text-secondary mb-4">Submit a W-8BEN (international) or W-9 (US) form for tax compliance.</p>
               <div className="flex gap-3">
                 <Button variant="secondary"><Upload size={14} /> Upload Tax Form</Button>

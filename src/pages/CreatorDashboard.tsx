@@ -1,6 +1,5 @@
 import React from "react";
 import { DashboardLayout } from "@/components/komisi/DashboardLayout";
-import { MetricCard } from "@/components/komisi/Cards";
 import { Button } from "@/components/ui/button";
 import { BadgeStatus } from "@/components/komisi/BadgeStatus";
 import {
@@ -27,29 +26,57 @@ const topContent = [
   { title: "MindfulApp Full Review", platform: "YouTube", views: "89K", revenue: "$672" },
 ];
 
+const ChartTooltip = ({ active, payload, label }: any) => {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="bg-card shadow-lg border border-border p-3 text-[13px]">
+      <p className="font-medium text-foreground mb-1">{label}</p>
+      {payload.map((p: any) => (
+        <p key={p.name} style={{ color: p.color }}>{p.name}: {typeof p.value === 'number' && p.name.toLowerCase().includes('revenue') ? `$${p.value}` : p.value}</p>
+      ))}
+    </div>
+  );
+};
+
 const CreatorDashboard = () => {
   return (
     <DashboardLayout activeItem="Dashboard" userType="creator">
-      <div className="px-8 py-6 max-w-[1200px]">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold tracking-tighter text-foreground">Welcome back, Sarah 👋</h1>
+      <div className="px-8 py-8 max-w-[1200px]">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Welcome back, Sarah</h1>
           <Button variant="secondary" size="sm"><Calendar size={14} /> Last 30 days <ChevronDown size={14} /></Button>
         </div>
 
-        <div className="grid grid-cols-4 gap-4 mb-6">
-          <MetricCard icon={<DollarSign size={20} />} value="$1,562" label="Total Earned" trend={{ value: "34%", positive: true }} />
-          <MetricCard icon={<Clock size={20} />} value="$890" label="Pending Payout" />
-          <MetricCard icon={<Download size={20} />} value="423" label="Installs Driven" trend={{ value: "22%", positive: true }} />
-          <MetricCard icon={<Smartphone size={20} />} value="3" label="Active Programs" />
+        {/* Metrics Strip */}
+        <div className="bg-card border border-border mb-8">
+          <div className="grid grid-cols-4 divide-x divide-border">
+            {[
+              { icon: <DollarSign size={18} />, value: "$1,562", label: "Total Earned", trend: "34%" },
+              { icon: <Clock size={18} />, value: "$890", label: "Pending Payout", trend: null },
+              { icon: <Download size={18} />, value: "423", label: "Installs Driven", trend: "22%" },
+              { icon: <Smartphone size={18} />, value: "3", label: "Active Programs", trend: null },
+            ].map((m) => (
+              <div key={m.label} className="px-5 py-5">
+                <div className="flex items-center gap-2 text-text-tertiary mb-3">
+                  {m.icon}
+                  <span className="text-[13px] text-text-secondary">{m.label}</span>
+                </div>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-[28px] font-semibold text-foreground tracking-tight leading-none tabular-nums">{m.value}</span>
+                  {m.trend && <span className="text-xs font-medium text-success">↑ {m.trend}</span>}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Earnings chart */}
-        <div className="bg-card border border-border rounded-xl p-6 mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-semibold text-foreground">My Earnings</h2>
-            <div className="flex items-center gap-4 text-sm">
-              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-chart-purple" /> Revenue</span>
-              <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-chart-blue" /> Installs</span>
+        <div className="bg-card border border-border p-6 pb-4 mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-base font-semibold text-foreground">My Earnings</h2>
+            <div className="flex items-center gap-5 text-[13px] text-text-secondary">
+              <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#8B5CF6]" /> Revenue</span>
+              <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-[#3B82F6]" /> Installs</span>
             </div>
           </div>
           <ResponsiveContainer width="100%" height={280}>
@@ -57,26 +84,26 @@ const CreatorDashboard = () => {
               <defs>
                 <linearGradient id="cRev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#8B5CF6" stopOpacity={0.15} /><stop offset="100%" stopColor="#8B5CF6" stopOpacity={0} /></linearGradient>
               </defs>
-              <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#94A3B8" }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 10, fill: "#94A3B8" }} axisLine={false} tickLine={false} />
-              <Tooltip contentStyle={{ fontSize: 12, borderRadius: 8, border: "1px solid hsl(var(--border))" }} />
-              <Area type="monotone" dataKey="revenue" stroke="#8B5CF6" strokeWidth={2} fill="url(#cRev)" />
-              <Area type="monotone" dataKey="installs" stroke="#3B82F6" strokeWidth={1.5} fill="transparent" />
+              <XAxis dataKey="day" tick={{ fontSize: 10, fill: "#B0B0B0" }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fontSize: 10, fill: "#B0B0B0" }} axisLine={false} tickLine={false} />
+              <Tooltip content={<ChartTooltip />} />
+              <Area type="monotone" dataKey="revenue" stroke="#8B5CF6" strokeWidth={2.5} fill="url(#cRev)" dot={false} />
+              <Area type="monotone" dataKey="installs" stroke="#3B82F6" strokeWidth={1.5} fill="transparent" dot={false} />
             </AreaChart>
           </ResponsiveContainer>
         </div>
 
-        <div className="grid grid-cols-5 gap-6 mb-6">
+        <div className="grid grid-cols-5 gap-6 mb-8">
           <div className="col-span-3">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-foreground">Active Programs</h2>
+              <h2 className="text-base font-semibold text-foreground">Active Programs</h2>
               <button className="text-sm text-text-secondary hover:text-foreground">View All →</button>
             </div>
-            <div className="bg-card border border-border rounded-xl divide-y divide-border">
+            <div className="bg-card border border-border divide-y divide-border">
               {programs.map((p) => (
-                <div key={p.name} className="p-4 flex items-center justify-between hover:bg-background-subtle transition-colors cursor-pointer">
+                <div key={p.name} className="p-4 flex items-center justify-between hover:bg-muted transition-colors cursor-pointer">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-background-subtle flex items-center justify-center text-sm font-bold text-text-secondary">{p.name[0]}</div>
+                    <div className="w-9 h-9 bg-background-subtle flex items-center justify-center text-sm font-semibold text-text-secondary">{p.name[0]}</div>
                     <div><div className="text-sm font-medium text-foreground">{p.name}</div><div className="text-xs text-text-secondary">{p.category}</div></div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -90,13 +117,13 @@ const CreatorDashboard = () => {
           </div>
           <div className="col-span-2">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold text-foreground">Top Content This Month</h2>
+              <h2 className="text-base font-semibold text-foreground">Top Content This Month</h2>
               <button className="text-sm text-text-secondary hover:text-foreground">View All →</button>
             </div>
-            <div className="bg-card border border-border rounded-xl divide-y divide-border">
+            <div className="bg-card border border-border divide-y divide-border">
               {topContent.map((c) => (
                 <div key={c.title} className="p-4">
-                  <div className="text-sm font-medium text-foreground">🎬 "{c.title}"</div>
+                  <div className="text-sm font-medium text-foreground">"{c.title}"</div>
                   <div className="text-xs text-text-secondary mt-1">{c.platform} · {c.views} views · {c.revenue} revenue</div>
                 </div>
               ))}
@@ -105,10 +132,10 @@ const CreatorDashboard = () => {
         </div>
 
         {/* Next Payout */}
-        <div className="bg-card border border-border rounded-xl p-5 border-l-[3px] border-l-transparent" style={{ borderImage: "linear-gradient(135deg, #000000, #EC4899, #F59E0B) 1", borderImageSlice: "0 0 0 3" }}>
+        <div className="bg-card border border-border p-5 border-l-[3px] border-l-transparent" style={{ borderImage: "linear-gradient(135deg, #000000, #EC4899, #F59E0B) 1", borderImageSlice: "0 0 0 3" }}>
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-lg font-semibold text-foreground">💰 Next Payout: $890</div>
+              <div className="text-base font-semibold text-foreground">Next Payout: $890</div>
               <div className="text-sm text-text-secondary">Via Stripe Connect to •••• 4242</div>
             </div>
             <div className="flex items-center gap-3">

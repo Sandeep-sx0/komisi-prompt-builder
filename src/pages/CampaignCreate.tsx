@@ -124,10 +124,10 @@ const CampaignCreate: React.FC = () => {
 
   return (
     <DashboardLayout activeItem="Campaigns">
-      <div className="px-8 py-6 max-w-[900px]">
+      <div className="px-8 py-8 max-w-[900px]">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-2xl font-bold text-foreground tracking-tight">{isEdit ? "Edit Campaign" : "Create Campaign"}</h1>
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">{isEdit ? "Edit Campaign" : "Create Campaign"}</h1>
           <div className="flex items-center gap-2">
             <Button variant="ghost" onClick={() => navigate("/campaigns")}>Cancel</Button>
             <Button variant="secondary">Save as Draft</Button>
@@ -137,7 +137,7 @@ const CampaignCreate: React.FC = () => {
         <div className="space-y-10">
           {/* ─── Section 1: Campaign Details ─── */}
           <section>
-            <h2 className="text-lg font-semibold text-foreground">Campaign Details</h2>
+            <h2 className="text-base font-semibold text-foreground">Campaign Details</h2>
             <div className="h-px bg-border mt-1 mb-6" />
             <div className="space-y-4">
               <div className="space-y-1.5">
@@ -199,7 +199,7 @@ const CampaignCreate: React.FC = () => {
 
           {/* ─── Section 2: Commission Structure ─── */}
           <section>
-            <h2 className="text-lg font-semibold text-foreground">Commission Structure</h2>
+            <h2 className="text-base font-semibold text-foreground">Commission Structure</h2>
             <div className="h-px bg-border mt-1 mb-6" />
             <div className="space-y-4">
               <ChipSelector
@@ -295,10 +295,10 @@ const CampaignCreate: React.FC = () => {
 
           {/* ─── Section 3: Links & Tracking ─── */}
           <section>
-            <h2 className="text-lg font-semibold text-foreground">Links & Tracking</h2>
+            <h2 className="text-base font-semibold text-foreground">Links & Tracking</h2>
             <div className="h-px bg-border mt-1 mb-6" />
             <div className="space-y-4">
-              <div className="bg-muted rounded-lg p-4">
+              <div className="bg-muted p-4">
                 <p className="text-xs text-text-tertiary mb-1">Smart Link (auto-generated):</p>
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-sm text-foreground break-all">{smartLink}</span>
@@ -341,7 +341,7 @@ const CampaignCreate: React.FC = () => {
 
           {/* ─── Section 4: Affiliate Assignment ─── */}
           <section>
-            <h2 className="text-lg font-semibold text-foreground">Affiliate Assignment</h2>
+            <h2 className="text-base font-semibold text-foreground">Affiliate Assignment</h2>
             <div className="h-px bg-border mt-1 mb-6" />
             <div className="space-y-3">
               {[
@@ -353,7 +353,7 @@ const CampaignCreate: React.FC = () => {
                   key={o.value}
                   onClick={() => setAssignType(o.value)}
                   className={cn(
-                    "w-full text-left h-11 px-4 rounded-lg border text-sm font-medium transition-all",
+                    "w-full text-left h-11 px-4 border text-sm font-medium transition-all",
                     assignType === o.value
                       ? "bg-primary text-primary-foreground border-transparent"
                       : "bg-card text-text-secondary border-border hover:border-[hsl(var(--border-hover))]"
@@ -364,7 +364,7 @@ const CampaignCreate: React.FC = () => {
               ))}
 
               {assignType === "select" && (
-                <div className="animate-in fade-in slide-in-from-top-2 duration-300 border border-border rounded-lg p-4 mt-2 space-y-3">
+                <div className="animate-in fade-in slide-in-from-top-2 duration-300 border border-border p-4 mt-2 space-y-3">
                   <Input
                     placeholder="Search affiliates..."
                     value={affiliateSearch}
@@ -375,7 +375,7 @@ const CampaignCreate: React.FC = () => {
                       <button
                         key={a.handle}
                         onClick={() => toggleAffiliate(a.handle)}
-                        className="w-full flex items-center gap-3 py-2 px-2 rounded-md hover:bg-muted transition-colors text-left"
+                        className="w-full flex items-center gap-3 py-2 px-2 hover:bg-muted transition-colors text-left"
                       >
                         <Checkbox checked={selectedAffiliates.includes(a.handle)} className="pointer-events-none" />
                         <div className={cn("w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold shrink-0", a.color)}>
